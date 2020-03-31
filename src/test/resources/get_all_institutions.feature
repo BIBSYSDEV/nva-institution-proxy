@@ -1,7 +1,7 @@
 Feature: Get all institutions
 
   Scenario: User requests all institutions in the default language
-    Given that the API user is looking for a list of institutions in <language>
+    Given that the API user is looking for a list of institutions
     When they set the request Accept header to "application/json"
     And they request /institutions
     Then they receive a response with status code 200
@@ -19,7 +19,8 @@ Feature: Get all institutions
     Then they receive a response with status code 200
     And they see that the response Content-type is "application/json"
     And they see the response body contains a list of objects
-    And they see that each object is an institution of Norwegian higher education that is a Cristin user institution    And they see that each institution has a IRI
+    And they see that each object is an institution of Norwegian higher education that is a Cristin user institution
+    And they see that each institution has a IRI
     And they see that each institution has a name
     And they see that the majority of the names are in the chosen language
 
