@@ -1,4 +1,4 @@
-package no.unit.nva.institution.proxy.utils;
+package no.unit.nva.institution.proxy;
 
 import static nva.commons.utils.attempt.Try.attempt;
 import static org.apache.http.HttpHeaders.ACCEPT;
@@ -13,9 +13,9 @@ import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.time.Duration;
 import java.util.concurrent.CompletableFuture;
-import no.unit.nva.institution.proxy.HttpExecutor;
-import no.unit.nva.institution.proxy.InstitutionListResponse;
 import no.unit.nva.institution.proxy.exception.InstitutionFailureException;
+import no.unit.nva.institution.proxy.utils.InstitutionUtils;
+import no.unit.nva.institution.proxy.utils.Language;
 import nva.commons.exceptions.ApiGatewayException;
 import nva.commons.utils.JacocoGenerated;
 

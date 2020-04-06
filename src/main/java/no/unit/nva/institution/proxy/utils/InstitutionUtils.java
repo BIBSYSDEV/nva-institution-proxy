@@ -18,7 +18,7 @@ public final class InstitutionUtils {
     private InstitutionUtils() {
     }
 
-    protected static InstitutionListResponse toInstitutionListResponse(String institutionsJson)
+    public static InstitutionListResponse toInstitutionListResponse(String institutionsJson)
         throws IOException {
         try {
             List<InstitutionDto> institutions = Arrays.asList(

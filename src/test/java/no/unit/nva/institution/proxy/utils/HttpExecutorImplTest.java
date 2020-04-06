@@ -20,6 +20,7 @@ import java.net.http.HttpResponse.BodyHandler;
 import java.nio.file.Path;
 import java.util.Collections;
 import java.util.concurrent.CompletableFuture;
+import no.unit.nva.institution.proxy.HttpExecutorImpl;
 import no.unit.nva.institution.proxy.InstitutionListResponse;
 import no.unit.nva.institution.proxy.exception.FailedHttpRequestException;
 import no.unit.nva.institution.proxy.exception.InstitutionFailureException;
