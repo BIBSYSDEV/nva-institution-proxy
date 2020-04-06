@@ -2,6 +2,7 @@ package no.unit.nva.institution.proxy;
 
 import java.net.URI;
 import java.util.Objects;
+import nva.commons.utils.JacocoGenerated;
 
 public class InstitutionResponse {
     private URI id;
@@ -29,6 +30,7 @@ public class InstitutionResponse {
     }
 
     @Override
+    @JacocoGenerated
     public boolean equals(Object o) {
         if (this == o) {
             return true;
@@ -42,6 +44,7 @@ public class InstitutionResponse {
     }
 
     @Override
+    @JacocoGenerated
     public int hashCode() {
         return Objects.hash(getId(), getName());
     }

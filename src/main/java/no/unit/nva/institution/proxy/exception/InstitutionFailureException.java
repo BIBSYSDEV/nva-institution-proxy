@@ -3,12 +3,12 @@ package no.unit.nva.institution.proxy.exception;
 import nva.commons.exceptions.ApiGatewayException;
 import org.apache.http.HttpStatus;
 
-public class UnknownLanguageException extends ApiGatewayException {
+public class InstitutionFailureException extends ApiGatewayException {
 
-    public static final int ERROR_CODE = HttpStatus.SC_BAD_REQUEST;
+    public static final int ERROR_CODE = HttpStatus.SC_BAD_GATEWAY;
 
-    public UnknownLanguageException(String message) {
-        super(message);
+    public InstitutionFailureException(Exception cause) {
+        super(cause);
     }
 
     @Override

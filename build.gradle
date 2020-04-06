@@ -2,7 +2,8 @@ plugins {
     id 'java'
     id 'jacoco'
     id 'checkstyle'
-    id 'pmd'}
+    id 'pmd'
+}
 
 group 'no.unit.nva'
 version '1.0-SNAPSHOT'
@@ -20,12 +21,15 @@ def cucumberVersion = '5.5.0'
 dependencies {
     implementation group: 'com.amazonaws', name: 'aws-lambda-java-core', version: '1.2.0'
     implementation group: 'com.amazonaws', name: 'aws-java-sdk-lambda', version: '1.11.749'
-    implementation group: 'com.github.BIBSYSDEV', name: 'nva-commons', version: 'v0.1.2'
-    testImplementation group: 'io.cucumber', name:'cucumber-java', version: cucumberVersion
+    implementation group: 'com.github.BIBSYSDEV', name: 'nva-commons', version: '7cdfdbd967'
+    testImplementation group: 'io.cucumber', name: 'cucumber-java', version: cucumberVersion
     testImplementation group: 'io.cucumber', name: 'cucumber-junit', version: cucumberVersion
     testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.5.2'
     testImplementation group: 'com.github.stefanbirkner', name: 'system-rules', version: '1.19.0'
-    testImplementation group: 'org.mockito', name: 'mockito-core', version: '3.2.4'
+    testImplementation group: 'org.mockito', name: 'mockito-core', version: '3.3.3'
+    implementation group: 'com.github.BIBSYSDEV', name: 'nva-testutils', version: 'v0.1.2'
+    testImplementation group: 'org.hamcrest', name: 'hamcrest', version: '2.2'
+    implementation group: 'io.vavr', name: 'vavr', version: '0.10.2'
 }
 
 
@@ -57,5 +61,34 @@ tasks.withType(Checkstyle) {
         xml.enabled false
         html.enabled true
         html.stylesheet rootProject.resources.text.fromFile('config/checkstyle/checkstyle-simple.xsl')
+    }
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+    }
+}
+
+check.dependsOn jacocoTestCoverageVerification
+jacocoTestCoverageVerification.dependsOn(jacocoTestReport)
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            limit {
+                counter = 'METHOD'
+                value = 'COVEREDRATIO'
+                minimum = 1.000
+            }
+        }
+
+        rule {
+            limit {
+                counter = 'CLASS'
+                value = 'COVEREDRATIO'
+                minimum = 1.000
+            }
+        }
     }
 }

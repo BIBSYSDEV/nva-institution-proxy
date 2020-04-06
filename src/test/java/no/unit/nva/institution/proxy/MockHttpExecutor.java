@@ -1,15 +1,15 @@
 package no.unit.nva.institution.proxy;
 
-import no.unit.nva.institution.proxy.utils.Language;
-
 import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import no.unit.nva.institution.proxy.utils.Language;
 
 public class MockHttpExecutor implements HttpExecutor {
+
     @Override
-    public InstitutionListResponse getInstitutions(Language language) throws Exception {
+    public InstitutionListResponse getInstitutions(Language language) {
         return generatedInstitutionListResponse();
     }
 
