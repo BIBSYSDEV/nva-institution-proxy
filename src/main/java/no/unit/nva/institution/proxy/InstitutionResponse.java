@@ -5,6 +5,7 @@ import java.util.Objects;
 import nva.commons.utils.JacocoGenerated;
 
 public class InstitutionResponse {
+
     private URI id;
     private String name;
 
@@ -40,7 +41,7 @@ public class InstitutionResponse {
         }
         InstitutionResponse that = (InstitutionResponse) o;
         return getId().equals(that.getId())
-                && getName().equals(that.getName());
+            && getName().equals(that.getName());
     }
 
     @Override
@@ -50,6 +51,7 @@ public class InstitutionResponse {
     }
 
     public static final class Builder {
+
         private URI id;
         private String name;
 

@@ -1,7 +1,6 @@
 package no.unit.nva.institution.proxy.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.net.URI;
 import java.util.Map;
 

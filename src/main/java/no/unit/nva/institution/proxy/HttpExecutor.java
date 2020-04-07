@@ -1,26 +1,35 @@
 package no.unit.nva.institution.proxy;
 
+import static java.util.Objects.isNull;
+
 import java.net.http.HttpResponse;
 import no.unit.nva.institution.proxy.exception.FailedHttpRequestException;
+import no.unit.nva.institution.proxy.exception.InstitutionFailureException;
 import no.unit.nva.institution.proxy.utils.Language;
-import nva.commons.exceptions.ApiGatewayException;
 import org.apache.http.HttpStatus;
 
-public interface HttpExecutor {
+public abstract class HttpExecutor {
 
-    int FIRST_NON_SUCCESSFUL_CODE = HttpStatus.SC_MULTIPLE_CHOICES;
-    int FIRST_SUCCESSFUL_CODE = HttpStatus.SC_OK;
+    public static final String ERROR_MESSAGE_FORMAT = "%d:%s";
+    public static int FIRST_NON_SUCCESSFUL_CODE = HttpStatus.SC_MULTIPLE_CHOICES;
+    public static int FIRST_SUCCESSFUL_CODE = HttpStatus.SC_OK;
+    public static String NULL_HTTP_RESPONSE_ERROR_MESSAGE = "No HttpResponse found";
 
-    InstitutionListResponse getInstitutions(Language language) throws ApiGatewayException;
+    public abstract InstitutionListResponse getInstitutions(Language language) throws InstitutionFailureException;
 
-    default HttpResponse<String> throwExceptionIfNotSuccessful(HttpResponse<String> response)
+    protected HttpResponse<String> throwExceptionIfNotSuccessful(HttpResponse<String> response)
         throws FailedHttpRequestException {
-        if (response != null &&
-            response.statusCode() >= FIRST_SUCCESSFUL_CODE &&
-            response.statusCode() < FIRST_NON_SUCCESSFUL_CODE
-        ) {
+        if (isNull(response)) {
+            throw new FailedHttpRequestException(NULL_HTTP_RESPONSE_ERROR_MESSAGE);
+        } else if (response.statusCode() >= FIRST_SUCCESSFUL_CODE
+            && response.statusCode() < FIRST_NON_SUCCESSFUL_CODE) {
             return response;
+        } else {
+            throw new FailedHttpRequestException(errorMessage(response));
         }
-        throw new FailedHttpRequestException(response.body());
+    }
+
+    private String errorMessage(HttpResponse<String> response) {
+        return String.format(ERROR_MESSAGE_FORMAT, response.statusCode(), response.body());
     }
 }

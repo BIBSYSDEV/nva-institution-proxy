@@ -63,7 +63,7 @@ public class CristinApiClientTest {
         getLanguageLogsTheInputLanguage(INVALID_LANGUAGE_CODE);
     }
 
-    public void getLanguageLogsTheInputLanguage(String language) throws ApiGatewayException {
+    private void getLanguageLogsTheInputLanguage(String language) throws ApiGatewayException {
         MockHttpExecutorReportingInsertedLanguage executor = new MockHttpExecutorReportingInsertedLanguage();
         CristinApiClient cristinApiClient = new CristinApiClient(executor, testLogger);
         attempt(() -> cristinApiClient.getInstitutions(language));
@@ -80,7 +80,7 @@ public class CristinApiClientTest {
         assertThat(executor.getInsertedLanguage(), is(equalTo(Language.NORWEGIAN_BOKMAAL)));
     }
 
-    private static class MockHttpExecutorReportingInsertedLanguage implements HttpExecutor {
+    private static class MockHttpExecutorReportingInsertedLanguage extends HttpExecutor {
 
         private Language insertedLanguage;
 

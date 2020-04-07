@@ -1,4 +1,4 @@
-package no.unit.nva.institution.proxy.utils;
+package no.unit.nva.institution.proxy;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.greaterThan;
@@ -20,10 +20,10 @@ import java.net.http.HttpResponse.BodyHandler;
 import java.nio.file.Path;
 import java.util.Collections;
 import java.util.concurrent.CompletableFuture;
-import no.unit.nva.institution.proxy.HttpExecutorImpl;
-import no.unit.nva.institution.proxy.InstitutionListResponse;
 import no.unit.nva.institution.proxy.exception.FailedHttpRequestException;
 import no.unit.nva.institution.proxy.exception.InstitutionFailureException;
+import no.unit.nva.institution.proxy.utils.InstitutionUtils;
+import no.unit.nva.institution.proxy.utils.Language;
 import nva.commons.utils.IoUtils;
 import nva.commons.utils.TestLogger;
 import org.apache.http.HttpStatus;

@@ -3,9 +3,9 @@ package no.unit.nva.institution.proxy;
 import static java.util.Objects.isNull;
 
 import com.amazonaws.services.lambda.runtime.LambdaLogger;
+import no.unit.nva.institution.proxy.exception.InstitutionFailureException;
 import no.unit.nva.institution.proxy.exception.UnknownLanguageException;
 import no.unit.nva.institution.proxy.utils.Language;
-import nva.commons.exceptions.ApiGatewayException;
 
 public class CristinApiClient {
 
@@ -23,7 +23,8 @@ public class CristinApiClient {
         this.logger = logger;
     }
 
-    public InstitutionListResponse getInstitutions(String languageCode) throws ApiGatewayException {
+    public InstitutionListResponse getInstitutions(String languageCode)
+        throws UnknownLanguageException, InstitutionFailureException {
         return httpExecutor.getInstitutions(getLanguage(languageCode));
     }
 

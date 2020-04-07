@@ -16,10 +16,9 @@ import java.util.concurrent.CompletableFuture;
 import no.unit.nva.institution.proxy.exception.InstitutionFailureException;
 import no.unit.nva.institution.proxy.utils.InstitutionUtils;
 import no.unit.nva.institution.proxy.utils.Language;
-import nva.commons.exceptions.ApiGatewayException;
 import nva.commons.utils.JacocoGenerated;
 
-public class HttpExecutorImpl implements HttpExecutor {
+public class HttpExecutorImpl extends HttpExecutor {
 
     public static final String NVA_INSTITUTIONS_LIST_CRAWLER = "NVA Institutions List Crawler";
     public static final String INSTITUTIONS_URI_TEMPLATE =
@@ -27,6 +26,9 @@ public class HttpExecutorImpl implements HttpExecutor {
 
     private final HttpClient httpClient;
 
+    /**
+     * Default constructor.
+     */
     @JacocoGenerated
     public HttpExecutorImpl() {
         this(HttpClient.newBuilder()
@@ -36,6 +38,7 @@ public class HttpExecutorImpl implements HttpExecutor {
     }
 
     public HttpExecutorImpl(HttpClient client) {
+        super();
         this.httpClient = client;
     }
 
@@ -50,9 +53,7 @@ public class HttpExecutorImpl implements HttpExecutor {
     }
 
     @Override
-    public InstitutionListResponse getInstitutions(Language language)
-        throws ApiGatewayException {
-
+    public InstitutionListResponse getInstitutions(Language language) throws InstitutionFailureException {
         return
             attempt(() -> sendHttRequest(language).get())
                 .map(this::throwExceptionIfNotSuccessful)
