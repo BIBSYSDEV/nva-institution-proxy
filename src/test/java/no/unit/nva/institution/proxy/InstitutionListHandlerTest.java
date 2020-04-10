@@ -170,10 +170,6 @@ public class InstitutionListHandlerTest {
             this.languageCode = languageCode;
             return new InstitutionListResponse(Collections.emptyList());
         }
-
-        public String getLanguageCode() {
-            return languageCode;
-        }
     }
 
     private static class InstitutionListHandlerWithGetRequest extends InstitutionListHandler {
