@@ -52,17 +52,17 @@ public class CristinApiClientTest {
 
     @DisplayName("getLanguage logs the input language when the language is valid")
     @Test
-    public void getLanguageLogsTheInputLanguageWhenTheLanguageIsValid() throws ApiGatewayException {
+    public void getLanguageLogsTheInputLanguageWhenTheLanguageIsValid() {
         getLanguageLogsTheInputLanguage(Language.NORWEGIAN_BOKMAAL.getCode());
     }
 
     @DisplayName("getLanguage logs the input language when the language is invalid")
     @Test
-    public void getLanguageLogsTheInputLanguageWhenTheLanguageIsInvalid() throws ApiGatewayException {
+    public void getLanguageLogsTheInputLanguageWhenTheLanguageIsInvalid() {
         getLanguageLogsTheInputLanguage(INVALID_LANGUAGE_CODE);
     }
 
-    private void getLanguageLogsTheInputLanguage(String language) throws ApiGatewayException {
+    private void getLanguageLogsTheInputLanguage(String language) {
         MockHttpExecutorReportingInsertedLanguage executor = new MockHttpExecutorReportingInsertedLanguage();
         CristinApiClient cristinApiClient = new CristinApiClient(executor, testLogger);
         attempt(() -> cristinApiClient.getInstitutions(language));
