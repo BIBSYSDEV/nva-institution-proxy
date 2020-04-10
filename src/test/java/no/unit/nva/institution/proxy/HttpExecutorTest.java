@@ -46,8 +46,8 @@ public class HttpExecutorTest {
     @Test
     @DisplayName("throwExceptionIfNotSuccessful throws an exception if input is null")
     public void throwExceptionIfNotSuccessfulThrowsExceptionIfResponseIsNull() {
-         assertThrows(FailedHttpRequestException.class,
-             () -> executor.throwExceptionIfNotSuccessful(null));
+        assertThrows(FailedHttpRequestException.class,
+            () -> executor.throwExceptionIfNotSuccessful(null));
     }
 
     @Test
