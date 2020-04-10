@@ -18,7 +18,6 @@ import org.junit.jupiter.api.Test;
 public class CristinApiClientTest {
 
     public static final String INVALID_LANGUAGE_CODE = "lalala";
-    public static final int LANGUAGE_ARG = 0;
     public static final String EMPTY_STRING = "";
     public static final String BLANK_STRING = "   ";
     TestLogger testLogger = new TestLogger();
