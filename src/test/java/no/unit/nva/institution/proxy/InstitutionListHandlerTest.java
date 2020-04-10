@@ -35,8 +35,7 @@ import org.zalando.problem.Problem;
 public class InstitutionListHandlerTest {
 
     private static final String SOME_ENV_VALUE = "ANY_VALUE";
-    public static final String URI_TEMPLATE = "https://example.org/institution/%d";
-    public static final String NAME_TEMPLATE = "SOME_NAME_%s";
+
     public static final String EVENTS_FOLDER = "events";
 
     public static final Path INSTITUTIONS_REQUEST_WITH_NON_EMPTY_BODY =
@@ -44,7 +43,7 @@ public class InstitutionListHandlerTest {
     public static final String LANGUAGE_STRING_VALUE_IN_RESOURCE_FILE = "nonEmptyLanguageString";
 
     private static final String SOME_EXCEPTION_MESSAGE = "This is the exception message";
-    public static final String ZALANDO_PROBLEM_DETAILS = "details";
+
     private Environment environment;
     private Context context;
     private TestLogger logger;
