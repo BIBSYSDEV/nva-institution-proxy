@@ -25,7 +25,6 @@ class InstitutionUtilsTest {
 
     public static final String CRISTIN_RESOURCES = "cristin_responses";
     public static final Path CRISTIN_RESPONSE = Path.of(CRISTIN_RESOURCES, "all_institutions_nb.json");
-    public static final String EMTPY_ARRAY = "[]";
     public static final String EMPTY_ARRAY = "[]";
     private static final String INVALID_JSON = "{noQuotes:here}";
 
