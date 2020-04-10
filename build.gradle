@@ -25,6 +25,8 @@ dependencies {
     implementation group: 'com.github.BIBSYSDEV', name: 'nva-commons', version: '7cdfdbd967'
     implementation group: 'com.github.BIBSYSDEV', name: 'nva-testutils', version: 'v0.1.2'
     implementation group: 'org.zalando', name: 'problem', version: '0.24.0'
+    implementation group: 'org.apache.jena', name: 'jena', version: '3.14.0', ext: 'pom'
+    implementation group: 'org.apache.jena', name: 'jena-arq', version: '3.14.0'
 
     testImplementation group: 'io.cucumber', name: 'cucumber-java', version: cucumberVersion
     testImplementation group: 'io.cucumber', name: 'cucumber-junit', version: cucumberVersion

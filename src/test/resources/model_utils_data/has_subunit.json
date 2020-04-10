@@ -1,0 +1,16 @@
+{
+  "@context" : {
+    "id" : "@id",
+    "type" : "@type",
+    "Institution" : "https://nva.unit.no/ontology#Institution",
+    "subunits" : {
+      "@id" : "https://nva.unit.no/ontology#subunits",
+      "@type" : "@id",
+      "@container" : "@set"
+    },
+    "name" : "https://nva.unit.no/ontology#name"
+  },
+  "id" : "https://example.org/institution",
+  "type" : "Institution",
+  "subunits" : [ "https://example.org/subunit" ]
+}
