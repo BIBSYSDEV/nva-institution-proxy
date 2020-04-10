@@ -1,18 +1,20 @@
 package no.unit.nva.institution.proxy.utils;
 
-
-import no.unit.nva.institution.proxy.exception.UnknownLanguageException;
-
 import java.util.Arrays;
 import java.util.stream.Collectors;
+import no.unit.nva.institution.proxy.exception.UnknownLanguageException;
 
 public enum Language {
     ENGLISH("en"),
     NORWEGIAN_BOKMAAL("nb"),
     NORWEGIAN_NYNORSK("nn");
 
-    public static final String UNKNOWN_LANGUAGE_TEMPLATE = "The language \"%s\" is not recognized, use one of %s";
     public static final String DELIMITER = ", ";
+    public static final String LANGUAGES_STRING = Arrays.stream(values())
+                                                        .map(language -> language.code)
+                                                        .collect(Collectors.joining(DELIMITER));
+    public static final String UNKNOWN_LANGUAGE_TEMPLATE = "The language \"%s\" is not recognized, use one of %s";
+
     private String code;
 
     Language(String code) {
@@ -28,13 +30,12 @@ public enum Language {
      */
     public static Language getLanguage(String code) throws UnknownLanguageException {
         return Arrays.stream(values())
-                .filter(language -> language.code.equals(code))
-                .findFirst().orElseThrow(() -> new UnknownLanguageException(getFormattedError(code)));
+                     .filter(language -> language.code.equals(code))
+                     .findFirst().orElseThrow(() -> new UnknownLanguageException(getFormattedError(code)));
     }
 
     private static String getFormattedError(String code) {
-        return String.format(UNKNOWN_LANGUAGE_TEMPLATE, code, Arrays.stream(values())
-                .map(language -> language.code).collect(Collectors.joining(DELIMITER)));
+        return String.format(UNKNOWN_LANGUAGE_TEMPLATE, code, LANGUAGES_STRING);
     }
 
     public String getCode() {

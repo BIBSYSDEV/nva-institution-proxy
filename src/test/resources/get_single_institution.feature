@@ -55,7 +55,7 @@ Feature: Get single institution
       | Institution IRI                            |
       | https://api.cristin.no/v2/institutions/185 |
       | https://api.cristin.no/v2/institutions/194 |
-    
+
   Scenario Outline: The user requests an institution that does not exist
     Given that the user has an invalid <institution IRI>
     When they set the request Accept header to "application/json"
@@ -95,7 +95,7 @@ Feature: Get single institution
     And they see the response body is a problem.json object
     And they see the response body has a field "title" with the value "Bad request"
     And they see the response body has a field "status" with the value "400"
-    And they see the response body has a field "detail" with the value "The request contained a malformed IRI"    
+    And they see the response body has a field "detail" with the value "The request contained a malformed IRI"
 
   Scenario: User creates a request without the required query parameters
     When the user sets the request Accept header to "application/json"

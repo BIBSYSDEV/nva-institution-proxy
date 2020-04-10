@@ -1,5 +1,5 @@
 Feature: Get single subunit
-  
+
   Scenario Outline: The user downloads a single subunit in the default language
     Given that the user has a valid <Unit IRI>
     When they set the Accept header to "application/json"
