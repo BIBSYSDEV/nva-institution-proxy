@@ -38,7 +38,7 @@ public class CristinApiClientTest {
         getLanguageReturnNorwegianBokmalWhenLanguageIsUndefined(null);
     }
 
-    @DisplayName("getLanguage returns Norwegian Bokmål when language is empty")
+    @DisplayName("getLanguage returns Norwegian Bokmål when language is blank")
     @Test
     public void getLanguageReturnsNorwegianBokmalWhenLanguageIsEmpty() throws ApiGatewayException {
         getLanguageReturnNorwegianBokmalWhenLanguageIsUndefined(EMPTY_STRING);
