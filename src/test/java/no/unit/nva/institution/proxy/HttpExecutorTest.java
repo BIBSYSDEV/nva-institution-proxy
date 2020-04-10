@@ -46,8 +46,8 @@ public class HttpExecutorTest {
     @Test
     @DisplayName("throwExceptionIfNotSuccessful throws an exception if input is null")
     public void throwExceptionIfNotSuccessfulThrowsExceptionIfResponseIsNull() {
-        FailedHttpRequestException exception = assertThrows(FailedHttpRequestException.class,
-            () -> executor.throwExceptionIfNotSuccessful(null));
+         assertThrows(FailedHttpRequestException.class,
+             () -> executor.throwExceptionIfNotSuccessful(null));
     }
 
     @Test
@@ -62,7 +62,7 @@ public class HttpExecutorTest {
     @Test
     @DisplayName("throwExceptionIfNotSuccessful throws Exception when status code is not successful")
     public void throwExceptionIfNotSuccessfulThrowsExceptionWhenStatusCodeIsNotSuccessful() {
-        FailedHttpRequestException exception = assertThrows(FailedHttpRequestException.class,
+        assertThrows(FailedHttpRequestException.class,
             () -> executor.throwExceptionIfNotSuccessful(failingResponse));
     }
 
@@ -85,7 +85,7 @@ public class HttpExecutorTest {
     @Test
     @DisplayName("throwExceptionIfNotSuccessful throws Exception when status code is informational (1xx)")
     public void throwExceptionIfNotSuccessfulThrowsExceptionWhenStatusCodeIsInformational() {
-        FailedHttpRequestException exception = assertThrows(FailedHttpRequestException.class,
+        assertThrows(FailedHttpRequestException.class,
             () -> executor.throwExceptionIfNotSuccessful(informationResponse));
     }
 }
