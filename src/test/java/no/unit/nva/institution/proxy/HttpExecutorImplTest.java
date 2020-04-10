@@ -25,9 +25,7 @@ import no.unit.nva.institution.proxy.exception.InstitutionFailureException;
 import no.unit.nva.institution.proxy.utils.InstitutionUtils;
 import no.unit.nva.institution.proxy.utils.Language;
 import nva.commons.utils.IoUtils;
-import nva.commons.utils.TestLogger;
 import org.apache.http.HttpStatus;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -42,16 +40,9 @@ public class HttpExecutorImplTest {
     private static final String INVALID_JSON_STR = "Invalid json object";
     private static final String HTTP_ERROR_RESPONSE = "Http response error";
 
-    private TestLogger testLogger;
-
     /**
      * Setup tests.
      */
-    @BeforeEach
-    public void setup() {
-        testLogger = new TestLogger();
-    }
-
     @DisplayName("getInstitutions returns an InstitutionListResponse with one object when cristin response"
         + "contains one object ")
     @Test
