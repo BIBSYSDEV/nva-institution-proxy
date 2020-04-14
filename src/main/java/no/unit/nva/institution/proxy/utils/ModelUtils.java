@@ -1,7 +1,7 @@
 package no.unit.nva.institution.proxy.utils;
 
 import com.github.jsonldjava.core.JsonLdOptions;
-import com.github.jsonldjava.utils.JsonUtils;
+import nva.commons.utils.IoUtils;
 import org.apache.jena.query.DatasetFactory;
 import org.apache.jena.rdf.model.Literal;
 import org.apache.jena.rdf.model.Model;
@@ -11,16 +11,17 @@ import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.ResourceFactory;
 import org.apache.jena.rdf.model.Statement;
 import org.apache.jena.riot.JsonLDWriteContext;
+import org.apache.jena.riot.Lang;
+import org.apache.jena.riot.RDFDataMgr;
 import org.apache.jena.riot.system.PrefixMap;
 import org.apache.jena.riot.system.PrefixMapFactory;
 import org.apache.jena.riot.writer.JsonLDWriter;
 import org.apache.jena.sparql.core.DatasetGraph;
 import org.apache.jena.vocabulary.RDF;
 
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.io.StringWriter;
 import java.net.URI;
+import java.nio.file.Path;
 import java.util.Collections;
 
 import static org.apache.jena.riot.RDFFormat.JSONLD_FRAME_PRETTY;
@@ -33,9 +34,10 @@ public class ModelUtils {
             .createProperty("https://nva.unit.no/ontology#name");
     public static final Resource INSTITUTION_CLASS = ResourceFactory
             .createResource("https://nva.unit.no/ontology#Institution");
-    public static final String JSON_LD_FRAME = "src/main/resources/frame.jsonld";
     public static final PrefixMap UNIT_PREFIX_MAP = PrefixMapFactory
             .create(Collections.singletonMap("unit", "https://nva.unit.no/ontology#"));
+    public static final String FRAME = IoUtils.stringFromResources(
+            Path.of("frame.jsonld"));
 
     private Model model;
 
@@ -72,7 +74,7 @@ public class ModelUtils {
         return model.createStatement(subject, SUBUNITS_PROPERTY, object);
     }
 
-    public String toJsonLd() throws IOException {
+    public String toJsonLd() {
         StringWriter stringWriter = new StringWriter();
         DatasetGraph dataset = DatasetFactory.create(model).asDatasetGraph();
         new JsonLDWriter(JSONLD_FRAME_PRETTY).write(stringWriter, dataset, UNIT_PREFIX_MAP, null,
@@ -80,11 +82,17 @@ public class ModelUtils {
         return stringWriter.toString();
     }
 
-    private JsonLDWriteContext getJsonLDWriteContext() throws IOException {
+    private JsonLDWriteContext getJsonLDWriteContext() {
         JsonLDWriteContext context = new JsonLDWriteContext();
-        context.setFrame(getFrame());
+        context.setFrame(FRAME);
         context.setOptions(getJsonLdOptions());
         return context;
+    }
+
+    public String toTurtle() {
+        StringWriter stringWriter = new StringWriter();
+        RDFDataMgr.write(stringWriter, model, Lang.TURTLE);
+        return stringWriter.toString();
     }
 
     private JsonLdOptions getJsonLdOptions() {
@@ -95,9 +103,5 @@ public class ModelUtils {
         options.setFrameExpansion(false);
         options.setPruneBlankNodeIdentifiers(true);
         return options;
-    }
-
-    private Object getFrame() throws IOException {
-        return JsonUtils.fromInputStream(new FileInputStream(JSON_LD_FRAME));
     }
 }

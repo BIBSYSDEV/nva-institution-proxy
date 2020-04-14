@@ -1,12 +1,15 @@
 package no.unit.nva.institution.proxy;
 
-import static java.util.Objects.isNull;
-
-import java.net.http.HttpResponse;
 import no.unit.nva.institution.proxy.exception.FailedHttpRequestException;
-import no.unit.nva.institution.proxy.exception.InstitutionFailureException;
+import no.unit.nva.institution.proxy.exception.GatewayException;
+import no.unit.nva.institution.proxy.exception.InvalidUriException;
 import no.unit.nva.institution.proxy.utils.Language;
 import org.apache.http.HttpStatus;
+
+import java.net.URI;
+import java.net.http.HttpResponse;
+
+import static java.util.Objects.isNull;
 
 public abstract class HttpExecutor {
 
@@ -15,7 +18,10 @@ public abstract class HttpExecutor {
     public static int FIRST_SUCCESSFUL_CODE = HttpStatus.SC_OK;
     public static String NULL_HTTP_RESPONSE_ERROR_MESSAGE = "No HttpResponse found";
 
-    public abstract InstitutionListResponse getInstitutions(Language language) throws InstitutionFailureException;
+    public abstract InstitutionListResponse getInstitutions(Language language) throws GatewayException;
+
+    public abstract NestedInstitutionResponse getNestedInstitution(URI uri, Language language) throws
+            GatewayException, InvalidUriException;
 
     protected HttpResponse<String> throwExceptionIfNotSuccessful(HttpResponse<String> response)
         throws FailedHttpRequestException {

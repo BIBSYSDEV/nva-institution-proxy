@@ -1,0 +1,13 @@
+{
+  "cristin_institution_id" : "1",
+  "institution_name" : {
+    "en" : "Norwegian University of Small Hands and Feet"
+  },
+  "acronym" : "NUSHF",
+  "country" : "NO",
+  "cristin_user_institution" : true,
+  "corresponding_unit" : {
+    "cristin_unit_id" : "1.0.0.0",
+    "url" : "https://api.cristin.no/v2/units/1.0.0.0"
+  }
+}

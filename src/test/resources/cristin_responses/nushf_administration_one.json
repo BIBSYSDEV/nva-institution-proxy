@@ -1,0 +1,42 @@
+{
+  "cristin_unit_id": "1.1.1.0",
+  "unit_name": {
+    "en": "Administration committee one"
+  },
+  "institution": {
+    "cristin_institution_id": "1",
+    "url": "https://api.cristin.no/v2/institutions/1"
+  },
+  "parent_unit": {
+    "cristin_unit_id": "1.1.0.0",
+    "unit_name": {
+      "en": "ADM_ONE"
+    },
+    "url": "https://api.cristin.no/v2/units/1.1.0.0"
+  },
+  "parent_units": [
+    {
+      "cristin_unit_id": "1.0.0.0",
+      "unit_name": {
+        "en": "Norwegian University of Small Hands and Feet"
+      },
+      "url": "https://api.cristin.no/v2/units/1.0.0.0"
+    },
+    {
+      "cristin_unit_id": "1.1.0.0",
+      "unit_name": {
+        "en": "Administration"
+      },
+      "url": "https://api.cristin.no/v2/units/1.1.0.0"
+    }
+  ],
+  "subunits": [
+    {
+      "cristin_unit_id": "1.1.1.1",
+      "unit_name": {
+        "en": "Administration Committee one's little helper"
+      },
+      "url": "https://api.cristin.no/v2/units/1.1.1.1"
+    }
+  ]
+}

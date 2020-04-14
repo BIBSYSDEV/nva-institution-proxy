@@ -1,5 +1,16 @@
 package no.unit.nva.institution.proxy;
 
+import no.unit.nva.institution.proxy.exception.FailedHttpRequestException;
+import no.unit.nva.institution.proxy.exception.GatewayException;
+import no.unit.nva.institution.proxy.utils.Language;
+import org.apache.http.HttpStatus;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+import java.net.URI;
+import java.net.http.HttpResponse;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
@@ -8,14 +19,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import java.net.http.HttpResponse;
-import no.unit.nva.institution.proxy.exception.FailedHttpRequestException;
-import no.unit.nva.institution.proxy.utils.Language;
-import org.apache.http.HttpStatus;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-
 public class HttpExecutorTest {
 
     public static final String ERROR_BODY = "This is the error body";
@@ -23,6 +26,11 @@ public class HttpExecutorTest {
     HttpExecutor executor = new HttpExecutor() {
         @Override
         public InstitutionListResponse getInstitutions(Language language) {
+            return null;
+        }
+
+        @Override
+        public NestedInstitutionResponse getNestedInstitution(URI uri, Language language) throws GatewayException {
             return null;
         }
     };
