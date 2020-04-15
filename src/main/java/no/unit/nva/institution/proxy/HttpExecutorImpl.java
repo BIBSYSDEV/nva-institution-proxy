@@ -1,14 +1,9 @@
 package no.unit.nva.institution.proxy;
 
-import no.unit.nva.institution.proxy.dto.InstitutionBaseDto;
-import no.unit.nva.institution.proxy.dto.SubSubUnitDto;
-import no.unit.nva.institution.proxy.exception.GatewayException;
-import no.unit.nva.institution.proxy.exception.InvalidUriException;
-import no.unit.nva.institution.proxy.utils.InstitutionUtils;
-import no.unit.nva.institution.proxy.utils.Language;
-import no.unit.nva.institution.proxy.utils.MapUtils;
-import no.unit.nva.institution.proxy.utils.UriUtils;
-import nva.commons.utils.JacocoGenerated;
+import static nva.commons.utils.attempt.Try.attempt;
+import static org.apache.http.HttpHeaders.ACCEPT;
+import static org.apache.http.HttpHeaders.USER_AGENT;
+import static org.apache.http.entity.ContentType.APPLICATION_JSON;
 
 import java.io.IOException;
 import java.net.URI;
@@ -19,11 +14,15 @@ import java.net.http.HttpResponse.BodyHandlers;
 import java.time.Duration;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
-
-import static nva.commons.utils.attempt.Try.attempt;
-import static org.apache.http.HttpHeaders.ACCEPT;
-import static org.apache.http.HttpHeaders.USER_AGENT;
-import static org.apache.http.entity.ContentType.APPLICATION_JSON;
+import no.unit.nva.institution.proxy.dto.InstitutionBaseDto;
+import no.unit.nva.institution.proxy.dto.SubSubUnitDto;
+import no.unit.nva.institution.proxy.exception.GatewayException;
+import no.unit.nva.institution.proxy.exception.InvalidUriException;
+import no.unit.nva.institution.proxy.utils.InstitutionUtils;
+import no.unit.nva.institution.proxy.utils.Language;
+import no.unit.nva.institution.proxy.utils.MapUtils;
+import no.unit.nva.institution.proxy.utils.UriUtils;
+import nva.commons.utils.JacocoGenerated;
 
 public class HttpExecutorImpl extends HttpExecutor {
 
@@ -81,25 +80,25 @@ public class HttpExecutorImpl extends HttpExecutor {
         generator.setInstitution(unitUri, name);
         List<URI> unitUris = getUnitUris(institutionDto.getCorrespondingUnitDto().getId(), language);
         for (URI subSubUnitUri : unitUris) {
-            SubSubUnitDto subSubUnitDto = attempt(() -> getSubSubUnitDto(subSubUnitUri))
-                    .orElseThrow(e -> handleError(e.getException()));
+            SubSubUnitDto subSubUnitDto = attempt(() -> getSubSubUnitDto(subSubUnitUri, language))
+                .orElseThrow(e -> handleError(e.getException()));
             generator.addUnitToModel(subSubUnitUri, subSubUnitDto);
         }
         return new NestedInstitutionResponse(generator.getNestedInstitution());
     }
 
-    private SubSubUnitDto getSubSubUnitDto(URI subunitUri) throws GatewayException {
-        return attempt(() -> sendHttpRequest(subunitUri).get())
-                .map(this::throwExceptionIfNotSuccessful)
-                .map(HttpResponse::body)
-                .map(InstitutionUtils::toSubSubUnitDto)
-                .orElseThrow(e -> handleError(e.getException()));
+    private SubSubUnitDto getSubSubUnitDto(URI subunitUri, Language language) throws GatewayException {
+        return attempt(() -> sendHttpRequest(UriUtils.getUriWithLanguage(subunitUri, language)).get())
+            .map(this::throwExceptionIfNotSuccessful)
+            .map(HttpResponse::body)
+            .map(InstitutionUtils::toSubSubUnitDto)
+            .orElseThrow(e -> handleError(e.getException()));
     }
 
     private List<URI> getUnitUris(String id, Language language) throws GatewayException, InvalidUriException {
         URI uri = UriUtils.getUriWithLanguage(URI.create(String.format(PARENT_UNIT_URI_TEMPLATE, id)), language);
         return attempt(() -> sendHttpRequest(uri).get())
-                .map(this::throwExceptionIfNotSuccessful)
+            .map(this::throwExceptionIfNotSuccessful)
                 .map(HttpResponse::body)
                 .map(this::bodyToUriList)
                 .orElseThrow(e -> handleError(e.getException()));
