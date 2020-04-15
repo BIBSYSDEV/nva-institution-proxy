@@ -2,14 +2,13 @@ package no.unit.nva.institution.proxy;
 
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.LambdaLogger;
+import java.util.function.Function;
 import nva.commons.exceptions.ApiGatewayException;
-import nva.commons.hanlders.ApiGatewayHandler;
-import nva.commons.hanlders.RequestInfo;
+import nva.commons.handlers.ApiGatewayHandler;
+import nva.commons.handlers.RequestInfo;
 import nva.commons.utils.Environment;
 import nva.commons.utils.JacocoGenerated;
 import org.apache.http.HttpStatus;
-
-import java.util.function.Function;
 
 public class NestedInstitutionHandler extends ApiGatewayHandler<NestedInstitutionRequest, NestedInstitutionResponse> {
 

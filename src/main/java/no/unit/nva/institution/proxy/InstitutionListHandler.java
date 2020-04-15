@@ -5,8 +5,8 @@ import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import java.util.function.Function;
 import no.unit.nva.institution.proxy.exception.GatewayException;
 import no.unit.nva.institution.proxy.exception.UnknownLanguageException;
-import nva.commons.hanlders.ApiGatewayHandler;
-import nva.commons.hanlders.RequestInfo;
+import nva.commons.handlers.ApiGatewayHandler;
+import nva.commons.handlers.RequestInfo;
 import nva.commons.utils.Environment;
 import nva.commons.utils.JacocoGenerated;
 import org.apache.http.HttpStatus;
@@ -32,7 +32,7 @@ public class InstitutionListHandler extends ApiGatewayHandler<InstitutionListReq
     protected InstitutionListResponse processInput(InstitutionListRequest input, RequestInfo requestInfo,
                                                    Context context)
         throws UnknownLanguageException, GatewayException {
-        CristinApiClient cristinApiClient = cristinApiClientSupplier.apply(context.getLogger());
+        CristinApiClient cristinApiClient = cristinApiClientSupplier.apply(logger);
         return cristinApiClient.getInstitutions(input.getLanguage());
     }
 

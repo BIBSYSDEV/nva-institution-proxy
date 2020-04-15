@@ -1,30 +1,5 @@
 package no.unit.nva.institution.proxy;
 
-import com.amazonaws.services.lambda.runtime.Context;
-import com.amazonaws.services.lambda.runtime.LambdaLogger;
-import com.fasterxml.jackson.core.type.TypeReference;
-import no.unit.nva.institution.proxy.exception.GatewayException;
-import no.unit.nva.institution.proxy.exception.InvalidUriException;
-import no.unit.nva.institution.proxy.exception.UnknownLanguageException;
-import nva.commons.exceptions.ApiGatewayException;
-import nva.commons.hanlders.GatewayResponse;
-import nva.commons.hanlders.RequestInfo;
-import nva.commons.utils.Environment;
-import nva.commons.utils.IoUtils;
-import nva.commons.utils.TestLogger;
-import org.apache.http.HttpStatus;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.zalando.problem.Problem;
-
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Path;
-import java.util.function.Function;
-
 import static nva.commons.utils.JsonUtils.jsonParser;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
@@ -33,6 +8,30 @@ import static org.hamcrest.core.StringContains.containsString;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+
+import com.amazonaws.services.lambda.runtime.Context;
+import com.amazonaws.services.lambda.runtime.LambdaLogger;
+import com.fasterxml.jackson.core.type.TypeReference;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
+import java.util.function.Function;
+import no.unit.nva.institution.proxy.exception.GatewayException;
+import no.unit.nva.institution.proxy.exception.InvalidUriException;
+import no.unit.nva.institution.proxy.exception.UnknownLanguageException;
+import nva.commons.exceptions.ApiGatewayException;
+import nva.commons.handlers.GatewayResponse;
+import nva.commons.handlers.RequestInfo;
+import nva.commons.utils.Environment;
+import nva.commons.utils.IoUtils;
+import nva.commons.utils.TestLogger;
+import org.apache.http.HttpStatus;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.zalando.problem.Problem;
 
 class NestedInstitutionHandlerTest {
 
@@ -63,9 +62,9 @@ class NestedInstitutionHandlerTest {
     @Test
     void itWorks() throws ApiGatewayException {
         NestedInstitutionHandler nestedInstitutionHandler =
-                new NestedInstitutionHandler(environment, (a) -> new CristinApiClient(logger));
+            new NestedInstitutionHandler(environment, (a) -> new CristinApiClient(logger));
         NestedInstitutionRequest request =
-                new NestedInstitutionRequest("https://api.cristin.no/v2/institutions/194", "en");
+            new NestedInstitutionRequest("https://api.cristin.no/v2/institutions/185", "en");
         RequestInfo requestInfo = new RequestInfo();
         Context context = mock(Context.class);
 
@@ -118,7 +117,7 @@ class NestedInstitutionHandlerTest {
         GatewayResponse<Problem> response = gatewayResponseWithProblem(outputStream);
 
         assertThat(response.getStatusCode(), is(HttpStatus.SC_BAD_REQUEST));
-        assertThat(response.getBody().getDetail(), containsString(SOME_EXCEPTION_MESSAGE));
+        assertThat(response.getBodyObject(Problem.class).getDetail(), containsString(SOME_EXCEPTION_MESSAGE));
     }
 
     @DisplayName("handleRequest returns BadRequest to the client when InvalidUriException occurs")
@@ -134,7 +133,7 @@ class NestedInstitutionHandlerTest {
         GatewayResponse<Problem> response = gatewayResponseWithProblem(outputStream);
 
         assertThat(response.getStatusCode(), is(HttpStatus.SC_BAD_REQUEST));
-        assertThat(response.getBody().getDetail(), containsString(SOME_EXCEPTION_MESSAGE));
+        assertThat(response.getBodyObject(Problem.class).getDetail(), containsString(SOME_EXCEPTION_MESSAGE));
     }
 
     @DisplayName("handleRequest returns BadGateway to the client when GatewayException occurs")
@@ -150,7 +149,7 @@ class NestedInstitutionHandlerTest {
         GatewayResponse<Problem> response = gatewayResponseWithProblem(outputStream);
 
         assertThat(response.getStatusCode(), is(HttpStatus.SC_BAD_GATEWAY));
-        assertThat(response.getBody().getDetail(), containsString(SOME_EXCEPTION_MESSAGE));
+        assertThat(response.getBodyObject(Problem.class).getDetail(), containsString(SOME_EXCEPTION_MESSAGE));
     }
 
     private NestedInstitutionHandler handlerThatThrowsNestedInstitutionFailureException(String message) throws
