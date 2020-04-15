@@ -72,13 +72,14 @@ public class HttpExecutorImpl extends HttpExecutor {
     @Override
     public NestedInstitutionResponse getNestedInstitution(URI uri, Language language) throws
             GatewayException, InvalidUriException {
-        InstitutionBaseDto institutionDto = getInstitutionBaseDto(uri, language);
-        URI unitUri = institutionDto.getCorrespondingUnitDto().getUri();
-        InstitutionBaseDto unitDto = getInstitutionBaseDto(unitUri, language);
-        String name = MapUtils.getNameValue(unitDto.getName());
+        URI unitUri = getInstitutionUnitUri(uri, language);
+        InstitutionBaseDto institutionUnit = getInstitutionBaseDto(unitUri, language);
+
+        String name = MapUtils.getNameValue(institutionUnit.getName());
         NestedInstitutionGenerator generator = new NestedInstitutionGenerator();
         generator.setInstitution(unitUri, name);
-        List<URI> unitUris = getUnitUris(institutionDto.getCorrespondingUnitDto().getId(), language);
+        List<URI> unitUris = getUnitUris(institutionUnit.getId(), language);
+
         for (URI subSubUnitUri : unitUris) {
             SubSubUnitDto subSubUnitDto = attempt(() -> getSubSubUnitDto(subSubUnitUri, language))
                 .orElseThrow(e -> handleError(e.getException()));
@@ -87,12 +88,18 @@ public class HttpExecutorImpl extends HttpExecutor {
         return new NestedInstitutionResponse(generator.getNestedInstitution());
     }
 
+    public URI getInstitutionUnitUri(URI uri, Language language) throws GatewayException {
+        InstitutionBaseDto institutionDto = getInstitutionBaseDto(uri, language);
+        return institutionDto.getCorrespondingUnitDto().getUri();
+    }
+
     private SubSubUnitDto getSubSubUnitDto(URI subunitUri, Language language) throws GatewayException {
-        return attempt(() -> sendHttpRequest(UriUtils.getUriWithLanguage(subunitUri, language)).get())
+        SubSubUnitDto x = attempt(() -> sendHttpRequest(UriUtils.getUriWithLanguage(subunitUri, language)).get())
             .map(this::throwExceptionIfNotSuccessful)
             .map(HttpResponse::body)
             .map(InstitutionUtils::toSubSubUnitDto)
             .orElseThrow(e -> handleError(e.getException()));
+        return x;
     }
 
     private List<URI> getUnitUris(String id, Language language) throws GatewayException, InvalidUriException {

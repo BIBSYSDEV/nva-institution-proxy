@@ -3,13 +3,18 @@ package no.unit.nva.institution.proxy.dto;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Class representing a call to <pre>https://api.cristin.no/v2/institutions/</pre>. It represents an "Institution" unit.
+ * Examples of such institutions are NTNU, UIO etc. The corresponding unit is the organizational unit tha corresponds to
+ * this institution.
+ */
 public class InstitutionBaseDto {
+
     /*
     /*
 {
@@ -46,7 +51,7 @@ public class InstitutionBaseDto {
                               @JsonProperty("country") String country,
                               @JsonProperty("corresponding_unit") CorrespondingUnitDto correspondingUnitDto,
                               @JsonProperty("subunits")
-                                      SubUnitDto[] subUnitDtoList) {
+                                  SubUnitDto[] subUnitDtoList) {
         this.name = name;
         this.institution = institution;
         this.cristinUser = cristinUser;

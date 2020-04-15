@@ -62,7 +62,7 @@ class NestedInstitutionHandlerTest {
     @Test
     void itWorks() throws ApiGatewayException {
         NestedInstitutionHandler nestedInstitutionHandler =
-            new NestedInstitutionHandler(environment, (a) -> new CristinApiClient(logger));
+            new NestedInstitutionHandler(environment, ignored -> new CristinApiClient(logger));
         NestedInstitutionRequest request =
             new NestedInstitutionRequest("https://api.cristin.no/v2/institutions/185", "en");
         RequestInfo requestInfo = new RequestInfo();

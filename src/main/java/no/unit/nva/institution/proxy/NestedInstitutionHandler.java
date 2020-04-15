@@ -32,7 +32,7 @@ public class NestedInstitutionHandler extends ApiGatewayHandler<NestedInstitutio
     protected NestedInstitutionResponse processInput(NestedInstitutionRequest input,
                                                      RequestInfo requestInfo,
                                                      Context context) throws ApiGatewayException {
-        CristinApiClient cristinApiClient = cristinApiClientSupplier.apply(context.getLogger());
+        CristinApiClient cristinApiClient = cristinApiClientSupplier.apply(logger);
         return cristinApiClient.getNestedInstitution(input.getUri(), input.getLanguage());
     }
 
