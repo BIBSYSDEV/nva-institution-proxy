@@ -41,6 +41,17 @@ public class InstitutionBaseDto {
     private List<SubSubUnitDto> subUnitDtoList;
     private InstitutionDto institution;
 
+    /**
+     *  The JSON and default constructor.
+     * @param name the institution name.
+     * @param institution the institution properties.
+     * @param cristinUser true if the institution is a cristin user.
+     * @param id the Cristin id of the institution.
+     * @param shortName the short name of the institution.
+     * @param country the institution's country.
+     * @param correspondingUnitDto the logical administrative unit of the institution
+     * @param subUnitDtoList the list of the units belonging to the institution.
+     */
     @JsonCreator
     public InstitutionBaseDto(@JsonProperty("institution_name") Map<String, String> name,
                               @JsonProperty("institution") InstitutionDto institution,

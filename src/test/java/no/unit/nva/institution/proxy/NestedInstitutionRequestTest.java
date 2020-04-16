@@ -2,6 +2,7 @@ package no.unit.nva.institution.proxy;
 
 import static org.junit.Assert.assertNotNull;
 
+import no.unit.nva.institution.proxy.request.NestedInstitutionRequest;
 import no.unit.nva.institution.proxy.utils.Language;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

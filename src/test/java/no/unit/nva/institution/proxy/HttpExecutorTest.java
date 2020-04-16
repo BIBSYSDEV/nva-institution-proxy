@@ -2,6 +2,8 @@ package no.unit.nva.institution.proxy;
 
 import no.unit.nva.institution.proxy.exception.FailedHttpRequestException;
 import no.unit.nva.institution.proxy.exception.GatewayException;
+import no.unit.nva.institution.proxy.response.InstitutionListResponse;
+import no.unit.nva.institution.proxy.response.NestedInstitutionResponse;
 import no.unit.nva.institution.proxy.utils.Language;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.BeforeAll;

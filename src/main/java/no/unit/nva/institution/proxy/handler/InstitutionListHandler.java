@@ -1,8 +1,12 @@
-package no.unit.nva.institution.proxy;
+package no.unit.nva.institution.proxy.handler;
 
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import java.util.function.Function;
+
+import no.unit.nva.institution.proxy.CristinApiClient;
+import no.unit.nva.institution.proxy.request.InstitutionListRequest;
+import no.unit.nva.institution.proxy.response.InstitutionListResponse;
 import no.unit.nva.institution.proxy.exception.GatewayException;
 import no.unit.nva.institution.proxy.exception.UnknownLanguageException;
 import nva.commons.handlers.ApiGatewayHandler;

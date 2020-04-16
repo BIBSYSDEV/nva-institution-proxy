@@ -73,6 +73,10 @@ public class ModelUtils {
         return model.createStatement(subject, SUBUNITS_PROPERTY, object);
     }
 
+    /**
+     * Serialize to JSON-LD
+     * @return a JSON-LD string
+     */
     public String toJsonLd() {
         StringWriter stringWriter = new StringWriter();
         DatasetGraph dataset = DatasetFactory.create(model).asDatasetGraph();
@@ -88,6 +92,10 @@ public class ModelUtils {
         return context;
     }
 
+    /**
+     * Serialize to Turtle.
+     * @return a String in Turtle format.
+     */
     public String toTurtle() {
         StringWriter stringWriter = new StringWriter();
         RDFDataMgr.write(stringWriter, model, Lang.TURTLE);

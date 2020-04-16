@@ -1,8 +1,8 @@
 package no.unit.nva.institution.proxy.utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import no.unit.nva.institution.proxy.InstitutionListResponse;
-import no.unit.nva.institution.proxy.InstitutionResponse;
+import no.unit.nva.institution.proxy.response.InstitutionListResponse;
+import no.unit.nva.institution.proxy.response.InstitutionResponse;
 import no.unit.nva.institution.proxy.dto.InstitutionBaseDto;
 import no.unit.nva.institution.proxy.dto.InstitutionDto;
 import no.unit.nva.institution.proxy.dto.SubSubUnitDto;

@@ -9,8 +9,16 @@ public final class UriUtils {
 
     public static final String QUERY_PARAM_LANGUAGE = "lang";
 
-    private UriUtils() {}
+    private UriUtils() {
+    }
 
+    /**
+     *  Add the language parameter in the Request URI.
+     * @param uri the Institution or Unit URI.
+     * @param language the language code ("en", "nb", "nn").
+     * @return the URI with the Language parameter
+     * @throws InvalidUriException when the input URI is invalid.
+     */
     public static URI getUriWithLanguage(URI uri, Language language) throws InvalidUriException {
         try {
             return new URIBuilder(uri)

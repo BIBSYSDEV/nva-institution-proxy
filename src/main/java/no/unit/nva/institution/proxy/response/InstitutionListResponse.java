@@ -1,4 +1,4 @@
-package no.unit.nva.institution.proxy;
+package no.unit.nva.institution.proxy.response;
 
 import java.util.ArrayList;
 import java.util.Collection;
