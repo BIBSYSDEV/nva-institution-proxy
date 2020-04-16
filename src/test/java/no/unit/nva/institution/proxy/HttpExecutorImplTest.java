@@ -1,6 +1,5 @@
 package no.unit.nva.institution.proxy;
 
-import static nva.commons.utils.StringUtils.removeMultipleWhiteSpaces;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.core.Is.is;
@@ -79,6 +78,7 @@ public class HttpExecutorImplTest {
     private static final String ADMINISTRATION_ONE_LH_URI = "https://api.cristin.no/v2/units/1.1.1.1";
     private static final String CULTURAL_STUDIES_URI = "https://api.cristin.no/v2/units/1.3.0.0";
     private static final String WELSH_LANGUAGE_URI = "https://api.cristin.no/v2/units/1.4.0.0";
+    public static final String WHITE_SPACE = "\\s";
 
     /**
      * Setup tests.
@@ -171,8 +171,8 @@ public class HttpExecutorImplTest {
             Language.ENGLISH);
         String expectedJson =
             IoUtils.stringFromResources(EXPECTED_NESTED_INSTITUTION_FOR_VALID_REQUEST);
-        assertThat(removeMultipleWhiteSpaces(response.getJson()),
-            is(equalTo(removeMultipleWhiteSpaces(expectedJson))));
+        assertThat(removeWhiteSpaces(response.getJson()),
+            is(equalTo(removeWhiteSpaces(expectedJson))));
     }
 
     private HttpClient httpClientReturnsError() {
@@ -193,6 +193,10 @@ public class HttpExecutorImplTest {
         when(client.sendAsync(any(HttpRequest.class), any(BodyHandler.class)))
             .thenReturn(CompletableFuture.completedFuture(httpResponse));
         return client;
+    }
+
+    private String removeWhiteSpaces(String input) {
+        return input.replaceAll(WHITE_SPACE, "");
     }
 
     private static class HttpClientGetsNestedInstitutionResponse {
