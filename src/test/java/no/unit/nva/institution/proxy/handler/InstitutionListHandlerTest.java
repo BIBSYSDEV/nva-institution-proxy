@@ -1,4 +1,32 @@
-package no.unit.nva.institution.proxy;
+package no.unit.nva.institution.proxy.handler;
+
+import com.amazonaws.services.lambda.runtime.Context;
+import com.amazonaws.services.lambda.runtime.LambdaLogger;
+import com.fasterxml.jackson.core.type.TypeReference;
+import no.unit.nva.institution.proxy.CristinApiClient;
+import no.unit.nva.institution.proxy.request.InstitutionListRequest;
+import no.unit.nva.institution.proxy.response.InstitutionListResponse;
+import no.unit.nva.institution.proxy.exception.GatewayException;
+import no.unit.nva.institution.proxy.exception.UnknownLanguageException;
+import nva.commons.handlers.GatewayResponse;
+import nva.commons.handlers.RequestInfo;
+import nva.commons.utils.Environment;
+import nva.commons.utils.IoUtils;
+import nva.commons.utils.TestLogger;
+import org.apache.http.HttpStatus;
+import org.hamcrest.MatcherAssert;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.zalando.problem.Problem;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
+import java.util.Collections;
+import java.util.function.Function;
 
 import static nva.commons.utils.JsonUtils.jsonParser;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -8,29 +36,6 @@ import static org.hamcrest.core.StringContains.containsString;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
-
-import com.amazonaws.services.lambda.runtime.Context;
-import com.amazonaws.services.lambda.runtime.LambdaLogger;
-import com.fasterxml.jackson.core.type.TypeReference;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Path;
-import java.util.Collections;
-import java.util.function.Function;
-import no.unit.nva.institution.proxy.exception.GatewayException;
-import no.unit.nva.institution.proxy.exception.UnknownLanguageException;
-import nva.commons.handlers.GatewayResponse;
-import nva.commons.handlers.RequestInfo;
-import nva.commons.utils.Environment;
-import nva.commons.utils.IoUtils;
-import nva.commons.utils.TestLogger;
-import org.apache.http.HttpStatus;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.zalando.problem.Problem;
 
 public class InstitutionListHandlerTest {
 
@@ -75,7 +80,7 @@ public class InstitutionListHandlerTest {
         InputStream inputStream = inputNonEmptyLangugeCode();
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         handler.handleRequest(inputStream, outputStream, context);
-        assertThat(handler.getRequest().getLanguage(), is(equalTo(LANGUAGE_STRING_VALUE_IN_RESOURCE_FILE)));
+        MatcherAssert.assertThat(handler.getRequest().getLanguage(), is(equalTo(LANGUAGE_STRING_VALUE_IN_RESOURCE_FILE)));
     }
 
     @DisplayName("handleRequest returns OK to the client when the processing is successful")

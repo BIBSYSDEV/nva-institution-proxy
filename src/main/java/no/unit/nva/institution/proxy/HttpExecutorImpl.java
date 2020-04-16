@@ -1,9 +1,16 @@
 package no.unit.nva.institution.proxy;
 
-import static nva.commons.utils.attempt.Try.attempt;
-import static org.apache.http.HttpHeaders.ACCEPT;
-import static org.apache.http.HttpHeaders.USER_AGENT;
-import static org.apache.http.entity.ContentType.APPLICATION_JSON;
+import no.unit.nva.institution.proxy.dto.InstitutionBaseDto;
+import no.unit.nva.institution.proxy.dto.SubSubUnitDto;
+import no.unit.nva.institution.proxy.exception.GatewayException;
+import no.unit.nva.institution.proxy.exception.InvalidUriException;
+import no.unit.nva.institution.proxy.response.InstitutionListResponse;
+import no.unit.nva.institution.proxy.response.NestedInstitutionResponse;
+import no.unit.nva.institution.proxy.utils.InstitutionUtils;
+import no.unit.nva.institution.proxy.utils.Language;
+import no.unit.nva.institution.proxy.utils.MapUtils;
+import no.unit.nva.institution.proxy.utils.UriUtils;
+import nva.commons.utils.JacocoGenerated;
 
 import java.io.IOException;
 import java.net.URI;
@@ -14,15 +21,11 @@ import java.net.http.HttpResponse.BodyHandlers;
 import java.time.Duration;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import no.unit.nva.institution.proxy.dto.InstitutionBaseDto;
-import no.unit.nva.institution.proxy.dto.SubSubUnitDto;
-import no.unit.nva.institution.proxy.exception.GatewayException;
-import no.unit.nva.institution.proxy.exception.InvalidUriException;
-import no.unit.nva.institution.proxy.utils.InstitutionUtils;
-import no.unit.nva.institution.proxy.utils.Language;
-import no.unit.nva.institution.proxy.utils.MapUtils;
-import no.unit.nva.institution.proxy.utils.UriUtils;
-import nva.commons.utils.JacocoGenerated;
+
+import static nva.commons.utils.attempt.Try.attempt;
+import static org.apache.http.HttpHeaders.ACCEPT;
+import static org.apache.http.HttpHeaders.USER_AGENT;
+import static org.apache.http.entity.ContentType.APPLICATION_JSON;
 
 public class HttpExecutorImpl extends HttpExecutor {
 

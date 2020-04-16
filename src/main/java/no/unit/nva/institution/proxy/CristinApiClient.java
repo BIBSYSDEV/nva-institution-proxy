@@ -4,6 +4,8 @@ import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import no.unit.nva.institution.proxy.exception.GatewayException;
 import no.unit.nva.institution.proxy.exception.InvalidUriException;
 import no.unit.nva.institution.proxy.exception.UnknownLanguageException;
+import no.unit.nva.institution.proxy.response.InstitutionListResponse;
+import no.unit.nva.institution.proxy.response.NestedInstitutionResponse;
 import no.unit.nva.institution.proxy.utils.Language;
 
 import java.net.URI;
@@ -17,7 +19,7 @@ public class CristinApiClient {
     private final HttpExecutor httpExecutor;
     private final LambdaLogger logger;
 
-    protected CristinApiClient(LambdaLogger logger) {
+    public CristinApiClient(LambdaLogger logger) {
         this.httpExecutor = new HttpExecutorImpl();
         this.logger = logger;
     }

@@ -1,4 +1,4 @@
-package no.unit.nva.institution.proxy;
+package no.unit.nva.institution.proxy.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import nva.commons.utils.JacocoGenerated;
