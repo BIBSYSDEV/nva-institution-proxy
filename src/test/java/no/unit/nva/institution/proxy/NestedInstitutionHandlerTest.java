@@ -30,6 +30,7 @@ import nva.commons.utils.TestLogger;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.zalando.problem.Problem;
 
@@ -60,6 +61,7 @@ class NestedInstitutionHandlerTest {
     }
 
     @Test
+    @Tag("online")
     void itWorks() throws ApiGatewayException {
         NestedInstitutionHandler nestedInstitutionHandler =
             new NestedInstitutionHandler(environment, ignored -> new CristinApiClient(logger));
