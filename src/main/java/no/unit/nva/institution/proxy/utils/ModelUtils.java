@@ -74,8 +74,9 @@ public class ModelUtils {
     }
 
     /**
-     * Serialize to JSON-LD
-     * @return a JSON-LD string
+     * Serialize to JSON-LD.
+     *
+     * @return a JSON-LD string.
      */
     public String toJsonLd() {
         StringWriter stringWriter = new StringWriter();

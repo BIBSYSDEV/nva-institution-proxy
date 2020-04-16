@@ -1,5 +1,6 @@
 package no.unit.nva.institution.proxy.dto;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +15,17 @@ public class SubSubUnitDto {
     private List<InstitutionDto> parentUnits;
     private List<SubUnitDto> subUnits;
 
+    /**
+     * The JSON and default creator of the class.
+     *
+     * @param id          the Cristin id of the unit.
+     * @param unitName    the unit name.
+     * @param institution the parent institution.
+     * @param parentUnit  the direct ascendant of the unit.
+     * @param parentUnits the direct and indirect ascendants of the unit.
+     * @param subUnits    the (direct) children of the unit.
+     */
+    @JsonCreator
     public SubSubUnitDto(@JsonProperty("cristin_unit_id") String id,
                          @JsonProperty("unit_name") Map<String, String> unitName,
                          @JsonProperty("institution") InstitutionDto institution,

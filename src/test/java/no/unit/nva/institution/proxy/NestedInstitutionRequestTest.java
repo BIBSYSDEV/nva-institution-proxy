@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 public class NestedInstitutionRequestTest {
 
-    @DisplayName("NestedInstitutionRequest has a constuctor with parameters")
+    @DisplayName("NestedInstitutionRequest has a constructor with parameters")
     @Test
     public void nestedInstitutionRequestHasAConstuctorWithParameters() {
         NestedInstitutionRequest actual = new NestedInstitutionRequest("SomeUrl", Language.ENGLISH.getCode());

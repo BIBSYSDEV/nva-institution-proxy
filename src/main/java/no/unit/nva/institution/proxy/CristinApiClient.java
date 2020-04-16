@@ -1,16 +1,15 @@
 package no.unit.nva.institution.proxy;
 
+import static java.util.Objects.isNull;
+
 import com.amazonaws.services.lambda.runtime.LambdaLogger;
+import java.net.URI;
 import no.unit.nva.institution.proxy.exception.GatewayException;
 import no.unit.nva.institution.proxy.exception.InvalidUriException;
 import no.unit.nva.institution.proxy.exception.UnknownLanguageException;
 import no.unit.nva.institution.proxy.response.InstitutionListResponse;
 import no.unit.nva.institution.proxy.response.NestedInstitutionResponse;
 import no.unit.nva.institution.proxy.utils.Language;
-
-import java.net.URI;
-
-import static java.util.Objects.isNull;
 
 public class CristinApiClient {
 
@@ -41,9 +40,18 @@ public class CristinApiClient {
         return httpExecutor.getInstitutions(getLanguage(languageCode));
     }
 
-
+    /**
+     * Get all the descendedants of an insitution's logical unit.
+     *
+     * @param uri          The URI of the institution's Unit
+     * @param languageCode a valid language code. See {@link Language}.
+     * @return A list of all the units that are descendants of the institution unit
+     * @throws UnknownLanguageException when the language is invalid.
+     * @throws GatewayException         when an Exception occurs.
+     * @throws InvalidUriException      when the input URI is invalid.
+     */
     public NestedInstitutionResponse getNestedInstitution(String uri, String languageCode)
-            throws UnknownLanguageException, GatewayException, InvalidUriException {
+        throws UnknownLanguageException, GatewayException, InvalidUriException {
         URI parsedUri;
         try {
             parsedUri = URI.create(uri);
