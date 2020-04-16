@@ -23,6 +23,7 @@ import no.unit.nva.institution.proxy.utils.Language;
 import no.unit.nva.institution.proxy.utils.MapUtils;
 import no.unit.nva.institution.proxy.utils.UriUtils;
 import nva.commons.utils.JacocoGenerated;
+import nva.commons.utils.attempt.Failure;
 
 public class HttpExecutorImpl extends HttpExecutor {
 
@@ -63,10 +64,10 @@ public class HttpExecutorImpl extends HttpExecutor {
     public InstitutionListResponse getInstitutions(Language language) throws GatewayException {
         URI uri = URI.create(generateInstitutionsQueryUri(language));
         return attempt(() -> sendHttpRequest(uri).get())
-                .map(this::throwExceptionIfNotSuccessful)
-                .map(HttpResponse::body)
-                .map(this::toInstitutionListResponse)
-                .orElseThrow(resp -> handleError(resp.getException()));
+            .map(this::throwExceptionIfNotSuccessful)
+            .map(HttpResponse::body)
+            .map(this::toInstitutionListResponse)
+            .orElseThrow(this::handleError);
     }
 
     @Override
@@ -82,7 +83,7 @@ public class HttpExecutorImpl extends HttpExecutor {
 
         for (URI subSubUnitUri : unitUris) {
             SubSubUnitDto subSubUnitDto = attempt(() -> getSubSubUnitDto(subSubUnitUri, language))
-                .orElseThrow(e -> handleError(e.getException()));
+                .orElseThrow(this::handleError);
             generator.addUnitToModel(subSubUnitUri, subSubUnitDto);
         }
         return new NestedInstitutionResponse(generator.getNestedInstitution());
@@ -94,21 +95,20 @@ public class HttpExecutorImpl extends HttpExecutor {
     }
 
     private SubSubUnitDto getSubSubUnitDto(URI subunitUri, Language language) throws GatewayException {
-        SubSubUnitDto x = attempt(() -> sendHttpRequest(UriUtils.getUriWithLanguage(subunitUri, language)).get())
+        return attempt(() -> sendHttpRequest(UriUtils.getUriWithLanguage(subunitUri, language)).get())
             .map(this::throwExceptionIfNotSuccessful)
             .map(HttpResponse::body)
             .map(InstitutionUtils::toSubSubUnitDto)
-            .orElseThrow(e -> handleError(e.getException()));
-        return x;
+            .orElseThrow(this::handleError);
     }
 
     private List<URI> getUnitUris(String id, Language language) throws GatewayException, InvalidUriException {
         URI uri = UriUtils.getUriWithLanguage(URI.create(String.format(PARENT_UNIT_URI_TEMPLATE, id)), language);
         return attempt(() -> sendHttpRequest(uri).get())
             .map(this::throwExceptionIfNotSuccessful)
-                .map(HttpResponse::body)
-                .map(this::bodyToUriList)
-                .orElseThrow(e -> handleError(e.getException()));
+            .map(HttpResponse::body)
+            .map(this::bodyToUriList)
+            .orElseThrow(this::handleError);
     }
 
     private List<URI> bodyToUriList(String json) throws IOException {
@@ -117,18 +117,18 @@ public class HttpExecutorImpl extends HttpExecutor {
 
     private InstitutionBaseDto getInstitutionBaseDto(URI uri, Language language) throws GatewayException {
         return attempt(() -> sendHttpRequest(UriUtils.getUriWithLanguage(uri, language)).get())
-                .map(this::throwExceptionIfNotSuccessful)
-                .map(HttpResponse::body)
-                .map(this::toInstitutionBaseDto)
-                .orElseThrow(resp -> handleError(resp.getException()));
+            .map(this::throwExceptionIfNotSuccessful)
+            .map(HttpResponse::body)
+            .map(this::toInstitutionBaseDto)
+            .orElseThrow(this::handleError);
     }
 
     private InstitutionBaseDto toInstitutionBaseDto(String json) throws IOException {
         return InstitutionUtils.toInstitutionBaseDto(json);
     }
 
-    private GatewayException handleError(Exception exception) {
-        return new GatewayException(exception);
+    private <T> GatewayException handleError(Failure<T> failure) {
+        return new GatewayException(failure.getException());
     }
 
     private InstitutionListResponse toInstitutionListResponse(String institutionDto) throws IOException {

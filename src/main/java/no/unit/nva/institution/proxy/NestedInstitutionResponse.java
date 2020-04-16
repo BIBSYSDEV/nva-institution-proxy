@@ -8,7 +8,7 @@ public class NestedInstitutionResponse {
     private String json;
 
     @JacocoGenerated
-    NestedInstitutionResponse() {
+        /* default */ NestedInstitutionResponse() {
     }
 
     public NestedInstitutionResponse(String json) {

@@ -1,8 +1,6 @@
 package no.unit.nva.institution.proxy.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import nva.commons.utils.JacocoGenerated;
@@ -14,14 +12,14 @@ public class SubSubUnitDto {
     private InstitutionDto institution;
     private InstitutionDto parentUnit;
     private List<InstitutionDto> parentUnits;
-    private SubUnitDto[] subUnits;
+    private List<SubUnitDto> subUnits;
 
     public SubSubUnitDto(@JsonProperty("cristin_unit_id") String id,
                          @JsonProperty("unit_name") Map<String, String> unitName,
                          @JsonProperty("institution") InstitutionDto institution,
                          @JsonProperty("parent_unit") InstitutionDto parentUnit,
                          @JsonProperty("parent_units") List<InstitutionDto> parentUnits,
-                         @JsonProperty("subunits") SubUnitDto[] subUnits) {
+                         @JsonProperty("subunits") List<SubUnitDto> subUnits) {
         this.id = id;
         this.unitName = unitName;
         this.institution = institution;
@@ -82,11 +80,11 @@ public class SubSubUnitDto {
 
     @JacocoGenerated
     public List<SubUnitDto> getSubUnits() {
-        return new ArrayList<>(Arrays.asList(subUnits));
+        return subUnits;
     }
 
     @JacocoGenerated
-    public void setSubUnits(SubUnitDto[] subUnits) {
+    public void setSubUnits(List<SubUnitDto> subUnits) {
         this.subUnits = subUnits;
     }
 }

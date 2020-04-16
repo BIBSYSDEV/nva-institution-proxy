@@ -1,18 +1,17 @@
 package no.unit.nva.institution.proxy.utils;
 
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-
-import java.io.IOException;
-import java.net.URI;
-import java.nio.file.Path;
-
 import static nva.commons.utils.IoUtils.stringFromResources;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.IOException;
+import java.net.URI;
+import java.nio.file.Path;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 class ModelUtilsTest {
 
@@ -58,7 +57,6 @@ class ModelUtilsTest {
         assertThat(objectify(modelUtils.toJsonLd()), is(equalTo(objectify(stringFromResources(HAS_NAME_JSON)))));
     }
 
-
     @DisplayName("Model utils can add subunit relation to an object")
     @Test
     void addSubunitsRelationToModelWithUriCreatesSubunitRelation() throws IOException {
@@ -68,5 +66,15 @@ class ModelUtilsTest {
         modelUtils.addTypeToModel(institution);
         modelUtils.addSubunitsRelationToModel(institution, subunit);
         assertThat(objectify(modelUtils.toJsonLd()), is(equalTo(objectify(stringFromResources(HAS_SUBUNIT_JSON)))));
+    }
+
+    @DisplayName("toTurtle returns a non empty string when the input is a non empty model")
+    @Test
+    public void toTurtleReturnsANonEmptyStringWhenTheInputIsNotEmpty() {
+        ModelUtils modelUtils = new ModelUtils();
+        URI uri = URI.create(INSTITUTION_URI);
+        modelUtils.addNameToModel(uri, SOME_NAME);
+        String actual = modelUtils.toTurtle();
+        assertNotNull(actual);
     }
 }
