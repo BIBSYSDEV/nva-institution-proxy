@@ -1,13 +1,14 @@
 package no.unit.nva.institution.proxy.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import nva.commons.utils.JacocoGenerated;
 
 public class SubSubUnitDto {
+
     private String id;
     private Map<String, String> unitName;
     private InstitutionDto institution;
@@ -15,7 +16,7 @@ public class SubSubUnitDto {
     private List<InstitutionDto> parentUnits;
     private SubUnitDto[] subUnits;
 
-    public SubSubUnitDto(@JsonProperty("cristin_unit_id")  String id,
+    public SubSubUnitDto(@JsonProperty("cristin_unit_id") String id,
                          @JsonProperty("unit_name") Map<String, String> unitName,
                          @JsonProperty("institution") InstitutionDto institution,
                          @JsonProperty("parent_unit") InstitutionDto parentUnit,
@@ -29,50 +30,62 @@ public class SubSubUnitDto {
         this.subUnits = subUnits;
     }
 
+    @JacocoGenerated
     public String getId() {
         return id;
     }
 
+    @JacocoGenerated
     public void setId(String id) {
         this.id = id;
     }
 
+    @JacocoGenerated
     public Map<String, String> getUnitName() {
         return unitName;
     }
 
+    @JacocoGenerated
     public void setUnitName(Map<String, String> unitName) {
         this.unitName = unitName;
     }
 
+    @JacocoGenerated
     public InstitutionDto getInstitution() {
         return institution;
     }
 
+    @JacocoGenerated
     public void setInstitution(InstitutionDto institution) {
         this.institution = institution;
     }
 
+    @JacocoGenerated
     public InstitutionDto getParentUnit() {
         return parentUnit;
     }
 
+    @JacocoGenerated
     public void setParentUnit(InstitutionDto parentUnit) {
         this.parentUnit = parentUnit;
     }
 
+    @JacocoGenerated
     public List<InstitutionDto> getParentUnits() {
         return parentUnits;
     }
 
+    @JacocoGenerated
     public void setParentUnits(List<InstitutionDto> parentUnits) {
         this.parentUnits = parentUnits;
     }
 
+    @JacocoGenerated
     public List<SubUnitDto> getSubUnits() {
         return new ArrayList<>(Arrays.asList(subUnits));
     }
 
+    @JacocoGenerated
     public void setSubUnits(SubUnitDto[] subUnits) {
         this.subUnits = subUnits;
     }

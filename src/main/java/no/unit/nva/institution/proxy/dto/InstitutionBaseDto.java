@@ -3,10 +3,9 @@ package no.unit.nva.institution.proxy.dto;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import nva.commons.utils.JacocoGenerated;
 
 /**
  * Class representing a call to <pre>https://api.cristin.no/v2/institutions/</pre>. It represents an "Institution" unit.
@@ -39,7 +38,7 @@ public class InstitutionBaseDto {
     private String country;
     private boolean cristinUser;
     private CorrespondingUnitDto correspondingUnitDto;
-    private SubUnitDto[] subUnitDtoList;
+    private List<SubSubUnitDto> subUnitDtoList;
     private InstitutionDto institution;
 
     @JsonCreator
@@ -51,7 +50,7 @@ public class InstitutionBaseDto {
                               @JsonProperty("country") String country,
                               @JsonProperty("corresponding_unit") CorrespondingUnitDto correspondingUnitDto,
                               @JsonProperty("subunits")
-                                  SubUnitDto[] subUnitDtoList) {
+                                  List<SubSubUnitDto> subUnitDtoList) {
         this.name = name;
         this.institution = institution;
         this.cristinUser = cristinUser;
@@ -62,66 +61,82 @@ public class InstitutionBaseDto {
         this.subUnitDtoList = subUnitDtoList;
     }
 
+    @JacocoGenerated
     public String getId() {
         return id;
     }
 
+    @JacocoGenerated
     public void setId(String id) {
         this.id = id;
     }
 
+    @JacocoGenerated
     public Map<String, String> getName() {
         return name;
     }
 
+    @JacocoGenerated
     public void setName(Map<String, String> name) {
         this.name = name;
     }
 
+    @JacocoGenerated
     public String getShortName() {
         return shortName;
     }
 
+    @JacocoGenerated
     public void setShortName(String shortName) {
         this.shortName = shortName;
     }
 
+    @JacocoGenerated
     public String getCountry() {
         return country;
     }
 
+    @JacocoGenerated
     public void setCountry(String country) {
         this.country = country;
     }
 
+    @JacocoGenerated
     public boolean isCristinUser() {
         return cristinUser;
     }
 
+    @JacocoGenerated
     public void setCristinUser(boolean cristinUser) {
         this.cristinUser = cristinUser;
     }
 
+    @JacocoGenerated
     public CorrespondingUnitDto getCorrespondingUnitDto() {
         return correspondingUnitDto;
     }
 
+    @JacocoGenerated
     public void setCorrespondingUnitDto(CorrespondingUnitDto correspondingUnitDto) {
         this.correspondingUnitDto = correspondingUnitDto;
     }
 
-    public List<SubUnitDto> getSubUnitDtoList() {
-        return new ArrayList<>(Arrays.asList(subUnitDtoList));
+    @JacocoGenerated
+    public List<SubSubUnitDto> getSubUnitDtoList() {
+        return subUnitDtoList;
     }
 
-    public void setSubUnitDtoList(SubUnitDto[] subUnitDtoList) {
+    @JacocoGenerated
+    public void setSubUnitDtoList(List<SubSubUnitDto> subUnitDtoList) {
         this.subUnitDtoList = subUnitDtoList;
     }
 
+    @JacocoGenerated
     public InstitutionDto getInstitution() {
         return institution;
     }
 
+    @JacocoGenerated
     public void setInstitution(InstitutionDto institution) {
         this.institution = institution;
     }
