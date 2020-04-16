@@ -1,17 +1,5 @@
 package no.unit.nva.institution.proxy;
 
-import no.unit.nva.institution.proxy.exception.GatewayException;
-import no.unit.nva.institution.proxy.exception.InvalidUriException;
-import no.unit.nva.institution.proxy.exception.UnknownLanguageException;
-import no.unit.nva.institution.proxy.utils.Language;
-import nva.commons.exceptions.ApiGatewayException;
-import nva.commons.utils.TestLogger;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-
-import java.net.URI;
-import java.util.Collections;
-
 import static nva.commons.utils.attempt.Try.attempt;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
@@ -21,6 +9,17 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+
+import java.net.URI;
+import java.util.Collections;
+import no.unit.nva.institution.proxy.exception.GatewayException;
+import no.unit.nva.institution.proxy.exception.InvalidUriException;
+import no.unit.nva.institution.proxy.exception.UnknownLanguageException;
+import no.unit.nva.institution.proxy.utils.Language;
+import nva.commons.exceptions.ApiGatewayException;
+import nva.commons.utils.TestLogger;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 public class CristinApiClientTest {
 
@@ -38,7 +37,7 @@ public class CristinApiClientTest {
     public void getLanguageThrowsUnknownLanguageExceptionForInvalidLanguage() {
         CristinApiClient cristinApiClient = new CristinApiClient(testLogger);
         UnknownLanguageException exception = assertThrows(UnknownLanguageException.class,
-                () -> cristinApiClient.getInstitutions(INVALID_LANGUAGE_CODE));
+            () -> cristinApiClient.getInstitutions(INVALID_LANGUAGE_CODE));
         assertThat(exception.getMessage(), containsString(INVALID_LANGUAGE_CODE));
         assertThat(exception.getMessage(), containsString(Language.LANGUAGES_STRING));
     }
@@ -78,7 +77,7 @@ public class CristinApiClientTest {
     void getNestedInstitutionThrowsUnknownLanguageExceptionWhenLanguageIsUnknown() {
         CristinApiClient cristinApiClient = new CristinApiClient(testLogger);
         UnknownLanguageException exception = assertThrows(UnknownLanguageException.class,
-                () -> cristinApiClient.getNestedInstitution("https://example.org", INVALID_LANGUAGE_CODE));
+            () -> cristinApiClient.getNestedInstitution("https://example.org", INVALID_LANGUAGE_CODE));
         assertThat(exception.getMessage(), containsString(INVALID_LANGUAGE_CODE));
         assertThat(exception.getMessage(), containsString(Language.LANGUAGES_STRING));
     }
@@ -88,7 +87,7 @@ public class CristinApiClientTest {
     void getNestedInstitutionThrowsInvalidUriExceptionWhenUriIsInvalid() {
         CristinApiClient cristinApiClient = new CristinApiClient(testLogger);
         InvalidUriException exception = assertThrows(InvalidUriException.class,
-                () -> cristinApiClient.getNestedInstitution(INVALID_URI, VALID_LANGUAGE_EN));
+            () -> cristinApiClient.getNestedInstitution(INVALID_URI, VALID_LANGUAGE_EN));
         assertThat(exception.getMessage(), containsString(INVALID_URI));
         String expectedLog = String.format(CristinApiClient.LOG_URI_ERROR_TEMPLATE, INVALID_URI);
         assertThat(testLogger.getLogs(), containsString(expectedLog));
@@ -96,10 +95,11 @@ public class CristinApiClientTest {
 
     @DisplayName("getNestedInstitution returns nested institution when input is valid")
     @Test
-    void getNestedInstitutionReturnsNestedInstitutionWhenInputIsValid() throws InvalidUriException, GatewayException, UnknownLanguageException {
+    void getNestedInstitutionReturnsNestedInstitutionWhenInputIsValid()
+        throws InvalidUriException, GatewayException, UnknownLanguageException {
         HttpExecutor mockHttpExecutor = mock(HttpExecutorImpl.class);
         when(mockHttpExecutor.getNestedInstitution(any(), any()))
-                .thenReturn(new NestedInstitutionResponse(JSON_VALUE));
+            .thenReturn(new NestedInstitutionResponse(JSON_VALUE));
         CristinApiClient cristinApiClient = new CristinApiClient(mockHttpExecutor, testLogger);
         NestedInstitutionResponse response = cristinApiClient.getNestedInstitution(VALID_URI, VALID_LANGUAGE_EN);
         assertThat(response.getJson(), containsString(JSON_VALUE));
@@ -114,7 +114,7 @@ public class CristinApiClientTest {
     }
 
     private void getLanguageReturnNorwegianBokmalWhenLanguageIsUndefined(String languageString)
-            throws ApiGatewayException {
+        throws ApiGatewayException {
         MockHttpExecutorReportingInsertedLanguage executor = new MockHttpExecutorReportingInsertedLanguage();
 
         CristinApiClient cristinApiClient = new CristinApiClient(executor, testLogger);

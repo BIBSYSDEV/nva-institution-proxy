@@ -1,9 +1,9 @@
 package no.unit.nva.institution.proxy.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.net.URI;
 import java.util.Map;
+import nva.commons.utils.JacocoGenerated;
 
 public class SubUnitDto {
     /*
@@ -15,8 +15,6 @@ public class SubUnitDto {
     "url" : "https://api.cristin.no/v2/units/185.11.0.0"
   }
      */
-
-
 
     private String id;
     private Map<String, String> name;
@@ -36,42 +34,52 @@ public class SubUnitDto {
         this.acronym = acronym;
     }
 
+    @JacocoGenerated
     public String getId() {
         return id;
     }
 
+    @JacocoGenerated
     public void setId(String id) {
         this.id = id;
     }
 
+    @JacocoGenerated
     public Map<String, String> getName() {
         return name;
     }
 
+    @JacocoGenerated
     public void setName(Map<String, String> name) {
         this.name = name;
     }
 
+    @JacocoGenerated
     public URI getUri() {
         return uri;
     }
 
+    @JacocoGenerated
     public void setUri(URI uri) {
         this.uri = uri;
     }
 
+    @JacocoGenerated
     public Map<String, String> getInstitution() {
         return institution;
     }
 
+    @JacocoGenerated
     public void setInstitution(Map<String, String> institution) {
         this.institution = institution;
     }
 
+    @JacocoGenerated
     public String getAcronym() {
         return acronym;
     }
 
+    @JacocoGenerated
     public void setAcronym(String acronym) {
         this.acronym = acronym;
     }

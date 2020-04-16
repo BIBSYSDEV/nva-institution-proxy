@@ -3,6 +3,7 @@ package no.unit.nva.institution.proxy.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.net.URI;
 import java.util.Map;
+import nva.commons.utils.JacocoGenerated;
 
 public class InstitutionDto {
     /*
@@ -31,50 +32,62 @@ public class InstitutionDto {
     @JsonProperty("url")
     private URI uri;
 
+    @JacocoGenerated
     public String getId() {
         return id;
     }
 
+    @JacocoGenerated
     public void setId(String id) {
         this.id = id;
     }
 
+    @JacocoGenerated
     public Map<String, String> getName() {
         return name;
     }
 
+    @JacocoGenerated
     public void setName(Map<String, String> name) {
         this.name = name;
     }
 
+    @JacocoGenerated
     public String getAcronym() {
         return acronym;
     }
 
+    @JacocoGenerated
     public void setAcronym(String acronym) {
         this.acronym = acronym;
     }
 
+    @JacocoGenerated
     public String getCountry() {
         return country;
     }
 
+    @JacocoGenerated
     public void setCountry(String country) {
         this.country = country;
     }
 
+    @JacocoGenerated
     public boolean isCristinUser() {
         return cristinUser;
     }
 
+    @JacocoGenerated
     public void setCristinUser(boolean cristinUser) {
         this.cristinUser = cristinUser;
     }
 
+    @JacocoGenerated
     public URI getUri() {
         return uri;
     }
 
+    @JacocoGenerated
     public void setUri(URI uri) {
         this.uri = uri;
     }
