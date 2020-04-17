@@ -4,12 +4,13 @@ import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import com.fasterxml.jackson.core.type.TypeReference;
 import no.unit.nva.institution.proxy.CristinApiClient;
-import no.unit.nva.institution.proxy.response.InstitutionListResponse;
-import no.unit.nva.institution.proxy.request.NestedInstitutionRequest;
-import no.unit.nva.institution.proxy.response.NestedInstitutionResponse;
 import no.unit.nva.institution.proxy.exception.GatewayException;
 import no.unit.nva.institution.proxy.exception.InvalidUriException;
 import no.unit.nva.institution.proxy.exception.UnknownLanguageException;
+import no.unit.nva.institution.proxy.request.NestedInstitutionRequest;
+import no.unit.nva.institution.proxy.response.InstitutionListResponse;
+import no.unit.nva.institution.proxy.response.NestedInstitutionResponse;
+import no.unit.nva.institution.proxy.utils.Language;
 import nva.commons.exceptions.ApiGatewayException;
 import nva.commons.handlers.GatewayResponse;
 import nva.commons.handlers.RequestInfo;
@@ -26,6 +27,7 @@ import org.zalando.problem.Problem;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.util.function.Function;
@@ -35,6 +37,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.StringContains.containsString;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -65,13 +68,28 @@ class NestedInstitutionHandlerTest {
         when(context.getLogger()).thenReturn(logger);
     }
 
+    @DisplayName("Tests an entire institution can be nested from live data")
     @Test
     @Tag("online")
-    void itWorks() throws ApiGatewayException {
+    void testAnInstitutionCanBeNestedFromLiveData() throws ApiGatewayException {
         NestedInstitutionHandler nestedInstitutionHandler =
             new NestedInstitutionHandler(environment, ignored -> new CristinApiClient(logger));
         NestedInstitutionRequest request =
             new NestedInstitutionRequest("https://api.cristin.no/v2/institutions/185", "en");
+        RequestInfo requestInfo = new RequestInfo();
+        Context context = mock(Context.class);
+
+        NestedInstitutionResponse repsonse = nestedInstitutionHandler.processInput(request, requestInfo, context);
+    }
+
+    @DisplayName("Tests that a single unit can be nested from live data")
+    @Test
+    //@Tag("online")
+    void testSingleUnitCanBeNestedFromLiveData() throws ApiGatewayException {
+        NestedInstitutionHandler nestedInstitutionHandler =
+                new NestedInstitutionHandler(environment, ignored -> new CristinApiClient(logger));
+        NestedInstitutionRequest request =
+                new NestedInstitutionRequest("https://api.cristin.no/v2/units/194.63.1.20", "en");
         RequestInfo requestInfo = new RequestInfo();
         Context context = mock(Context.class);
 
@@ -163,7 +181,8 @@ class NestedInstitutionHandlerTest {
             InvalidUriException, GatewayException, UnknownLanguageException {
         CristinApiClient cristinClient = mock(CristinApiClient.class);
         IOException cause = new IOException(message);
-        when(cristinClient.getNestedInstitution(anyString(), anyString())).thenThrow(new GatewayException(cause));
+        when(cristinClient.getNestedInstitution(any(URI.class), any(Language.class)))
+                .thenThrow(new GatewayException(cause));
         return new NestedInstitutionHandler(environment, logger -> cristinClient);
     }
 
@@ -178,7 +197,7 @@ class NestedInstitutionHandlerTest {
     private NestedInstitutionHandler handlerThatThrowsUnknownLanguageException(String exceptionMessage) throws
             InvalidUriException, GatewayException, UnknownLanguageException {
         CristinApiClient cristinClient = mock(CristinApiClient.class);
-        when(cristinClient.getNestedInstitution(anyString(), anyString()))
+        when(cristinClient.getNestedInstitution(any(URI.class), any(Language.class)))
                 .thenThrow(new UnknownLanguageException(exceptionMessage));
         return new NestedInstitutionHandler(environment, logger -> cristinClient);
     }
@@ -186,7 +205,7 @@ class NestedInstitutionHandlerTest {
     private NestedInstitutionHandler handlerThatThrowsInvalidUriException(String exceptionMessage) throws
             InvalidUriException, GatewayException, UnknownLanguageException {
         CristinApiClient cristinClient = mock(CristinApiClient.class);
-        when(cristinClient.getNestedInstitution(anyString(), anyString()))
+        when(cristinClient.getNestedInstitution(any(URI.class), any(Language.class)))
                 .thenThrow(new InvalidUriException(exceptionMessage));
         return new NestedInstitutionHandler(environment, logger -> cristinClient);
     }
@@ -223,7 +242,7 @@ class NestedInstitutionHandlerTest {
     }
 
     private static class MockCristinApiClient extends CristinApiClient {
-        private String languageCode;
+        private Language languageCode;
         private String uri;
 
         protected MockCristinApiClient(LambdaLogger logger) {
@@ -231,8 +250,8 @@ class NestedInstitutionHandlerTest {
         }
 
         @Override
-        public NestedInstitutionResponse getNestedInstitution(String uri, String languageCode) {
-            this.languageCode = languageCode;
+        public NestedInstitutionResponse getNestedInstitution(URI uri, Language language) {
+            this.languageCode = language;
             return new NestedInstitutionResponse("true");
         }
     }

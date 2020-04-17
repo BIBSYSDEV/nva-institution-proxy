@@ -3,6 +3,7 @@ package no.unit.nva.institution.proxy;
 import no.unit.nva.institution.proxy.exception.FailedHttpRequestException;
 import no.unit.nva.institution.proxy.exception.GatewayException;
 import no.unit.nva.institution.proxy.exception.InvalidUriException;
+import no.unit.nva.institution.proxy.exception.NonExistingUnitError;
 import no.unit.nva.institution.proxy.response.InstitutionListResponse;
 import no.unit.nva.institution.proxy.response.NestedInstitutionResponse;
 import no.unit.nva.institution.proxy.utils.Language;
@@ -10,6 +11,7 @@ import org.apache.http.HttpStatus;
 
 import java.net.URI;
 import java.net.http.HttpResponse;
+import java.util.concurrent.ExecutionException;
 
 import static java.util.Objects.isNull;
 
@@ -24,6 +26,8 @@ public abstract class HttpExecutor {
 
     public abstract NestedInstitutionResponse getNestedInstitution(URI uri, Language language) throws
             GatewayException, InvalidUriException;
+
+    public abstract NestedInstitutionResponse getSingleUnit(URI uri, Language language) throws InterruptedException, ExecutionException, InvalidUriException, NonExistingUnitError;
 
     protected HttpResponse<String> throwExceptionIfNotSuccessful(HttpResponse<String> response)
         throws FailedHttpRequestException {
@@ -40,4 +44,5 @@ public abstract class HttpExecutor {
     private String errorMessage(HttpResponse<String> response) {
         return String.format(ERROR_MESSAGE_FORMAT, response.statusCode(), response.body());
     }
+
 }

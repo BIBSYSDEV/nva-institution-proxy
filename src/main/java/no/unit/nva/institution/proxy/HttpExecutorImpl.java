@@ -4,6 +4,7 @@ import no.unit.nva.institution.proxy.dto.InstitutionBaseDto;
 import no.unit.nva.institution.proxy.dto.SubSubUnitDto;
 import no.unit.nva.institution.proxy.exception.GatewayException;
 import no.unit.nva.institution.proxy.exception.InvalidUriException;
+import no.unit.nva.institution.proxy.exception.NonExistingUnitError;
 import no.unit.nva.institution.proxy.response.InstitutionListResponse;
 import no.unit.nva.institution.proxy.response.NestedInstitutionResponse;
 import no.unit.nva.institution.proxy.utils.InstitutionUtils;
@@ -11,6 +12,7 @@ import no.unit.nva.institution.proxy.utils.Language;
 import no.unit.nva.institution.proxy.utils.MapUtils;
 import no.unit.nva.institution.proxy.utils.UriUtils;
 import nva.commons.utils.JacocoGenerated;
+import nva.commons.utils.attempt.Failure;
 
 import java.io.IOException;
 import java.net.URI;
@@ -21,7 +23,7 @@ import java.net.http.HttpResponse.BodyHandlers;
 import java.time.Duration;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import nva.commons.utils.attempt.Failure;
+import java.util.concurrent.ExecutionException;
 
 import static nva.commons.utils.attempt.Try.attempt;
 import static org.apache.http.HttpHeaders.ACCEPT;
@@ -91,6 +93,14 @@ public class HttpExecutorImpl extends HttpExecutor {
             generator.addUnitToModel(subSubUnitUri, subSubUnitDto);
         }
         return new NestedInstitutionResponse(generator.getNestedInstitution());
+    }
+
+    @Override
+    public NestedInstitutionResponse getSingleUnit(URI uri, Language language) throws InterruptedException,
+            ExecutionException, InvalidUriException, NonExistingUnitError {
+        SingleUnitHierarchyGenerator singleUnitHierarchyGenerator = new SingleUnitHierarchyGenerator(uri, language);
+        String json = singleUnitHierarchyGenerator.toJsonLd();
+        return new NestedInstitutionResponse(json);
     }
 
     public URI getInstitutionUnitUri(URI uri, Language language) throws GatewayException {

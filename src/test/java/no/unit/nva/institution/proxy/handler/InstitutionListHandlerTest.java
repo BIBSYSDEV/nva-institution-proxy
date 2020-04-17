@@ -1,29 +1,14 @@
 package no.unit.nva.institution.proxy.handler;
 
-import static nva.commons.utils.JsonUtils.jsonParser;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.core.Is.is;
-import static org.hamcrest.core.IsEqual.equalTo;
-import static org.hamcrest.core.StringContains.containsString;
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import com.fasterxml.jackson.core.type.TypeReference;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Path;
-import java.util.Collections;
-import java.util.function.Function;
 import no.unit.nva.institution.proxy.CristinApiClient;
 import no.unit.nva.institution.proxy.exception.GatewayException;
 import no.unit.nva.institution.proxy.exception.UnknownLanguageException;
 import no.unit.nva.institution.proxy.request.InstitutionListRequest;
 import no.unit.nva.institution.proxy.response.InstitutionListResponse;
+import no.unit.nva.institution.proxy.utils.Language;
 import nva.commons.handlers.GatewayResponse;
 import nva.commons.handlers.RequestInfo;
 import nva.commons.utils.Environment;
@@ -35,6 +20,24 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.zalando.problem.Problem;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
+import java.util.Collections;
+import java.util.function.Function;
+
+import static nva.commons.utils.JsonUtils.jsonParser;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsEqual.equalTo;
+import static org.hamcrest.core.StringContains.containsString;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class InstitutionListHandlerTest {
 
@@ -140,7 +143,7 @@ public class InstitutionListHandlerTest {
     private InstitutionListHandler handlerThatThrowsUnknownLanguageException(String exceptionMessage)
         throws UnknownLanguageException, GatewayException {
         CristinApiClient cristinClient = mock(CristinApiClient.class);
-        when(cristinClient.getInstitutions(anyString())).thenThrow(new UnknownLanguageException(exceptionMessage));
+        when(cristinClient.getInstitutions(any(Language.class))).thenThrow(new UnknownLanguageException(exceptionMessage));
         return new InstitutionListHandler(environment, logger -> cristinClient);
     }
 
@@ -148,7 +151,7 @@ public class InstitutionListHandlerTest {
         throws UnknownLanguageException, GatewayException {
         CristinApiClient cristinClient = mock(CristinApiClient.class);
         IOException cause = new IOException(exceptionMessage);
-        when(cristinClient.getInstitutions(anyString())).thenThrow(new GatewayException(cause));
+        when(cristinClient.getInstitutions(any(Language.class))).thenThrow(new GatewayException(cause));
         return new InstitutionListHandler(environment, logger -> cristinClient);
     }
 
@@ -164,15 +167,15 @@ public class InstitutionListHandlerTest {
 
     private static class MockCristinApiClient extends CristinApiClient {
 
-        private String languageCode;
+        private Language languageCode;
 
         protected MockCristinApiClient(LambdaLogger logger) {
             super(logger);
         }
 
         @Override
-        public InstitutionListResponse getInstitutions(String languageCode) {
-            this.languageCode = languageCode;
+        public InstitutionListResponse getInstitutions(Language language) {
+            this.languageCode = language;
             return new InstitutionListResponse(Collections.emptyList());
         }
     }

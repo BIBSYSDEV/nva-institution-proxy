@@ -2,6 +2,8 @@ package no.unit.nva.institution.proxy;
 
 import no.unit.nva.institution.proxy.exception.FailedHttpRequestException;
 import no.unit.nva.institution.proxy.exception.GatewayException;
+import no.unit.nva.institution.proxy.exception.InvalidUriException;
+import no.unit.nva.institution.proxy.exception.NonExistingUnitError;
 import no.unit.nva.institution.proxy.response.InstitutionListResponse;
 import no.unit.nva.institution.proxy.response.NestedInstitutionResponse;
 import no.unit.nva.institution.proxy.utils.Language;
@@ -12,6 +14,7 @@ import org.junit.jupiter.api.Test;
 
 import java.net.URI;
 import java.net.http.HttpResponse;
+import java.util.concurrent.ExecutionException;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
@@ -33,6 +36,11 @@ public class HttpExecutorTest {
 
         @Override
         public NestedInstitutionResponse getNestedInstitution(URI uri, Language language) throws GatewayException {
+            return null;
+        }
+
+        @Override
+        public NestedInstitutionResponse getSingleUnit(URI uri, Language language) throws InterruptedException, ExecutionException, InvalidUriException, NonExistingUnitError {
             return null;
         }
     };

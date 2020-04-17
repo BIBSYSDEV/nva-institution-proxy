@@ -1,9 +1,11 @@
 package no.unit.nva.institution.proxy.dto;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import nva.commons.utils.JacocoGenerated;
+
 import java.net.URI;
 import java.util.Map;
-import nva.commons.utils.JacocoGenerated;
 
 public class InstitutionDto {
     /*
@@ -19,9 +21,9 @@ public class InstitutionDto {
     }
      */
 
-    @JsonProperty("cristin_institution_id")
+    @JsonAlias({"cristin_institution_id", "cristin_unit_id"})
     private String id;
-    @JsonProperty("institution_name")
+    @JsonAlias({"institution_name", "unit_name"})
     private Map<String, String> name;
     @JsonProperty("acronym")
     private String acronym;
