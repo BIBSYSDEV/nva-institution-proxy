@@ -1,5 +1,16 @@
 package no.unit.nva.institution.proxy;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsEqual.equalTo;
+import static org.hamcrest.core.StringContains.containsString;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+import java.net.URI;
+import java.net.http.HttpResponse;
+import java.util.concurrent.ExecutionException;
 import no.unit.nva.institution.proxy.exception.FailedHttpRequestException;
 import no.unit.nva.institution.proxy.exception.GatewayException;
 import no.unit.nva.institution.proxy.exception.InvalidUriException;
@@ -11,18 +22,6 @@ import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.net.URI;
-import java.net.http.HttpResponse;
-import java.util.concurrent.ExecutionException;
-
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.core.Is.is;
-import static org.hamcrest.core.IsEqual.equalTo;
-import static org.hamcrest.core.StringContains.containsString;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 public class HttpExecutorTest {
 
@@ -40,7 +39,8 @@ public class HttpExecutorTest {
         }
 
         @Override
-        public NestedInstitutionResponse getSingleUnit(URI uri, Language language) throws InterruptedException, ExecutionException, InvalidUriException, NonExistingUnitError {
+        public NestedInstitutionResponse getSingleUnit(URI uri, Language language)
+            throws InterruptedException, ExecutionException, InvalidUriException, NonExistingUnitError {
             return null;
         }
     };

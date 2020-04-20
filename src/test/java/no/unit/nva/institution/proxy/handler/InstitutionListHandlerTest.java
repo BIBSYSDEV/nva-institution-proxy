@@ -1,34 +1,5 @@
 package no.unit.nva.institution.proxy.handler;
 
-import com.amazonaws.services.lambda.runtime.Context;
-import com.amazonaws.services.lambda.runtime.LambdaLogger;
-import com.fasterxml.jackson.core.type.TypeReference;
-import no.unit.nva.institution.proxy.CristinApiClient;
-import no.unit.nva.institution.proxy.exception.GatewayException;
-import no.unit.nva.institution.proxy.exception.UnknownLanguageException;
-import no.unit.nva.institution.proxy.request.InstitutionListRequest;
-import no.unit.nva.institution.proxy.response.InstitutionListResponse;
-import no.unit.nva.institution.proxy.utils.Language;
-import nva.commons.handlers.GatewayResponse;
-import nva.commons.handlers.RequestInfo;
-import nva.commons.utils.Environment;
-import nva.commons.utils.IoUtils;
-import nva.commons.utils.TestLogger;
-import org.apache.http.HttpStatus;
-import org.hamcrest.MatcherAssert;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.zalando.problem.Problem;
-
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Path;
-import java.util.Collections;
-import java.util.function.Function;
-
 import static nva.commons.utils.JsonUtils.jsonParser;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
@@ -39,7 +10,37 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class InstitutionListHandlerTest {
+import com.amazonaws.services.lambda.runtime.Context;
+import com.amazonaws.services.lambda.runtime.LambdaLogger;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonNode;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
+import java.util.Collections;
+import java.util.function.Function;
+import no.unit.nva.institution.proxy.CristinApiClient;
+import no.unit.nva.institution.proxy.exception.GatewayException;
+import no.unit.nva.institution.proxy.exception.UnknownLanguageException;
+import no.unit.nva.institution.proxy.request.InstitutionListRequest;
+import no.unit.nva.institution.proxy.response.InstitutionListResponse;
+import no.unit.nva.institution.proxy.utils.Language;
+import no.unit.nva.testutils.TestLogger;
+import nva.commons.handlers.GatewayResponse;
+import nva.commons.handlers.RequestInfo;
+import nva.commons.utils.Environment;
+import nva.commons.utils.IoUtils;
+import org.apache.http.HttpStatus;
+import org.hamcrest.MatcherAssert;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.zalando.problem.Problem;
+
+public class InstitutionListHandlerTest extends HandlerTest {
 
     private static final String SOME_ENV_VALUE = "ANY_VALUE";
 
@@ -47,9 +48,13 @@ public class InstitutionListHandlerTest {
 
     public static final Path INSTITUTIONS_REQUEST_WITH_NON_EMPTY_BODY =
         Path.of(EVENTS_FOLDER, "institutions_request_with_non_empty_body.json");
-    public static final String LANGUAGE_STRING_VALUE_IN_RESOURCE_FILE = "nonEmptyLanguageString";
+    public static final Path INSTITUTIONS_REQUEST_WITH_INVALID_LANGUAGE =
+        Path.of(EVENTS_FOLDER, "institutions_request_with_invalid_language.json");
+    public static final String LANGUAGE_STRING_VALUE_IN_RESOURCE_FILE = "nb";
 
     private static final String SOME_EXCEPTION_MESSAGE = "This is the exception message";
+    public static final String BODY_FIELD = "body";
+    public static final String LANGUAGE_FIELD = "language";
 
     private Environment environment;
     private Context context;
@@ -79,7 +84,7 @@ public class InstitutionListHandlerTest {
         throws IOException {
         InstitutionListHandlerWithGetRequest handler = institutionHandlerWithAccessibleRequestObject();
 
-        InputStream inputStream = inputNonEmptyLangugeCode();
+        InputStream inputStream = inputNonEmptyLanguageCode();
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         handler.handleRequest(inputStream, outputStream, context);
         MatcherAssert.assertThat(handler.getRequest().getLanguage(),
@@ -91,7 +96,7 @@ public class InstitutionListHandlerTest {
     public void handleRequestReturnsOkToTheClientWhenTheProcessingIsSuccessful() throws IOException {
         InstitutionListHandlerWithGetRequest handler = institutionHandlerWithAccessibleRequestObject();
 
-        InputStream inputStream = inputNonEmptyLangugeCode();
+        InputStream inputStream = inputNonEmptyLanguageCode();
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 
         handler.handleRequest(inputStream, outputStream, context);
@@ -104,25 +109,29 @@ public class InstitutionListHandlerTest {
     @DisplayName("handleRequest returns BadRequest to the client when UnknownLanguageException occurs")
     @Test
     public void handleRequestReturnsBadRequestWhenUnknownLanguageExceptionOccurs()
-        throws IOException, UnknownLanguageException, GatewayException {
-        InstitutionListHandler handler = handlerThatThrowsUnknownLanguageException(SOME_EXCEPTION_MESSAGE);
-        InputStream inputStream = inputNonEmptyLangugeCode();
+        throws IOException {
+        InstitutionListHandler handler = handlerWithNonOperativeCristinClient();
+        InputStream inputStream = inputInvalidLanguage();
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 
         handler.handleRequest(inputStream, outputStream, context);
-
         GatewayResponse<Problem> response = gatewayResponseWithProblem(outputStream);
 
         assertThat(response.getStatusCode(), is(HttpStatus.SC_BAD_REQUEST));
-        assertThat(response.getBodyObject(Problem.class).getDetail(), containsString(SOME_EXCEPTION_MESSAGE));
+        assertThat(response.getBodyObject(Problem.class).getDetail(),
+            containsString(INVALID_LANGUAGE_IN_RESOURCES_FILE));
+    }
+
+    private InputStream inputInvalidLanguage() {
+        return IoUtils.inputStreamFromResources(INSTITUTIONS_REQUEST_WITH_INVALID_LANGUAGE);
     }
 
     @DisplayName("handleRequest returns BadGateway to the client when GatewayException occurs")
     @Test
-    public void handleRequestReturnsBadRequestWhenInstitutionFailureOccurs()
-        throws IOException, UnknownLanguageException, GatewayException {
+    public void handleRequestReturnsBadGatewayToTheClientWhnGatewayExceptionOccurs()
+        throws IOException, GatewayException {
         InstitutionListHandler handler = handlerThatThrowsInstitutionFailureException(SOME_EXCEPTION_MESSAGE);
-        InputStream inputStream = inputNonEmptyLangugeCode();
+        InputStream inputStream = inputNonEmptyLanguageCode();
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 
         handler.handleRequest(inputStream, outputStream, context);
@@ -140,15 +149,14 @@ public class InstitutionListHandlerTest {
         return jsonParser.readValue(outputString, ref);
     }
 
-    private InstitutionListHandler handlerThatThrowsUnknownLanguageException(String exceptionMessage)
-        throws UnknownLanguageException, GatewayException {
+    private InstitutionListHandler handlerWithNonOperativeCristinClient() {
+
         CristinApiClient cristinClient = mock(CristinApiClient.class);
-        when(cristinClient.getInstitutions(any(Language.class))).thenThrow(new UnknownLanguageException(exceptionMessage));
         return new InstitutionListHandler(environment, logger -> cristinClient);
     }
 
     private InstitutionListHandler handlerThatThrowsInstitutionFailureException(String exceptionMessage)
-        throws UnknownLanguageException, GatewayException {
+        throws GatewayException {
         CristinApiClient cristinClient = mock(CristinApiClient.class);
         IOException cause = new IOException(exceptionMessage);
         when(cristinClient.getInstitutions(any(Language.class))).thenThrow(new GatewayException(cause));
@@ -160,14 +168,17 @@ public class InstitutionListHandlerTest {
         return new InstitutionListHandlerWithGetRequest(environment, logger -> cristinApiClient);
     }
 
-    private InputStream inputNonEmptyLangugeCode() {
+    private InputStream inputNonEmptyLanguageCode() {
         String input = IoUtils.stringFromResources(INSTITUTIONS_REQUEST_WITH_NON_EMPTY_BODY);
         return IoUtils.stringToStream(input);
     }
 
-    private static class MockCristinApiClient extends CristinApiClient {
+    private String extractLanguageFromRequestStream(InputStream inputInvalidLanguage) throws JsonProcessingException {
+        JsonNode node = jsonParser.readTree(IoUtils.streamToString(inputInvalidLanguage));
+        return node.get(BODY_FIELD).get(LANGUAGE_FIELD).asText();
+    }
 
-        private Language languageCode;
+    private static class MockCristinApiClient extends CristinApiClient {
 
         protected MockCristinApiClient(LambdaLogger logger) {
             super(logger);
@@ -175,7 +186,6 @@ public class InstitutionListHandlerTest {
 
         @Override
         public InstitutionListResponse getInstitutions(Language language) {
-            this.languageCode = language;
             return new InstitutionListResponse(Collections.emptyList());
         }
     }

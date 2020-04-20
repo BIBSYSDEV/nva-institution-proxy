@@ -16,7 +16,7 @@ public class LanguageMapper {
 
     public Language getLanguage(String languageCode) throws UnknownLanguageException {
         if (isNull(languageCode) || languageCode.isBlank()) {
-            return Language.NORWEGIAN_BOKMAAL;
+            return Language.DEFAULT_LANGUAGE;
         }
         logger.log(String.format(LOG_LANGUAGE_MAPPING_TEMPLATE, languageCode));
         return Language.getLanguage(languageCode);

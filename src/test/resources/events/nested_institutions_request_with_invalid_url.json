@@ -22,6 +22,7 @@
     "X-Forwarded-Proto": "http"
   },
   "body": {
-    "language": "nb"
+    "language": "en",
+    "uri": "http://get-info.no/invalid-path"
   }
 }

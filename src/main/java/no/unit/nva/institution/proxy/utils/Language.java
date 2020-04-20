@@ -16,6 +16,8 @@ public enum Language {
                                                         .collect(Collectors.joining(DELIMITER));
     public static final String UNKNOWN_LANGUAGE_TEMPLATE = "The language \"%s\" is not recognized, use one of %s";
 
+    public static final Language DEFAULT_LANGUAGE = NORWEGIAN_BOKMAAL;
+
     private String code;
 
     Language(String code) {

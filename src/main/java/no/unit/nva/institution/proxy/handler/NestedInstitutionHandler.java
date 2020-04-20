@@ -44,10 +44,12 @@ public class NestedInstitutionHandler extends ApiGatewayHandler<NestedInstitutio
     protected NestedInstitutionResponse processInput(NestedInstitutionRequest input,
                                                      RequestInfo requestInfo,
                                                      Context context) throws ApiGatewayException {
+
         CristinApiClient cristinApiClient = cristinApiClientSupplier.apply(logger);
         LanguageMapper languageMapper = new LanguageMapper(logger);
         URI uri = parseUri(input.getUri());
         Language language = languageMapper.getLanguage(input.getLanguage());
+
         if (uri.getPath().contains("institutions")) {
             return cristinApiClient.getNestedInstitution(uri, language);
         } else if (uri.getPath().contains("units")) {
@@ -59,6 +61,7 @@ public class NestedInstitutionHandler extends ApiGatewayHandler<NestedInstitutio
         } else {
             throw new UnrecognizedUriException(uri);
         }
+
         return null;
     }
 
