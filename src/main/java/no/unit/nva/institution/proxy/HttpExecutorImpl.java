@@ -84,8 +84,8 @@ public class HttpExecutorImpl extends HttpExecutor {
         List<URI> unitUris = getUnitUris(institutionUnit.getId(), language);
 
         for (URI subSubUnitUri : unitUris) {
-            SubSubUnitDto subSubUnitDto = attempt(() -> getSubSubUnitDto(subSubUnitUri, language)).orElseThrow(
-                this::handleError);
+            SubSubUnitDto subSubUnitDto = attempt(() -> getSubSubUnitDto(subSubUnitUri, language))
+                .orElseThrow(this::handleError);
             generator.addUnitToModel(subSubUnitUri, subSubUnitDto);
         }
         return new NestedInstitutionResponse(generator.getNestedInstitution());

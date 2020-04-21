@@ -33,7 +33,7 @@ dependencies {
     implementation group: 'org.apache.jena', name: 'jena-arq', version: '3.14.0'
 
     testImplementation group: 'com.github.BIBSYSDEV', name: 'nva-testutils', version: 'v0.1.5'
-    testImplementation group: 'com.github.BIBSYSDEV', name: 'nva-commons', version: '22682cb78'
+    testImplementation group: 'com.github.BIBSYSDEV', name: 'nva-commons', version: '0.1.7'
     testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter', version: junitVersion
     testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: junitVersion
     testImplementation group: 'com.github.stefanbirkner', name: 'system-rules', version: '1.19.0'
