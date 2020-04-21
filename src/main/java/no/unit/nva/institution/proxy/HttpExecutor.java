@@ -23,9 +23,8 @@ public abstract class HttpExecutor {
 
     public abstract InstitutionListResponse getInstitutions(Language language) throws GatewayException;
 
-    public abstract NestedInstitutionResponse getNestedInstitution(URI uri, Language language) throws
-                                                                                               GatewayException,
-                                                                                               InvalidUriException;
+    public abstract NestedInstitutionResponse getNestedInstitution(URI uri, Language language)
+        throws GatewayException, InvalidUriException;
 
     public abstract NestedInstitutionResponse getSingleUnit(URI uri, Language language)
         throws InterruptedException, ExecutionException, InvalidUriException, NonExistingUnitError, GatewayException;

@@ -32,9 +32,9 @@ public class HttpExecutorImpl extends HttpExecutor {
 
     public static final String NVA_INSTITUTIONS_LIST_CRAWLER = "NVA Institutions List Crawler";
     public static final String INSTITUTIONS_URI_TEMPLATE =
-        "https://api.cristin.no/v2/institutions?country=NO&per_page=1000000&lang=%s";
+        "https://api.cristin.no/v2/institutions?country=NO" + "&per_page=1000000&lang=%s";
     public static final String PARENT_UNIT_URI_TEMPLATE =
-        "https://api.cristin.no/v2/units?parent_unit_id=%s&per_page=20000";
+        "https://api.cristin.no/v2/units?parent_unit_id=%s&per_page" + "=20000";
     private final HttpClient httpClient;
 
     /**
@@ -43,9 +43,9 @@ public class HttpExecutorImpl extends HttpExecutor {
     @JacocoGenerated
     public HttpExecutorImpl() {
         this(HttpClient.newBuilder()
-                       .followRedirects(HttpClient.Redirect.ALWAYS)
-                       .connectTimeout(Duration.ofSeconds(30))
-                       .build());
+            .followRedirects(HttpClient.Redirect.ALWAYS)
+            .connectTimeout(Duration.ofSeconds(30))
+            .build());
     }
 
     public HttpExecutorImpl(HttpClient client) {
@@ -55,28 +55,26 @@ public class HttpExecutorImpl extends HttpExecutor {
 
     private CompletableFuture<HttpResponse<String>> sendHttpRequest(URI uri) {
         HttpRequest httpRequest = HttpRequest.newBuilder()
-                                             .GET()
-                                             .header(ACCEPT, APPLICATION_JSON.getMimeType())
-                                             .header(USER_AGENT, NVA_INSTITUTIONS_LIST_CRAWLER)
-                                             .uri(uri)
-                                             .build();
+            .GET()
+            .header(ACCEPT, APPLICATION_JSON.getMimeType())
+            .header(USER_AGENT, NVA_INSTITUTIONS_LIST_CRAWLER)
+            .uri(uri)
+            .build();
         return httpClient.sendAsync(httpRequest, BodyHandlers.ofString());
     }
 
     @Override
     public InstitutionListResponse getInstitutions(Language language) throws GatewayException {
         URI uri = URI.create(generateInstitutionsQueryUri(language));
-        return attempt(() -> sendHttpRequest(uri).get())
-            .map(this::throwExceptionIfNotSuccessful)
+        return attempt(() -> sendHttpRequest(uri).get()).map(this::throwExceptionIfNotSuccessful)
             .map(HttpResponse::body)
             .map(this::toInstitutionListResponse)
             .orElseThrow(this::handleError);
     }
 
     @Override
-    public NestedInstitutionResponse getNestedInstitution(URI uri, Language language) throws
-                                                                                      GatewayException,
-                                                                                      InvalidUriException {
+    public NestedInstitutionResponse getNestedInstitution(URI uri, Language language)
+        throws GatewayException, InvalidUriException {
         URI unitUri = getInstitutionUnitUri(uri, language);
         InstitutionBaseDto institutionUnit = getInstitutionBaseDto(unitUri, language);
 
@@ -86,8 +84,8 @@ public class HttpExecutorImpl extends HttpExecutor {
         List<URI> unitUris = getUnitUris(institutionUnit.getId(), language);
 
         for (URI subSubUnitUri : unitUris) {
-            SubSubUnitDto subSubUnitDto = attempt(() -> getSubSubUnitDto(subSubUnitUri, language))
-                .orElseThrow(this::handleError);
+            SubSubUnitDto subSubUnitDto = attempt(() -> getSubSubUnitDto(subSubUnitUri, language)).orElseThrow(
+                this::handleError);
             generator.addUnitToModel(subSubUnitUri, subSubUnitDto);
         }
         return new NestedInstitutionResponse(generator.getNestedInstitution());
@@ -96,8 +94,8 @@ public class HttpExecutorImpl extends HttpExecutor {
     @Override
     public NestedInstitutionResponse getSingleUnit(URI uri, Language language)
         throws InterruptedException, InvalidUriException, NonExistingUnitError, GatewayException {
-        SingleUnitHierarchyGenerator singleUnitHierarchyGenerator =
-            new SingleUnitHierarchyGenerator(uri, language, httpClient);
+        SingleUnitHierarchyGenerator singleUnitHierarchyGenerator = new SingleUnitHierarchyGenerator(uri, language,
+            httpClient);
         String json = singleUnitHierarchyGenerator.toJsonLd();
         return new NestedInstitutionResponse(json);
     }
