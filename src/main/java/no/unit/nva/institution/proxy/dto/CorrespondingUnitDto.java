@@ -5,6 +5,7 @@ import java.net.URI;
 import nva.commons.utils.JacocoGenerated;
 
 public class CorrespondingUnitDto {
+
     private String id;
     private URI uri;
 

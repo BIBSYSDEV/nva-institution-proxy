@@ -2,6 +2,7 @@ package no.unit.nva.institution.proxy.handler;
 
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.LambdaLogger;
+import java.util.function.Function;
 import no.unit.nva.institution.proxy.CristinApiClient;
 import no.unit.nva.institution.proxy.exception.GatewayException;
 import no.unit.nva.institution.proxy.exception.UnknownLanguageException;
@@ -13,8 +14,6 @@ import nva.commons.handlers.RequestInfo;
 import nva.commons.utils.Environment;
 import nva.commons.utils.JacocoGenerated;
 import org.apache.http.HttpStatus;
-
-import java.util.function.Function;
 
 public class InstitutionListHandler extends ApiGatewayHandler<InstitutionListRequest, InstitutionListResponse> {
 

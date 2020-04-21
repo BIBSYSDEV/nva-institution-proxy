@@ -1,42 +1,42 @@
 {
-  "@context" : {
-    "id" : "@id",
-    "type" : "@type",
-    "Institution" : "https://nva.unit.no/ontology#Institution",
-    "subunits" : {
-      "@id" : "https://nva.unit.no/ontology#subunits",
-      "@type" : "@id",
-      "@container" : "@set"
+  "@context": {
+    "id": "@id",
+    "type": "@type",
+    "Institution": "https://nva.unit.no/ontology#Institution",
+    "subunits": {
+      "@id": "https://nva.unit.no/ontology#subunits",
+      "@type": "@id",
+      "@container": "@set"
     },
-    "name" : "https://nva.unit.no/ontology#name"
+    "name": "https://nva.unit.no/ontology#name"
   },
-  "id" : "https://api.cristin.no/v2/units/1.0.0.0",
-  "type" : "Institution",
-  "name" : "Norwegian University of Small Hands and Feet",
-  "subunits" : [
+  "id": "https://api.cristin.no/v2/units/1.0.0.0",
+  "type": "Institution",
+  "name": "Norwegian University of Small Hands and Feet",
+  "subunits": [
     {
-      "id" : "https://api.cristin.no/v2/units/1.4.0.0",
-      "name" : "Welsh Language"
+      "id": "https://api.cristin.no/v2/units/1.4.0.0",
+      "name": "Welsh Language"
     },
     {
-      "id" : "https://api.cristin.no/v2/units/1.3.0.0",
-      "name" : "Cultural Studies"
+      "id": "https://api.cristin.no/v2/units/1.3.0.0",
+      "name": "Cultural Studies"
     },
     {
-      "id" : "https://api.cristin.no/v2/units/1.1.0.0",
-      "name" : "Administration",
-      "subunits" : [
+      "id": "https://api.cristin.no/v2/units/1.1.0.0",
+      "name": "Administration",
+      "subunits": [
         {
-          "id" : "https://api.cristin.no/v2/units/1.1.1.1",
-          "name" : "Administration committee one's little helper"
+          "id": "https://api.cristin.no/v2/units/1.1.1.1",
+          "name": "Administration committee one's little helper"
         },
         {
-          "id" : "https://api.cristin.no/v2/units/1.1.2.0",
-          "name" : "Administration committee two"
+          "id": "https://api.cristin.no/v2/units/1.1.2.0",
+          "name": "Administration committee two"
         },
         {
-          "id" : "https://api.cristin.no/v2/units/1.1.1.0",
-          "name" : "Administration committee one"
+          "id": "https://api.cristin.no/v2/units/1.1.1.0",
+          "name": "Administration committee one"
         }
       ]
     }

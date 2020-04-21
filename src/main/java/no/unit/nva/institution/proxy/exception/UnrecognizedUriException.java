@@ -1,9 +1,8 @@
 package no.unit.nva.institution.proxy.exception;
 
+import java.net.URI;
 import nva.commons.exceptions.ApiGatewayException;
 import org.apache.http.HttpStatus;
-
-import java.net.URI;
 
 public class UnrecognizedUriException extends ApiGatewayException {
 

@@ -202,9 +202,8 @@ public class NestedInstitutionHandlerTest extends HandlerTest {
         assertThat(response.getBodyObject(Problem.class).getDetail(), containsString(SOME_EXCEPTION_MESSAGE));
     }
 
-    private NestedInstitutionHandler handlerThatThrowsNestedInstitutionFailureException(String message) throws
-                                                                                                        InvalidUriException,
-                                                                                                        GatewayException {
+    private NestedInstitutionHandler handlerThatThrowsNestedInstitutionFailureException(String message)
+        throws InvalidUriException, GatewayException {
         CristinApiClient cristinClient = mock(CristinApiClient.class);
         IOException cause = new IOException(message);
         when(cristinClient.getNestedInstitution(any(URI.class), any(Language.class)))

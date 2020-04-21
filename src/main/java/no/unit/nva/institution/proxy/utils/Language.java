@@ -1,9 +1,8 @@
 package no.unit.nva.institution.proxy.utils;
 
-import no.unit.nva.institution.proxy.exception.UnknownLanguageException;
-
 import java.util.Arrays;
 import java.util.stream.Collectors;
+import no.unit.nva.institution.proxy.exception.UnknownLanguageException;
 
 public enum Language {
     ENGLISH("en"),

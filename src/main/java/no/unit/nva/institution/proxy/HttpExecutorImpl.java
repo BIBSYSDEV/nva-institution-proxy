@@ -1,5 +1,19 @@
 package no.unit.nva.institution.proxy;
 
+import static nva.commons.utils.attempt.Try.attempt;
+import static org.apache.http.HttpHeaders.ACCEPT;
+import static org.apache.http.HttpHeaders.USER_AGENT;
+import static org.apache.http.entity.ContentType.APPLICATION_JSON;
+
+import java.io.IOException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.net.http.HttpResponse.BodyHandlers;
+import java.time.Duration;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
 import no.unit.nva.institution.proxy.dto.InstitutionBaseDto;
 import no.unit.nva.institution.proxy.dto.SubSubUnitDto;
 import no.unit.nva.institution.proxy.exception.GatewayException;
@@ -14,30 +28,13 @@ import no.unit.nva.institution.proxy.utils.UriUtils;
 import nva.commons.utils.JacocoGenerated;
 import nva.commons.utils.attempt.Failure;
 
-import java.io.IOException;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.net.http.HttpResponse.BodyHandlers;
-import java.time.Duration;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
-
-import static nva.commons.utils.attempt.Try.attempt;
-import static org.apache.http.HttpHeaders.ACCEPT;
-import static org.apache.http.HttpHeaders.USER_AGENT;
-import static org.apache.http.entity.ContentType.APPLICATION_JSON;
-
-
 public class HttpExecutorImpl extends HttpExecutor {
 
     public static final String NVA_INSTITUTIONS_LIST_CRAWLER = "NVA Institutions List Crawler";
     public static final String INSTITUTIONS_URI_TEMPLATE =
-            "https://api.cristin.no/v2/institutions?country=NO&per_page=1000000&lang=%s";
+        "https://api.cristin.no/v2/institutions?country=NO&per_page=1000000&lang=%s";
     public static final String PARENT_UNIT_URI_TEMPLATE =
-            "https://api.cristin.no/v2/units?parent_unit_id=%s&per_page=20000";
+        "https://api.cristin.no/v2/units?parent_unit_id=%s&per_page=20000";
     private final HttpClient httpClient;
 
     /**
@@ -46,9 +43,9 @@ public class HttpExecutorImpl extends HttpExecutor {
     @JacocoGenerated
     public HttpExecutorImpl() {
         this(HttpClient.newBuilder()
-                .followRedirects(HttpClient.Redirect.ALWAYS)
-                .connectTimeout(Duration.ofSeconds(30))
-                .build());
+                       .followRedirects(HttpClient.Redirect.ALWAYS)
+                       .connectTimeout(Duration.ofSeconds(30))
+                       .build());
     }
 
     public HttpExecutorImpl(HttpClient client) {
@@ -58,11 +55,11 @@ public class HttpExecutorImpl extends HttpExecutor {
 
     private CompletableFuture<HttpResponse<String>> sendHttpRequest(URI uri) {
         HttpRequest httpRequest = HttpRequest.newBuilder()
-                .GET()
-                .header(ACCEPT, APPLICATION_JSON.getMimeType())
-                .header(USER_AGENT, NVA_INSTITUTIONS_LIST_CRAWLER)
-                .uri(uri)
-                .build();
+                                             .GET()
+                                             .header(ACCEPT, APPLICATION_JSON.getMimeType())
+                                             .header(USER_AGENT, NVA_INSTITUTIONS_LIST_CRAWLER)
+                                             .uri(uri)
+                                             .build();
         return httpClient.sendAsync(httpRequest, BodyHandlers.ofString());
     }
 
@@ -78,7 +75,8 @@ public class HttpExecutorImpl extends HttpExecutor {
 
     @Override
     public NestedInstitutionResponse getNestedInstitution(URI uri, Language language) throws
-            GatewayException, InvalidUriException {
+                                                                                      GatewayException,
+                                                                                      InvalidUriException {
         URI unitUri = getInstitutionUnitUri(uri, language);
         InstitutionBaseDto institutionUnit = getInstitutionBaseDto(unitUri, language);
 
@@ -96,9 +94,10 @@ public class HttpExecutorImpl extends HttpExecutor {
     }
 
     @Override
-    public NestedInstitutionResponse getSingleUnit(URI uri, Language language) throws InterruptedException,
-            ExecutionException, InvalidUriException, NonExistingUnitError {
-        SingleUnitHierarchyGenerator singleUnitHierarchyGenerator = new SingleUnitHierarchyGenerator(uri, language);
+    public NestedInstitutionResponse getSingleUnit(URI uri, Language language)
+        throws InterruptedException, InvalidUriException, NonExistingUnitError, GatewayException {
+        SingleUnitHierarchyGenerator singleUnitHierarchyGenerator =
+            new SingleUnitHierarchyGenerator(uri, language, httpClient);
         String json = singleUnitHierarchyGenerator.toJsonLd();
         return new NestedInstitutionResponse(json);
     }

@@ -19,7 +19,7 @@ public class LanguageMapperTest {
     private LanguageMapper languageMapper;
 
     /**
-     * setup
+     * Setup.
      */
     @BeforeEach
     public void setUp() {
