@@ -1,19 +1,18 @@
 package no.unit.nva.institution.proxy.utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import no.unit.nva.institution.proxy.response.InstitutionListResponse;
-import no.unit.nva.institution.proxy.response.InstitutionResponse;
-import no.unit.nva.institution.proxy.dto.InstitutionBaseDto;
-import no.unit.nva.institution.proxy.dto.InstitutionDto;
-import no.unit.nva.institution.proxy.dto.SubSubUnitDto;
-import no.unit.nva.institution.proxy.dto.SubUnitDto;
-import nva.commons.utils.JsonUtils;
-
 import java.io.IOException;
 import java.net.URI;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import no.unit.nva.institution.proxy.dto.InstitutionBaseDto;
+import no.unit.nva.institution.proxy.dto.InstitutionDto;
+import no.unit.nva.institution.proxy.dto.SubSubUnitDto;
+import no.unit.nva.institution.proxy.dto.SubUnitDto;
+import no.unit.nva.institution.proxy.response.InstitutionListResponse;
+import no.unit.nva.institution.proxy.response.InstitutionResponse;
+import nva.commons.utils.JsonUtils;
 
 public final class InstitutionUtils {
 
@@ -31,15 +30,15 @@ public final class InstitutionUtils {
      * @throws IOException when the parsing of the JSON string fails.
      */
     public static InstitutionListResponse toInstitutionListResponse(String institutionsJson)
-            throws IOException {
+        throws IOException {
         try {
             List<InstitutionDto> institutions = Arrays.asList(
-                    JsonUtils.jsonParser.readValue(institutionsJson, InstitutionDto[].class));
+                JsonUtils.jsonParser.readValue(institutionsJson, InstitutionDto[].class));
             return new InstitutionListResponse(institutions
-                    .stream()
-                    .filter(InstitutionDto::isCristinUser)
-                    .map(InstitutionUtils::toInstitutionResponse)
-                    .collect(Collectors.toList()));
+                .stream()
+                .filter(InstitutionDto::isCristinUser)
+                .map(InstitutionUtils::toInstitutionResponse)
+                .collect(Collectors.toList()));
         } catch (IOException e) {
             throw new IOException(PARSE_ERROR + institutionsJson, e);
         }
@@ -47,9 +46,9 @@ public final class InstitutionUtils {
 
     private static InstitutionResponse toInstitutionResponse(InstitutionDto institutionDto) {
         return new InstitutionResponse.Builder()
-                .withId(institutionDto.getUri())
-                .withName(InstitutionUtils.getAnyName(institutionDto))
-                .build();
+            .withId(institutionDto.getUri())
+            .withName(InstitutionUtils.getAnyName(institutionDto))
+            .build();
     }
 
     private static String getAnyName(InstitutionDto institutionDto) {
@@ -82,7 +81,6 @@ public final class InstitutionUtils {
         try {
             List<SubUnitDto> subUnitDtos = Arrays.asList(JsonUtils.jsonParser.readValue(json, SubUnitDto[].class));
             return subUnitDtos.stream().map(InstitutionUtils::getSubunitUri).collect(Collectors.toList());
-
         } catch (JsonProcessingException e) {
             throw new IOException(PARSE_ERROR + json, e);
         }
@@ -94,6 +92,7 @@ public final class InstitutionUtils {
 
     /**
      * Generate a Subunit from Cristin json.
+     *
      * @param json JSON string for object
      * @return A SubUnitDto
      * @throws IOException Thrown if the JSON cannot be parsed

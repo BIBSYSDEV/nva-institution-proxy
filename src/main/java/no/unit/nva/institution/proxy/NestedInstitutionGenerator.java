@@ -1,11 +1,10 @@
 package no.unit.nva.institution.proxy;
 
-import no.unit.nva.institution.proxy.dto.SubSubUnitDto;
-import no.unit.nva.institution.proxy.utils.ModelUtils;
+import static no.unit.nva.institution.proxy.utils.MapUtils.getNameValue;
 
 import java.net.URI;
-
-import static no.unit.nva.institution.proxy.utils.MapUtils.getNameValue;
+import no.unit.nva.institution.proxy.dto.SubSubUnitDto;
+import no.unit.nva.institution.proxy.utils.ModelUtils;
 
 public class NestedInstitutionGenerator {
 

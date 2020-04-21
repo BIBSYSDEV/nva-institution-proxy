@@ -28,15 +28,15 @@ import org.apache.jena.vocabulary.RDF;
 public class ModelUtils {
 
     public static final Property SUBUNITS_PROPERTY = ResourceFactory
-            .createProperty("https://nva.unit.no/ontology#subunits");
+        .createProperty("https://nva.unit.no/ontology#subunits");
     public static final Property NAME_PROPERTY = ResourceFactory
-            .createProperty("https://nva.unit.no/ontology#name");
+        .createProperty("https://nva.unit.no/ontology#name");
     public static final Resource INSTITUTION_CLASS = ResourceFactory
-            .createResource("https://nva.unit.no/ontology#Institution");
+        .createResource("https://nva.unit.no/ontology#Institution");
     public static final PrefixMap UNIT_PREFIX_MAP = PrefixMapFactory
-            .create(Collections.singletonMap("unit", "https://nva.unit.no/ontology#"));
+        .create(Collections.singletonMap("unit", "https://nva.unit.no/ontology#"));
     public static final String FRAME = IoUtils.stringFromResources(
-            Path.of("frame.jsonld"));
+        Path.of("frame.jsonld"));
 
     private final Model model;
 
@@ -82,7 +82,7 @@ public class ModelUtils {
         StringWriter stringWriter = new StringWriter();
         DatasetGraph dataset = DatasetFactory.create(model).asDatasetGraph();
         new JsonLDWriter(JSONLD_FRAME_PRETTY).write(stringWriter, dataset, UNIT_PREFIX_MAP, null,
-                getJsonLDWriteContext());
+            getJsonLDWriteContext());
         return stringWriter.toString();
     }
 
@@ -95,6 +95,7 @@ public class ModelUtils {
 
     /**
      * Serialize to Turtle.
+     *
      * @return a String in Turtle format.
      */
     public String toTurtle() {

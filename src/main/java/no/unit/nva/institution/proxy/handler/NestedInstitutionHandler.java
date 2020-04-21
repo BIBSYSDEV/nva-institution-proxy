@@ -2,6 +2,9 @@ package no.unit.nva.institution.proxy.handler;
 
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.LambdaLogger;
+import java.net.URI;
+import java.util.concurrent.ExecutionException;
+import java.util.function.Function;
 import no.unit.nva.institution.proxy.CristinApiClient;
 import no.unit.nva.institution.proxy.exception.InvalidUriException;
 import no.unit.nva.institution.proxy.exception.UnrecognizedUriException;
@@ -15,10 +18,6 @@ import nva.commons.handlers.RequestInfo;
 import nva.commons.utils.Environment;
 import nva.commons.utils.JacocoGenerated;
 import org.apache.http.HttpStatus;
-
-import java.net.URI;
-import java.util.concurrent.ExecutionException;
-import java.util.function.Function;
 
 public class NestedInstitutionHandler extends ApiGatewayHandler<NestedInstitutionRequest, NestedInstitutionResponse> {
 
@@ -44,10 +43,12 @@ public class NestedInstitutionHandler extends ApiGatewayHandler<NestedInstitutio
     protected NestedInstitutionResponse processInput(NestedInstitutionRequest input,
                                                      RequestInfo requestInfo,
                                                      Context context) throws ApiGatewayException {
+
         CristinApiClient cristinApiClient = cristinApiClientSupplier.apply(logger);
         LanguageMapper languageMapper = new LanguageMapper(logger);
         URI uri = parseUri(input.getUri());
         Language language = languageMapper.getLanguage(input.getLanguage());
+
         if (uri.getPath().contains("institutions")) {
             return cristinApiClient.getNestedInstitution(uri, language);
         } else if (uri.getPath().contains("units")) {
@@ -59,6 +60,7 @@ public class NestedInstitutionHandler extends ApiGatewayHandler<NestedInstitutio
         } else {
             throw new UnrecognizedUriException(uri);
         }
+
         return null;
     }
 

@@ -13,8 +13,9 @@ public final class UriUtils {
     }
 
     /**
-     *  Add the language parameter in the Request URI.
-     * @param uri the Institution or Unit URI.
+     * Add the language parameter in the Request URI.
+     *
+     * @param uri      the Institution or Unit URI.
      * @param language the language code ("en", "nb", "nn").
      * @return the URI with the Language parameter
      * @throws InvalidUriException when the input URI is invalid.
@@ -23,6 +24,16 @@ public final class UriUtils {
         try {
             return new URIBuilder(uri)
                 .setParameter(QUERY_PARAM_LANGUAGE, language.getCode()).build();
+        } catch (URISyntaxException e) {
+            throw new InvalidUriException(e.getReason());
+        }
+    }
+
+    public static URI clearParameters(URI uri) throws InvalidUriException {
+        try {
+            URI result = new URIBuilder(uri)
+                .clearParameters().build();
+            return result;
         } catch (URISyntaxException e) {
             throw new InvalidUriException(e.getReason());
         }

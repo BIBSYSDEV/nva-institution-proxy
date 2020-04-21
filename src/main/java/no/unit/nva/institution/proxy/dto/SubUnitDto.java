@@ -28,7 +28,7 @@ public class SubUnitDto {
      * @param id          the Cristin ID.
      * @param name        the unit name.
      * @param institution the institution properties.
-     * @param uri         the intitution URI.
+     * @param uri         the institution URI.
      * @param acronym     the institution Acronym.
      */
     public SubUnitDto(@JsonProperty("cristin_unit_id") String id,

@@ -4,6 +4,7 @@ import nva.commons.exceptions.ApiGatewayException;
 import org.apache.http.HttpStatus;
 
 public class NonExistingUnitError extends ApiGatewayException {
+
     public static final String MESSAGE_TEMPLATE = "The URI \"%s\" cannot be dereferenced";
 
     public NonExistingUnitError(String uriString) {

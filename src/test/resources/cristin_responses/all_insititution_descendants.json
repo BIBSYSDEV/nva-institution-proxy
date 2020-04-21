@@ -1,0 +1,8021 @@
+[
+  {
+    "cristin_unit_id": "185.11.0.0",
+    "unit_name": {
+      "en": "Faculty of Theology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.11.0.0",
+    "acronym": "TF"
+  },
+  {
+    "cristin_unit_id": "185.11.0.10",
+    "unit_name": {
+      "en": "Faculty Administration"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.11.0.10",
+    "acronym": "FAKSEKR"
+  },
+  {
+    "cristin_unit_id": "185.11.0.20",
+    "unit_name": {
+      "nb": "Fagseksjonen"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.11.0.20",
+    "acronym": "FAGSEK"
+  },
+  {
+    "cristin_unit_id": "185.11.0.30",
+    "unit_name": {
+      "nb": "Kompetansehevende studier"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.11.0.30",
+    "acronym": "AKS"
+  },
+  {
+    "cristin_unit_id": "185.11.0.40",
+    "unit_name": {
+      "nb": "Religion i pluralistiske samfunn"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.11.0.40",
+    "acronym": "PLUREL"
+  },
+  {
+    "cristin_unit_id": "185.12.0.0",
+    "unit_name": {
+      "en": "Faculty of Law"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.12.0.0",
+    "acronym": "JF"
+  },
+  {
+    "cristin_unit_id": "185.12.0.10",
+    "unit_name": {
+      "en": "Faculty Administration"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.12.0.10",
+    "acronym": "FAKSEKR"
+  },
+  {
+    "cristin_unit_id": "185.12.0.11",
+    "unit_name": {
+      "nb": "Administrasjonsseksjonen"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.12.0.11",
+    "acronym": "ADSEK"
+  },
+  {
+    "cristin_unit_id": "185.12.0.12",
+    "unit_name": {
+      "nb": "IT-seksjonen"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.12.0.12",
+    "acronym": "ITSEK"
+  },
+  {
+    "cristin_unit_id": "185.12.0.13",
+    "unit_name": {
+      "nb": "Økonomiseksjonen"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.12.0.13",
+    "acronym": "ØSEK"
+  },
+  {
+    "cristin_unit_id": "185.12.0.14",
+    "unit_name": {
+      "en": "Examinations Office"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.12.0.14",
+    "acronym": "EKSSEK"
+  },
+  {
+    "cristin_unit_id": "185.12.0.15",
+    "unit_name": {
+      "en": "Communication Section"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.12.0.15",
+    "acronym": "KSJUS"
+  },
+  {
+    "cristin_unit_id": "185.12.0.40",
+    "unit_name": {
+      "en": "Student Office"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.12.0.40",
+    "acronym": "STUDJUS"
+  },
+  {
+    "cristin_unit_id": "185.12.1.0",
+    "unit_name": {
+      "en": "Department of Criminology and Sociology of Law"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.12.1.0",
+    "acronym": "IKRS"
+  },
+  {
+    "cristin_unit_id": "185.12.1.10",
+    "unit_name": {
+      "en": "Law Student's Free Legal Aid Organization"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.12.1.10",
+    "acronym": "JB"
+  },
+  {
+    "cristin_unit_id": "185.12.2.0",
+    "unit_name": {
+      "en": "Department of Private Law"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.12.2.0",
+    "acronym": "IFP"
+  },
+  {
+    "cristin_unit_id": "185.12.4.0",
+    "unit_name": {
+      "en": "Scandinavian Institute of Maritime Law"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.12.4.0",
+    "acronym": "NIFS"
+  },
+  {
+    "cristin_unit_id": "185.12.5.0",
+    "unit_name": {
+      "en": "Department of Public and International Law"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.12.5.0",
+    "acronym": "IOR"
+  },
+  {
+    "cristin_unit_id": "185.12.5.10",
+    "unit_name": {
+      "en": "PluriCourts - Centre for the Study of the Legitimate Roles of the Judiciary in the Global Order"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.12.5.10",
+    "acronym": "PLURICOURT"
+  },
+  {
+    "cristin_unit_id": "185.12.7.0",
+    "unit_name": {
+      "en": "Norwegian Centre for Human Rights"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.12.7.0",
+    "acronym": "SMR"
+  },
+  {
+    "cristin_unit_id": "185.14.0.0",
+    "unit_name": {
+      "en": "Faculty of Humanities"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.0.0",
+    "acronym": "HF"
+  },
+  {
+    "cristin_unit_id": "185.14.0.10",
+    "unit_name": {
+      "en": "Faculty Administration"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.0.10",
+    "acronym": "HFFAKSEKR"
+  },
+  {
+    "cristin_unit_id": "185.14.0.11",
+    "unit_name": {
+      "en": "Research Section"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.0.11",
+    "acronym": "FORSKNING"
+  },
+  {
+    "cristin_unit_id": "185.14.0.12",
+    "unit_name": {
+      "nb": "IT-seksjonen"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.0.12",
+    "acronym": "ITHF"
+  },
+  {
+    "cristin_unit_id": "185.14.0.13",
+    "unit_name": {
+      "en": "Section for Human Resource and Archive Services"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.0.13",
+    "acronym": "HRARKHF"
+  },
+  {
+    "cristin_unit_id": "185.14.0.14",
+    "unit_name": {
+      "en": "Communications Section at The Faculty of Humanities"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.0.14",
+    "acronym": "KOMMSEK"
+  },
+  {
+    "cristin_unit_id": "185.14.0.15",
+    "unit_name": {
+      "nb": "Studieseksjonen"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.0.15",
+    "acronym": "HFSTUDIE"
+  },
+  {
+    "cristin_unit_id": "185.14.0.17",
+    "unit_name": {
+      "en": "UiO:Nordic"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.0.17",
+    "acronym": "UIONORDIC"
+  },
+  {
+    "cristin_unit_id": "185.14.0.18",
+    "unit_name": {
+      "en": "Finance Section"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.0.18",
+    "acronym": "ØKONOMI"
+  },
+  {
+    "cristin_unit_id": "185.14.0.53",
+    "unit_name": {
+      "en": "The Norwegian University Center in St. Petersburg"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.0.53",
+    "acronym": "DNUSP"
+  },
+  {
+    "cristin_unit_id": "185.14.0.54",
+    "unit_name": {
+      "nb": "Senter for fransk-norsk forskningssamarbeid innen samfunnsvitenskap og humaniora"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.0.54",
+    "acronym": "SFNF"
+  },
+  {
+    "cristin_unit_id": "185.14.9.0",
+    "unit_name": {
+      "en": "Department of Media and Communication"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.9.0",
+    "acronym": "IMK"
+  },
+  {
+    "cristin_unit_id": "185.14.13.0",
+    "unit_name": {
+      "nb": "Det norske institutt i Roma"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.13.0",
+    "acronym": "DNIR"
+  },
+  {
+    "cristin_unit_id": "185.14.31.0",
+    "unit_name": {
+      "en": "Department of Archaeology, Conservation and History"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.31.0",
+    "acronym": "IAKH"
+  },
+  {
+    "cristin_unit_id": "185.14.31.10",
+    "unit_name": {
+      "en": "Archaeology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.31.10",
+    "acronym": "AIAKH"
+  },
+  {
+    "cristin_unit_id": "185.14.31.20",
+    "unit_name": {
+      "en": "History"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.31.20",
+    "acronym": "HIS"
+  },
+  {
+    "cristin_unit_id": "185.14.31.21",
+    "unit_name": {
+      "en": "Forum for Contemporary History"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.31.21",
+    "acronym": "FOSAM"
+  },
+  {
+    "cristin_unit_id": "185.14.31.30",
+    "unit_name": {
+      "en": "Conservation"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.31.30",
+    "acronym": "KONS"
+  },
+  {
+    "cristin_unit_id": "185.14.31.40",
+    "unit_name": {
+      "en": "Centre for Viking and Medieval Culture"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.31.40",
+    "acronym": "MIDSTUD"
+  },
+  {
+    "cristin_unit_id": "185.14.31.50",
+    "unit_name": {
+      "en": "Norway's history online"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.31.50",
+    "acronym": "NHN"
+  },
+  {
+    "cristin_unit_id": "185.14.32.0",
+    "unit_name": {
+      "en": "Department of Culture Studies and Oriental Languages"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.32.0",
+    "acronym": "IKOS"
+  },
+  {
+    "cristin_unit_id": "185.14.32.10",
+    "unit_name": {
+      "nb": "Arkivkunnskap"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.32.10",
+    "acronym": "ARKKUN"
+  },
+  {
+    "cristin_unit_id": "185.14.32.25",
+    "unit_name": {
+      "en": "Environmental Humanities"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.32.25",
+    "acronym": "MILHUM"
+  },
+  {
+    "cristin_unit_id": "185.14.32.30",
+    "unit_name": {
+      "en": "Cultural History and Museology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.32.30",
+    "acronym": "KULMUS"
+  },
+  {
+    "cristin_unit_id": "185.14.32.40",
+    "unit_name": {
+      "en": "Middle East Studies"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.32.40",
+    "acronym": "MØS"
+  },
+  {
+    "cristin_unit_id": "185.14.32.50",
+    "unit_name": {
+      "en": "Religious Studies"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.32.50",
+    "acronym": "RELVIT"
+  },
+  {
+    "cristin_unit_id": "185.14.32.60",
+    "unit_name": {
+      "en": "Theatre Studies"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.32.60",
+    "acronym": "TEATER"
+  },
+  {
+    "cristin_unit_id": "185.14.32.70",
+    "unit_name": {
+      "en": "South Asia studies"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.32.70",
+    "acronym": "SASTUD"
+  },
+  {
+    "cristin_unit_id": "185.14.32.80",
+    "unit_name": {
+      "en": "Japan Studies"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.32.80",
+    "acronym": "JAP"
+  },
+  {
+    "cristin_unit_id": "185.14.32.85",
+    "unit_name": {
+      "en": "China Studies"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.32.85",
+    "acronym": "KIN"
+  },
+  {
+    "cristin_unit_id": "185.14.32.95",
+    "unit_name": {
+      "en": "Korea-studies"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.32.95",
+    "acronym": "KOR"
+  },
+  {
+    "cristin_unit_id": "185.14.33.0",
+    "unit_name": {
+      "en": "Department of Philosophy, Classics, History of Art and Ideas"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.33.0",
+    "acronym": "IFIKK"
+  },
+  {
+    "cristin_unit_id": "185.14.33.10",
+    "unit_name": {
+      "en": "Examen Philosophicum"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.33.10",
+    "acronym": "EXPHIL"
+  },
+  {
+    "cristin_unit_id": "185.14.33.20",
+    "unit_name": {
+      "en": "Philosophy"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.33.20",
+    "acronym": "FILOSOFI"
+  },
+  {
+    "cristin_unit_id": "185.14.33.30",
+    "unit_name": {
+      "en": "Classics"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.33.30",
+    "acronym": "GRELAT"
+  },
+  {
+    "cristin_unit_id": "185.14.33.40",
+    "unit_name": {
+      "en": "History of Ideas"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.33.40",
+    "acronym": "IHIS"
+  },
+  {
+    "cristin_unit_id": "185.14.33.50",
+    "unit_name": {
+      "en": "History of Art"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.33.50",
+    "acronym": "KUNHIS"
+  },
+  {
+    "cristin_unit_id": "185.14.33.60",
+    "unit_name": {
+      "en": "Ethics Programme"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.33.60",
+    "acronym": "ETPROG"
+  },
+  {
+    "cristin_unit_id": "185.14.33.70",
+    "unit_name": {
+      "en": "Centre for the Study of Mind in Nature"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.33.70",
+    "acronym": "CSMN"
+  },
+  {
+    "cristin_unit_id": "185.14.34.0",
+    "unit_name": {
+      "en": "Department of Literature, Area Studies and European Languages"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.34.0",
+    "acronym": "ILOS"
+  },
+  {
+    "cristin_unit_id": "185.14.34.10",
+    "unit_name": {
+      "nb": "Allmenn litteraturvitenskap"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.34.10",
+    "acronym": "LITVIT"
+  },
+  {
+    "cristin_unit_id": "185.14.34.20",
+    "unit_name": {
+      "nb": "Britisk-amerikansk"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.34.20",
+    "acronym": "BRITAM"
+  },
+  {
+    "cristin_unit_id": "185.14.34.21",
+    "unit_name": {
+      "en": "English Language Literature"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.34.21",
+    "acronym": "ENGLIT"
+  },
+  {
+    "cristin_unit_id": "185.14.34.22",
+    "unit_name": {
+      "en": "British North American"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.34.22",
+    "acronym": "BRITNORAM"
+  },
+  {
+    "cristin_unit_id": "185.14.34.30",
+    "unit_name": {
+      "nb": "Tysk og germansk"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.34.30",
+    "acronym": "TYSGER"
+  },
+  {
+    "cristin_unit_id": "185.14.34.31",
+    "unit_name": {
+      "en": "Dutch"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.34.31",
+    "acronym": "NED"
+  },
+  {
+    "cristin_unit_id": "185.14.34.40",
+    "unit_name": {
+      "nb": "Fransk"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.34.40",
+    "acronym": "FRANSK"
+  },
+  {
+    "cristin_unit_id": "185.14.34.41",
+    "unit_name": {
+      "en": "French Literature and Culture"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.34.41",
+    "acronym": "FRALIT"
+  },
+  {
+    "cristin_unit_id": "185.14.34.50",
+    "unit_name": {
+      "nb": "Ibero-romansk"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.34.50",
+    "acronym": "IBERO"
+  },
+  {
+    "cristin_unit_id": "185.14.34.60",
+    "unit_name": {
+      "nb": "Italiensk"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.34.60",
+    "acronym": "ITALIENSK"
+  },
+  {
+    "cristin_unit_id": "185.14.34.70",
+    "unit_name": {
+      "nb": "Russland, Sentral-Europa og Balkan"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.34.70",
+    "acronym": "RUSEBAL"
+  },
+  {
+    "cristin_unit_id": "185.14.34.71",
+    "unit_name": {
+      "nb": "Sentral-Europa og Balkan-studier"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.34.71",
+    "acronym": "SEBSTUD"
+  },
+  {
+    "cristin_unit_id": "185.14.34.90",
+    "unit_name": {
+      "nb": "KULTRANS"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.34.90",
+    "acronym": "KULTRANS"
+  },
+  {
+    "cristin_unit_id": "185.14.34.91",
+    "unit_name": {
+      "en": "Syntax and semantics"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.34.91",
+    "acronym": "SYNSEM"
+  },
+  {
+    "cristin_unit_id": "185.14.34.92",
+    "unit_name": {
+      "en": "Traveling Texts: Translation and Transnational Reception"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.34.92",
+    "acronym": "TRAVTXT"
+  },
+  {
+    "cristin_unit_id": "185.14.34.93",
+    "unit_name": {
+      "en": "Slavic/Eastern Europe"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.34.93",
+    "acronym": "SLAV/ØST"
+  },
+  {
+    "cristin_unit_id": "185.14.34.94",
+    "unit_name": {
+      "en": "Discourses of the Nation and the National"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.34.94",
+    "acronym": "DISCOURSES"
+  },
+  {
+    "cristin_unit_id": "185.14.35.0",
+    "unit_name": {
+      "nb": "Institutt for lingvistiske og nordiske studier"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.35.0",
+    "acronym": "ILN"
+  },
+  {
+    "cristin_unit_id": "185.14.35.10",
+    "unit_name": {
+      "nb": "Irsk"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.35.10",
+    "acronym": "IRSK"
+  },
+  {
+    "cristin_unit_id": "185.14.35.15",
+    "unit_name": {
+      "en": "Medieval Studies"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.35.15",
+    "acronym": "MAS"
+  },
+  {
+    "cristin_unit_id": "185.14.35.20",
+    "unit_name": {
+      "en": "Linguistics"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.35.20",
+    "acronym": "LINGILN"
+  },
+  {
+    "cristin_unit_id": "185.14.35.25",
+    "unit_name": {
+      "en": "Digital Documentation - Scientific"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.35.25",
+    "acronym": "DIGDOKVIT"
+  },
+  {
+    "cristin_unit_id": "185.14.35.30",
+    "unit_name": {
+      "en": "Nordic Language"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.35.30",
+    "acronym": "NORSPR"
+  },
+  {
+    "cristin_unit_id": "185.14.35.35",
+    "unit_name": {
+      "en": "Norwegian for International Students"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.35.35",
+    "acronym": "NORSKINT"
+  },
+  {
+    "cristin_unit_id": "185.14.35.40",
+    "unit_name": {
+      "en": "Nordic Literature"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.35.40",
+    "acronym": "NORLIT"
+  },
+  {
+    "cristin_unit_id": "185.14.35.46",
+    "unit_name": {
+      "en": "Rhetoric, Language and Communication"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.35.46",
+    "acronym": "RETKOM"
+  },
+  {
+    "cristin_unit_id": "185.14.35.47",
+    "unit_name": {
+      "en": "Unit for Digital Documentation"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.35.47",
+    "acronym": "EDD"
+  },
+  {
+    "cristin_unit_id": "185.14.35.48",
+    "unit_name": {
+      "en": "Text Laboratory"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.35.48",
+    "acronym": "TEKSTLAB"
+  },
+  {
+    "cristin_unit_id": "185.14.35.49",
+    "unit_name": {
+      "en": "Multilingualism"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.35.49",
+    "acronym": "FLERSPRÅK"
+  },
+  {
+    "cristin_unit_id": "185.14.35.60",
+    "unit_name": {
+      "nb": "Norsk Ordbok 2014"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.35.60",
+    "acronym": "NORDBOK"
+  },
+  {
+    "cristin_unit_id": "185.14.35.70",
+    "unit_name": {
+      "en": "Centre for Ibsen Studies"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.35.70",
+    "acronym": "IS"
+  },
+  {
+    "cristin_unit_id": "185.14.35.71",
+    "unit_name": {
+      "en": "Writings of Henrik Ibsen"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.35.71",
+    "acronym": "HISIS"
+  },
+  {
+    "cristin_unit_id": "185.14.35.80",
+    "unit_name": {
+      "en": "Center for Multilingualism in Society across the Lifespan"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.35.80",
+    "acronym": "MULTILING"
+  },
+  {
+    "cristin_unit_id": "185.14.36.0",
+    "unit_name": {
+      "en": "Department of Musicology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.36.0",
+    "acronym": "IMV"
+  },
+  {
+    "cristin_unit_id": "185.14.36.50",
+    "unit_name": {
+      "en": "Centre for Interdisciplinary Studies in Rhythm, Time and Motion (IMV)"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.36.50",
+    "acronym": "IMVRITMO"
+  },
+  {
+    "cristin_unit_id": "185.14.36.95",
+    "unit_name": {
+      "en": "Centre for Interdisciplinary Studies in Rhythm, Time and Motion (IMV)"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.14.36.95",
+    "acronym": "IMVRITMO"
+  },
+  {
+    "cristin_unit_id": "185.15.0.0",
+    "unit_name": {
+      "en": "Faculty of Mathematics and Natural Sciences"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.0.0",
+    "acronym": "MATNAT"
+  },
+  {
+    "cristin_unit_id": "185.15.0.10",
+    "unit_name": {
+      "en": "The Faculty of Mathematics and Natural Sciences - Management"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.0.10",
+    "acronym": "FAKSEKR"
+  },
+  {
+    "cristin_unit_id": "185.15.0.11",
+    "unit_name": {
+      "nb": "Fakultetsledelsen ved det matematisk-naturvitenskapelige fakultet"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.0.11",
+    "acronym": "LEDMATNAT"
+  },
+  {
+    "cristin_unit_id": "185.15.0.12",
+    "unit_name": {
+      "nb": "Det matematisk-naturvitenskapelige fakultet fakultetssekretariatet fellestiltak"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.0.12",
+    "acronym": "FELLES"
+  },
+  {
+    "cristin_unit_id": "185.15.0.15",
+    "unit_name": {
+      "en": "Studies Section"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.0.15",
+    "acronym": "STUDSEK"
+  },
+  {
+    "cristin_unit_id": "185.15.0.16",
+    "unit_name": {
+      "en": "Communication and HR Section"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.0.16",
+    "acronym": "KOMMHRSEK"
+  },
+  {
+    "cristin_unit_id": "185.15.0.17",
+    "unit_name": {
+      "en": "Communication Section"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.0.17",
+    "acronym": "KOMMSEK"
+  },
+  {
+    "cristin_unit_id": "185.15.0.18",
+    "unit_name": {
+      "en": "HR Section"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.0.18",
+    "acronym": "HRSEK"
+  },
+  {
+    "cristin_unit_id": "185.15.0.19",
+    "unit_name": {
+      "en": "Section for Research"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.0.19",
+    "acronym": "MNFA"
+  },
+  {
+    "cristin_unit_id": "185.15.0.21",
+    "unit_name": {
+      "en": "Finance Section"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.0.21",
+    "acronym": "ØKSEK"
+  },
+  {
+    "cristin_unit_id": "185.15.0.22",
+    "unit_name": {
+      "en": "Department of Finance"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.0.22",
+    "acronym": "INSTAVD"
+  },
+  {
+    "cristin_unit_id": "185.15.0.23",
+    "unit_name": {
+      "en": "Projects Department"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.0.23",
+    "acronym": "PROAVD"
+  },
+  {
+    "cristin_unit_id": "185.15.0.24",
+    "unit_name": {
+      "en": "Accounting Department"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.0.24",
+    "acronym": "REGNAVD"
+  },
+  {
+    "cristin_unit_id": "185.15.0.30",
+    "unit_name": {
+      "nb": "Universitetsstudiene på Kjeller"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.0.30",
+    "acronym": "UNIK"
+  },
+  {
+    "cristin_unit_id": "185.15.3.0",
+    "unit_name": {
+      "en": "Institute of Theoretical Astrophysics"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.3.0",
+    "acronym": "ASTRO"
+  },
+  {
+    "cristin_unit_id": "185.15.3.40",
+    "unit_name": {
+      "en": "Rosseland Centre for Solar Physics"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.3.40",
+    "acronym": "ROCS"
+  },
+  {
+    "cristin_unit_id": "185.15.4.0",
+    "unit_name": {
+      "en": "Department of physics"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.4.0",
+    "acronym": "FYSIKK"
+  },
+  {
+    "cristin_unit_id": "185.15.4.2",
+    "unit_name": {
+      "en": "Department of physics - IT"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.4.2",
+    "acronym": "FYSIT"
+  },
+  {
+    "cristin_unit_id": "185.15.4.3",
+    "unit_name": {
+      "en": "Electronics workshop"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.4.3",
+    "acronym": "ELAB"
+  },
+  {
+    "cristin_unit_id": "185.15.4.5",
+    "unit_name": {
+      "en": "Physics Education"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.4.5",
+    "acronym": "SKOLELAB"
+  },
+  {
+    "cristin_unit_id": "185.15.4.6",
+    "unit_name": {
+      "en": "Instrumentation Laboratory"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.4.6",
+    "acronym": "ILAB"
+  },
+  {
+    "cristin_unit_id": "185.15.4.10",
+    "unit_name": {
+      "en": "Condensed Matter Physics"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.4.10",
+    "acronym": "KONDFYS"
+  },
+  {
+    "cristin_unit_id": "185.15.4.20",
+    "unit_name": {
+      "en": "Nuclear and Energy Physics"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.4.20",
+    "acronym": "KEF"
+  },
+  {
+    "cristin_unit_id": "185.15.4.30",
+    "unit_name": {
+      "en": "Electronics"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.4.30",
+    "acronym": "ELEKTR"
+  },
+  {
+    "cristin_unit_id": "185.15.4.40",
+    "unit_name": {
+      "en": "Structure Physics"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.4.40",
+    "acronym": "STRUKT"
+  },
+  {
+    "cristin_unit_id": "185.15.4.50",
+    "unit_name": {
+      "en": "Biophysics and Medical Physics"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.4.50",
+    "acronym": "BIOFYS"
+  },
+  {
+    "cristin_unit_id": "185.15.4.60",
+    "unit_name": {
+      "en": "High Energy Physics"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.4.60",
+    "acronym": "HEP"
+  },
+  {
+    "cristin_unit_id": "185.15.4.70",
+    "unit_name": {
+      "en": "Plasma and Space Physics"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.4.70",
+    "acronym": "ROMFYS"
+  },
+  {
+    "cristin_unit_id": "185.15.4.80",
+    "unit_name": {
+      "en": "Theoretical Physics"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.4.80",
+    "acronym": "TEORI"
+  },
+  {
+    "cristin_unit_id": "185.15.4.90",
+    "unit_name": {
+      "en": "Semiconductor physics"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.4.90",
+    "acronym": "LENS"
+  },
+  {
+    "cristin_unit_id": "185.15.4.95",
+    "unit_name": {
+      "en": "Norwegian Micro- and NanoFabrication Facility laboratory"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.4.95",
+    "acronym": "NORFAB"
+  },
+  {
+    "cristin_unit_id": "185.15.4.98",
+    "unit_name": {
+      "en": "Porous Media Laboratory SFF"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.4.98",
+    "acronym": "PORELAB"
+  },
+  {
+    "cristin_unit_id": "185.15.4.99",
+    "unit_name": {
+      "en": "Center for Computing in Science Education"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.4.99",
+    "acronym": "CCSE"
+  },
+  {
+    "cristin_unit_id": "185.15.5.0",
+    "unit_name": {
+      "en": "Department for Informatics"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.5.0",
+    "acronym": "IFI"
+  },
+  {
+    "cristin_unit_id": "185.15.5.10",
+    "unit_name": {
+      "en": "Administration"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.5.10",
+    "acronym": "IFIADM"
+  },
+  {
+    "cristin_unit_id": "185.15.5.11",
+    "unit_name": {
+      "en": "Student Administration"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.5.11",
+    "acronym": "STUDADM"
+  },
+  {
+    "cristin_unit_id": "185.15.5.12",
+    "unit_name": {
+      "en": "IT Services Group"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.5.12",
+    "acronym": "DRIFT"
+  },
+  {
+    "cristin_unit_id": "185.15.5.20",
+    "unit_name": {
+      "en": "IT-systems Administrative Division"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.5.20",
+    "acronym": "DRIFT"
+  },
+  {
+    "cristin_unit_id": "185.15.5.25",
+    "unit_name": {
+      "en": "Programming"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.5.25",
+    "acronym": "PROG"
+  },
+  {
+    "cristin_unit_id": "185.15.5.31",
+    "unit_name": {
+      "en": "Research Group for Programming and Software Engineering"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.5.31",
+    "acronym": "PSE"
+  },
+  {
+    "cristin_unit_id": "185.15.5.32",
+    "unit_name": {
+      "en": "Reliable Systems"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.5.32",
+    "acronym": "PSY"
+  },
+  {
+    "cristin_unit_id": "185.15.5.35",
+    "unit_name": {
+      "en": "Research Group for Biomedical Informatics"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.5.35",
+    "acronym": "BMI"
+  },
+  {
+    "cristin_unit_id": "185.15.5.37",
+    "unit_name": {
+      "en": "Analytical Solutions & Reasoning"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.5.37",
+    "acronym": "ASR"
+  },
+  {
+    "cristin_unit_id": "185.15.5.38",
+    "unit_name": {
+      "en": "Studielaben"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.5.38",
+    "acronym": "STUDIELAB"
+  },
+  {
+    "cristin_unit_id": "185.15.5.40",
+    "unit_name": {
+      "en": "Resarch Group for Nanoelectronic systems"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.5.40",
+    "acronym": "NANO"
+  },
+  {
+    "cristin_unit_id": "185.15.5.42",
+    "unit_name": {
+      "en": "Research Group for Robotics and Intelligent Systems"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.5.42",
+    "acronym": "ROBIN"
+  },
+  {
+    "cristin_unit_id": "185.15.5.43",
+    "unit_name": {
+      "en": "Research Group for Biomedical Informatics"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.5.43",
+    "acronym": "BMI"
+  },
+  {
+    "cristin_unit_id": "185.15.5.44",
+    "unit_name": {
+      "en": "Resarch Group for Nanoelectronic systems"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.5.44",
+    "acronym": "NANO"
+  },
+  {
+    "cristin_unit_id": "185.15.5.45",
+    "unit_name": {
+      "en": "Machine Learning"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.5.45",
+    "acronym": "ML"
+  },
+  {
+    "cristin_unit_id": "185.15.5.46",
+    "unit_name": {
+      "en": "Research Group for Robotics and Intelligent Systems"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.5.46",
+    "acronym": "ROBIN"
+  },
+  {
+    "cristin_unit_id": "185.15.5.47",
+    "unit_name": {
+      "en": "Research Group for Digital Signal Processing and Image Analysis"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.5.47",
+    "acronym": "DSB"
+  },
+  {
+    "cristin_unit_id": "185.15.5.48",
+    "unit_name": {
+      "en": "Research Group for Language Technology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.5.48",
+    "acronym": "LTG"
+  },
+  {
+    "cristin_unit_id": "185.15.5.51",
+    "unit_name": {
+      "en": "Research Group for Digital Signal Processing and Image Analysis"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.5.51",
+    "acronym": "DSB"
+  },
+  {
+    "cristin_unit_id": "185.15.5.56",
+    "unit_name": {
+      "en": "Research Group for Language Technology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.5.56",
+    "acronym": "LTG"
+  },
+  {
+    "cristin_unit_id": "185.15.5.61",
+    "unit_name": {
+      "en": "Research Group for Information Systems"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.5.61",
+    "acronym": "IS"
+  },
+  {
+    "cristin_unit_id": "185.15.5.62",
+    "unit_name": {
+      "en": "Research Group for Design of Information Systems"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.5.62",
+    "acronym": "DESIGN"
+  },
+  {
+    "cristin_unit_id": "185.15.5.70",
+    "unit_name": {
+      "en": "Research Group for Distributed MultiMedia Systems"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.5.70",
+    "acronym": "DMMS"
+  },
+  {
+    "cristin_unit_id": "185.15.5.71",
+    "unit_name": {
+      "en": "Digital Infrastructures and Security"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.5.71",
+    "acronym": "DIAS"
+  },
+  {
+    "cristin_unit_id": "185.15.5.75",
+    "unit_name": {
+      "en": "Digital infrastructure and security"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.5.75",
+    "acronym": "DIS"
+  },
+  {
+    "cristin_unit_id": "185.15.5.80",
+    "unit_name": {
+      "en": "Centre for Scalable Data Access"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.5.80",
+    "acronym": "SIRIUS"
+  },
+  {
+    "cristin_unit_id": "185.15.5.90",
+    "unit_name": {
+      "en": "Digitization and Entrepreneurship"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.5.90",
+    "acronym": "DIGENT"
+  },
+  {
+    "cristin_unit_id": "185.15.5.91",
+    "unit_name": {
+      "en": "Digitalisation"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.5.91",
+    "acronym": "DIG"
+  },
+  {
+    "cristin_unit_id": "185.15.5.95",
+    "unit_name": {
+      "nb": "Senter for tverrfaglig forskning på rytme, tid og bevegelse (IFI)"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.5.95",
+    "acronym": "IFIRITMO"
+  },
+  {
+    "cristin_unit_id": "185.15.12.0",
+    "unit_name": {
+      "en": "Department of Chemistry"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.12.0",
+    "acronym": "KJEMI"
+  },
+  {
+    "cristin_unit_id": "185.15.12.10",
+    "unit_name": {
+      "en": "Technical and administrative staff"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.12.10",
+    "acronym": "ADM-TEKN"
+  },
+  {
+    "cristin_unit_id": "185.15.12.11",
+    "unit_name": {
+      "en": "Administrativ staff"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.12.11",
+    "acronym": "KI-ADM"
+  },
+  {
+    "cristin_unit_id": "185.15.12.12",
+    "unit_name": {
+      "en": "Technical staff"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.12.12",
+    "acronym": "KI-TEKN"
+  },
+  {
+    "cristin_unit_id": "185.15.12.20",
+    "unit_name": {
+      "en": "Innovative Natural Gas Processes and Products"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.12.20",
+    "acronym": "INGAP"
+  },
+  {
+    "cristin_unit_id": "185.15.12.40",
+    "unit_name": {
+      "en": "Centre for Theoretical and Computational Chemistry"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.12.40",
+    "acronym": "CTCC"
+  },
+  {
+    "cristin_unit_id": "185.15.12.52",
+    "unit_name": {
+      "en": "Solid state electrochemistry"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.12.52",
+    "acronym": "FASE"
+  },
+  {
+    "cristin_unit_id": "185.15.12.54",
+    "unit_name": {
+      "en": "Catalysis"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.12.54",
+    "acronym": "KAT"
+  },
+  {
+    "cristin_unit_id": "185.15.12.57",
+    "unit_name": {
+      "en": "Organic chemistry"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.12.57",
+    "acronym": "ORG"
+  },
+  {
+    "cristin_unit_id": "185.15.12.58",
+    "unit_name": {
+      "en": "Polymer and surface chemistry"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.12.58",
+    "acronym": "POK"
+  },
+  {
+    "cristin_unit_id": "185.15.12.59",
+    "unit_name": {
+      "en": "Theoretical chemistry"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.12.59",
+    "acronym": "TEK"
+  },
+  {
+    "cristin_unit_id": "185.15.12.60",
+    "unit_name": {
+      "en": "Inorganic materials chemistry"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.12.60",
+    "acronym": "UMK"
+  },
+  {
+    "cristin_unit_id": "185.15.12.61",
+    "unit_name": {
+      "en": "Skolelaboratoriet"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.12.61",
+    "acronym": "SKOLELAB"
+  },
+  {
+    "cristin_unit_id": "185.15.12.62",
+    "unit_name": {
+      "en": "Environmental Sciences"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.12.62",
+    "acronym": "MIV"
+  },
+  {
+    "cristin_unit_id": "185.15.12.63",
+    "unit_name": {
+      "en": "Section for Chemical Life Sciences - Biomolecules, Bio-inspired Materials and Bioanalytics"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.12.63",
+    "acronym": "BIO3"
+  },
+  {
+    "cristin_unit_id": "185.15.12.70",
+    "unit_name": {
+      "en": "Hylleraas Centre for Quantum Molecular Sciences"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.12.70",
+    "acronym": "HYLLERAAS"
+  },
+  {
+    "cristin_unit_id": "185.15.13.0",
+    "unit_name": {
+      "en": "Department of Mathematics"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.13.0",
+    "acronym": "MI"
+  },
+  {
+    "cristin_unit_id": "185.15.13.15",
+    "unit_name": {
+      "en": "Mechanics"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.13.15",
+    "acronym": "MEKANIKK"
+  },
+  {
+    "cristin_unit_id": "185.15.13.25",
+    "unit_name": {
+      "en": "Statistics and Data Science"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.13.25",
+    "acronym": "STATISTIKK"
+  },
+  {
+    "cristin_unit_id": "185.15.13.35",
+    "unit_name": {
+      "en": "Risk and Stochastics"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.13.35",
+    "acronym": "SEKSJON 3"
+  },
+  {
+    "cristin_unit_id": "185.15.13.45",
+    "unit_name": {
+      "en": "Differential Equations and Computational Mathematics"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.13.45",
+    "acronym": "SEKSJON 4"
+  },
+  {
+    "cristin_unit_id": "185.15.13.55",
+    "unit_name": {
+      "en": "Algebra, Geometry and Topology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.13.55",
+    "acronym": "SEKSJON5"
+  },
+  {
+    "cristin_unit_id": "185.15.13.65",
+    "unit_name": {
+      "en": "Several Complex Variables, Logic and Operator algebras"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.13.65",
+    "acronym": "SEKSJON 6"
+  },
+  {
+    "cristin_unit_id": "185.15.13.75",
+    "unit_name": {
+      "en": "Technical and administrative"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.13.75",
+    "acronym": "ADM"
+  },
+  {
+    "cristin_unit_id": "185.15.13.99",
+    "unit_name": {
+      "en": "Bilagslønn"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.13.99",
+    "acronym": "BILAGSLØNN"
+  },
+  {
+    "cristin_unit_id": "185.15.17.0",
+    "unit_name": {
+      "en": "Centre for Material Sciences and Nanotechnology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.17.0",
+    "acronym": "SMN"
+  },
+  {
+    "cristin_unit_id": "185.15.17.10",
+    "unit_name": {
+      "en": "Centre for Materials Science and Nanotechnology Chemistry"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.17.10",
+    "acronym": "SMNKJEMI"
+  },
+  {
+    "cristin_unit_id": "185.15.17.20",
+    "unit_name": {
+      "en": "Centre for Materials Science and Nanotechnology Physics"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.17.20",
+    "acronym": "SMNFYSIKK"
+  },
+  {
+    "cristin_unit_id": "185.15.18.0",
+    "unit_name": {
+      "en": "NJORD Centre for Studies of the Physics of the Earth"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.18.0",
+    "acronym": "NJORD"
+  },
+  {
+    "cristin_unit_id": "185.15.18.10",
+    "unit_name": {
+      "en": "NJORD GEO - Centre for Studies of the Physics of the Earth"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.18.10",
+    "acronym": "NJORDGEO"
+  },
+  {
+    "cristin_unit_id": "185.15.18.20",
+    "unit_name": {
+      "en": "NJORD Physics - Centre for Studies of the Physics of the Earth"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.18.20",
+    "acronym": "NJORDFI"
+  },
+  {
+    "cristin_unit_id": "185.15.22.0",
+    "unit_name": {
+      "en": "Department of Geosciences"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.22.0",
+    "acronym": "IG"
+  },
+  {
+    "cristin_unit_id": "185.15.22.20",
+    "unit_name": {
+      "en": "Section of Physics of Geological processes"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.22.20",
+    "acronym": "GEO PGP"
+  },
+  {
+    "cristin_unit_id": "185.15.22.30",
+    "unit_name": {
+      "en": "Bachelor"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.22.30",
+    "acronym": "BACHGEO"
+  },
+  {
+    "cristin_unit_id": "185.15.22.34",
+    "unit_name": {
+      "en": "Master"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.22.34",
+    "acronym": "MASGEO"
+  },
+  {
+    "cristin_unit_id": "185.15.22.40",
+    "unit_name": {
+      "en": "Centre for Earth Evolution and Dynamics"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.22.40",
+    "acronym": "CEED"
+  },
+  {
+    "cristin_unit_id": "185.15.22.50",
+    "unit_name": {
+      "en": "Section of Geology and Geophysics"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.22.50",
+    "acronym": "GEOLOFYS"
+  },
+  {
+    "cristin_unit_id": "185.15.22.70",
+    "unit_name": {
+      "en": "Section for Meteorology and Oceanography"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.22.70",
+    "acronym": "METOS"
+  },
+  {
+    "cristin_unit_id": "185.15.22.95",
+    "unit_name": {
+      "en": "Administration"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.22.95",
+    "acronym": "ADM"
+  },
+  {
+    "cristin_unit_id": "185.15.23.0",
+    "unit_name": {
+      "en": "Department of Pharmacy"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.23.0",
+    "acronym": "FARMASI"
+  },
+  {
+    "cristin_unit_id": "185.15.23.10",
+    "unit_name": {
+      "en": "Pharmaceutics and Social Pharmacy"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.23.10",
+    "acronym": "FAIGFSF"
+  },
+  {
+    "cristin_unit_id": "185.15.23.20",
+    "unit_name": {
+      "en": "Pharmaceutical Chemistry"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.23.20",
+    "acronym": "FAIK"
+  },
+  {
+    "cristin_unit_id": "185.15.23.30",
+    "unit_name": {
+      "en": "Pharmacology and Pharmaceutical Biosciences"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.23.30",
+    "acronym": "FAIFFB"
+  },
+  {
+    "cristin_unit_id": "185.15.24.0",
+    "unit_name": {
+      "en": "Centre for Entrepreneurship"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.24.0",
+    "acronym": "SFE"
+  },
+  {
+    "cristin_unit_id": "185.15.24.20",
+    "unit_name": {
+      "en": "Norwegian Entrepreneurship Programme"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.24.20",
+    "acronym": "GS"
+  },
+  {
+    "cristin_unit_id": "185.15.27.0",
+    "unit_name": {
+      "en": "Norwegian Centre for Science Education"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.27.0",
+    "acronym": "NATFAG"
+  },
+  {
+    "cristin_unit_id": "185.15.29.0",
+    "unit_name": {
+      "en": "Department of Biosciences"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.29.0",
+    "acronym": "IBV"
+  },
+  {
+    "cristin_unit_id": "185.15.29.1",
+    "unit_name": {
+      "en": "Staff"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.29.1",
+    "acronym": "STAB"
+  },
+  {
+    "cristin_unit_id": "185.15.29.10",
+    "unit_name": {
+      "en": "Section for Administrative Services"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.29.10",
+    "acronym": "IBV-ADM"
+  },
+  {
+    "cristin_unit_id": "185.15.29.11",
+    "unit_name": {
+      "en": "IT Support"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.29.11",
+    "acronym": "IBV-IT"
+  },
+  {
+    "cristin_unit_id": "185.15.29.12",
+    "unit_name": {
+      "en": "IBV Purchasing Office"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.29.12",
+    "acronym": "IBV-INNKJ"
+  },
+  {
+    "cristin_unit_id": "185.15.29.13",
+    "unit_name": {
+      "en": "Finance Office"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.29.13",
+    "acronym": "IBV-ØK"
+  },
+  {
+    "cristin_unit_id": "185.15.29.14",
+    "unit_name": {
+      "en": "Research Administration"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.29.14",
+    "acronym": "IBV-FA"
+  },
+  {
+    "cristin_unit_id": "185.15.29.15",
+    "unit_name": {
+      "en": "Student Office"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.29.15",
+    "acronym": "IBV-STUD"
+  },
+  {
+    "cristin_unit_id": "185.15.29.16",
+    "unit_name": {
+      "en": "Laboratory School in Biology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.29.16",
+    "acronym": "IBV-SKOLE"
+  },
+  {
+    "cristin_unit_id": "185.15.29.20",
+    "unit_name": {
+      "en": "Infrastructure Section"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.29.20",
+    "acronym": "IBV-INFRA"
+  },
+  {
+    "cristin_unit_id": "185.15.29.21",
+    "unit_name": {
+      "en": "Phytotron"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.29.21",
+    "acronym": "IBV-FYT"
+  },
+  {
+    "cristin_unit_id": "185.15.29.22",
+    "unit_name": {
+      "en": "Animal Facility"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.29.22",
+    "acronym": "IBV-DYR"
+  },
+  {
+    "cristin_unit_id": "185.15.29.23",
+    "unit_name": {
+      "en": "Central Engineering Workshop"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.29.23",
+    "acronym": "IBV-VERKST"
+  },
+  {
+    "cristin_unit_id": "185.15.29.24",
+    "unit_name": {
+      "en": "Finse Alpine Research Centre"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.29.24",
+    "acronym": "IBV-FINSE"
+  },
+  {
+    "cristin_unit_id": "185.15.29.25",
+    "unit_name": {
+      "en": "Drøbak Marine Research Station"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.29.25",
+    "acronym": "IBV-DRØBAK"
+  },
+  {
+    "cristin_unit_id": "185.15.29.26",
+    "unit_name": {
+      "en": "Research Vessels"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.29.26",
+    "acronym": "IBV-FARTØY"
+  },
+  {
+    "cristin_unit_id": "185.15.29.30",
+    "unit_name": {
+      "en": "Section for Physiology and Cell Biology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.29.30",
+    "acronym": "FYS-CELL"
+  },
+  {
+    "cristin_unit_id": "185.15.29.31",
+    "unit_name": {
+      "en": "Electron Microscopy Laboratory"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.29.31",
+    "acronym": "IBV-EMLAB"
+  },
+  {
+    "cristin_unit_id": "185.15.29.32",
+    "unit_name": {
+      "en": "Imaging Platform"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.29.32",
+    "acronym": "IBV-IMAG"
+  },
+  {
+    "cristin_unit_id": "185.15.29.33",
+    "unit_name": {
+      "en": "Animal Facility"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.29.33",
+    "acronym": "IBV-DYR"
+  },
+  {
+    "cristin_unit_id": "185.15.29.40",
+    "unit_name": {
+      "en": "Section for Biochemistry and Molecular Biology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.29.40",
+    "acronym": "BIOKJ-MOLB"
+  },
+  {
+    "cristin_unit_id": "185.15.29.41",
+    "unit_name": {
+      "en": "Proteomics Laboratory"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.29.41",
+    "acronym": "IBV-PROTEO"
+  },
+  {
+    "cristin_unit_id": "185.15.29.50",
+    "unit_name": {
+      "en": "Centre for Ecological and Evolutionary Synthesis"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.29.50",
+    "acronym": "CEES"
+  },
+  {
+    "cristin_unit_id": "185.15.29.51",
+    "unit_name": {
+      "en": "Norwegian Sequencing Centre"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.29.51",
+    "acronym": "IBV-NSC"
+  },
+  {
+    "cristin_unit_id": "185.15.29.52",
+    "unit_name": {
+      "en": "Finse Alpine Research Centre"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.29.52",
+    "acronym": "IBV-FINSE"
+  },
+  {
+    "cristin_unit_id": "185.15.29.60",
+    "unit_name": {
+      "en": "Section for Genetics and Evolutionary Biology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.29.60",
+    "acronym": "EVOGENE"
+  },
+  {
+    "cristin_unit_id": "185.15.29.61",
+    "unit_name": {
+      "en": "Phytotron"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.29.61",
+    "acronym": "IBV-FYT"
+  },
+  {
+    "cristin_unit_id": "185.15.29.70",
+    "unit_name": {
+      "en": "Section for Aquatic Biology and Toxicology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.29.70",
+    "acronym": "AKVA"
+  },
+  {
+    "cristin_unit_id": "185.15.29.71",
+    "unit_name": {
+      "en": "Research Vessels"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.29.71",
+    "acronym": "IBV-FARTØY"
+  },
+  {
+    "cristin_unit_id": "185.15.29.72",
+    "unit_name": {
+      "en": "Drøbak Marine Research Station"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.29.72",
+    "acronym": "IBV-DRØBAK"
+  },
+  {
+    "cristin_unit_id": "185.15.29.81",
+    "unit_name": {
+      "en": "Centre for Cancer Cell Reprogramming"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.29.81",
+    "acronym": "CANCELL"
+  },
+  {
+    "cristin_unit_id": "185.15.30.0",
+    "unit_name": {
+      "en": "Department of Technology Systems"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.30.0",
+    "acronym": "ITS"
+  },
+  {
+    "cristin_unit_id": "185.15.30.10",
+    "unit_name": {
+      "en": "Department Administration"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.30.10",
+    "acronym": "ITSADM"
+  },
+  {
+    "cristin_unit_id": "185.15.30.20",
+    "unit_name": {
+      "en": "Section for Energy Systems"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.30.20",
+    "acronym": "ENSYS"
+  },
+  {
+    "cristin_unit_id": "185.15.30.30",
+    "unit_name": {
+      "en": "Section for Autonomous Systems and Sensor Technologies"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.30.30",
+    "acronym": "AUTOSENS"
+  },
+  {
+    "cristin_unit_id": "185.15.31.0",
+    "unit_name": {
+      "en": "Centre for bioinformatics"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.31.0",
+    "acronym": "SBI"
+  },
+  {
+    "cristin_unit_id": "185.15.31.10",
+    "unit_name": {
+      "en": "Centre for bioinformatics - IFI"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.31.10",
+    "acronym": "SBI-IFI"
+  },
+  {
+    "cristin_unit_id": "185.15.31.20",
+    "unit_name": {
+      "en": "Center for bioinformatics - IBV"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.31.20",
+    "acronym": "SBI-IBV"
+  },
+  {
+    "cristin_unit_id": "185.15.31.30",
+    "unit_name": {
+      "en": "Centre for bioinformatics - FAI"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.31.30",
+    "acronym": "SBI-FAI"
+  },
+  {
+    "cristin_unit_id": "185.15.31.40",
+    "unit_name": {
+      "en": "Centre for bioinformatics - KI"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.31.40",
+    "acronym": "SBI-KI"
+  },
+  {
+    "cristin_unit_id": "185.15.32.0",
+    "unit_name": {
+      "en": "Center for biogeochemistry in Anthropocene"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.32.0",
+    "acronym": "CBA"
+  },
+  {
+    "cristin_unit_id": "185.15.32.10",
+    "unit_name": {
+      "en": "Center for biogeochemistry in Anthropocene - IBV"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.32.10",
+    "acronym": "CBA-IBV"
+  },
+  {
+    "cristin_unit_id": "185.15.32.20",
+    "unit_name": {
+      "en": "Center for biogeochemistry in Anthropocene - IG"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.32.20",
+    "acronym": "CBA-IG"
+  },
+  {
+    "cristin_unit_id": "185.15.32.30",
+    "unit_name": {
+      "en": "Center for biogeochemistry in Anthropocene - KI"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.32.30",
+    "acronym": "CBA-KI"
+  },
+  {
+    "cristin_unit_id": "185.15.33.0",
+    "unit_name": {
+      "en": "NORA - The Norwegian Artificial Intelligence Research Consortium"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.15.33.0",
+    "acronym": "NORA"
+  },
+  {
+    "cristin_unit_id": "185.16.0.0",
+    "unit_name": {
+      "en": "Faculty of Dentistry"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.16.0.0",
+    "acronym": "OD"
+  },
+  {
+    "cristin_unit_id": "185.16.0.2",
+    "unit_name": {
+      "en": "Faculty of Dentistry Administration"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.16.0.2",
+    "acronym": "ODADMIN"
+  },
+  {
+    "cristin_unit_id": "185.16.0.3",
+    "unit_name": {
+      "en": "IT Section Faculty of Dentistry"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.16.0.3",
+    "acronym": "ODIT"
+  },
+  {
+    "cristin_unit_id": "185.16.0.8",
+    "unit_name": {
+      "nb": "Fotoseksjonen"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.16.0.8",
+    "acronym": "ODFOTO"
+  },
+  {
+    "cristin_unit_id": "185.16.15.0",
+    "unit_name": {
+      "en": "Institute of Oral Biology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.16.15.0",
+    "acronym": "IOB"
+  },
+  {
+    "cristin_unit_id": "185.16.17.0",
+    "unit_name": {
+      "en": "Institute of Clinical Dentistry"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.16.17.0",
+    "acronym": "IKO"
+  },
+  {
+    "cristin_unit_id": "185.16.17.6",
+    "unit_name": {
+      "nb": "Dentalverkstedet"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.16.17.6",
+    "acronym": "DENTVERK"
+  },
+  {
+    "cristin_unit_id": "185.16.17.7",
+    "unit_name": {
+      "en": "Clinical Oral Research Laboratory"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.16.17.7",
+    "acronym": "KLINLAB"
+  },
+  {
+    "cristin_unit_id": "185.16.17.10",
+    "unit_name": {
+      "en": "Clinic for Adult Oral Health Care"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.16.17.10",
+    "acronym": "ALMVOK"
+  },
+  {
+    "cristin_unit_id": "185.16.17.20",
+    "unit_name": {
+      "en": "Clinic for Child Oral Health Care"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.16.17.20",
+    "acronym": "ALMBARN"
+  },
+  {
+    "cristin_unit_id": "185.16.17.30",
+    "unit_name": {
+      "en": "Clinic for Advanced Oral Health Care"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.16.17.30",
+    "acronym": "SPESIAL"
+  },
+  {
+    "cristin_unit_id": "185.16.17.40",
+    "unit_name": {
+      "en": "Preclinical Dental Simulation Center"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.16.17.40",
+    "acronym": "FHS"
+  },
+  {
+    "cristin_unit_id": "185.16.17.50",
+    "unit_name": {
+      "en": "Cariology and Gerodontology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.16.17.50",
+    "acronym": "KARIO"
+  },
+  {
+    "cristin_unit_id": "185.16.17.51",
+    "unit_name": {
+      "en": "Oral Surgery and Oral Medicine"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.16.17.51",
+    "acronym": "KIRUROD"
+  },
+  {
+    "cristin_unit_id": "185.16.17.52",
+    "unit_name": {
+      "en": "Prosthetics an Oral Function"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.16.17.52",
+    "acronym": "PROTOF"
+  },
+  {
+    "cristin_unit_id": "185.16.17.53",
+    "unit_name": {
+      "en": "Endodontics"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.16.17.53",
+    "acronym": "ENDOD"
+  },
+  {
+    "cristin_unit_id": "185.16.17.54",
+    "unit_name": {
+      "en": "Periodontology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.16.17.54",
+    "acronym": "PERIOD"
+  },
+  {
+    "cristin_unit_id": "185.16.17.55",
+    "unit_name": {
+      "en": "Orthodontics"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.16.17.55",
+    "acronym": "ORTOD"
+  },
+  {
+    "cristin_unit_id": "185.16.17.56",
+    "unit_name": {
+      "en": "Pediatric Dentistry and Behaviorial Science"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.16.17.56",
+    "acronym": "PEDOD"
+  },
+  {
+    "cristin_unit_id": "185.16.17.57",
+    "unit_name": {
+      "en": "Maxillofacial Radiology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.16.17.57",
+    "acronym": "RADIOD"
+  },
+  {
+    "cristin_unit_id": "185.16.17.58",
+    "unit_name": {
+      "en": "Centre for Advanced Craniofacial Diagnosis and Treatment"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.16.17.58",
+    "acronym": "SAKO"
+  },
+  {
+    "cristin_unit_id": "185.16.17.59",
+    "unit_name": {
+      "en": "Pathology and Forensic Dentistry"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.16.17.59",
+    "acronym": "PATOD"
+  },
+  {
+    "cristin_unit_id": "185.16.17.60",
+    "unit_name": {
+      "en": "Pharmacology and Pharmacotherapeutics"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.16.17.60",
+    "acronym": "FARMA"
+  },
+  {
+    "cristin_unit_id": "185.16.17.61",
+    "unit_name": {
+      "en": "Community Dentistry"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.16.17.61",
+    "acronym": "SAMFOD"
+  },
+  {
+    "cristin_unit_id": "185.16.17.62",
+    "unit_name": {
+      "en": "Biomaterial Science"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.16.17.62",
+    "acronym": "BIOMAT"
+  },
+  {
+    "cristin_unit_id": "185.16.17.63",
+    "unit_name": {
+      "en": "Science oral Hygiene"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.16.17.63",
+    "acronym": "TPLVIT"
+  },
+  {
+    "cristin_unit_id": "185.17.0.0",
+    "unit_name": {
+      "en": "Faculty of Social Sciences"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.17.0.0",
+    "acronym": "SV"
+  },
+  {
+    "cristin_unit_id": "185.17.0.10",
+    "unit_name": {
+      "en": "Administration of The Faculty of Social Sciences"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.17.0.10",
+    "acronym": "SVFAKADM"
+  },
+  {
+    "cristin_unit_id": "185.17.0.20",
+    "unit_name": {
+      "en": "Oslo Summer School in Comparative Social Science Studies"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.17.0.20",
+    "acronym": "OSS"
+  },
+  {
+    "cristin_unit_id": "185.17.0.30",
+    "unit_name": {
+      "en": "Childwatch International Research Network"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.17.0.30",
+    "acronym": "CWI"
+  },
+  {
+    "cristin_unit_id": "185.17.1.0",
+    "unit_name": {
+      "en": "Centre for Technology, Innovation and Culture"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.17.1.0",
+    "acronym": "TIK"
+  },
+  {
+    "cristin_unit_id": "185.17.4.0",
+    "unit_name": {
+      "en": "ARENA Centre for European Studies"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.17.4.0",
+    "acronym": "ARENA"
+  },
+  {
+    "cristin_unit_id": "185.17.5.0",
+    "unit_name": {
+      "en": "Department of Psychology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.17.5.0",
+    "acronym": "PSYK"
+  },
+  {
+    "cristin_unit_id": "185.17.5.10",
+    "unit_name": {
+      "en": "Section for clincal training"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.17.5.10",
+    "acronym": "KLINIKK"
+  },
+  {
+    "cristin_unit_id": "185.17.5.95",
+    "unit_name": {
+      "en": "RITMO Centre for Interdisciplinary Studies in Rhythm,"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.17.5.95",
+    "acronym": "PSIRITMO"
+  },
+  {
+    "cristin_unit_id": "185.17.6.0",
+    "unit_name": {
+      "en": "Department of Economics"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.17.6.0",
+    "acronym": "ECON"
+  },
+  {
+    "cristin_unit_id": "185.17.6.10",
+    "unit_name": {
+      "en": "Centre for the Study of Equality, Social Organization, and Performance"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.17.6.10",
+    "acronym": "ESOP"
+  },
+  {
+    "cristin_unit_id": "185.17.7.0",
+    "unit_name": {
+      "en": "Department of Sociology and Human Geography"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.17.7.0",
+    "acronym": "ISS"
+  },
+  {
+    "cristin_unit_id": "185.17.8.0",
+    "unit_name": {
+      "en": "Department of Political Science"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.17.8.0",
+    "acronym": "ISV"
+  },
+  {
+    "cristin_unit_id": "185.17.8.10",
+    "unit_name": {
+      "en": "Centre for Research on Extremism: Right-Wing Extremism, Hate Crime and Political Violence"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.17.8.10",
+    "acronym": "C-REX"
+  },
+  {
+    "cristin_unit_id": "185.17.9.0",
+    "unit_name": {
+      "en": "Department of Social Anthropology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.17.9.0",
+    "acronym": "SAI"
+  },
+  {
+    "cristin_unit_id": "185.17.9.10",
+    "unit_name": {
+      "en": "Cultural Complexity in the New Norway"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.17.9.10",
+    "acronym": "CULCOM"
+  },
+  {
+    "cristin_unit_id": "185.18.0.0",
+    "unit_name": {
+      "en": "Faculty of Educational Sciences"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.18.0.0",
+    "acronym": "UV"
+  },
+  {
+    "cristin_unit_id": "185.18.0.2",
+    "unit_name": {
+      "en": "Faculty Administration"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.18.0.2",
+    "acronym": "ADM"
+  },
+  {
+    "cristin_unit_id": "185.18.0.30",
+    "unit_name": {
+      "en": "Section for Research and Mediation Support"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.18.0.30",
+    "acronym": "FFS"
+  },
+  {
+    "cristin_unit_id": "185.18.0.40",
+    "unit_name": {
+      "en": "FIKS - Research, Innovation, & Competence Development"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.18.0.40",
+    "acronym": "FIKS"
+  },
+  {
+    "cristin_unit_id": "185.18.1.0",
+    "unit_name": {
+      "en": "Department of Education"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.18.1.0",
+    "acronym": "IPED"
+  },
+  {
+    "cristin_unit_id": "185.18.1.30",
+    "unit_name": {
+      "nb": "UNIPED"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.18.1.30",
+    "acronym": "UNIPED"
+  },
+  {
+    "cristin_unit_id": "185.18.2.0",
+    "unit_name": {
+      "en": "Department of Teacher Education and School Research"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.18.2.0",
+    "acronym": "ILS"
+  },
+  {
+    "cristin_unit_id": "185.18.3.0",
+    "unit_name": {
+      "en": "Department of Special Needs Education"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.18.3.0",
+    "acronym": "ISP"
+  },
+  {
+    "cristin_unit_id": "185.18.6.0",
+    "unit_name": {
+      "en": "National Graduate School in Educational Research"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.18.6.0",
+    "acronym": "NATED"
+  },
+  {
+    "cristin_unit_id": "185.18.7.0",
+    "unit_name": {
+      "en": "Centre for Educational Measurement"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.18.7.0",
+    "acronym": "CEMO"
+  },
+  {
+    "cristin_unit_id": "185.18.9.0",
+    "unit_name": {
+      "en": "LINK  Centre for Learning, Innovation & Academic Development"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.18.9.0",
+    "acronym": "LINK"
+  },
+  {
+    "cristin_unit_id": "185.27.0.0",
+    "unit_name": {
+      "en": "Museum of Cultural History"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.27.0.0",
+    "acronym": "KHM"
+  },
+  {
+    "cristin_unit_id": "185.27.81.0",
+    "unit_name": {
+      "en": "Department of Support Services"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.27.81.0",
+    "acronym": "SAS"
+  },
+  {
+    "cristin_unit_id": "185.27.81.10",
+    "unit_name": {
+      "en": "Section for Exhibition and Research Administration"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.27.81.10",
+    "acronym": "UTFORSK"
+  },
+  {
+    "cristin_unit_id": "185.27.81.20",
+    "unit_name": {
+      "en": "Section for Human Resources"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.27.81.20",
+    "acronym": "PERSONAL"
+  },
+  {
+    "cristin_unit_id": "185.27.81.30",
+    "unit_name": {
+      "en": "Section for Finance"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.27.81.30",
+    "acronym": "ØK"
+  },
+  {
+    "cristin_unit_id": "185.27.81.40",
+    "unit_name": {
+      "en": "Section for Museum shops"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.27.81.40",
+    "acronym": "BUTIKK"
+  },
+  {
+    "cristin_unit_id": "185.27.82.0",
+    "unit_name": {
+      "en": "Department of Archaeology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.27.82.0",
+    "acronym": "AS"
+  },
+  {
+    "cristin_unit_id": "185.27.82.10",
+    "unit_name": {
+      "en": "Rescue Archaeology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.27.82.10",
+    "acronym": "FUN"
+  },
+  {
+    "cristin_unit_id": "185.27.83.0",
+    "unit_name": {
+      "en": "Department of Ethnography, Numismatics, Classical Archaeology and University History"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.27.83.0",
+    "acronym": "SENKU"
+  },
+  {
+    "cristin_unit_id": "185.27.83.10",
+    "unit_name": {
+      "en": "Section for Ethnography"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.27.83.10",
+    "acronym": "ETNO"
+  },
+  {
+    "cristin_unit_id": "185.27.83.20",
+    "unit_name": {
+      "en": "Section for Numismatics and Classical Archaeology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.27.83.20",
+    "acronym": "ANKA"
+  },
+  {
+    "cristin_unit_id": "185.27.83.30",
+    "unit_name": {
+      "en": "Section for Museum of University and Science History"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.27.83.30",
+    "acronym": "MUV"
+  },
+  {
+    "cristin_unit_id": "185.27.84.0",
+    "unit_name": {
+      "en": "Department of Exhibitions, Education and Public Services"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.27.84.0",
+    "acronym": "UPS"
+  },
+  {
+    "cristin_unit_id": "185.27.84.1",
+    "unit_name": {
+      "en": "business department museum shop"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.27.84.1",
+    "acronym": "FORRETNING"
+  },
+  {
+    "cristin_unit_id": "185.27.84.10",
+    "unit_name": {
+      "en": "Section for Exhibition production"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.27.84.10",
+    "acronym": "UTPROD"
+  },
+  {
+    "cristin_unit_id": "185.27.85.0",
+    "unit_name": {
+      "en": "Department of Collection Management"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.27.85.0",
+    "acronym": "SF"
+  },
+  {
+    "cristin_unit_id": "185.27.85.10",
+    "unit_name": {
+      "en": "Section for Digital Documentation, IT and Archiving"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.27.85.10",
+    "acronym": "DIGIT"
+  },
+  {
+    "cristin_unit_id": "185.27.85.11",
+    "unit_name": {
+      "en": "Digital Documentation"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.27.85.11",
+    "acronym": "DIGDOK"
+  },
+  {
+    "cristin_unit_id": "185.27.85.12",
+    "unit_name": {
+      "en": "IT"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.27.85.12",
+    "acronym": "IT"
+  },
+  {
+    "cristin_unit_id": "185.27.85.13",
+    "unit_name": {
+      "en": "Archiving"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.27.85.13",
+    "acronym": "ARKIV"
+  },
+  {
+    "cristin_unit_id": "185.27.85.14",
+    "unit_name": {
+      "en": "Photo"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.27.85.14",
+    "acronym": "FOTO"
+  },
+  {
+    "cristin_unit_id": "185.27.85.20",
+    "unit_name": {
+      "en": "Section for Conservation"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.27.85.20",
+    "acronym": "KONS"
+  },
+  {
+    "cristin_unit_id": "185.27.85.30",
+    "unit_name": {
+      "en": "Saving Oseberg"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.27.85.30",
+    "acronym": "SO"
+  },
+  {
+    "cristin_unit_id": "185.27.85.40",
+    "unit_name": {
+      "en": "REVITA"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.27.85.40",
+    "acronym": "REVITA"
+  },
+  {
+    "cristin_unit_id": "185.27.86.0",
+    "unit_name": {
+      "en": "Director's staff"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.27.86.0",
+    "acronym": "STAB"
+  },
+  {
+    "cristin_unit_id": "185.28.0.0",
+    "unit_name": {
+      "en": "Natural History Museum"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.28.0.0",
+    "acronym": "NHM"
+  },
+  {
+    "cristin_unit_id": "185.28.0.10",
+    "unit_name": {
+      "en": "Administration, NHM"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.28.0.10",
+    "acronym": "NHM-ADM"
+  },
+  {
+    "cristin_unit_id": "185.28.0.20",
+    "unit_name": {
+      "en": "Section for Human Resources"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.28.0.20",
+    "acronym": "PERSONAL"
+  },
+  {
+    "cristin_unit_id": "185.28.0.30",
+    "unit_name": {
+      "en": "Section for Finance"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.28.0.30",
+    "acronym": "ØKONOMI"
+  },
+  {
+    "cristin_unit_id": "185.28.1.0",
+    "unit_name": {
+      "en": "Botanical Garden"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.28.1.0",
+    "acronym": "BOTANISK"
+  },
+  {
+    "cristin_unit_id": "185.28.5.0",
+    "unit_name": {
+      "en": "Department of Exhibitions and Public Services"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.28.5.0",
+    "acronym": "UTAD"
+  },
+  {
+    "cristin_unit_id": "185.28.5.10",
+    "unit_name": {
+      "en": "Natural History Museum Shop"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.28.5.10",
+    "acronym": "NHM-BUTIKK"
+  },
+  {
+    "cristin_unit_id": "185.28.5.20",
+    "unit_name": {
+      "en": "Climat House, NHM"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.28.5.20",
+    "acronym": "KLIMA"
+  },
+  {
+    "cristin_unit_id": "185.28.6.0",
+    "unit_name": {
+      "en": "Department of Technical and Scientific Conservation"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.28.6.0",
+    "acronym": "SKF"
+  },
+  {
+    "cristin_unit_id": "185.28.8.0",
+    "unit_name": {
+      "en": "Department of Research and Collections"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.28.8.0",
+    "acronym": "FORSKNING"
+  },
+  {
+    "cristin_unit_id": "185.28.8.1",
+    "unit_name": {
+      "en": "Geo-Ecology Research Group"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.28.8.1",
+    "acronym": "GECO"
+  },
+  {
+    "cristin_unit_id": "185.28.8.2",
+    "unit_name": {
+      "en": "Norwegian Center for Paleontology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.28.8.2",
+    "acronym": "NORPAL"
+  },
+  {
+    "cristin_unit_id": "185.28.8.3",
+    "unit_name": {
+      "en": "Mineralogical Research Group"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.28.8.3",
+    "acronym": "MINERAL"
+  },
+  {
+    "cristin_unit_id": "185.28.8.4",
+    "unit_name": {
+      "en": "Freshwater Ecology-Inland Fisheries Laboratory (LFI) and Entomology R&D"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.28.8.4",
+    "acronym": "LFI"
+  },
+  {
+    "cristin_unit_id": "185.28.8.5",
+    "unit_name": {
+      "en": "Plant Evolution and DNA Metabarcoding Research Group"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.28.8.5",
+    "acronym": "PET"
+  },
+  {
+    "cristin_unit_id": "185.28.8.6",
+    "unit_name": {
+      "en": "Integrative Systematics of Plants and Fungi Research Group"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.28.8.6",
+    "acronym": "ISOP"
+  },
+  {
+    "cristin_unit_id": "185.28.8.7",
+    "unit_name": {
+      "en": "Sex and Evolution Research Group"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.28.8.7",
+    "acronym": "SERG"
+  },
+  {
+    "cristin_unit_id": "185.28.8.8",
+    "unit_name": {
+      "en": "Frontiers in Evolutionary Zoology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.28.8.8",
+    "acronym": "FEZ"
+  },
+  {
+    "cristin_unit_id": "185.29.1.0",
+    "unit_name": {
+      "en": "Centre for Development and Environment"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.29.1.0",
+    "acronym": "SUM"
+  },
+  {
+    "cristin_unit_id": "185.29.3.0",
+    "unit_name": {
+      "en": "Seminar for Philosophy of Science"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.29.3.0",
+    "acronym": "VITSEM"
+  },
+  {
+    "cristin_unit_id": "185.29.4.0",
+    "unit_name": {
+      "en": "UiO:Energy"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.29.4.0",
+    "acronym": "UIOENERGI"
+  },
+  {
+    "cristin_unit_id": "185.29.7.0",
+    "unit_name": {
+      "en": "The International Summer School"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.29.7.0",
+    "acronym": "ISS"
+  },
+  {
+    "cristin_unit_id": "185.29.12.0",
+    "unit_name": {
+      "en": "Centre for Gender Research"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.29.12.0",
+    "acronym": "STK"
+  },
+  {
+    "cristin_unit_id": "185.29.14.0",
+    "unit_name": {
+      "en": "Uniforum"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.29.14.0",
+    "acronym": "UNIFORUM"
+  },
+  {
+    "cristin_unit_id": "185.29.15.0",
+    "unit_name": {
+      "en": "Apollon"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.29.15.0",
+    "acronym": "APOLLON"
+  },
+  {
+    "cristin_unit_id": "185.29.20.0",
+    "unit_name": {
+      "en": "UiO:Life Science"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.29.20.0",
+    "acronym": "UIO:L"
+  },
+  {
+    "cristin_unit_id": "185.29.20.1",
+    "unit_name": {
+      "en": "MLS Administration and Core Facilities"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.29.20.1",
+    "acronym": "MLSADMCF"
+  },
+  {
+    "cristin_unit_id": "185.29.23.0",
+    "unit_name": {
+      "en": "UiO:Life Science"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.29.23.0",
+    "acronym": "UIO:LV"
+  },
+  {
+    "cristin_unit_id": "185.32.0.0",
+    "unit_name": {
+      "en": "Estate Department"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.32.0.0",
+    "acronym": "EA"
+  },
+  {
+    "cristin_unit_id": "185.32.10.0",
+    "unit_name": {
+      "en": "Management Support"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.32.10.0",
+    "acronym": "STAB"
+  },
+  {
+    "cristin_unit_id": "185.32.10.1",
+    "unit_name": {
+      "en": "Procurement"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.32.10.1",
+    "acronym": "INNKJØP"
+  },
+  {
+    "cristin_unit_id": "185.32.10.3",
+    "unit_name": {
+      "en": "HR AND SYSTEM SUPPORT"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.32.10.3",
+    "acronym": "HROGSYSTEM"
+  },
+  {
+    "cristin_unit_id": "185.32.10.4",
+    "unit_name": {
+      "en": "Finance"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.32.10.4",
+    "acronym": "ØKONOMI"
+  },
+  {
+    "cristin_unit_id": "185.32.10.20",
+    "unit_name": {
+      "en": "Lease Management"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.32.10.20",
+    "acronym": "EAFORVALT"
+  },
+  {
+    "cristin_unit_id": "185.32.50.0",
+    "unit_name": {
+      "en": "Facilities Management"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.32.50.0",
+    "acronym": "DRIFT"
+  },
+  {
+    "cristin_unit_id": "185.32.51.0",
+    "unit_name": {
+      "en": "Operations"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.32.51.0",
+    "acronym": "BYGNING"
+  },
+  {
+    "cristin_unit_id": "185.32.51.10",
+    "unit_name": {
+      "en": "Operations Area Gaustad"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.32.51.10",
+    "acronym": "GAUSTAD"
+  },
+  {
+    "cristin_unit_id": "185.32.51.20",
+    "unit_name": {
+      "en": "Operations Area Lower Blindern"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.32.51.20",
+    "acronym": "NEDRE"
+  },
+  {
+    "cristin_unit_id": "185.32.51.30",
+    "unit_name": {
+      "en": "Operations Area Downtown Oslo"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.32.51.30",
+    "acronym": "SENTRUM"
+  },
+  {
+    "cristin_unit_id": "185.32.51.40",
+    "unit_name": {
+      "en": "Operations Area Upper Blindern"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.32.51.40",
+    "acronym": "ØVRE"
+  },
+  {
+    "cristin_unit_id": "185.32.52.0",
+    "unit_name": {
+      "en": "Central support services"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.32.52.0",
+    "acronym": "FELLESTJ"
+  },
+  {
+    "cristin_unit_id": "185.32.52.10",
+    "unit_name": {
+      "en": "Service Center"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.32.52.10",
+    "acronym": "SERVICE"
+  },
+  {
+    "cristin_unit_id": "185.32.52.20",
+    "unit_name": {
+      "en": "Printing"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.32.52.20",
+    "acronym": "REPRO"
+  },
+  {
+    "cristin_unit_id": "185.32.52.30",
+    "unit_name": {
+      "en": "Security Operation Center"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.32.52.30",
+    "acronym": "VAKT"
+  },
+  {
+    "cristin_unit_id": "185.32.52.40",
+    "unit_name": {
+      "en": "Mail Services"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.32.52.40",
+    "acronym": "BUD"
+  },
+  {
+    "cristin_unit_id": "185.32.52.50",
+    "unit_name": {
+      "en": "Event Support Services"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.32.52.50",
+    "acronym": "ARRSTØTTE"
+  },
+  {
+    "cristin_unit_id": "185.32.53.0",
+    "unit_name": {
+      "en": "Landscape Services"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.32.53.0",
+    "acronym": "PARK"
+  },
+  {
+    "cristin_unit_id": "185.32.54.0",
+    "unit_name": {
+      "en": "Cleaning"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.32.54.0",
+    "acronym": "RENHOLD"
+  },
+  {
+    "cristin_unit_id": "185.32.54.10",
+    "unit_name": {
+      "en": "Cleaning Group 1"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.32.54.10",
+    "acronym": "RENHOLD1"
+  },
+  {
+    "cristin_unit_id": "185.32.54.20",
+    "unit_name": {
+      "en": "Cleaning Group 2"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.32.54.20",
+    "acronym": "RENHOLD2"
+  },
+  {
+    "cristin_unit_id": "185.32.54.30",
+    "unit_name": {
+      "en": "Cleaning Group 3"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.32.54.30",
+    "acronym": "RENHOLD3"
+  },
+  {
+    "cristin_unit_id": "185.32.54.40",
+    "unit_name": {
+      "en": "Cleaning Group 4"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.32.54.40",
+    "acronym": "RENHOLD4"
+  },
+  {
+    "cristin_unit_id": "185.32.54.50",
+    "unit_name": {
+      "en": "Cleaning Group 5"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.32.54.50",
+    "acronym": "RENHOLD5"
+  },
+  {
+    "cristin_unit_id": "185.32.55.0",
+    "unit_name": {
+      "en": "Building Engineering"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.32.55.0",
+    "acronym": "BYGGTEK"
+  },
+  {
+    "cristin_unit_id": "185.32.60.0",
+    "unit_name": {
+      "en": "Planning and Projects"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.32.60.0",
+    "acronym": "PLANPRO"
+  },
+  {
+    "cristin_unit_id": "185.32.62.0",
+    "unit_name": {
+      "en": "Planning"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.32.62.0",
+    "acronym": "PLAN"
+  },
+  {
+    "cristin_unit_id": "185.32.63.0",
+    "unit_name": {
+      "en": "Projects"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.32.63.0",
+    "acronym": "PROSJEKT"
+  },
+  {
+    "cristin_unit_id": "185.32.70.0",
+    "unit_name": {
+      "en": "Planning"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.32.70.0",
+    "acronym": "PLAN"
+  },
+  {
+    "cristin_unit_id": "185.32.80.0",
+    "unit_name": {
+      "en": "Projects"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.32.80.0",
+    "acronym": "PROSJEKT"
+  },
+  {
+    "cristin_unit_id": "185.34.1.0",
+    "unit_name": {
+      "en": "University Library Joint"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.34.1.0",
+    "acronym": "UBFELLES"
+  },
+  {
+    "cristin_unit_id": "185.34.1.10",
+    "unit_name": {
+      "en": "Library Director's Staff"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.34.1.10",
+    "acronym": "STAB"
+  },
+  {
+    "cristin_unit_id": "185.34.1.20",
+    "unit_name": {
+      "en": "University Library Digital Services"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.34.1.20",
+    "acronym": "UBDIGIT"
+  },
+  {
+    "cristin_unit_id": "185.34.12.0",
+    "unit_name": {
+      "en": "Law Library"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.34.12.0",
+    "acronym": "UJUR"
+  },
+  {
+    "cristin_unit_id": "185.34.13.0",
+    "unit_name": {
+      "en": "Medical Library"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.34.13.0",
+    "acronym": "UMED"
+  },
+  {
+    "cristin_unit_id": "185.34.15.0",
+    "unit_name": {
+      "en": "Science Library"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.34.15.0",
+    "acronym": "UREAL"
+  },
+  {
+    "cristin_unit_id": "185.34.20.0",
+    "unit_name": {
+      "en": "Humanities and Social Sciences Library"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.34.20.0",
+    "acronym": "UHS"
+  },
+  {
+    "cristin_unit_id": "185.35.0.0",
+    "unit_name": {
+      "en": "Center for Information Technology Services"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.35.0.0",
+    "acronym": "USIT"
+  },
+  {
+    "cristin_unit_id": "185.35.1.0",
+    "unit_name": {
+      "en": "Division IT Director's Office Staff and Interdepartmental Support Services"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.35.1.0",
+    "acronym": "SST"
+  },
+  {
+    "cristin_unit_id": "185.35.1.10",
+    "unit_name": {
+      "en": "IT Director´s Office Staff"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.35.1.10",
+    "acronym": "STAB"
+  },
+  {
+    "cristin_unit_id": "185.35.1.20",
+    "unit_name": {
+      "en": "Department for interdepartmental support services and service management"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.35.1.20",
+    "acronym": "SIF"
+  },
+  {
+    "cristin_unit_id": "185.35.1.30",
+    "unit_name": {
+      "en": "Department for User and Customer Relations"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.35.1.30",
+    "acronym": "BO"
+  },
+  {
+    "cristin_unit_id": "185.35.10.0",
+    "unit_name": {
+      "en": "Division for IT Infrastructure"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.35.10.0",
+    "acronym": "ITI"
+  },
+  {
+    "cristin_unit_id": "185.35.11.0",
+    "unit_name": {
+      "en": "Department for IT Infrastructure"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.35.11.0",
+    "acronym": "GD"
+  },
+  {
+    "cristin_unit_id": "185.35.11.10",
+    "unit_name": {
+      "en": "Computer Networks Group"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.35.11.10",
+    "acronym": "NETT"
+  },
+  {
+    "cristin_unit_id": "185.35.11.20",
+    "unit_name": {
+      "en": "Department for Server and Storage Management"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.35.11.20",
+    "acronym": "BSD"
+  },
+  {
+    "cristin_unit_id": "185.35.11.30",
+    "unit_name": {
+      "en": "Department for Server Operations"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.35.11.30",
+    "acronym": "SSD"
+  },
+  {
+    "cristin_unit_id": "185.35.11.40",
+    "unit_name": {
+      "en": "Department for Data Collection and Automation"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.35.11.40",
+    "acronym": "DIA"
+  },
+  {
+    "cristin_unit_id": "185.35.11.50",
+    "unit_name": {
+      "en": "Realtime Services Group"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.35.11.50",
+    "acronym": "GFS"
+  },
+  {
+    "cristin_unit_id": "185.35.12.0",
+    "unit_name": {
+      "en": "Department for Databases, Applications and Middleware"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.35.12.0",
+    "acronym": "TD"
+  },
+  {
+    "cristin_unit_id": "185.35.12.10",
+    "unit_name": {
+      "en": "Department for Database Operations"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.35.12.10",
+    "acronym": "DBD"
+  },
+  {
+    "cristin_unit_id": "185.35.12.20",
+    "unit_name": {
+      "en": "Directory, Integration and Authentiantion Services Operations Group"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.35.12.20",
+    "acronym": "KIA"
+  },
+  {
+    "cristin_unit_id": "185.35.12.30",
+    "unit_name": {
+      "en": "Department for Application Management"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.35.12.30",
+    "acronym": "APP"
+  },
+  {
+    "cristin_unit_id": "185.35.12.40",
+    "unit_name": {
+      "en": "Department for Application Platform and Integration"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.35.12.40",
+    "acronym": "API"
+  },
+  {
+    "cristin_unit_id": "185.35.13.0",
+    "unit_name": {
+      "en": "Department for Client Management"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.35.13.0",
+    "acronym": "KD"
+  },
+  {
+    "cristin_unit_id": "185.35.13.10",
+    "unit_name": {
+      "en": "Windows Client Management Group"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.35.13.10",
+    "acronym": "GDW"
+  },
+  {
+    "cristin_unit_id": "185.35.13.20",
+    "unit_name": {
+      "en": "Mac, Linux and Mobile Devices Group"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.35.13.20",
+    "acronym": "MLM"
+  },
+  {
+    "cristin_unit_id": "185.35.13.30",
+    "unit_name": {
+      "en": "Messaging Services Operations Group"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.35.13.30",
+    "acronym": "GMT"
+  },
+  {
+    "cristin_unit_id": "185.35.13.40",
+    "unit_name": {
+      "en": "IT-support and Control Center Group"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.35.13.40",
+    "acronym": "SDS"
+  },
+  {
+    "cristin_unit_id": "185.35.13.50",
+    "unit_name": {
+      "en": "USIT Local-IT Group"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.35.13.50",
+    "acronym": "LKIT"
+  },
+  {
+    "cristin_unit_id": "185.35.20.0",
+    "unit_name": {
+      "en": "Division for User Services"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.35.20.0",
+    "acronym": "BNT"
+  },
+  {
+    "cristin_unit_id": "185.35.21.0",
+    "unit_name": {
+      "en": "Department for System Integration and Identity Management"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.35.21.0",
+    "acronym": "USITINT"
+  },
+  {
+    "cristin_unit_id": "185.35.21.20",
+    "unit_name": {
+      "en": "Development of Administrative IT Services Group"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.35.21.20",
+    "acronym": "UAIT"
+  },
+  {
+    "cristin_unit_id": "185.35.22.0",
+    "unit_name": {
+      "en": "Department for Educational Technology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.35.22.0",
+    "acronym": "DML"
+  },
+  {
+    "cristin_unit_id": "185.35.22.10",
+    "unit_name": {
+      "en": "Applied Learning Technology Group"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.35.22.10",
+    "acronym": "DML2"
+  },
+  {
+    "cristin_unit_id": "185.35.23.0",
+    "unit_name": {
+      "en": "Department for Research Computing"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.35.23.0",
+    "acronym": "ITF"
+  },
+  {
+    "cristin_unit_id": "185.35.23.10",
+    "unit_name": {
+      "en": "Research Infrastructure Services Group"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.35.23.10",
+    "acronym": "FI"
+  },
+  {
+    "cristin_unit_id": "185.35.23.20",
+    "unit_name": {
+      "en": "Research Support Services Group"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.35.23.20",
+    "acronym": "FT"
+  },
+  {
+    "cristin_unit_id": "185.35.23.30",
+    "unit_name": {
+      "en": "Data Capture and Collections Management Group"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.35.23.30",
+    "acronym": "DS"
+  },
+  {
+    "cristin_unit_id": "185.35.24.0",
+    "unit_name": {
+      "en": "Web Department"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.35.24.0",
+    "acronym": "WEB"
+  },
+  {
+    "cristin_unit_id": "185.35.24.10",
+    "unit_name": {
+      "en": "Content Management Group"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.35.24.10",
+    "acronym": "GPL"
+  },
+  {
+    "cristin_unit_id": "185.35.24.20",
+    "unit_name": {
+      "en": "User Experience"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.35.24.20",
+    "acronym": "UX"
+  },
+  {
+    "cristin_unit_id": "185.35.24.30",
+    "unit_name": {
+      "en": "Web Application Development Group"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.35.24.30",
+    "acronym": "WAPP"
+  },
+  {
+    "cristin_unit_id": "185.35.25.0",
+    "unit_name": {
+      "en": "Department for Client Management"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.35.25.0",
+    "acronym": "KD"
+  },
+  {
+    "cristin_unit_id": "185.35.25.10",
+    "unit_name": {
+      "en": "Windows Client Management Group"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.35.25.10",
+    "acronym": "GDW"
+  },
+  {
+    "cristin_unit_id": "185.35.25.20",
+    "unit_name": {
+      "en": "Mac, Linux and Mobile Devices Group"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.35.25.20",
+    "acronym": "MLM"
+  },
+  {
+    "cristin_unit_id": "185.35.25.30",
+    "unit_name": {
+      "en": "Messaging Services Operations"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.35.25.30",
+    "acronym": "GMT"
+  },
+  {
+    "cristin_unit_id": "185.35.25.40",
+    "unit_name": {
+      "en": "IT-support and Control Centre"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.35.25.40",
+    "acronym": "SDS"
+  },
+  {
+    "cristin_unit_id": "185.35.25.50",
+    "unit_name": {
+      "en": "USIT Local-IT"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.35.25.50",
+    "acronym": "LKIT"
+  },
+  {
+    "cristin_unit_id": "185.35.30.0",
+    "unit_name": {
+      "en": "Research Computing"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.35.30.0",
+    "acronym": "ITF"
+  },
+  {
+    "cristin_unit_id": "185.35.30.10",
+    "unit_name": {
+      "en": "Department for Research Infrastructure Services"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.35.30.10",
+    "acronym": "FI"
+  },
+  {
+    "cristin_unit_id": "185.35.30.20",
+    "unit_name": {
+      "en": "Department for Research Support Services"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.35.30.20",
+    "acronym": "FT"
+  },
+  {
+    "cristin_unit_id": "185.35.30.30",
+    "unit_name": {
+      "en": "Department for Data Capture and Collections Management"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.35.30.30",
+    "acronym": "DS"
+  },
+  {
+    "cristin_unit_id": "185.36.0.0",
+    "unit_name": {
+      "en": "UiO: Management and Support Units"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.36.0.0",
+    "acronym": "LOS"
+  },
+  {
+    "cristin_unit_id": "185.36.2.0",
+    "unit_name": {
+      "en": "University Director's Office"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.36.2.0",
+    "acronym": "UDIRSTAB"
+  },
+  {
+    "cristin_unit_id": "185.36.2.10",
+    "unit_name": {
+      "en": "Finance and Business Administration Group"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.36.2.10",
+    "acronym": "GVO"
+  },
+  {
+    "cristin_unit_id": "185.36.2.20",
+    "unit_name": {
+      "en": "Communications and Media Support Group"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.36.2.20",
+    "acronym": "GKM"
+  },
+  {
+    "cristin_unit_id": "185.36.3.0",
+    "unit_name": {
+      "en": "Internal Auditing Unit"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.36.3.0",
+    "acronym": "EIR"
+  },
+  {
+    "cristin_unit_id": "185.36.4.0",
+    "unit_name": {
+      "en": "Unit for HSE and emergency preparedness"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.36.4.0",
+    "acronym": "EHMS"
+  },
+  {
+    "cristin_unit_id": "185.36.5.0",
+    "unit_name": {
+      "en": "Occupational Health Service Unit"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.36.5.0",
+    "acronym": "EBHT"
+  },
+  {
+    "cristin_unit_id": "185.36.6.0",
+    "unit_name": {
+      "en": "Internal Administration Unit"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.36.6.0",
+    "acronym": "EIA"
+  },
+  {
+    "cristin_unit_id": "185.36.6.10",
+    "unit_name": {
+      "en": "Finance Administration Group"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.36.6.10",
+    "acronym": "GO"
+  },
+  {
+    "cristin_unit_id": "185.36.10.0",
+    "unit_name": {
+      "en": "Department of Academic Administration"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.36.10.0",
+    "acronym": "AF"
+  },
+  {
+    "cristin_unit_id": "185.36.11.0",
+    "unit_name": {
+      "en": "Student Information and Communications Office"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.36.11.0",
+    "acronym": "SKS"
+  },
+  {
+    "cristin_unit_id": "185.36.12.0",
+    "unit_name": {
+      "en": "Public Relations and Events Office"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.36.12.0",
+    "acronym": "SSA"
+  },
+  {
+    "cristin_unit_id": "185.36.13.0",
+    "unit_name": {
+      "en": "Education and Research Administration Office"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.36.13.0",
+    "acronym": "SFFU"
+  },
+  {
+    "cristin_unit_id": "185.36.14.0",
+    "unit_name": {
+      "en": "Office for International Relations and Research Support"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.36.14.0",
+    "acronym": "SFUI"
+  },
+  {
+    "cristin_unit_id": "185.36.15.0",
+    "unit_name": {
+      "en": "Office for Administrative IT Systems"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.36.15.0",
+    "acronym": "SSD"
+  },
+  {
+    "cristin_unit_id": "185.36.16.0",
+    "unit_name": {
+      "en": "Office for Admissions and Student Exchange"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.36.16.0",
+    "acronym": "SOT"
+  },
+  {
+    "cristin_unit_id": "185.36.17.0",
+    "unit_name": {
+      "en": "University of Oslo Switchboard"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.36.17.0",
+    "acronym": "SB"
+  },
+  {
+    "cristin_unit_id": "185.36.30.0",
+    "unit_name": {
+      "en": "Department of Administrative Support"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.36.30.0",
+    "acronym": "ADS"
+  },
+  {
+    "cristin_unit_id": "185.36.31.0",
+    "unit_name": {
+      "en": "Payroll  Office"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.36.31.0",
+    "acronym": "SL"
+  },
+  {
+    "cristin_unit_id": "185.36.31.1",
+    "unit_name": {
+      "en": "Reimbursement Group"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.36.31.1",
+    "acronym": "GRU"
+  },
+  {
+    "cristin_unit_id": "185.36.31.2",
+    "unit_name": {
+      "en": "Group for Absence and Reimbursement"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.36.31.2",
+    "acronym": "GRUF"
+  },
+  {
+    "cristin_unit_id": "185.36.31.3",
+    "unit_name": {
+      "en": "Group for salary payment"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.36.31.3",
+    "acronym": "GLA"
+  },
+  {
+    "cristin_unit_id": "185.36.32.0",
+    "unit_name": {
+      "en": "Accounts Office"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.36.32.0",
+    "acronym": "SR"
+  },
+  {
+    "cristin_unit_id": "185.36.32.1",
+    "unit_name": {
+      "en": "Financial Control and Reporting Group"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.36.32.1",
+    "acronym": "GARK"
+  },
+  {
+    "cristin_unit_id": "185.36.32.2",
+    "unit_name": {
+      "en": "Group for Projects, Income and Charges"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.36.32.2",
+    "acronym": "GAPI"
+  },
+  {
+    "cristin_unit_id": "185.36.32.3",
+    "unit_name": {
+      "en": "Invoices Received Group"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.36.32.3",
+    "acronym": "GIFA"
+  },
+  {
+    "cristin_unit_id": "185.36.33.0",
+    "unit_name": {
+      "en": "Procurement Office"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.36.33.0",
+    "acronym": "SI"
+  },
+  {
+    "cristin_unit_id": "185.36.34.0",
+    "unit_name": {
+      "en": "Office for Electronic Records Management and Archives"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.36.34.0",
+    "acronym": "SFESD"
+  },
+  {
+    "cristin_unit_id": "185.36.35.0",
+    "unit_name": {
+      "en": "IT Applications Management Office"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.36.35.0",
+    "acronym": "SAF"
+  },
+  {
+    "cristin_unit_id": "185.36.36.0",
+    "unit_name": {
+      "en": "Project and Process Improvement Office"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.36.36.0",
+    "acronym": "SPP"
+  },
+  {
+    "cristin_unit_id": "185.36.37.0",
+    "unit_name": {
+      "en": "Finance and Business Administration Office"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.36.37.0",
+    "acronym": "VØS"
+  },
+  {
+    "cristin_unit_id": "185.36.40.0",
+    "unit_name": {
+      "en": "Department of Research Administration"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.36.40.0",
+    "acronym": "FADM"
+  },
+  {
+    "cristin_unit_id": "185.36.40.10",
+    "unit_name": {
+      "en": "Research Support Office"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.36.40.10",
+    "acronym": "FST"
+  },
+  {
+    "cristin_unit_id": "185.36.40.20",
+    "unit_name": {
+      "en": "Research Management Office"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.36.40.20",
+    "acronym": "FFO"
+  },
+  {
+    "cristin_unit_id": "185.36.50.0",
+    "unit_name": {
+      "en": "Department of Personnel Support"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.36.50.0",
+    "acronym": "AP"
+  },
+  {
+    "cristin_unit_id": "185.36.50.10",
+    "unit_name": {
+      "en": "International Staff Mobility Office"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.36.50.10",
+    "acronym": "ISMO"
+  },
+  {
+    "cristin_unit_id": "185.36.60.0",
+    "unit_name": {
+      "en": "Department of Education Services"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.36.60.0",
+    "acronym": "SADM"
+  },
+  {
+    "cristin_unit_id": "185.36.60.10",
+    "unit_name": {
+      "en": "Digital Services Office"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.36.60.10",
+    "acronym": "DIG"
+  },
+  {
+    "cristin_unit_id": "185.36.60.20",
+    "unit_name": {
+      "en": "Admissions Office"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.36.60.20",
+    "acronym": "OPP"
+  },
+  {
+    "cristin_unit_id": "185.36.60.30",
+    "unit_name": {
+      "en": "Educational Quality Office"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.36.60.30",
+    "acronym": "SK"
+  },
+  {
+    "cristin_unit_id": "185.36.70.0",
+    "unit_name": {
+      "en": "Department of Communications and External Relations"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.36.70.0",
+    "acronym": "AKS"
+  },
+  {
+    "cristin_unit_id": "185.36.70.10",
+    "unit_name": {
+      "en": "Communications Office"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.36.70.10",
+    "acronym": "SK"
+  },
+  {
+    "cristin_unit_id": "185.36.70.20",
+    "unit_name": {
+      "en": "External Relations Office"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.36.70.20",
+    "acronym": "SES"
+  },
+  {
+    "cristin_unit_id": "185.39.1.0",
+    "unit_name": {
+      "en": "Student Chaplain Office"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.39.1.0",
+    "acronym": "STUDPREST"
+  },
+  {
+    "cristin_unit_id": "185.39.2.0",
+    "unit_name": {
+      "en": "Trade unions"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.39.2.0",
+    "acronym": "APHTILLIT"
+  },
+  {
+    "cristin_unit_id": "185.39.3.0",
+    "unit_name": {
+      "en": "Senior Safety representatives"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.39.3.0",
+    "acronym": "APHVERN"
+  },
+  {
+    "cristin_unit_id": "185.39.4.0",
+    "unit_name": {
+      "en": "Data protection officer"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.39.4.0",
+    "acronym": "PVO"
+  },
+  {
+    "cristin_unit_id": "185.39.7.0",
+    "unit_name": {
+      "nb": "Universitetets barnehage"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.39.7.0",
+    "acronym": "UBARN"
+  },
+  {
+    "cristin_unit_id": "185.39.12.0",
+    "unit_name": {
+      "en": "Current Research Information System In Norway"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.39.12.0",
+    "acronym": "CRISTIN"
+  },
+  {
+    "cristin_unit_id": "185.39.50.0",
+    "unit_name": {
+      "en": "CERES - National Centre for Systems and Services for Research and Studies"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.39.50.0",
+    "acronym": "CERES"
+  },
+  {
+    "cristin_unit_id": "185.39.54.0",
+    "unit_name": {
+      "en": "Staff Section"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.39.54.0",
+    "acronym": "SST"
+  },
+  {
+    "cristin_unit_id": "185.39.54.10",
+    "unit_name": {
+      "en": "Group for Administrative Support"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.39.54.10",
+    "acronym": "STABADMIN"
+  },
+  {
+    "cristin_unit_id": "185.39.55.0",
+    "unit_name": {
+      "en": "System Development Section"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.39.55.0",
+    "acronym": "SSU"
+  },
+  {
+    "cristin_unit_id": "185.39.55.10",
+    "unit_name": {
+      "en": "Alpha Group"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.39.55.10",
+    "acronym": "ALFA"
+  },
+  {
+    "cristin_unit_id": "185.39.55.20",
+    "unit_name": {
+      "en": "Omega Group"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.39.55.20",
+    "acronym": "OMEGA"
+  },
+  {
+    "cristin_unit_id": "185.39.55.30",
+    "unit_name": {
+      "en": "Delta Group"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.39.55.30",
+    "acronym": "DELTA"
+  },
+  {
+    "cristin_unit_id": "185.39.56.0",
+    "unit_name": {
+      "en": "System Management Section"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.39.56.0",
+    "acronym": "SSF"
+  },
+  {
+    "cristin_unit_id": "185.39.56.10",
+    "unit_name": {
+      "en": "Admission and NVB Group"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.39.56.10",
+    "acronym": "SONVB"
+  },
+  {
+    "cristin_unit_id": "185.39.56.20",
+    "unit_name": {
+      "en": "FS, GAUS and RUST Group"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.39.56.20",
+    "acronym": "FSGAUSRUST"
+  },
+  {
+    "cristin_unit_id": "185.39.56.30",
+    "unit_name": {
+      "en": "Data Warehouse Group"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.39.56.30",
+    "acronym": "DVH"
+  },
+  {
+    "cristin_unit_id": "185.39.57.0",
+    "unit_name": {
+      "en": "Section for Credential Evaluation"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.39.57.0",
+    "acronym": "ASK"
+  },
+  {
+    "cristin_unit_id": "185.39.58.0",
+    "unit_name": {
+      "en": "Section for Research Services"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.39.58.0",
+    "acronym": "SFT"
+  },
+  {
+    "cristin_unit_id": "185.39.59.0",
+    "unit_name": {
+      "en": "Kunnskapsdepartementets tjenesteorgan"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.39.59.0",
+    "acronym": "KDTO"
+  },
+  {
+    "cristin_unit_id": "185.39.59.10",
+    "unit_name": {
+      "en": "KDTO CERES"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.39.59.10",
+    "acronym": "KDTOCERES"
+  },
+  {
+    "cristin_unit_id": "185.39.59.20",
+    "unit_name": {
+      "en": "KDTO BIBSYS"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.39.59.20",
+    "acronym": "KDTOBIBSYS"
+  },
+  {
+    "cristin_unit_id": "185.39.59.30",
+    "unit_name": {
+      "en": "KDTO UNINETT"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.39.59.30",
+    "acronym": "KDTOUNINET"
+  },
+  {
+    "cristin_unit_id": "185.50.0.0",
+    "unit_name": {
+      "en": "Faculty of Medicine"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.50.0.0",
+    "acronym": "MED"
+  },
+  {
+    "cristin_unit_id": "185.50.1.0",
+    "unit_name": {
+      "en": "Management Section"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.50.1.0",
+    "acronym": "MEDLED"
+  },
+  {
+    "cristin_unit_id": "185.50.1.1",
+    "unit_name": {
+      "en": "Administrative Services"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.50.1.1",
+    "acronym": "MEDADM"
+  },
+  {
+    "cristin_unit_id": "185.50.1.2",
+    "unit_name": {
+      "en": "Section for Student Affairs"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.50.1.2",
+    "acronym": "MEDSTUD"
+  },
+  {
+    "cristin_unit_id": "185.50.1.3",
+    "unit_name": {
+      "en": "Research Support"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.50.1.3",
+    "acronym": "MEDFORSK"
+  },
+  {
+    "cristin_unit_id": "185.50.1.9",
+    "unit_name": {
+      "en": "Regional Committees for Medical Research Ethics - South East Norway"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.50.1.9",
+    "acronym": "REKSØRØST"
+  },
+  {
+    "cristin_unit_id": "185.50.1.10",
+    "unit_name": {
+      "en": "Section of Medical Informatics"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.50.1.10",
+    "acronym": "MEDINFORM"
+  },
+  {
+    "cristin_unit_id": "185.50.1.14",
+    "unit_name": {
+      "en": "Center for Health Sciences Education"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.50.1.14",
+    "acronym": "HUS"
+  },
+  {
+    "cristin_unit_id": "185.50.1.15",
+    "unit_name": {
+      "en": "Finance section - Faculty of Medicine"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.50.1.15",
+    "acronym": "MEDØKO"
+  },
+  {
+    "cristin_unit_id": "185.50.1.16",
+    "unit_name": {
+      "en": "Regional Comittees for Medical Research Ethics South East Norway"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.50.1.16",
+    "acronym": "REKSØRØST"
+  },
+  {
+    "cristin_unit_id": "185.50.1.17",
+    "unit_name": {
+      "en": "Human Resource Section - Faculty of Medicine"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.50.1.17",
+    "acronym": "MED HR"
+  },
+  {
+    "cristin_unit_id": "185.50.9.0",
+    "unit_name": {
+      "en": "OUS IKT - research services"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.50.9.0",
+    "acronym": "OUSIKT"
+  },
+  {
+    "cristin_unit_id": "185.51.0.0",
+    "unit_name": {
+      "en": "Institute of Basic Medical Sciences"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.0.0",
+    "acronym": "IMB"
+  },
+  {
+    "cristin_unit_id": "185.51.1.0",
+    "unit_name": {
+      "en": "Administration"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.1.0",
+    "acronym": "IMBADM"
+  },
+  {
+    "cristin_unit_id": "185.51.1.1",
+    "unit_name": {
+      "en": "Finance Section"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.1.1",
+    "acronym": "IMBØKSEK"
+  },
+  {
+    "cristin_unit_id": "185.51.1.2",
+    "unit_name": {
+      "en": "Electronics Workshop"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.1.2",
+    "acronym": "IMBELVRK"
+  },
+  {
+    "cristin_unit_id": "185.51.1.3",
+    "unit_name": {
+      "en": "Mechanical Workshop"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.1.3",
+    "acronym": "IMBMEKVRK"
+  },
+  {
+    "cristin_unit_id": "185.51.1.4",
+    "unit_name": {
+      "en": "IT Department"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.1.4",
+    "acronym": "IMBIT"
+  },
+  {
+    "cristin_unit_id": "185.51.1.5",
+    "unit_name": {
+      "en": "Department of Comparative Medicine"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.1.5",
+    "acronym": "KOMPMED"
+  },
+  {
+    "cristin_unit_id": "185.51.1.6",
+    "unit_name": {
+      "en": "Education Management Unit"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.1.6",
+    "acronym": "STUDIER"
+  },
+  {
+    "cristin_unit_id": "185.51.1.7",
+    "unit_name": {
+      "en": "Section for Human Resources (HR) and Health, Security and the Environment (HSE)"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.1.7",
+    "acronym": "IMBHR"
+  },
+  {
+    "cristin_unit_id": "185.51.1.8",
+    "unit_name": {
+      "en": "Section for Education Management and Administrative Services"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.1.8",
+    "acronym": "IMBSTUDFEL"
+  },
+  {
+    "cristin_unit_id": "185.51.1.10",
+    "unit_name": {
+      "en": "Section of Internal Service"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.1.10",
+    "acronym": "SERVICE"
+  },
+  {
+    "cristin_unit_id": "185.51.12.0",
+    "unit_name": {
+      "en": "Department of Molecular Medicine"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.12.0",
+    "acronym": "AVDMOLMED"
+  },
+  {
+    "cristin_unit_id": "185.51.12.10",
+    "unit_name": {
+      "en": "Division of Biochemistry"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.12.10",
+    "acronym": "SEKBIO"
+  },
+  {
+    "cristin_unit_id": "185.51.12.13",
+    "unit_name": {
+      "en": "Cell Cycle and Apoptosis Group"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.12.13",
+    "acronym": "CAG"
+  },
+  {
+    "cristin_unit_id": "185.51.12.14",
+    "unit_name": {
+      "en": "Vascular Pathophysiology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.12.14",
+    "acronym": "VASKPAT"
+  },
+  {
+    "cristin_unit_id": "185.51.12.15",
+    "unit_name": {
+      "en": "Stem Cell Epigenetics"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.12.15",
+    "acronym": "SCEL"
+  },
+  {
+    "cristin_unit_id": "185.51.12.16",
+    "unit_name": {
+      "en": "Autophagy"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.12.16",
+    "acronym": "AUTOFAGI"
+  },
+  {
+    "cristin_unit_id": "185.51.12.17",
+    "unit_name": {
+      "en": "Cell signalling"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.12.17",
+    "acronym": "CELLSIGN"
+  },
+  {
+    "cristin_unit_id": "185.51.12.18",
+    "unit_name": {
+      "en": "Chromatin Biology Group"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.12.18",
+    "acronym": "KROMATOME"
+  },
+  {
+    "cristin_unit_id": "185.51.12.30",
+    "unit_name": {
+      "en": "Division of Anatomy"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.12.30",
+    "acronym": "SEKANA"
+  },
+  {
+    "cristin_unit_id": "185.51.12.31",
+    "unit_name": {
+      "en": "Macroscopic Anatomy and Biological Anthropology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.12.31",
+    "acronym": "MAKRO"
+  },
+  {
+    "cristin_unit_id": "185.51.12.32",
+    "unit_name": {
+      "en": "Synaptic Neurochemistry"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.12.32",
+    "acronym": "SNLAB"
+  },
+  {
+    "cristin_unit_id": "185.51.12.33",
+    "unit_name": {
+      "en": "Molecular Neuroscience"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.12.33",
+    "acronym": "LMN"
+  },
+  {
+    "cristin_unit_id": "185.51.12.34",
+    "unit_name": {
+      "en": "Neural Systems"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.12.34",
+    "acronym": "NESYS"
+  },
+  {
+    "cristin_unit_id": "185.51.12.35",
+    "unit_name": {
+      "en": "Amino Acid Transporters"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.12.35",
+    "acronym": "AT"
+  },
+  {
+    "cristin_unit_id": "185.51.12.36",
+    "unit_name": {
+      "en": "Bone Marrow Transplantation"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.12.36",
+    "acronym": "BENMARGTRA"
+  },
+  {
+    "cristin_unit_id": "185.51.12.37",
+    "unit_name": {
+      "en": "Natural Killer Cell group"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.12.37",
+    "acronym": "NKCELL"
+  },
+  {
+    "cristin_unit_id": "185.51.12.38",
+    "unit_name": {
+      "en": "Molecular Immunology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.12.38",
+    "acronym": "MOLIMMUN"
+  },
+  {
+    "cristin_unit_id": "185.51.12.39",
+    "unit_name": {
+      "en": "Neurotransporter Laboratory"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.12.39",
+    "acronym": "NTLAB"
+  },
+  {
+    "cristin_unit_id": "185.51.12.50",
+    "unit_name": {
+      "en": "Division of Physiology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.12.50",
+    "acronym": "SEKFYS"
+  },
+  {
+    "cristin_unit_id": "185.51.12.51",
+    "unit_name": {
+      "en": "The Heart Physiology Group"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.12.51",
+    "acronym": "HJERTEFYS"
+  },
+  {
+    "cristin_unit_id": "185.51.12.53",
+    "unit_name": {
+      "en": "Systems Physiology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.12.53",
+    "acronym": "SYSFYS"
+  },
+  {
+    "cristin_unit_id": "185.51.12.54",
+    "unit_name": {
+      "en": "Neural Development"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.12.54",
+    "acronym": "NDEVOR"
+  },
+  {
+    "cristin_unit_id": "185.51.12.55",
+    "unit_name": {
+      "en": "Brain Signalling"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.12.55",
+    "acronym": "HJERNSI"
+  },
+  {
+    "cristin_unit_id": "185.51.12.56",
+    "unit_name": {
+      "en": "Cortical Circuits Group"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.12.56",
+    "acronym": "NEVROLAB"
+  },
+  {
+    "cristin_unit_id": "185.51.12.57",
+    "unit_name": {
+      "en": "Glial cells"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.12.57",
+    "acronym": "GLIALAB"
+  },
+  {
+    "cristin_unit_id": "185.51.12.58",
+    "unit_name": {
+      "en": "Laboratory for Neural Computation"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.12.58",
+    "acronym": "NEUCOM"
+  },
+  {
+    "cristin_unit_id": "185.51.12.59",
+    "unit_name": {
+      "en": "Laboratory of Synaptic Physiology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.12.59",
+    "acronym": "SYNAPSELAB"
+  },
+  {
+    "cristin_unit_id": "185.51.12.60",
+    "unit_name": {
+      "en": "Human Integrative Cardiovascular Control"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.12.60",
+    "acronym": "SIRKON"
+  },
+  {
+    "cristin_unit_id": "185.51.13.0",
+    "unit_name": {
+      "en": "Department of Nutrition"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.13.0",
+    "acronym": "ERN"
+  },
+  {
+    "cristin_unit_id": "185.51.13.20",
+    "unit_name": {
+      "en": "Division of Clinical Nutrition"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.13.20",
+    "acronym": "SEKKLINERN"
+  },
+  {
+    "cristin_unit_id": "185.51.13.21",
+    "unit_name": {
+      "en": "Diet and Cancer"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.13.21",
+    "acronym": "KOSTKREFT"
+  },
+  {
+    "cristin_unit_id": "185.51.13.22",
+    "unit_name": {
+      "en": "Diet and atherosclerosis"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.13.22",
+    "acronym": "KOSTATERO"
+  },
+  {
+    "cristin_unit_id": "185.51.13.30",
+    "unit_name": {
+      "en": "Division of Nutritional Epidemiology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.13.30",
+    "acronym": "SEKERNEP"
+  },
+  {
+    "cristin_unit_id": "185.51.13.31",
+    "unit_name": {
+      "en": "Dietary Research"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.13.31",
+    "acronym": "KOSTFORSK"
+  },
+  {
+    "cristin_unit_id": "185.51.13.32",
+    "unit_name": {
+      "en": "Public Health Nutrition"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.13.32",
+    "acronym": "FOLKERN"
+  },
+  {
+    "cristin_unit_id": "185.51.13.33",
+    "unit_name": {
+      "en": "Nutritional Epidemiology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.13.33",
+    "acronym": "ERNEPI"
+  },
+  {
+    "cristin_unit_id": "185.51.13.40",
+    "unit_name": {
+      "en": "Division of Molecular Nutrition"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.13.40",
+    "acronym": "SEKMOLERN"
+  },
+  {
+    "cristin_unit_id": "185.51.13.41",
+    "unit_name": {
+      "en": "Nutritional Molecular Biology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.13.41",
+    "acronym": "MOLERNBIOL"
+  },
+  {
+    "cristin_unit_id": "185.51.13.42",
+    "unit_name": {
+      "en": "Nuclear Receptor Group"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.13.42",
+    "acronym": "NRG"
+  },
+  {
+    "cristin_unit_id": "185.51.13.43",
+    "unit_name": {
+      "en": "Molecular Nutrition"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.13.43",
+    "acronym": "MOLERN"
+  },
+  {
+    "cristin_unit_id": "185.51.13.44",
+    "unit_name": {
+      "en": "Transgenic Animals and Lipid Storage"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.13.44",
+    "acronym": "TRANSGEN"
+  },
+  {
+    "cristin_unit_id": "185.51.13.45",
+    "unit_name": {
+      "en": "Molecular and Clinical Glycobiology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.13.45",
+    "acronym": "MKGB"
+  },
+  {
+    "cristin_unit_id": "185.51.13.46",
+    "unit_name": {
+      "en": "Molecular Toxicology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.13.46",
+    "acronym": "MOLTOKS"
+  },
+  {
+    "cristin_unit_id": "185.51.14.0",
+    "unit_name": {
+      "en": "Department of Behavioural Sciences in Medicine"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.14.0",
+    "acronym": "ATF"
+  },
+  {
+    "cristin_unit_id": "185.51.15.0",
+    "unit_name": {
+      "en": "Department of Biostatistics"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.15.0",
+    "acronym": "STAT"
+  },
+  {
+    "cristin_unit_id": "185.51.20.10",
+    "unit_name": {
+      "en": "Centre of Excellence - Hybrid Technology Hub"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.20.10",
+    "acronym": "SFF-HTH"
+  },
+  {
+    "cristin_unit_id": "185.51.20.20",
+    "unit_name": {
+      "en": "SFF - HTH - Sullivan Group"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.51.20.20",
+    "acronym": "SFF-HTH"
+  },
+  {
+    "cristin_unit_id": "185.52.0.0",
+    "unit_name": {
+      "en": "Institute of Health and Society"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.52.0.0",
+    "acronym": "HELSAM"
+  },
+  {
+    "cristin_unit_id": "185.52.0.10",
+    "unit_name": {
+      "en": "Helsam Common Scientific Activities"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.52.0.10",
+    "acronym": "HELSAMFAG"
+  },
+  {
+    "cristin_unit_id": "185.52.0.11",
+    "unit_name": {
+      "en": "Research Centre for Habilitation and Rehabilitation Models & Services"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.52.0.11",
+    "acronym": "CHARM"
+  },
+  {
+    "cristin_unit_id": "185.52.1.0",
+    "unit_name": {
+      "en": "Section for Administrative Services Helsam"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.52.1.0",
+    "acronym": "FELLESADM"
+  },
+  {
+    "cristin_unit_id": "185.52.1.1",
+    "unit_name": {
+      "en": "Local Administration Forskningsveien"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.52.1.1",
+    "acronym": "ADMF"
+  },
+  {
+    "cristin_unit_id": "185.52.1.2",
+    "unit_name": {
+      "en": "Local Administration Ullevaal"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.52.1.2",
+    "acronym": "ADMU"
+  },
+  {
+    "cristin_unit_id": "185.52.1.3",
+    "unit_name": {
+      "en": "Section for Research Administration Helsam"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.52.1.3",
+    "acronym": "FA"
+  },
+  {
+    "cristin_unit_id": "185.52.1.4",
+    "unit_name": {
+      "en": "Section for Finance and HR Helsam"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.52.1.4",
+    "acronym": "SØP"
+  },
+  {
+    "cristin_unit_id": "185.52.1.5",
+    "unit_name": {
+      "en": "Section for Student Administration Helsam"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.52.1.5",
+    "acronym": "STUDADM"
+  },
+  {
+    "cristin_unit_id": "185.52.10.0",
+    "unit_name": {
+      "en": "Department for Interdisciplinary Health Sciences"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.52.10.0",
+    "acronym": "HELSEVIT"
+  },
+  {
+    "cristin_unit_id": "185.52.11.0",
+    "unit_name": {
+      "en": "Departement of Health Economics and Health Management"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.52.11.0",
+    "acronym": "HELED"
+  },
+  {
+    "cristin_unit_id": "185.52.12.0",
+    "unit_name": {
+      "en": "Departement of Nursing Science"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.52.12.0",
+    "acronym": "SYKVIT"
+  },
+  {
+    "cristin_unit_id": "185.52.13.0",
+    "unit_name": {
+      "en": "Centre for Medical Ethics"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.52.13.0",
+    "acronym": "SME"
+  },
+  {
+    "cristin_unit_id": "185.52.14.0",
+    "unit_name": {
+      "en": "Department of Community Medicine and Global Health"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.52.14.0",
+    "acronym": "SAMGLOB"
+  },
+  {
+    "cristin_unit_id": "185.52.15.0",
+    "unit_name": {
+      "en": "Departement of General Practice"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.52.15.0",
+    "acronym": "ALLMED"
+  },
+  {
+    "cristin_unit_id": "185.52.15.10",
+    "unit_name": {
+      "en": "Clinical General Practice Module 1-3"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.52.15.10",
+    "acronym": "PRAKS1-3"
+  },
+  {
+    "cristin_unit_id": "185.52.15.11",
+    "unit_name": {
+      "en": "Clinical General Practice and Community Medicine Module 7"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.52.15.11",
+    "acronym": "PRAKS7"
+  },
+  {
+    "cristin_unit_id": "185.52.15.12",
+    "unit_name": {
+      "nb": "Allmennmedisinsk forskningsenhet i Oslo"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.52.15.12",
+    "acronym": "ALLMEFORSK"
+  },
+  {
+    "cristin_unit_id": "185.52.15.13",
+    "unit_name": {
+      "nb": "Antibiotikasenteret for primærmedisin"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.52.15.13",
+    "acronym": "ANTIBIOTIKA"
+  },
+  {
+    "cristin_unit_id": "185.53.0.0",
+    "unit_name": {
+      "en": "Institute of Clinical Medicine"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.0.0",
+    "acronym": "KLINMED"
+  },
+  {
+    "cristin_unit_id": "185.53.1.0",
+    "unit_name": {
+      "en": "Clinical Medicine Administration"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.1.0",
+    "acronym": "KLINMEDADM"
+  },
+  {
+    "cristin_unit_id": "185.53.1.1",
+    "unit_name": {
+      "en": "Finance Section"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.1.1",
+    "acronym": "KLINMEDØK"
+  },
+  {
+    "cristin_unit_id": "185.53.1.2",
+    "unit_name": {
+      "en": "Human Resources Section"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.1.2",
+    "acronym": "PERSONAL"
+  },
+  {
+    "cristin_unit_id": "185.53.1.3",
+    "unit_name": {
+      "en": "System Management Group"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.1.3",
+    "acronym": "KLINMEDSYS"
+  },
+  {
+    "cristin_unit_id": "185.53.1.4",
+    "unit_name": {
+      "en": "Programme Planning, Management Support and Communication"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.1.4",
+    "acronym": "KLINMEDKUL"
+  },
+  {
+    "cristin_unit_id": "185.53.2.10",
+    "unit_name": {
+      "en": "Centre for Cancer Biomedicine"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.2.10",
+    "acronym": "CCB"
+  },
+  {
+    "cristin_unit_id": "185.53.2.11",
+    "unit_name": {
+      "en": "Centre for Immune Regulation"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.2.11",
+    "acronym": "CIR"
+  },
+  {
+    "cristin_unit_id": "185.53.2.12",
+    "unit_name": {
+      "en": "Norwegian Centre for Mental Disorders Research - Centre of Excellence"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.2.12",
+    "acronym": "NORMENT"
+  },
+  {
+    "cristin_unit_id": "185.53.2.15",
+    "unit_name": {
+      "en": "Centre for Cancer Cell Reprogramming"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.2.15",
+    "acronym": "CANCELL"
+  },
+  {
+    "cristin_unit_id": "185.53.10.0",
+    "unit_name": {
+      "en": "Division of Mental Health and Addiction"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.10.0",
+    "acronym": "PHA"
+  },
+  {
+    "cristin_unit_id": "185.53.10.10",
+    "unit_name": {
+      "en": "National Centre for Suicide Research and Prevention"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.10.10",
+    "acronym": "NSSF"
+  },
+  {
+    "cristin_unit_id": "185.53.10.11",
+    "unit_name": {
+      "en": "Psychosis Research Centre"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.10.11",
+    "acronym": "TOP"
+  },
+  {
+    "cristin_unit_id": "185.53.10.12",
+    "unit_name": {
+      "en": "Norwegian Centre for Addiction Research"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.10.12",
+    "acronym": "SERAF"
+  },
+  {
+    "cristin_unit_id": "185.53.10.13",
+    "unit_name": {
+      "en": "Child and Adolescent Psychiatry Unit"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.10.13",
+    "acronym": "BUP"
+  },
+  {
+    "cristin_unit_id": "185.53.10.14",
+    "unit_name": {
+      "en": "Adult Psychiatry Unit"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.10.14",
+    "acronym": "VOP"
+  },
+  {
+    "cristin_unit_id": "185.53.10.70",
+    "unit_name": {
+      "en": "NORMENT part UiO"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.10.70",
+    "acronym": "NORMENT"
+  },
+  {
+    "cristin_unit_id": "185.53.10.71",
+    "unit_name": {
+      "en": "Administration NORMENT"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.10.71",
+    "acronym": "ADMNORMENT"
+  },
+  {
+    "cristin_unit_id": "185.53.10.72",
+    "unit_name": {
+      "en": "Ole Andreassen CR funds for SFF"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.10.72",
+    "acronym": "OAACR"
+  },
+  {
+    "cristin_unit_id": "185.53.10.73",
+    "unit_name": {
+      "en": "Ingrid Agartz CR funds for SFF"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.10.73",
+    "acronym": "IACR"
+  },
+  {
+    "cristin_unit_id": "185.53.10.74",
+    "unit_name": {
+      "en": "Genetic &amp; Biostat for SFF"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.10.74",
+    "acronym": "GENBIO"
+  },
+  {
+    "cristin_unit_id": "185.53.10.75",
+    "unit_name": {
+      "en": "Cognition for SFF-NORMENT"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.10.75",
+    "acronym": "KOGNISJON"
+  },
+  {
+    "cristin_unit_id": "185.53.10.76",
+    "unit_name": {
+      "en": "MR for SFF"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.10.76",
+    "acronym": "MR"
+  },
+  {
+    "cristin_unit_id": "185.53.10.79",
+    "unit_name": {
+      "en": "SFF Funds NORMENT"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.10.79",
+    "acronym": "SFFSTØTTE"
+  },
+  {
+    "cristin_unit_id": "185.53.11.0",
+    "unit_name": {
+      "en": "Medicine Clinic"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.11.0",
+    "acronym": "MDK"
+  },
+  {
+    "cristin_unit_id": "185.53.11.10",
+    "unit_name": {
+      "en": "Department of Cardiology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.11.10",
+    "acronym": "HJERTE"
+  },
+  {
+    "cristin_unit_id": "185.53.11.11",
+    "unit_name": {
+      "en": "Department of Pulmonary Medicine"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.11.11",
+    "acronym": "LUNGE"
+  },
+  {
+    "cristin_unit_id": "185.53.11.12",
+    "unit_name": {
+      "en": "Department of Nephrology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.11.12",
+    "acronym": "NYRE"
+  },
+  {
+    "cristin_unit_id": "185.53.11.13",
+    "unit_name": {
+      "en": "Department of Gastroenterology and Hepatology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.11.13",
+    "acronym": "GASTRO"
+  },
+  {
+    "cristin_unit_id": "185.53.11.14",
+    "unit_name": {
+      "en": "Department of Infectious Diseases"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.11.14",
+    "acronym": "INFMED"
+  },
+  {
+    "cristin_unit_id": "185.53.11.15",
+    "unit_name": {
+      "en": "Department of Geriatric Medicine"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.11.15",
+    "acronym": "GERIA"
+  },
+  {
+    "cristin_unit_id": "185.53.11.16",
+    "unit_name": {
+      "en": "Department of Endocrinology, Morbid Obesity and Preventive Medicine"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.11.16",
+    "acronym": "ENDO"
+  },
+  {
+    "cristin_unit_id": "185.53.11.18",
+    "unit_name": {
+      "en": "Department of General Internal Medicine"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.11.18",
+    "acronym": "GIA"
+  },
+  {
+    "cristin_unit_id": "185.53.11.19",
+    "unit_name": {
+      "en": "Department of Acute Medicine"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.11.19",
+    "acronym": "AKA"
+  },
+  {
+    "cristin_unit_id": "185.53.11.20",
+    "unit_name": {
+      "en": "Department for Digital Health Research"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.11.20",
+    "acronym": "ADH"
+  },
+  {
+    "cristin_unit_id": "185.53.11.21",
+    "unit_name": {
+      "en": "Department of Clinical Service"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.11.21",
+    "acronym": "KS"
+  },
+  {
+    "cristin_unit_id": "185.53.15.0",
+    "unit_name": {
+      "en": "Clinic for Cardiovascular and Pulmonary Diseases"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.15.0",
+    "acronym": "HLK"
+  },
+  {
+    "cristin_unit_id": "185.53.15.10",
+    "unit_name": {
+      "en": "Institute for Experimental Medical Research"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.15.10",
+    "acronym": "IEMF"
+  },
+  {
+    "cristin_unit_id": "185.53.15.11",
+    "unit_name": {
+      "en": "Department of Cardiothoracic Surgery"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.15.11",
+    "acronym": "TKA"
+  },
+  {
+    "cristin_unit_id": "185.53.15.12",
+    "unit_name": {
+      "en": "Department of Respiratory Medicine"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.15.12",
+    "acronym": "LA"
+  },
+  {
+    "cristin_unit_id": "185.53.15.13",
+    "unit_name": {
+      "en": "Department of Cardiology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.15.13",
+    "acronym": "KA"
+  },
+  {
+    "cristin_unit_id": "185.53.15.14",
+    "unit_name": {
+      "en": "Institute for Surgical Research"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.15.14",
+    "acronym": "KIRFORSK"
+  },
+  {
+    "cristin_unit_id": "185.53.15.15",
+    "unit_name": {
+      "en": "Department of Vascular Diseases"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.15.15",
+    "acronym": "OVS"
+  },
+  {
+    "cristin_unit_id": "185.53.15.70",
+    "unit_name": {
+      "en": "K.G. Jebsen Center for Cardiac Research"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.15.70",
+    "acronym": "KGJ-CCR"
+  },
+  {
+    "cristin_unit_id": "185.53.18.0",
+    "unit_name": {
+      "en": "Division of Laboratory Medicine"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.18.0",
+    "acronym": "KLM"
+  },
+  {
+    "cristin_unit_id": "185.53.18.10",
+    "unit_name": {
+      "en": "Department of Medical Genetics"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.18.10",
+    "acronym": "AMG"
+  },
+  {
+    "cristin_unit_id": "185.53.18.11",
+    "unit_name": {
+      "en": "Department of Microbiology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.18.11",
+    "acronym": "MIK"
+  },
+  {
+    "cristin_unit_id": "185.53.18.12",
+    "unit_name": {
+      "en": "Department of Immunology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.18.12",
+    "acronym": "IMM"
+  },
+  {
+    "cristin_unit_id": "185.53.18.13",
+    "unit_name": {
+      "en": "Department of Pathology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.18.13",
+    "acronym": "PAT"
+  },
+  {
+    "cristin_unit_id": "185.53.18.14",
+    "unit_name": {
+      "en": "Department of Medical Biochemistry"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.18.14",
+    "acronym": "MBK"
+  },
+  {
+    "cristin_unit_id": "185.53.18.15",
+    "unit_name": {
+      "en": "Department of Pharmacology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.18.15",
+    "acronym": "FAR"
+  },
+  {
+    "cristin_unit_id": "185.53.18.18",
+    "unit_name": {
+      "en": "Department of Forensic Medicine"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.18.18",
+    "acronym": "ARF"
+  },
+  {
+    "cristin_unit_id": "185.53.18.71",
+    "unit_name": {
+      "en": "K.G.Jebsen Inflammation Research Centre - part UiO"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.18.71",
+    "acronym": "KGJIRC"
+  },
+  {
+    "cristin_unit_id": "185.53.18.72",
+    "unit_name": {
+      "en": "K.G. Jebsen Influenza Vaccine Research Centre-part UiO"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.18.72",
+    "acronym": "KGJIVRC"
+  },
+  {
+    "cristin_unit_id": "185.53.18.73",
+    "unit_name": {
+      "en": "K.G. Jebsen Coeliac Disease Research Centre"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.18.73",
+    "acronym": "KGJCDRC"
+  },
+  {
+    "cristin_unit_id": "185.53.18.74",
+    "unit_name": {
+      "en": "World Leading - Human Immunology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.18.74",
+    "acronym": "WL-IMMUNOL"
+  },
+  {
+    "cristin_unit_id": "185.53.18.75",
+    "unit_name": {
+      "en": "K.G. Jebsen Centre for B-Cell Malignancies"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.18.75",
+    "acronym": "KGJBCELLE"
+  },
+  {
+    "cristin_unit_id": "185.53.20.0",
+    "unit_name": {
+      "en": "Oslo Hospital Services"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.20.0",
+    "acronym": "OSS"
+  },
+  {
+    "cristin_unit_id": "185.53.20.10",
+    "unit_name": {
+      "en": "Department of Comparative Medicine - Oslo Hospital Service"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.20.10",
+    "acronym": "AKMOS"
+  },
+  {
+    "cristin_unit_id": "185.53.42.0",
+    "unit_name": {
+      "en": "Division of Clinical Neuroscience"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.42.0",
+    "acronym": "NVR"
+  },
+  {
+    "cristin_unit_id": "185.53.42.10",
+    "unit_name": {
+      "en": "Department of Physical Medicine and Rehabilitation"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.42.10",
+    "acronym": "FYS"
+  },
+  {
+    "cristin_unit_id": "185.53.42.11",
+    "unit_name": {
+      "en": "Department of Neurosurgery"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.42.11",
+    "acronym": "NKI"
+  },
+  {
+    "cristin_unit_id": "185.53.42.12",
+    "unit_name": {
+      "en": "Department of Psychosomatic Medicine"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.42.12",
+    "acronym": "PSY"
+  },
+  {
+    "cristin_unit_id": "185.53.42.13",
+    "unit_name": {
+      "en": "Department of Neurology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.42.13",
+    "acronym": "NEV"
+  },
+  {
+    "cristin_unit_id": "185.53.42.14",
+    "unit_name": {
+      "en": "Department of Neurohabilitation"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.42.14",
+    "acronym": "NHA"
+  },
+  {
+    "cristin_unit_id": "185.53.42.15",
+    "unit_name": {
+      "en": "Department of Refractory Epilepsy"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.42.15",
+    "acronym": "SSE"
+  },
+  {
+    "cristin_unit_id": "185.53.43.0",
+    "unit_name": {
+      "en": "Division of Head, Neck and Reconstructive Surgery"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.43.0",
+    "acronym": "HHA"
+  },
+  {
+    "cristin_unit_id": "185.53.43.10",
+    "unit_name": {
+      "en": "Department of Plastic and Reconstructive Surgery"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.43.10",
+    "acronym": "PLA"
+  },
+  {
+    "cristin_unit_id": "185.53.43.11",
+    "unit_name": {
+      "en": "Department of Ophthalmology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.43.11",
+    "acronym": "ØYE"
+  },
+  {
+    "cristin_unit_id": "185.53.43.12",
+    "unit_name": {
+      "en": "Department of Otorhinolaryngology & Head and Neck Surgery"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.43.12",
+    "acronym": "ØNH"
+  },
+  {
+    "cristin_unit_id": "185.53.44.0",
+    "unit_name": {
+      "en": "Division of Orthopaedic Surgery"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.44.0",
+    "acronym": "OPK"
+  },
+  {
+    "cristin_unit_id": "185.53.44.10",
+    "unit_name": {
+      "en": "Department of Orthopaedics - Ullevål"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.44.10",
+    "acronym": "ORT-US"
+  },
+  {
+    "cristin_unit_id": "185.53.44.11",
+    "unit_name": {
+      "en": "Department of Orthopaedics - Rikshospitalet"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.44.11",
+    "acronym": "ORT-RH"
+  },
+  {
+    "cristin_unit_id": "185.53.45.0",
+    "unit_name": {
+      "en": "Division of Gynaecology and Obstetrics"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.45.0",
+    "acronym": "KVI"
+  },
+  {
+    "cristin_unit_id": "185.53.45.10",
+    "unit_name": {
+      "en": "Department of Obstetrics and Gynaecology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.45.10",
+    "acronym": "KVINNE"
+  },
+  {
+    "cristin_unit_id": "185.53.46.0",
+    "unit_name": {
+      "en": "Division of Paediatric and Adolescent Medicine"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.46.0",
+    "acronym": "BAR"
+  },
+  {
+    "cristin_unit_id": "185.53.46.10",
+    "unit_name": {
+      "en": "Paediatrics"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.46.10",
+    "acronym": "BARN"
+  },
+  {
+    "cristin_unit_id": "185.53.46.11",
+    "unit_name": {
+      "en": "Paediatric Research Institute"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.46.11",
+    "acronym": "PFI"
+  },
+  {
+    "cristin_unit_id": "185.53.48.0",
+    "unit_name": {
+      "en": "Division of Surgery, Inflammatory Diseases and Transplantation"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.48.0",
+    "acronym": "KIT"
+  },
+  {
+    "cristin_unit_id": "185.53.48.10",
+    "unit_name": {
+      "en": "Department of Gastrointestinal and Children Surgery"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.48.10",
+    "acronym": "AGK"
+  },
+  {
+    "cristin_unit_id": "185.53.48.11",
+    "unit_name": {
+      "en": "Department of Urology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.48.11",
+    "acronym": "URO"
+  },
+  {
+    "cristin_unit_id": "185.53.48.12",
+    "unit_name": {
+      "en": "Department of Transplantation"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.48.12",
+    "acronym": "ATX"
+  },
+  {
+    "cristin_unit_id": "185.53.48.13",
+    "unit_name": {
+      "en": "Department of Dermatology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.48.13",
+    "acronym": "HUD"
+  },
+  {
+    "cristin_unit_id": "185.53.48.14",
+    "unit_name": {
+      "en": "Research Institute for Internal Medicine"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.48.14",
+    "acronym": "IMF"
+  },
+  {
+    "cristin_unit_id": "185.53.48.15",
+    "unit_name": {
+      "en": "Department of Rheumatology and Infectious Diseases"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.48.15",
+    "acronym": "RI"
+  },
+  {
+    "cristin_unit_id": "185.53.49.0",
+    "unit_name": {
+      "en": "Division of Cancer Medicine"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.49.0",
+    "acronym": "KRE"
+  },
+  {
+    "cristin_unit_id": "185.53.49.10",
+    "unit_name": {
+      "en": "Department of Oncology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.49.10",
+    "acronym": "AKB"
+  },
+  {
+    "cristin_unit_id": "185.53.49.11",
+    "unit_name": {
+      "en": "Department of Haematology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.49.11",
+    "acronym": "BLO"
+  },
+  {
+    "cristin_unit_id": "185.53.49.12",
+    "unit_name": {
+      "en": "Institute for Cancer Research"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.49.12",
+    "acronym": "KRF"
+  },
+  {
+    "cristin_unit_id": "185.53.49.13",
+    "unit_name": {
+      "en": "Institute of cancer genetics and informatics"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.49.13",
+    "acronym": "IKI"
+  },
+  {
+    "cristin_unit_id": "185.53.49.14",
+    "unit_name": {
+      "en": "Department of Gynaecological Oncology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.49.14",
+    "acronym": "GKR"
+  },
+  {
+    "cristin_unit_id": "185.53.49.70",
+    "unit_name": {
+      "en": "K.G. Jebsen Centre for Cancer Immunotherapy"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.49.70",
+    "acronym": "KGJCIRC"
+  },
+  {
+    "cristin_unit_id": "185.53.60.0",
+    "unit_name": {
+      "en": "Division of Critical Care"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.60.0",
+    "acronym": "AKU"
+  },
+  {
+    "cristin_unit_id": "185.53.60.10",
+    "unit_name": {
+      "en": "Department of Anesthesiology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.60.10",
+    "acronym": "ANE"
+  },
+  {
+    "cristin_unit_id": "185.53.60.11",
+    "unit_name": {
+      "en": "Interventional Centre"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.60.11",
+    "acronym": "IVS"
+  },
+  {
+    "cristin_unit_id": "185.53.60.12",
+    "unit_name": {
+      "en": "Skills Training Centre"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.60.12",
+    "acronym": "FHS"
+  },
+  {
+    "cristin_unit_id": "185.53.60.13",
+    "unit_name": {
+      "en": "Department of Traumatology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.60.13",
+    "acronym": "TRA"
+  },
+  {
+    "cristin_unit_id": "185.53.61.0",
+    "unit_name": {
+      "en": "Division of Prehospital Services"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.61.0",
+    "acronym": "PRE"
+  },
+  {
+    "cristin_unit_id": "185.53.61.10",
+    "unit_name": {
+      "en": "Department of Prehospital Services"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.61.10",
+    "acronym": "PRE-AVD"
+  },
+  {
+    "cristin_unit_id": "185.53.61.11",
+    "unit_name": {
+      "en": "Norwegian National Advisory Unit on Prehospital Emergency Medicine"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.61.11",
+    "acronym": "NAKOS"
+  },
+  {
+    "cristin_unit_id": "185.53.63.0",
+    "unit_name": {
+      "en": "Division of Radiology and Nuclear Medicine"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.63.0",
+    "acronym": "KRN"
+  },
+  {
+    "cristin_unit_id": "185.53.63.10",
+    "unit_name": {
+      "en": "Department of Radiology and Nuclear Medicine"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.63.10",
+    "acronym": "ARN"
+  },
+  {
+    "cristin_unit_id": "185.53.80.0",
+    "unit_name": {
+      "en": "Administration Campus Ahus"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.80.0",
+    "acronym": "AHUSADM"
+  },
+  {
+    "cristin_unit_id": "185.53.81.0",
+    "unit_name": {
+      "en": "Administration Campus Ahus"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.81.0",
+    "acronym": "AHUSADM"
+  },
+  {
+    "cristin_unit_id": "185.53.82.0",
+    "unit_name": {
+      "en": "Division of Medicine and Laboratory Sciences"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.82.0",
+    "acronym": "AHUSKIL"
+  },
+  {
+    "cristin_unit_id": "185.53.82.10",
+    "unit_name": {
+      "en": "Department of Clinical Molecular Biology"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.82.10",
+    "acronym": "EPIGEN"
+  },
+  {
+    "cristin_unit_id": "185.53.83.0",
+    "unit_name": {
+      "en": "Division of Surgery"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.83.0",
+    "acronym": "AHUSKKF"
+  },
+  {
+    "cristin_unit_id": "185.53.84.0",
+    "unit_name": {
+      "en": "Division of Health Services Research and psychiatry"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.53.84.0",
+    "acronym": "AHUSKHP"
+  },
+  {
+    "cristin_unit_id": "185.56.0.0",
+    "unit_name": {
+      "en": "Biotechnology Centre of Oslo"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.56.0.0",
+    "acronym": "BIO"
+  },
+  {
+    "cristin_unit_id": "185.56.10.0",
+    "unit_name": {
+      "en": "BiO Administration and Core Facilities"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.56.10.0",
+    "acronym": "BIOADMIN"
+  },
+  {
+    "cristin_unit_id": "185.56.11.0",
+    "unit_name": {
+      "en": "BiO Nikolina Sekulic Group (Structural Biology and Chromatin)"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.56.11.0",
+    "acronym": "BIONSG"
+  },
+  {
+    "cristin_unit_id": "185.56.12.0",
+    "unit_name": {
+      "en": "BiO Kjetil Taskén Group (Cell Signalling)"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.56.12.0",
+    "acronym": "BIOKTG"
+  },
+  {
+    "cristin_unit_id": "185.56.13.0",
+    "unit_name": {
+      "en": "BiO Irep Gözen Group (Bionanotechnology and Membrane Systems)"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.56.13.0",
+    "acronym": "BIOIGG"
+  },
+  {
+    "cristin_unit_id": "185.56.14.0",
+    "unit_name": {
+      "en": "BiO Sandra Lopez-Aviles Group (Cell Cycle Regulations)"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.56.14.0",
+    "acronym": "BIOSLAG"
+  },
+  {
+    "cristin_unit_id": "185.56.15.0",
+    "unit_name": {
+      "en": "BiO Camila Esguerra Group (Chemical Neuroscience)"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.56.15.0",
+    "acronym": "BIOCEG"
+  },
+  {
+    "cristin_unit_id": "185.56.16.0",
+    "unit_name": {
+      "en": "BiO Michael Leitges Group (PKC Signalling)"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.56.16.0",
+    "acronym": "BIOMLG"
+  },
+  {
+    "cristin_unit_id": "185.57.0.0",
+    "unit_name": {
+      "en": "Centre for Molecular Medicine Norway"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.57.0.0",
+    "acronym": "NCMM"
+  },
+  {
+    "cristin_unit_id": "185.57.10.0",
+    "unit_name": {
+      "en": "Centre for Molecular Medicine Norway NCMM - Administration and Core Facilities"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.57.10.0",
+    "acronym": "NCMM ADMIN"
+  },
+  {
+    "cristin_unit_id": "185.57.11.0",
+    "unit_name": {
+      "en": "Mills/Engedal Group - Prostate Cancer"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.57.11.0",
+    "acronym": "MEG"
+  },
+  {
+    "cristin_unit_id": "185.57.12.0",
+    "unit_name": {
+      "en": "Anthony Mathelier Group - Computational Biology & Gene Regulation"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.57.12.0",
+    "acronym": "AMG"
+  },
+  {
+    "cristin_unit_id": "185.57.13.0",
+    "unit_name": {
+      "en": "Preben Morth Group -Membrane Transport System"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.57.13.0",
+    "acronym": "PMG"
+  },
+  {
+    "cristin_unit_id": "185.57.14.0",
+    "unit_name": {
+      "en": "Kjetil Taskén Group -Disease Mechanisms"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.57.14.0",
+    "acronym": "KTG"
+  },
+  {
+    "cristin_unit_id": "185.57.15.0",
+    "unit_name": {
+      "en": "Toni Hurtado Group - Hormone-Resistant Breast Cancer"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.57.15.0",
+    "acronym": "THG"
+  },
+  {
+    "cristin_unit_id": "185.57.16.0",
+    "unit_name": {
+      "en": "Judith Staerk Group - Stem Cells"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.57.16.0",
+    "acronym": "JSG"
+  },
+  {
+    "cristin_unit_id": "185.57.17.0",
+    "unit_name": {
+      "en": "Hartmut Luecke Group - Structural Biology and Drug Discovery"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.57.17.0",
+    "acronym": "LUECKE"
+  },
+  {
+    "cristin_unit_id": "185.57.18.0",
+    "unit_name": {
+      "en": "Emma Haapaniemi Group - precision pediatrics and gene editing"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.57.18.0",
+    "acronym": "EHG"
+  },
+  {
+    "cristin_unit_id": "185.57.19.0",
+    "unit_name": {
+      "en": "Saarela group - Human immune disorders"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.57.19.0",
+    "acronym": "JSG"
+  },
+  {
+    "cristin_unit_id": "185.57.20.0",
+    "unit_name": {
+      "en": "Sebastian Waszak Group - Computational Oncology."
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.57.20.0",
+    "acronym": "SWG"
+  },
+  {
+    "cristin_unit_id": "185.57.50.0",
+    "unit_name": {
+      "en": "Section for Research Strategy, Communication and International Relations"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.57.50.0",
+    "acronym": "SSK"
+  },
+  {
+    "cristin_unit_id": "185.57.51.0",
+    "unit_name": {
+      "en": "Nikolina Sekulic Group - Structural Biology and Chromatin"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.57.51.0",
+    "acronym": "BIONSG"
+  },
+  {
+    "cristin_unit_id": "185.57.52.0",
+    "unit_name": {
+      "en": "Irep Gözen Group - Bionanotechnology and Membrane Systems"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.57.52.0",
+    "acronym": "BIOIGG"
+  },
+  {
+    "cristin_unit_id": "185.57.53.0",
+    "unit_name": {
+      "en": "Sandra Lopez-Aviles Group - Cell Cycle Regulations"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.57.53.0",
+    "acronym": "BIOSLAG"
+  },
+  {
+    "cristin_unit_id": "185.57.54.0",
+    "unit_name": {
+      "en": "Camila Esguerra  Group - Chemical Neuroscience"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.57.54.0",
+    "acronym": "BIOCEG"
+  },
+  {
+    "cristin_unit_id": "185.57.55.0",
+    "unit_name": {
+      "en": "Marieke Kuijjer Group - Computational Biology and Systems Medicine"
+    },
+    "institution": {
+      "acronym": "UIO"
+    },
+    "url": "https://api.cristin.no/v2/units/185.57.55.0",
+    "acronym": "BIOMKG"
+  }
+]

@@ -17,7 +17,7 @@ class ModelUtilsTest {
 
     public static final String INSTITUTION_URI = "https://example.org/institution";
     public static final String MODEL_UTILS_DATA = "model_utils_data";
-    public static final Path HAS_TYPE_JSON = Path.of(MODEL_UTILS_DATA,"has_type.json");
+    public static final Path HAS_TYPE_JSON = Path.of(MODEL_UTILS_DATA, "has_type.json");
     public static final String SOME_NAME = "Some Name";
     public static final Path HAS_NAME_JSON = Path.of(MODEL_UTILS_DATA, "has_name.json");
     public static final String SUBUNIT_URI = "https://example.org/subunit";

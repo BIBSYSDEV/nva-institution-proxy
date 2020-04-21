@@ -1,14 +1,15 @@
 package no.unit.nva.institution.proxy.utils;
 
+import static java.util.Objects.isNull;
+
 import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import no.unit.nva.institution.proxy.exception.UnknownLanguageException;
 
-import static java.util.Objects.isNull;
-
 public class LanguageMapper {
+
     public static final String LOG_LANGUAGE_MAPPING_TEMPLATE = "Attempting to find language \"%s\"";
 
-    private LambdaLogger logger;
+    private final LambdaLogger logger;
 
     public LanguageMapper(LambdaLogger logger) {
         this.logger = logger;
@@ -16,7 +17,7 @@ public class LanguageMapper {
 
     public Language getLanguage(String languageCode) throws UnknownLanguageException {
         if (isNull(languageCode) || languageCode.isBlank()) {
-            return Language.NORWEGIAN_BOKMAAL;
+            return Language.DEFAULT_LANGUAGE;
         }
         logger.log(String.format(LOG_LANGUAGE_MAPPING_TEMPLATE, languageCode));
         return Language.getLanguage(languageCode);

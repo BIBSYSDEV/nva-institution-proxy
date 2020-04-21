@@ -1,72 +1,44 @@
 package no.unit.nva.institution.proxy;
 
-
-import no.unit.nva.institution.proxy.exception.GatewayException;
-import no.unit.nva.institution.proxy.exception.InvalidUriException;
-import no.unit.nva.institution.proxy.exception.NonExistingUnitError;
-import no.unit.nva.institution.proxy.response.InstitutionListResponse;
-import no.unit.nva.institution.proxy.response.NestedInstitutionResponse;
-import no.unit.nva.institution.proxy.utils.Language;
-import no.unit.nva.institution.proxy.utils.LanguageMapper;
-import nva.commons.exceptions.ApiGatewayException;
-import nva.commons.utils.TestLogger;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-
-import java.net.URI;
-import java.util.Collections;
-import java.util.concurrent.ExecutionException;
-
-import static nva.commons.utils.attempt.Try.attempt;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.StringContains.containsString;
+import static org.junit.Assert.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+import static testutils.HttpClientReturningInfoOfSingleUnits.SECOND_LEVEL_CHILD_URI;
+import static testutils.HttpClientReturningInfoOfSingleUnits.TESTING_LANGUAGE;
 
-
+import java.net.URI;
+import java.nio.file.Path;
+import java.util.Collections;
+import java.util.concurrent.ExecutionException;
+import no.unit.nva.institution.proxy.exception.GatewayException;
+import no.unit.nva.institution.proxy.exception.InvalidUriException;
+import no.unit.nva.institution.proxy.exception.NonExistingUnitError;
+import no.unit.nva.institution.proxy.response.InstitutionListResponse;
+import no.unit.nva.institution.proxy.response.InstitutionResponse;
+import no.unit.nva.institution.proxy.response.NestedInstitutionResponse;
+import no.unit.nva.institution.proxy.utils.Language;
+import no.unit.nva.testutils.TestLogger;
+import nva.commons.utils.IoUtils;
+import nva.commons.utils.StringUtils;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import testutils.HttpClientReturningInfoOfSingleUnits;
 
 public class CristinApiClientTest {
 
-    public static final String INVALID_LANGUAGE_CODE = "lalala";
-    public static final String EMPTY_STRING = "";
-    public static final String BLANK_STRING = "   ";
     public static final Language VALID_LANGUAGE_EN = Language.ENGLISH;
     public static final URI VALID_URI = URI.create("https://example.org");
     public static final String JSON_VALUE = "true";
+    public static final String SOME_NAME = "SomeName";
+    public static final String HTTP_CLIENT_RESPONSES = "httpClientResponses";
+    public static final Path SINGLE_UNIT_RESPONSE_GRAPH = Path.of(HTTP_CLIENT_RESPONSES,
+        "singleUnitResponseGraph.json");
     TestLogger testLogger = new TestLogger();
-
-    @DisplayName("getLanguage returns Norwegian Bokmål when language is null")
-    @Test
-    public void getLanguageReturnsNorwegianBokmalWhenLanguageIsNull() throws ApiGatewayException {
-        getLanguageReturnNorwegianBokmalWhenLanguageIsUndefined(null);
-    }
-
-    @DisplayName("getLanguage returns Norwegian Bokmål when language is blank")
-    @Test
-    public void getLanguageReturnsNorwegianBokmalWhenLanguageIsEmpty() throws ApiGatewayException {
-        getLanguageReturnNorwegianBokmalWhenLanguageIsUndefined(EMPTY_STRING);
-    }
-
-    @DisplayName("getLanguage returns Norwegian Bokmål when language is blans")
-    @Test
-    public void getLanguageReturnsNorwegianBokmalWhenLanguageIsBlank() throws ApiGatewayException {
-        getLanguageReturnNorwegianBokmalWhenLanguageIsUndefined(BLANK_STRING);
-    }
-
-    @DisplayName("getLanguage logs the input language when the language is valid")
-    @Test
-    public void getLanguageLogsTheInputLanguageWhenTheLanguageIsValid() {
-        getLanguageLogsTheInputLanguage(Language.NORWEGIAN_BOKMAAL.getCode());
-    }
-
-    @DisplayName("getLanguage logs the input language when the language is invalid")
-    @Test
-    public void getLanguageLogsTheInputLanguageWhenTheLanguageIsInvalid() {
-        getLanguageLogsTheInputLanguage(INVALID_LANGUAGE_CODE);
-    }
 
     @DisplayName("getNestedInstitution returns nested institution when input is valid")
     @Test
@@ -80,47 +52,31 @@ public class CristinApiClientTest {
         assertThat(response.getJson(), containsString(JSON_VALUE));
     }
 
-    private void getLanguageLogsTheInputLanguage(String language) {
-        MockHttpExecutorReportingInsertedLanguage executor = new MockHttpExecutorReportingInsertedLanguage();
-        CristinApiClient cristinApiClient = new CristinApiClient(executor, testLogger);
-        attempt(() -> cristinApiClient.getInstitutions(Language.getLanguage(language)));
-        String expectedLog = String.format(LanguageMapper.LOG_LANGUAGE_MAPPING_TEMPLATE, language);
-        assertThat(testLogger.getLogs(), containsString(expectedLog));
+    @DisplayName("getInstitutions returns a list with Institutions when input is valid")
+    @Test
+    void getInstitutionsReturnsAListWithInstitutionsWhenInputIsBalid() throws GatewayException {
+        InstitutionResponse mockResponseItem = new InstitutionResponse.Builder()
+            .withId(VALID_URI)
+            .withName(SOME_NAME)
+            .build();
+        HttpExecutor mockHttpExecutor = mock(HttpExecutorImpl.class);
+        when(mockHttpExecutor.getInstitutions(any(Language.class)))
+            .thenReturn(new InstitutionListResponse(Collections.singletonList(mockResponseItem)));
+        CristinApiClient cristinApiClient = new CristinApiClient(mockHttpExecutor, testLogger);
+        InstitutionListResponse response = cristinApiClient.getInstitutions(VALID_LANGUAGE_EN);
+        assertNotNull(response);
     }
 
-    private void getLanguageReturnNorwegianBokmalWhenLanguageIsUndefined(String languageString)
-        throws ApiGatewayException {
-        MockHttpExecutorReportingInsertedLanguage executor = new MockHttpExecutorReportingInsertedLanguage();
-
-        CristinApiClient cristinApiClient = new CristinApiClient(executor, testLogger);
-        cristinApiClient.getInstitutions(Language.getLanguage(languageString));
-        assertThat(executor.getInsertedLanguage(), is(equalTo(Language.NORWEGIAN_BOKMAAL)));
-    }
-
-    private static class MockHttpExecutorReportingInsertedLanguage extends HttpExecutor {
-
-        private Language insertedLanguage;
-
-        @Override
-        public InstitutionListResponse getInstitutions(Language language) {
-            this.insertedLanguage = language;
-            return new InstitutionListResponse(Collections.emptyList());
-        }
-
-        @Override
-        public NestedInstitutionResponse getNestedInstitution(URI uri, Language language) {
-            this.insertedLanguage = language;
-            return new NestedInstitutionResponse("true");
-        }
-
-        @Override
-        public NestedInstitutionResponse getSingleUnit(URI uri, Language language) throws InterruptedException, ExecutionException, InvalidUriException, NonExistingUnitError {
-            this.insertedLanguage = language;
-            return new NestedInstitutionResponse("true");
-        }
-
-        public Language getInsertedLanguage() {
-            return insertedLanguage;
-        }
+    @Test
+    @DisplayName("getSingleUNit returns the graph of a unit")
+    public void getSingleUnitReturnsTheGraphOfAUnit()
+        throws InterruptedException, ExecutionException, GatewayException, InvalidUriException, NonExistingUnitError {
+        HttpExecutorImpl httpExecutor = new HttpExecutorImpl(new HttpClientReturningInfoOfSingleUnits());
+        CristinApiClient cristinApiClient = new CristinApiClient(httpExecutor, testLogger);
+        NestedInstitutionResponse response = cristinApiClient.getSingleUnit(SECOND_LEVEL_CHILD_URI, TESTING_LANGUAGE);
+        String actualResponse = StringUtils.removeWhiteSpaces(response.getJson());
+        String expectedResponse = StringUtils.removeWhiteSpaces(IoUtils.stringFromResources(
+            CristinApiClientTest.SINGLE_UNIT_RESPONSE_GRAPH));
+        assertThat(actualResponse, is(equalTo(expectedResponse)));
     }
 }

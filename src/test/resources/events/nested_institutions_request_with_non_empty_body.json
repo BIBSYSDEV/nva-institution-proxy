@@ -22,7 +22,7 @@
     "X-Forwarded-Proto": "http"
   },
   "body": {
-    "language": "nonEmptyLanguageString",
-    "uri": "nonEmptyUriString"
+    "language": "en",
+    "uri": "http://get-info.no/institutions"
   }
 }
