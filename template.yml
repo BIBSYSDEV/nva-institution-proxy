@@ -69,17 +69,17 @@ Resources:
                     application/json:
                       schema:
                         type: object
-        /departments:
-          get:
-            summary: List  Institution Departments hierarchy
-            security:
-              - CognitoUserPool: []
-            requestBody:
-              required: false
-              content:
-                application/json:
-                  schema:
-                    type: object
+          /departments:
+            get:
+              summary: List  Institution Departments hierarchy
+              security:
+                - CognitoUserPool: []
+              requestBody:
+                required: false
+                content:
+                  application/json:
+                    schema:
+                      type: object
             x-amazon-apigateway-integration:
               uri:
                 Fn::Sub: arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${NestedInstitutionFunction.Arn}/invocations
