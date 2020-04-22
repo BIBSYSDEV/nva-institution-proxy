@@ -10,7 +10,7 @@ Metadata:
     Author: Unit
     SpdxLicenseId: MIT
     LicenseUrl: LICENSE
-    Labels: ['${CODEBUILD_RESOLVED_SOURCE_VERSION}', '${GIT_REPO}']
+#    Labels: ['${CODEBUILD_RESOLVED_SOURCE_VERSION}', '${GIT_REPO}']
 
 
 Globals:
@@ -122,7 +122,7 @@ Resources:
   ListInstitutionsFunction:
     Type: AWS::Serverless::Function
     Properties:
-      Role: !Ref ListExecutionRole
+      Role: !GetAtt ListExecutionRole.Arn
       Handler: no.unit.nva.institution.proxy.handler.InstitutionListHandler::handleRequest
       Runtime: java11
       MemorySize: 1400
@@ -144,7 +144,7 @@ Resources:
   NestedInstitutionFunction:
     Type: AWS::Serverless::Function
     Properties:
-      Role: !Ref ListExecutionRole
+      Role: !GetAtt ListExecutionRole.Arn
       Handler: no.unit.nva.institution.proxy.handler.NestedInstitutionHandler::handleRequest
       Runtime: java11
       MemorySize: 1400
