@@ -104,10 +104,25 @@ Resources:
                 type: cognito_user_pools
                 providerARNs:
                   - !Ref CognitoAuthorizerArn
+
+  ListExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: [lambda.amazonaws.com]
+            Action: ['sts:AssumeRole']
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+
+
   ListInstitutionsFunction:
     Type: AWS::Serverless::Function
     Properties:
-#      CodeUri: .
+      Role: !Ref ListExecutionRole
       Handler: no.unit.nva.institution.proxy.handler.InstitutionListHandler::handleRequest
       Runtime: java11
       MemorySize: 1400
@@ -115,7 +130,7 @@ Resources:
         Variables:
           ALLOWED_ORIGIN: '*'
       Events:
-        ListEvent:
+        ListInstitutionsEvent:
           Type: Api
           Properties:
             Path: /institutions
@@ -125,10 +140,11 @@ Resources:
               - method.request.querystring.language:
                   Caching: true
                   Required: false
+
   NestedInstitutionFunction:
     Type: AWS::Serverless::Function
     Properties:
-#      CodeUri: .
+      Role: !Ref ListExecutionRole
       Handler: no.unit.nva.institution.proxy.handler.NestedInstitutionHandler::handleRequest
       Runtime: java11
       MemorySize: 1400
