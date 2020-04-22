@@ -19,9 +19,5 @@
     "X-Forwarded-For": "11.111.111.111, 11.111.111.111",
     "X-Forwarded-Port": "111",
     "X-Forwarded-Proto": "http"
-  },
-  "queryStringParameters": {
-    "language": "en",
-    "uri": "http://get-info.no/invalid-path"
   }
 }

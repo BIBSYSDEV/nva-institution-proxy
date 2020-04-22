@@ -14,7 +14,6 @@ import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonNode;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -25,7 +24,6 @@ import java.util.function.Function;
 import no.unit.nva.institution.proxy.CristinApiClient;
 import no.unit.nva.institution.proxy.exception.GatewayException;
 import no.unit.nva.institution.proxy.exception.UnknownLanguageException;
-import no.unit.nva.institution.proxy.request.InstitutionListRequest;
 import no.unit.nva.institution.proxy.response.InstitutionListResponse;
 import no.unit.nva.institution.proxy.utils.Language;
 import no.unit.nva.testutils.TestLogger;
@@ -46,15 +44,16 @@ public class InstitutionListHandlerTest extends HandlerTest {
 
     public static final String EVENTS_FOLDER = "events";
 
-    public static final Path INSTITUTIONS_REQUEST_WITH_NON_EMPTY_BODY =
-        Path.of(EVENTS_FOLDER, "institutions_request_with_non_empty_body.json");
+    public static final Path INSTITUTIONS_REQUEST_WITH_VALID_LANGUAGE_PARAMETER =
+        Path.of(EVENTS_FOLDER, "institutions_request_with_valid_language_parameter.json");
     public static final Path INSTITUTIONS_REQUEST_WITH_INVALID_LANGUAGE =
         Path.of(EVENTS_FOLDER, "institutions_request_with_invalid_language.json");
-    public static final String LANGUAGE_STRING_VALUE_IN_RESOURCE_FILE = "nb";
+    public static final Path INSTITUTIONS_REQUEST_WITH_NO_QUERY_PARAMETERS =
+        Path.of(EVENTS_FOLDER, "institutions_request_with_no_query_parameters.json");
+
+    public static final String LANGUAGE_STRING_VALUE_IN_RESOURCE_FILE = "en";
 
     private static final String SOME_EXCEPTION_MESSAGE = "This is the exception message";
-    public static final String BODY_FIELD = "body";
-    public static final String LANGUAGE_FIELD = "language";
 
     private Environment environment;
     private Context context;
@@ -84,10 +83,10 @@ public class InstitutionListHandlerTest extends HandlerTest {
         throws IOException {
         InstitutionListHandlerWithGetRequest handler = institutionHandlerWithAccessibleRequestObject();
 
-        InputStream inputStream = inputNonEmptyLanguageCode();
+        InputStream inputStream = inputValidLanguageCode();
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         handler.handleRequest(inputStream, outputStream, context);
-        MatcherAssert.assertThat(handler.getRequest().getLanguage(),
+        MatcherAssert.assertThat(handler.getLanguageQueryParameter(),
             is(equalTo(LANGUAGE_STRING_VALUE_IN_RESOURCE_FILE)));
     }
 
@@ -96,13 +95,12 @@ public class InstitutionListHandlerTest extends HandlerTest {
     public void handleRequestReturnsOkToTheClientWhenTheProcessingIsSuccessful() throws IOException {
         InstitutionListHandlerWithGetRequest handler = institutionHandlerWithAccessibleRequestObject();
 
-        InputStream inputStream = inputNonEmptyLanguageCode();
+        InputStream inputStream = inputValidLanguageCode();
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 
         handler.handleRequest(inputStream, outputStream, context);
 
-        String outputString = outputStream.toString(StandardCharsets.UTF_8);
-        GatewayResponse<InstitutionListResponse> response = jsonParser.readValue(outputString, GatewayResponse.class);
+        GatewayResponse<InstitutionListResponse> response = gatewayResponseWithSuccessfulResult(outputStream);
         assertThat(response.getStatusCode(), is(HttpStatus.SC_OK));
     }
 
@@ -122,16 +120,12 @@ public class InstitutionListHandlerTest extends HandlerTest {
             containsString(INVALID_LANGUAGE_IN_RESOURCES_FILE));
     }
 
-    private InputStream inputInvalidLanguage() {
-        return IoUtils.inputStreamFromResources(INSTITUTIONS_REQUEST_WITH_INVALID_LANGUAGE);
-    }
-
     @DisplayName("handleRequest returns BadGateway to the client when GatewayException occurs")
     @Test
     public void handleRequestReturnsBadGatewayToTheClientWhnGatewayExceptionOccurs()
         throws IOException, GatewayException {
         InstitutionListHandler handler = handlerThatThrowsInstitutionFailureException(SOME_EXCEPTION_MESSAGE);
-        InputStream inputStream = inputNonEmptyLanguageCode();
+        InputStream inputStream = inputValidLanguageCode();
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 
         handler.handleRequest(inputStream, outputStream, context);
@@ -140,6 +134,26 @@ public class InstitutionListHandlerTest extends HandlerTest {
 
         assertThat(response.getStatusCode(), is(HttpStatus.SC_BAD_GATEWAY));
         assertThat(response.getBodyObject(Problem.class).getDetail(), containsString(SOME_EXCEPTION_MESSAGE));
+    }
+
+    @DisplayName("processInput throws no exception when query-parameters-map is missing")
+    @Test
+    public void processInputThrowsNoExceptionWhenQueryParametersMapIsMissing() throws IOException {
+        InstitutionListHandler handler = handlerWithNonOperativeCristinClient();
+        RequestInfo requestInfo = new RequestInfo();
+        requestInfo.setQueryParameters(null);
+
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        handler.handleRequest(inputNoQueryParameters(), outputStream, context);
+
+        GatewayResponse<InstitutionListResponse> response = gatewayResponseWithSuccessfulResult(outputStream);
+        assertThat(response.getStatusCode(), is(HttpStatus.SC_OK));
+    }
+
+    private GatewayResponse<InstitutionListResponse> gatewayResponseWithSuccessfulResult(
+        ByteArrayOutputStream outputStream) throws JsonProcessingException {
+        String outputString = outputStream.toString(StandardCharsets.UTF_8);
+        return jsonParser.readValue(outputString, GatewayResponse.class);
     }
 
     private GatewayResponse<Problem> gatewayResponseWithProblem(ByteArrayOutputStream outputStream)
@@ -168,14 +182,16 @@ public class InstitutionListHandlerTest extends HandlerTest {
         return new InstitutionListHandlerWithGetRequest(environment, logger -> cristinApiClient);
     }
 
-    private InputStream inputNonEmptyLanguageCode() {
-        String input = IoUtils.stringFromResources(INSTITUTIONS_REQUEST_WITH_NON_EMPTY_BODY);
-        return IoUtils.stringToStream(input);
+    private InputStream inputInvalidLanguage() {
+        return IoUtils.inputStreamFromResources(INSTITUTIONS_REQUEST_WITH_INVALID_LANGUAGE);
     }
 
-    private String extractLanguageFromRequestStream(InputStream inputInvalidLanguage) throws JsonProcessingException {
-        JsonNode node = jsonParser.readTree(IoUtils.streamToString(inputInvalidLanguage));
-        return node.get(BODY_FIELD).get(LANGUAGE_FIELD).asText();
+    private InputStream inputValidLanguageCode() {
+        return IoUtils.inputStreamFromResources(INSTITUTIONS_REQUEST_WITH_VALID_LANGUAGE_PARAMETER);
+    }
+
+    private InputStream inputNoQueryParameters() {
+        return IoUtils.inputStreamFromResources(INSTITUTIONS_REQUEST_WITH_NO_QUERY_PARAMETERS);
     }
 
     private static class MockCristinApiClient extends CristinApiClient {
@@ -192,7 +208,7 @@ public class InstitutionListHandlerTest extends HandlerTest {
 
     private static class InstitutionListHandlerWithGetRequest extends InstitutionListHandler {
 
-        private InstitutionListRequest request;
+        private String languageQueryParameter;
 
         public InstitutionListHandlerWithGetRequest(Environment environment,
                                                     Function<LambdaLogger, CristinApiClient> cristinApiClient) {
@@ -200,15 +216,16 @@ public class InstitutionListHandlerTest extends HandlerTest {
         }
 
         @Override
-        protected InstitutionListResponse processInput(InstitutionListRequest input, RequestInfo requestInfo,
+        protected InstitutionListResponse processInput(Void input, RequestInfo requestInfo,
                                                        Context context)
             throws UnknownLanguageException, GatewayException {
-            this.request = input;
+            this.languageQueryParameter = requestInfo.getQueryParameters()
+                .get(InstitutionListHandler.LANGUAGE_QUERY_PARAMETER);
             return super.processInput(input, requestInfo, context);
         }
 
-        public InstitutionListRequest getRequest() {
-            return request;
+        public String getLanguageQueryParameter() {
+            return languageQueryParameter;
         }
     }
 }

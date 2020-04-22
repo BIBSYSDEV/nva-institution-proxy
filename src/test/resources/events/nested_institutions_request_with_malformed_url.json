@@ -22,6 +22,6 @@
   },
   "queryStringParameters": {
     "language": "en",
-    "uri": "http://get-info.no/invalid-path"
+    "uri": "::malformedURI"
   }
 }

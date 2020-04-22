@@ -1,5 +1,6 @@
 package no.unit.nva.institution.proxy.handler;
 
+import static no.unit.nva.institution.proxy.handler.NestedInstitutionHandler.URI_QUERY_PARAMETER;
 import static nva.commons.utils.JsonUtils.jsonParser;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
@@ -23,7 +24,7 @@ import java.util.function.Function;
 import no.unit.nva.institution.proxy.CristinApiClient;
 import no.unit.nva.institution.proxy.exception.GatewayException;
 import no.unit.nva.institution.proxy.exception.InvalidUriException;
-import no.unit.nva.institution.proxy.exception.UnknownLanguageException;
+import no.unit.nva.institution.proxy.exception.MissingParameterException;
 import no.unit.nva.institution.proxy.request.NestedInstitutionRequest;
 import no.unit.nva.institution.proxy.response.InstitutionListResponse;
 import no.unit.nva.institution.proxy.response.NestedInstitutionResponse;
@@ -47,12 +48,20 @@ public class NestedInstitutionHandlerTest extends HandlerTest {
 
     private static final String SOME_ENV_VALUE = "SOME_VALUE";
     public static final String EVENTS_FOLDER = "events";
-    private static final Path NESTED_INSTITUTIONS_REQUEST_WITH_NON_EMPTY_BODY =
-        Path.of(EVENTS_FOLDER, "nested_institutions_request_with_non_empty_body.json");
+    private static final Path NESTED_INSTITUTIONS_REQUEST_WITH_VALID_QUERY_PARAMETERS =
+        Path.of(EVENTS_FOLDER, "nested_institutions_request_with_valid_parameters.json");
     public static final Path NESTED_INSTITUTIONS_REQUEST_WITH_INVALID_URL_JSON = Path.of(
         EVENTS_FOLDER, "nested_institutions_request_with_invalid_url.json");
+    public static final Path NESTED_INSTITUTIONS_REQUEST_WITH_MALFORMED_URL_JSON = Path.of(
+        EVENTS_FOLDER, "nested_institutions_request_with_malformed_url.json");
+
     public static final Path NESTED_INSTITUTIONS_REQUEST_WITH_INVALID_LANGUAGE = Path.of(EVENTS_FOLDER,
         "nested_institutions_request_with_invalid_language.json");
+    public static final Path NESTED_INSTITUTIONS_REQUEST_WITH_MISSING_PARAMETERS_OBJECT = Path.of(EVENTS_FOLDER,
+        "nested_institutions_request_with_no_parameters_object.json");
+
+    public static final Path NESTED_INSTITUTIONS_REQUEST_WITH_NO_LANGUAGE_PARAMETER = Path.of(EVENTS_FOLDER,
+        "nested_institutions_request_with_no_language_parameter.json");
 
     public static final String LANGUAGE_STRING_VALUE_IN_RESOURCE_FILE = "en";
     public static final String URI_STRING_VALUE_IN_RESOURCE_FILE = "http://get-info.no/institutions";
@@ -128,18 +137,40 @@ public class NestedInstitutionHandlerTest extends HandlerTest {
     @DisplayName("method processInput can receive correctly formatted request")
     @Test
     void processInputReceivesCorrectInput() throws IOException {
-        NestedInstitutionHandlerWithGetRequest handler = nestedInstitutionHandlerWithAccessibleRequestObject();
+        NestedInstitutionHandlerWithGetRequest handler = nestedInstitutionHandlerWithAccessibleRequestInfo();
         InputStream inputStream = inputInstitutionsRequest();
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         handler.handleRequest(inputStream, outputStream, context);
-        assertThat(handler.getRequest().getLanguage(), is(equalTo(LANGUAGE_STRING_VALUE_IN_RESOURCE_FILE)));
-        assertThat(handler.getRequest().getUri(), is(equalTo(URI_STRING_VALUE_IN_RESOURCE_FILE)));
+        String actualLanguageParameter = handler.getRequestinfo()
+            .getQueryParameters()
+            .get(NestedInstitutionHandler.LANGUAGE_QUERY_PARAMETER);
+        assertThat(actualLanguageParameter,
+            is(equalTo(LANGUAGE_STRING_VALUE_IN_RESOURCE_FILE)));
+        String actualURIParameter = handler.getRequestinfo()
+            .getQueryParameters()
+            .get(URI_QUERY_PARAMETER);
+        assertThat(actualURIParameter, is(equalTo(URI_STRING_VALUE_IN_RESOURCE_FILE)));
+    }
+
+    @DisplayName("handleRequest returns OK to the client when language parameter is missing")
+    @Test
+    public void handleRequestReturnsOkToTheClientWhenTheLanguageParameterIsMissing() throws IOException {
+        NestedInstitutionHandlerWithGetRequest handler = nestedInstitutionHandlerWithAccessibleRequestInfo();
+
+        InputStream inputStream = inputLanguageParameterMissing();
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+
+        handler.handleRequest(inputStream, outputStream, context);
+
+        String outputString = outputStream.toString(StandardCharsets.UTF_8);
+        GatewayResponse<InstitutionListResponse> response = jsonParser.readValue(outputString, GatewayResponse.class);
+        assertThat(response.getStatusCode(), is(HttpStatus.SC_OK));
     }
 
     @DisplayName("handleRequest returns OK to the client when the processing is successful")
     @Test
     public void handleRequestReturnsOkToTheClientWhenTheProcessingIsSuccessful() throws IOException {
-        NestedInstitutionHandlerWithGetRequest handler = nestedInstitutionHandlerWithAccessibleRequestObject();
+        NestedInstitutionHandlerWithGetRequest handler = nestedInstitutionHandlerWithAccessibleRequestInfo();
 
         InputStream inputStream = inputInstitutionsRequest();
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
@@ -150,6 +181,7 @@ public class NestedInstitutionHandlerTest extends HandlerTest {
         GatewayResponse<InstitutionListResponse> response = jsonParser.readValue(outputString, GatewayResponse.class);
         assertThat(response.getStatusCode(), is(HttpStatus.SC_OK));
     }
+
 
     @DisplayName("handleRequest returns BadRequest to the client when UnknownLanguageException occurs")
     @Test
@@ -173,14 +205,50 @@ public class NestedInstitutionHandlerTest extends HandlerTest {
     public void handleRequestReturnsBadRequestWhenInvalidUriExceptionOccurs()
         throws IOException {
 
-        NestedInstitutionHandlerWithGetRequest handler = nestedInstitutionHandlerWithAccessibleRequestObject();
+        NestedInstitutionHandlerWithGetRequest handler = nestedInstitutionHandlerWithAccessibleRequestInfo();
         InputStream inputStream = inputInvalidRequest();
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 
         handler.handleRequest(inputStream, outputStream, context);
 
         GatewayResponse<Problem> response = gatewayResponseWithProblem(outputStream);
-        String expectedStringInErrorMessage = handler.request.getUri();
+        String expectedStringInErrorMessage = handler.getRequestinfo().getQueryParameters().get(URI_QUERY_PARAMETER);
+
+        assertThat(response.getStatusCode(), is(HttpStatus.SC_BAD_REQUEST));
+        assertThat(response.getBodyObject(Problem.class).getDetail(), containsString(expectedStringInErrorMessage));
+    }
+
+    @DisplayName("handleRequest returns BadRequest to the client when input URI is malformed")
+    @Test
+    public void handleRequestReturnsBadRequestWhenInputUriIsMalformated()
+        throws IOException {
+
+        NestedInstitutionHandlerWithGetRequest handler = nestedInstitutionHandlerWithAccessibleRequestInfo();
+        InputStream inputStream = inputMalformedUrl();
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+
+        handler.handleRequest(inputStream, outputStream, context);
+
+        GatewayResponse<Problem> response = gatewayResponseWithProblem(outputStream);
+        String expectedStringInErrorMessage = handler.getRequestinfo().getQueryParameters().get(URI_QUERY_PARAMETER);
+
+        assertThat(response.getStatusCode(), is(HttpStatus.SC_BAD_REQUEST));
+        assertThat(response.getBodyObject(Problem.class).getDetail(), containsString(expectedStringInErrorMessage));
+    }
+
+    @DisplayName("handleRequest returns BadRequest to the client when URL parameter is missing")
+    @Test
+    public void handleRequestReturnsBadRequestWhenUriParameterIsMissing()
+        throws IOException {
+
+        NestedInstitutionHandlerWithGetRequest handler = nestedInstitutionHandlerWithAccessibleRequestInfo();
+        InputStream inputStream = inputNoParametersObject();
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+
+        handler.handleRequest(inputStream, outputStream, context);
+
+        GatewayResponse<Problem> response = gatewayResponseWithProblem(outputStream);
+        String expectedStringInErrorMessage = MissingParameterException.MESSAGE_PATTERN + URI_QUERY_PARAMETER;
 
         assertThat(response.getStatusCode(), is(HttpStatus.SC_BAD_REQUEST));
         assertThat(response.getBodyObject(Problem.class).getDetail(), containsString(expectedStringInErrorMessage));
@@ -189,7 +257,7 @@ public class NestedInstitutionHandlerTest extends HandlerTest {
     @DisplayName("handleRequest returns BadGateway to the client when GatewayException occurs")
     @Test
     public void handleRequestReturnsBadRequestWhenInstitutionFailureOccurs()
-        throws IOException, InvalidUriException, GatewayException, UnknownLanguageException {
+        throws IOException, InvalidUriException, GatewayException {
         NestedInstitutionHandler handler = handlerThatThrowsNestedInstitutionFailureException(SOME_EXCEPTION_MESSAGE);
         InputStream inputStream = inputInstitutionsRequest();
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
@@ -225,7 +293,12 @@ public class NestedInstitutionHandlerTest extends HandlerTest {
     }
 
     private InputStream inputInstitutionsRequest() {
-        String input = IoUtils.stringFromResources(NESTED_INSTITUTIONS_REQUEST_WITH_NON_EMPTY_BODY);
+        String input = IoUtils.stringFromResources(NESTED_INSTITUTIONS_REQUEST_WITH_VALID_QUERY_PARAMETERS);
+        return IoUtils.stringToStream(input);
+    }
+
+    private InputStream inputLanguageParameterMissing() {
+        String input = IoUtils.stringFromResources(NESTED_INSTITUTIONS_REQUEST_WITH_NO_LANGUAGE_PARAMETER);
         return IoUtils.stringToStream(input);
     }
 
@@ -239,14 +312,22 @@ public class NestedInstitutionHandlerTest extends HandlerTest {
         return IoUtils.stringToStream(input);
     }
 
-    private NestedInstitutionHandlerWithGetRequest nestedInstitutionHandlerWithAccessibleRequestObject() {
+    private InputStream inputMalformedUrl() {
+        return IoUtils.inputStreamFromResources(NESTED_INSTITUTIONS_REQUEST_WITH_MALFORMED_URL_JSON);
+    }
+
+    private InputStream inputNoParametersObject() {
+        return IoUtils.inputStreamFromResources(NESTED_INSTITUTIONS_REQUEST_WITH_MISSING_PARAMETERS_OBJECT);
+    }
+
+    private NestedInstitutionHandlerWithGetRequest nestedInstitutionHandlerWithAccessibleRequestInfo() {
         MockCristinApiClient cristinApiClient = new MockCristinApiClient(logger);
         return new NestedInstitutionHandlerWithGetRequest(environment, logger -> cristinApiClient);
     }
 
     private static class NestedInstitutionHandlerWithGetRequest extends NestedInstitutionHandler {
 
-        private NestedInstitutionRequest request;
+        private RequestInfo requestInfo;
 
         public NestedInstitutionHandlerWithGetRequest(Environment environment,
                                                       Function<LambdaLogger, CristinApiClient> cristinApiClient) {
@@ -254,15 +335,15 @@ public class NestedInstitutionHandlerTest extends HandlerTest {
         }
 
         @Override
-        protected NestedInstitutionResponse processInput(NestedInstitutionRequest input, RequestInfo requestInfo,
+        protected NestedInstitutionResponse processInput(Void input, RequestInfo requestInfo,
                                                          Context context)
             throws ApiGatewayException {
-            this.request = input;
+            this.requestInfo = requestInfo;
             return super.processInput(input, requestInfo, context);
         }
 
-        public NestedInstitutionRequest getRequest() {
-            return request;
+        public RequestInfo getRequestinfo() {
+            return requestInfo;
         }
     }
 

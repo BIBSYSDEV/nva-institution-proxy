@@ -1,5 +1,5 @@
 {
-  "queryStringParameters": {},
+
   "httpMethod": "GET",
   "headers": {
     "Accept": "application/json",
@@ -21,7 +21,7 @@
     "X-Forwarded-Port": "111",
     "X-Forwarded-Proto": "http"
   },
-  "body": {
+  "queryStringParameters": {
     "language": "invalidLanguage",
     "uri": "http://get-info.no/institutions"
   }
