@@ -29,7 +29,6 @@ public class NestedInstitutionHandler extends ApiGatewayHandler<Void, NestedInst
     public static final String LOG_URI_ERROR_TEMPLATE = "The supplied URI <%s> was invalid";
     public static final String URI_QUERY_PARAMETER = "uri";
     public static final String LANGUAGE_QUERY_PARAMETER = "language";
-    public static final String QUERY_PARAMETERS_NOT_FOUND_ERROR = "Query parameters could not be found";
     public static final String PARAMETER_NOT_FOUND_ERROR_MESSAGE = "Parameter not found:";
 
     private final Function<LambdaLogger, CristinApiClient> cristinApiClientSupplier;
