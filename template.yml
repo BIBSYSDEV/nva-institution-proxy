@@ -167,10 +167,10 @@ Resources:
                   Required: false
 
 
-  NvaDoiTransformerFunctionBasePathMapping:
-    Type: AWS::ApiGateway::BasePathMapping
-    Properties:
-      BasePath: !Ref CustomDomainBasePath
-      DomainName: !Ref CustomDomain
-      RestApiId: !Ref NvaInstitutionProxyFunctionApi
-      Stage: !Ref NvaInstitutionProxyFunctionApi.Stage
+#  NvaDoiTransformerFunctionBasePathMapping:
+#    Type: AWS::ApiGateway::BasePathMapping
+#    Properties:
+#      BasePath: !Ref CustomDomainBasePath
+#      DomainName: !Ref CustomDomain
+#      RestApiId: !Ref NvaInstitutionProxyFunctionApi
+#      Stage: !Ref NvaInstitutionProxyFunctionApi.Stage
