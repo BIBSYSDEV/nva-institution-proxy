@@ -10,8 +10,7 @@ Metadata:
     Author: Unit
     SpdxLicenseId: MIT
     LicenseUrl: LICENSE
-#    Labels: ['${CODEBUILD_RESOLVED_SOURCE_VERSION}', '${GIT_REPO}']
-
+    Labels: ['${CODEBUILD_RESOLVED_SOURCE_VERSION}', '${GIT_REPO}']
 
 Globals:
   Function:
@@ -80,13 +79,13 @@ Resources:
                   application/json:
                     schema:
                       type: object
-            x-amazon-apigateway-integration:
-              uri:
-                Fn::Sub: arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${NestedInstitutionFunction.Arn}/invocations
-              responses: {}
-              httpMethod: GET
-              type: AWS_PROXY
-              passthroughBehavior: WHEN_NO_MATCH
+              x-amazon-apigateway-integration:
+                uri:
+                  Fn::Sub: arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${NestedInstitutionFunction.Arn}/invocations
+                responses: {}
+                httpMethod: GET
+                type: AWS_PROXY
+                passthroughBehavior: WHEN_NO_MATCH
             responses:
               '200':
                 content:
@@ -105,24 +104,9 @@ Resources:
                 providerARNs:
                   - !Ref CognitoAuthorizerArn
 
-  ListExecutionRole:
-    Type: AWS::IAM::Role
-    Properties:
-      AssumeRolePolicyDocument:
-        Version: 2012-10-17
-        Statement:
-          - Effect: Allow
-            Principal:
-              Service: [lambda.amazonaws.com]
-            Action: ['sts:AssumeRole']
-      ManagedPolicyArns:
-        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
-
-
   ListInstitutionsFunction:
     Type: AWS::Serverless::Function
     Properties:
-      Role: !GetAtt ListExecutionRole.Arn
       Handler: no.unit.nva.institution.proxy.handler.InstitutionListHandler::handleRequest
       Runtime: java11
       MemorySize: 1400
@@ -144,7 +128,6 @@ Resources:
   NestedInstitutionFunction:
     Type: AWS::Serverless::Function
     Properties:
-      Role: !GetAtt ListExecutionRole.Arn
       Handler: no.unit.nva.institution.proxy.handler.NestedInstitutionHandler::handleRequest
       Runtime: java11
       MemorySize: 1400
@@ -165,7 +148,6 @@ Resources:
               - method.request.querystring.uri:
                   Caching: true
                   Required: false
-
 
   NvaDoiTransformerFunctionBasePathMapping:
     Type: AWS::ApiGateway::BasePathMapping
