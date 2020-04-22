@@ -107,7 +107,7 @@ Resources:
   ListInstitutionsFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: .
+#      CodeUri: .
       Handler: no.unit.nva.institution.proxy.handler.InstitutionListHandler::handleRequest
       Runtime: java11
       MemorySize: 1400
@@ -128,7 +128,7 @@ Resources:
   NestedInstitutionFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: .
+#      CodeUri: .
       Handler: no.unit.nva.institution.proxy.handler.NestedInstitutionHandler::handleRequest
       Runtime: java11
       MemorySize: 1400
