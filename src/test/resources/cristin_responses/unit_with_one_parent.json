@@ -1,0 +1,154 @@
+{
+  "cristin_unit_id": "185.15.0.0",
+  "unit_name": {
+    "en": "Faculty of Mathematics and Natural Sciences"
+  },
+  "institution": {
+    "cristin_institution_id": "185",
+    "url": "https://api.cristin.no/v2/institutions/185"
+  },
+  "parent_unit": {
+    "cristin_unit_id": "185.90.0.0",
+    "unit_name": {
+      "en": "University of Oslo"
+    },
+    "url": "https://api.cristin.no/v2/units/185.90.0.0"
+  },
+  "parent_units": [
+    {
+      "cristin_unit_id": "185.90.0.0",
+      "unit_name": {
+        "en": "University of Oslo"
+      },
+      "url": "https://api.cristin.no/v2/units/185.90.0.0"
+    }
+  ],
+  "subunits": [
+    {
+      "cristin_unit_id": "185.15.0.10",
+      "unit_name": {
+        "en": "The Faculty of Mathematics and Natural Sciences - Management"
+      },
+      "url": "https://api.cristin.no/v2/units/185.15.0.10"
+    },
+    {
+      "cristin_unit_id": "185.15.0.30",
+      "unit_name": {
+        "nb": "Universitetsstudiene på Kjeller"
+      },
+      "url": "https://api.cristin.no/v2/units/185.15.0.30"
+    },
+    {
+      "cristin_unit_id": "185.15.3.0",
+      "unit_name": {
+        "en": "Institute of Theoretical Astrophysics"
+      },
+      "url": "https://api.cristin.no/v2/units/185.15.3.0"
+    },
+    {
+      "cristin_unit_id": "185.15.4.0",
+      "unit_name": {
+        "en": "Department of physics"
+      },
+      "url": "https://api.cristin.no/v2/units/185.15.4.0"
+    },
+    {
+      "cristin_unit_id": "185.15.5.0",
+      "unit_name": {
+        "en": "Department for Informatics"
+      },
+      "url": "https://api.cristin.no/v2/units/185.15.5.0"
+    },
+    {
+      "cristin_unit_id": "185.15.12.0",
+      "unit_name": {
+        "en": "Department of Chemistry"
+      },
+      "url": "https://api.cristin.no/v2/units/185.15.12.0"
+    },
+    {
+      "cristin_unit_id": "185.15.13.0",
+      "unit_name": {
+        "en": "Department of Mathematics"
+      },
+      "url": "https://api.cristin.no/v2/units/185.15.13.0"
+    },
+    {
+      "cristin_unit_id": "185.15.17.0",
+      "unit_name": {
+        "en": "Centre for Material Sciences and Nanotechnology"
+      },
+      "url": "https://api.cristin.no/v2/units/185.15.17.0"
+    },
+    {
+      "cristin_unit_id": "185.15.18.0",
+      "unit_name": {
+        "en": "NJORD Centre for Studies of the Physics of the Earth"
+      },
+      "url": "https://api.cristin.no/v2/units/185.15.18.0"
+    },
+    {
+      "cristin_unit_id": "185.15.22.0",
+      "unit_name": {
+        "en": "Department of Geosciences"
+      },
+      "url": "https://api.cristin.no/v2/units/185.15.22.0"
+    },
+    {
+      "cristin_unit_id": "185.15.23.0",
+      "unit_name": {
+        "en": "Department of Pharmacy"
+      },
+      "url": "https://api.cristin.no/v2/units/185.15.23.0"
+    },
+    {
+      "cristin_unit_id": "185.15.24.0",
+      "unit_name": {
+        "en": "Centre for Entrepreneurship"
+      },
+      "url": "https://api.cristin.no/v2/units/185.15.24.0"
+    },
+    {
+      "cristin_unit_id": "185.15.27.0",
+      "unit_name": {
+        "en": "Norwegian Centre for Science Education"
+      },
+      "url": "https://api.cristin.no/v2/units/185.15.27.0"
+    },
+    {
+      "cristin_unit_id": "185.15.29.0",
+      "unit_name": {
+        "en": "Department of Biosciences"
+      },
+      "url": "https://api.cristin.no/v2/units/185.15.29.0"
+    },
+    {
+      "cristin_unit_id": "185.15.30.0",
+      "unit_name": {
+        "en": "Department of Technology Systems"
+      },
+      "url": "https://api.cristin.no/v2/units/185.15.30.0"
+    },
+    {
+      "cristin_unit_id": "185.15.31.0",
+      "unit_name": {
+        "en": "Centre for bioinformatics"
+      },
+      "url": "https://api.cristin.no/v2/units/185.15.31.0"
+    },
+    {
+      "cristin_unit_id": "185.15.32.0",
+      "unit_name": {
+        "en": "Center for biogeochemistry in Anthropocene"
+      },
+      "url": "https://api.cristin.no/v2/units/185.15.32.0"
+    },
+    {
+      "cristin_unit_id": "185.15.33.0",
+      "unit_name": {
+        "en": "NORA - The Norwegian Artificial Intelligence Research Consortium"
+      },
+      "url": "https://api.cristin.no/v2/units/185.15.33.0"
+    }
+  ]
+}

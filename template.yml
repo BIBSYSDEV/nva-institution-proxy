@@ -1,0 +1,136 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  AWS Template for institution proxy
+
+Metadata:
+  AWS::ServerlessRepo::Application:
+    Name: NvaInstitutionProxy
+    Description: Backend for getting organizational information for Institutions and their departments
+    Author: Unit
+    SpdxLicenseId: MIT
+    LicenseUrl: LICENSE
+    Labels: ['${CODEBUILD_RESOLVED_SOURCE_VERSION}', '${GIT_REPO}']
+
+
+Globals:
+  Function:
+    Timeout: 20
+  Api:
+    Cors:
+      AllowMethods: "'GET,POST,OPTIONS'"
+      AllowHeaders: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+      AllowOrigin: "'*'"
+
+Parameters:
+  CognitoAuthorizerArn:
+    Type: String
+    Description: Reference to Cognito UserPool for the stage
+  CustomDomain:
+    Type: String
+    Description: Custom API to connect this lambda to
+  CustomDomainBasePath:
+    Type: String
+    Description: Base path mapping in CustomDomain
+
+Resources:
+  NvaInstitutionProxyFunctionApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: Prod
+      EndpointConfiguration: REGIONAL
+      DefinitionBody:
+        openapi: 3.0.0
+        info:
+          title: NVA InstitutionProxy
+          version: '1.0'
+        paths:
+          /institutions:
+            get:
+              summary: List Cristing Institutions
+              security:
+                - CognitoUserPool: []
+              requestBody:
+                required: false
+                content:
+                  application/json:
+                    schema:
+                      type: object
+              x-amazon-apigateway-integration:
+                uri:
+                  Fn::Sub: arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${ListInstitutionsFunction.Arn}/invocations
+                responses: {}
+                httpMethod: GET
+                type: AWS_PROXY
+                passthroughBehavior: WHEN_NO_MATCH
+              responses:
+                '200':
+                  content:
+                    application/json:
+                      schema:
+                        type: object
+        components:
+          securitySchemes:
+            CognitoUserPool:
+              type: apiKey
+              name: Authorization
+              in: header
+              x-amazon-apigateway-authtype: cognito_user_pools
+              x-amazon-apigateway-authorizer:
+                type: cognito_user_pools
+                providerARNs:
+                  - !Ref CognitoAuthorizerArn
+  ListInstitutionsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: .
+      Handler: no.unit.nva.institution.proxy.handler.InstitutionListHandler::handleRequest
+      Runtime: java11
+      MemorySize: 1400
+      Environment:
+        Variables:
+          ALLOWED_ORIGIN: '*'
+      Events:
+        NvaDoi:
+          Type: Api
+          Properties:
+            Path: /institutions
+            Method: get
+            RestApiId: !Ref NvaInstitutionProxyFunctionApi
+            RequestParameters:
+              - method.request.querystring.language:
+                  Caching: true
+                  Required: false
+  NestedInstitutionHandler:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: .
+      Handler: no.unit.nva.institution.proxy.handler.NestedInstitutionHandler::handleRequest
+      Runtime: java11
+      MemorySize: 1400
+      Environment:
+        Variables:
+          ALLOWED_ORIGIN: '*'
+      Events:
+        NvaDoi:
+          Type: Api
+          Properties:
+            Path: /departments
+            Method: get
+            RestApiId: !Ref NvaInstitutionProxyFunctionApi
+            RequestParameters:
+              - method.request.querystring.language:
+                  Caching: true
+                  Required: false
+              - method.request.querystring.uri:
+                  Caching: true
+                  Required: false
+
+
+  NvaDoiTransformerFunctionBasePathMapping:
+    Type: AWS::ApiGateway::BasePathMapping
+    Properties:
+      BasePath: !Ref CustomDomainBasePath
+      DomainName: !Ref CustomDomain
+      RestApiId: !Ref NvaInstitutionProxyFunctionApi
+      Stage: !Ref NvaInstitutionProxyFunctionApi.Stage
