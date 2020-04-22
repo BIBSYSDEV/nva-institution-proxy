@@ -115,7 +115,7 @@ Resources:
         Variables:
           ALLOWED_ORIGIN: '*'
       Events:
-        NvaDoi:
+        ListEvent:
           Type: Api
           Properties:
             Path: /institutions
@@ -136,7 +136,7 @@ Resources:
         Variables:
           ALLOWED_ORIGIN: '*'
       Events:
-        NvaDoi:
+        DepartmentsEvent:
           Type: Api
           Properties:
             Path: /departments
