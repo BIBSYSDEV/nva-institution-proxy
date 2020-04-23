@@ -65,6 +65,7 @@ Resources:
       Handler: no.unit.nva.institution.proxy.handler.NestedInstitutionHandler::handleRequest
       Runtime: java11
       MemorySize: 1400
+      Timeout: 600
       Environment:
         Variables:
           ALLOWED_ORIGIN: '*'
