@@ -38,6 +38,12 @@ Resources:
     Properties:
       StageName: Prod
       EndpointConfiguration: REGIONAL
+      Auth:
+        DefaultAuthorizer: MyCognitoAuthorizer
+        Authorizers:
+          MyCognitoAuthorizer:
+            UserPoolArn: !Ref CognitoAuthorizerArn
+
   ListInstitutionsFunction:
     Type: AWS::Serverless::Function
     Properties:
