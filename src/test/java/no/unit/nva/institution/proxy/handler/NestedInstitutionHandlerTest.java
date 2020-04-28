@@ -1,7 +1,7 @@
 package no.unit.nva.institution.proxy.handler;
 
 import static no.unit.nva.institution.proxy.handler.NestedInstitutionHandler.URI_QUERY_PARAMETER;
-import static nva.commons.utils.JsonUtils.jsonParser;
+import static nva.commons.utils.JsonUtils.objectMapper;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
@@ -12,7 +12,6 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import com.amazonaws.services.lambda.runtime.Context;
-import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -20,7 +19,6 @@ import java.io.InputStream;
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
-import java.util.function.Function;
 import no.unit.nva.institution.proxy.CristinApiClient;
 import no.unit.nva.institution.proxy.exception.GatewayException;
 import no.unit.nva.institution.proxy.exception.InvalidUriException;
@@ -89,7 +87,7 @@ public class NestedInstitutionHandlerTest extends HandlerTest {
     @Tag("online")
     void testAnInstitutionCanBeNestedFromLiveData() throws IOException {
         NestedInstitutionHandler nestedInstitutionHandler =
-            new NestedInstitutionHandler(environment, ignored -> new CristinApiClient(logger));
+            new NestedInstitutionHandler(environment, new CristinApiClient());
         NestedInstitutionRequest request =
             new NestedInstitutionRequest("https://api.cristin.no/v2/institutions/185", "en");
         InputStream inputStream = HandlerUtils.requestObjectToApiGatewayRequestInputSteam(request, null);
@@ -109,7 +107,7 @@ public class NestedInstitutionHandlerTest extends HandlerTest {
         TestContext context = new TestContext();
 
         NestedInstitutionHandler nestedInstitutionHandler =
-            new NestedInstitutionHandler(environment, CristinApiClient::new);
+            new NestedInstitutionHandler(environment, new CristinApiClient());
         NestedInstitutionRequest request =
             new NestedInstitutionRequest("https://api.cristin.no/v2/units/194.63.1.20", "en");
 
@@ -123,7 +121,7 @@ public class NestedInstitutionHandlerTest extends HandlerTest {
     private NestedInstitutionResponse extractResponseObjectFromOutputStream(ByteArrayOutputStream outputStream)
         throws com.fasterxml.jackson.core.JsonProcessingException {
         TypeReference<GatewayResponse<NestedInstitutionResponse>> tr = new TypeReference<>() {};
-        return jsonParser
+        return objectMapper
             .readValue(outputStream.toString(StandardCharsets.UTF_8), tr)
             .getBodyObject(NestedInstitutionResponse.class);
     }
@@ -131,7 +129,7 @@ public class NestedInstitutionHandlerTest extends HandlerTest {
     @DisplayName("The NestedInstitutionHandler exists")
     @Test
     void nestedInstitutionHandlerExists() {
-        new NestedInstitutionHandler(environment, CristinApiClient::new);
+        new NestedInstitutionHandler(environment, new CristinApiClient());
     }
 
     @DisplayName("method processInput can receive correctly formatted request")
@@ -163,7 +161,7 @@ public class NestedInstitutionHandlerTest extends HandlerTest {
         handler.handleRequest(inputStream, outputStream, context);
 
         String outputString = outputStream.toString(StandardCharsets.UTF_8);
-        GatewayResponse<InstitutionListResponse> response = jsonParser.readValue(outputString, GatewayResponse.class);
+        GatewayResponse<InstitutionListResponse> response = objectMapper.readValue(outputString, GatewayResponse.class);
         assertThat(response.getStatusCode(), is(HttpStatus.SC_OK));
     }
 
@@ -178,7 +176,7 @@ public class NestedInstitutionHandlerTest extends HandlerTest {
         handler.handleRequest(inputStream, outputStream, context);
 
         String outputString = outputStream.toString(StandardCharsets.UTF_8);
-        GatewayResponse<InstitutionListResponse> response = jsonParser.readValue(outputString, GatewayResponse.class);
+        GatewayResponse<InstitutionListResponse> response = objectMapper.readValue(outputString, GatewayResponse.class);
         assertThat(response.getStatusCode(), is(HttpStatus.SC_OK));
     }
 
@@ -276,7 +274,7 @@ public class NestedInstitutionHandlerTest extends HandlerTest {
         IOException cause = new IOException(message);
         when(cristinClient.getNestedInstitution(any(URI.class), any(Language.class)))
             .thenThrow(new GatewayException(cause));
-        return new NestedInstitutionHandler(environment, logger -> cristinClient);
+        return new NestedInstitutionHandler(environment, cristinClient);
     }
 
     private GatewayResponse<Problem> gatewayResponseWithProblem(ByteArrayOutputStream outputStream)
@@ -284,12 +282,12 @@ public class NestedInstitutionHandlerTest extends HandlerTest {
         String outputString = outputStream.toString(StandardCharsets.UTF_8);
         TypeReference<GatewayResponse<Problem>> ref = new TypeReference<>() {
         };
-        return jsonParser.readValue(outputString, ref);
+        return objectMapper.readValue(outputString, ref);
     }
 
     private NestedInstitutionHandler handlerWithNonFunctionalCritinClient() {
         CristinApiClient cristinClient = mock(CristinApiClient.class);
-        return new NestedInstitutionHandler(environment, logger -> cristinClient);
+        return new NestedInstitutionHandler(environment, cristinClient);
     }
 
     private InputStream inputInstitutionsRequest() {
@@ -321,16 +319,15 @@ public class NestedInstitutionHandlerTest extends HandlerTest {
     }
 
     private NestedInstitutionHandlerWithGetRequest nestedInstitutionHandlerWithAccessibleRequestInfo() {
-        MockCristinApiClient cristinApiClient = new MockCristinApiClient(logger);
-        return new NestedInstitutionHandlerWithGetRequest(environment, logger -> cristinApiClient);
+        MockCristinApiClient cristinApiClient = new MockCristinApiClient();
+        return new NestedInstitutionHandlerWithGetRequest(environment, cristinApiClient);
     }
 
     private static class NestedInstitutionHandlerWithGetRequest extends NestedInstitutionHandler {
 
         private RequestInfo requestInfo;
 
-        public NestedInstitutionHandlerWithGetRequest(Environment environment,
-                                                      Function<LambdaLogger, CristinApiClient> cristinApiClient) {
+        public NestedInstitutionHandlerWithGetRequest(Environment environment, CristinApiClient cristinApiClient) {
             super(environment, cristinApiClient);
         }
 
@@ -349,16 +346,12 @@ public class NestedInstitutionHandlerTest extends HandlerTest {
 
     private static class MockCristinApiClient extends CristinApiClient {
 
-        private Language languageCode;
-        private String uri;
-
-        protected MockCristinApiClient(LambdaLogger logger) {
-            super(logger);
+        protected MockCristinApiClient() {
+            super();
         }
 
         @Override
         public NestedInstitutionResponse getNestedInstitution(URI uri, Language language) {
-            this.languageCode = language;
             return new NestedInstitutionResponse("true");
         }
     }

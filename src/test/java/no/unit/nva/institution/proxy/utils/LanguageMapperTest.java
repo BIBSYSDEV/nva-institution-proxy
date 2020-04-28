@@ -7,7 +7,8 @@ import static org.junit.Assert.assertThat;
 
 import java.util.Arrays;
 import no.unit.nva.institution.proxy.exception.UnknownLanguageException;
-import no.unit.nva.testutils.TestLogger;
+import nva.commons.utils.log.LogUtils;
+import nva.commons.utils.log.TestAppender;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -15,7 +16,7 @@ public class LanguageMapperTest {
 
     public static final String BLANK_STRING = "  ";
     private static final String INVALID_LANGUAGE_STRING = "invalidLang";
-    private TestLogger logger;
+
     private LanguageMapper languageMapper;
 
     /**
@@ -23,8 +24,7 @@ public class LanguageMapperTest {
      */
     @BeforeEach
     public void setUp() {
-        logger = new TestLogger();
-        languageMapper = new LanguageMapper(logger);
+        languageMapper = new LanguageMapper();
     }
 
     @Test
@@ -46,24 +46,25 @@ public class LanguageMapperTest {
     }
 
     @Test
-    public void languageMapperLogsLanguageMappingEffortWhenInputIsValid() throws UnknownLanguageException {
+    public void languageMapperLogsLanguageMappingEffortWhenInputIsValid() {
         String inputCode = Language.ENGLISH.getCode();
         assertThatMapperLogsInputString(inputCode);
     }
 
     @Test
-    public void languageMapperLogsLanguageMappingEffortWhenInputIsInValid() throws UnknownLanguageException {
+    public void languageMapperLogsLanguageMappingEffortWhenInputIsInValid() {
         String inputCode = INVALID_LANGUAGE_STRING;
         assertThatMapperLogsInputString(inputCode);
     }
 
     public void assertThatMapperLogsInputString(String inputCode) {
+        TestAppender appender = LogUtils.getTestingAppender(LanguageMapper.class);
         try {
             languageMapper.getLanguage(inputCode);
         } catch (UnknownLanguageException e) {
             // do nothing
         }
-        String logs = logger.getLogs();
+        String logs = appender.getMessages();
         assertThat(logs, containsString(inputCode));
     }
 

@@ -33,7 +33,7 @@ public final class InstitutionUtils {
         throws IOException {
         try {
             List<InstitutionDto> institutions = Arrays.asList(
-                JsonUtils.jsonParser.readValue(institutionsJson, InstitutionDto[].class));
+                JsonUtils.objectMapper.readValue(institutionsJson, InstitutionDto[].class));
             return new InstitutionListResponse(institutions
                 .stream()
                 .filter(InstitutionDto::isCristinUser)
@@ -64,7 +64,7 @@ public final class InstitutionUtils {
      */
     public static InstitutionBaseDto toInstitutionBaseDto(String json) throws IOException {
         try {
-            return JsonUtils.jsonParser.readValue(json, InstitutionBaseDto.class);
+            return JsonUtils.objectMapper.readValue(json, InstitutionBaseDto.class);
         } catch (JsonProcessingException e) {
             throw new IOException(PARSE_ERROR + json, e);
         }
@@ -79,7 +79,7 @@ public final class InstitutionUtils {
      */
     public static List<URI> toUriList(String json) throws IOException {
         try {
-            List<SubUnitDto> subUnitDtos = Arrays.asList(JsonUtils.jsonParser.readValue(json, SubUnitDto[].class));
+            List<SubUnitDto> subUnitDtos = Arrays.asList(JsonUtils.objectMapper.readValue(json, SubUnitDto[].class));
             return subUnitDtos.stream().map(InstitutionUtils::getSubunitUri).collect(Collectors.toList());
         } catch (JsonProcessingException e) {
             throw new IOException(PARSE_ERROR + json, e);
@@ -99,7 +99,7 @@ public final class InstitutionUtils {
      */
     public static SubSubUnitDto toSubSubUnitDto(String json) throws IOException {
         try {
-            return JsonUtils.jsonParser.readValue(json, SubSubUnitDto.class);
+            return JsonUtils.objectMapper.readValue(json, SubSubUnitDto.class);
         } catch (JsonProcessingException e) {
             throw new IOException(PARSE_ERROR + json, e);
         }

@@ -103,7 +103,7 @@ public class SingleUnitHierarchyGenerator {
 
     private SubSubUnitDto toUnit(String json) {
         try {
-            return JsonUtils.jsonParser.readValue(json, SubSubUnitDto.class);
+            return JsonUtils.objectMapper.readValue(json, SubSubUnitDto.class);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }

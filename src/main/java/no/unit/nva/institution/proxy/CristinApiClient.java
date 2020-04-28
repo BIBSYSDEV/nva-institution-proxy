@@ -1,6 +1,5 @@
 package no.unit.nva.institution.proxy;
 
-import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import java.net.URI;
 import java.util.concurrent.ExecutionException;
 import no.unit.nva.institution.proxy.exception.GatewayException;
@@ -14,16 +13,13 @@ import no.unit.nva.institution.proxy.utils.Language;
 public class CristinApiClient {
 
     private final HttpExecutor httpExecutor;
-    private final LambdaLogger logger;
 
-    public CristinApiClient(LambdaLogger logger) {
+    public CristinApiClient() {
         this.httpExecutor = new HttpExecutorImpl();
-        this.logger = logger;
     }
 
-    public CristinApiClient(HttpExecutor httpExecutor, LambdaLogger logger) {
+    public CristinApiClient(HttpExecutor httpExecutor) {
         this.httpExecutor = httpExecutor;
-        this.logger = logger;
     }
 
     public InstitutionListResponse getInstitutions(Language language) throws GatewayException {
@@ -40,8 +36,8 @@ public class CristinApiClient {
      * @throws GatewayException         when an Exception occurs.
      * @throws InvalidUriException      when the input URI is invalid.
      */
-    public NestedInstitutionResponse getNestedInstitution(URI uri, Language language) throws GatewayException,
-                                                                                             InvalidUriException {
+    public NestedInstitutionResponse getNestedInstitution(URI uri, Language language)
+        throws GatewayException, InvalidUriException {
         return httpExecutor.getNestedInstitution(uri, language);
     }
 

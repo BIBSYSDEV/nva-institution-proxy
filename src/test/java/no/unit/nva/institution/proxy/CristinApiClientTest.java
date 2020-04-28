@@ -22,7 +22,6 @@ import no.unit.nva.institution.proxy.response.InstitutionListResponse;
 import no.unit.nva.institution.proxy.response.InstitutionResponse;
 import no.unit.nva.institution.proxy.response.NestedInstitutionResponse;
 import no.unit.nva.institution.proxy.utils.Language;
-import no.unit.nva.testutils.TestLogger;
 import nva.commons.utils.IoUtils;
 import nva.commons.utils.StringUtils;
 import org.junit.jupiter.api.DisplayName;
@@ -38,7 +37,6 @@ public class CristinApiClientTest {
     public static final String HTTP_CLIENT_RESPONSES = "httpClientResponses";
     public static final Path SINGLE_UNIT_RESPONSE_GRAPH = Path.of(HTTP_CLIENT_RESPONSES,
         "singleUnitResponseGraph.json");
-    TestLogger testLogger = new TestLogger();
 
     @DisplayName("getNestedInstitution returns nested institution when input is valid")
     @Test
@@ -47,7 +45,7 @@ public class CristinApiClientTest {
         HttpExecutor mockHttpExecutor = mock(HttpExecutorImpl.class);
         when(mockHttpExecutor.getNestedInstitution(any(), any()))
             .thenReturn(new NestedInstitutionResponse(JSON_VALUE));
-        CristinApiClient cristinApiClient = new CristinApiClient(mockHttpExecutor, testLogger);
+        CristinApiClient cristinApiClient = new CristinApiClient(mockHttpExecutor);
         NestedInstitutionResponse response = cristinApiClient.getNestedInstitution(VALID_URI, VALID_LANGUAGE_EN);
         assertThat(response.getJson(), containsString(JSON_VALUE));
     }
@@ -62,7 +60,7 @@ public class CristinApiClientTest {
         HttpExecutor mockHttpExecutor = mock(HttpExecutorImpl.class);
         when(mockHttpExecutor.getInstitutions(any(Language.class)))
             .thenReturn(new InstitutionListResponse(Collections.singletonList(mockResponseItem)));
-        CristinApiClient cristinApiClient = new CristinApiClient(mockHttpExecutor, testLogger);
+        CristinApiClient cristinApiClient = new CristinApiClient(mockHttpExecutor);
         InstitutionListResponse response = cristinApiClient.getInstitutions(VALID_LANGUAGE_EN);
         assertNotNull(response);
     }
@@ -72,7 +70,7 @@ public class CristinApiClientTest {
     public void getSingleUnitReturnsTheGraphOfAUnit()
         throws InterruptedException, ExecutionException, GatewayException, InvalidUriException, NonExistingUnitError {
         HttpExecutorImpl httpExecutor = new HttpExecutorImpl(new HttpClientReturningInfoOfSingleUnits());
-        CristinApiClient cristinApiClient = new CristinApiClient(httpExecutor, testLogger);
+        CristinApiClient cristinApiClient = new CristinApiClient(httpExecutor);
         NestedInstitutionResponse response = cristinApiClient.getSingleUnit(SECOND_LEVEL_CHILD_URI, TESTING_LANGUAGE);
         String actualResponse = StringUtils.removeWhiteSpaces(response.getJson());
         String expectedResponse = StringUtils.removeWhiteSpaces(IoUtils.stringFromResources(

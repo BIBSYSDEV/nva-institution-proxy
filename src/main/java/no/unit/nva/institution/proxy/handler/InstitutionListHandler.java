@@ -1,8 +1,6 @@
 package no.unit.nva.institution.proxy.handler;
 
 import com.amazonaws.services.lambda.runtime.Context;
-import com.amazonaws.services.lambda.runtime.LambdaLogger;
-import java.util.function.Function;
 import no.unit.nva.institution.proxy.CristinApiClient;
 import no.unit.nva.institution.proxy.exception.GatewayException;
 import no.unit.nva.institution.proxy.exception.UnknownLanguageException;
@@ -13,32 +11,32 @@ import nva.commons.handlers.RequestInfo;
 import nva.commons.utils.Environment;
 import nva.commons.utils.JacocoGenerated;
 import org.apache.http.HttpStatus;
+import org.slf4j.LoggerFactory;
 
 public class InstitutionListHandler extends ApiGatewayHandler<Void, InstitutionListResponse> {
 
     public static final String LANGUAGE_QUERY_PARAMETER = "language";
-    private final Function<LambdaLogger, CristinApiClient> cristinApiClientSupplier;
+    private final CristinApiClient cristinApiClient;
 
     @JacocoGenerated
     public InstitutionListHandler() {
-        this(new Environment(), CristinApiClient::new);
+        this(new Environment(), new CristinApiClient());
     }
 
     /**
      * In testing, it is necessary to pass the environment to the constructor.
      */
-    public InstitutionListHandler(Environment environment, Function<LambdaLogger, CristinApiClient> cristinApiClient) {
-        super(Void.class, environment);
-        this.cristinApiClientSupplier = cristinApiClient;
+    public InstitutionListHandler(Environment environment, CristinApiClient cristinApiClient) {
+        super(Void.class, environment, LoggerFactory.getLogger(InstitutionListHandler.class));
+        this.cristinApiClient = cristinApiClient;
     }
 
     @Override
     protected InstitutionListResponse processInput(Void input, RequestInfo requestInfo,
                                                    Context context)
         throws UnknownLanguageException, GatewayException {
-        CristinApiClient cristinApiClient = cristinApiClientSupplier.apply(logger);
         String languageParameter = requestInfo.getQueryParameters().get(LANGUAGE_QUERY_PARAMETER);
-        LanguageMapper languageMapper = new LanguageMapper(logger);
+        LanguageMapper languageMapper = new LanguageMapper();
         return cristinApiClient.getInstitutions(languageMapper.getLanguage(languageParameter));
     }
 
