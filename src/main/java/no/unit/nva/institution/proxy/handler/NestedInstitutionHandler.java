@@ -21,7 +21,6 @@ import nva.commons.utils.Environment;
 import nva.commons.utils.JacocoGenerated;
 import nva.commons.utils.attempt.Failure;
 import org.apache.http.HttpStatus;
-import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class NestedInstitutionHandler extends ApiGatewayHandler<Void, NestedInstitutionResponse> {
@@ -31,7 +30,6 @@ public class NestedInstitutionHandler extends ApiGatewayHandler<Void, NestedInst
     public static final String LANGUAGE_QUERY_PARAMETER = "language";
     public static final String PARAMETER_NOT_FOUND_ERROR_MESSAGE = "Parameter not found:";
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(NestedInstitutionHandler.class);
     private final CristinApiClient cristinApiClient;
 
     @JacocoGenerated
@@ -43,7 +41,7 @@ public class NestedInstitutionHandler extends ApiGatewayHandler<Void, NestedInst
      * In testing, it is necessary to pass the environment to the constructor.
      */
     public NestedInstitutionHandler(Environment environment, CristinApiClient cristinApiClientSupplier) {
-        super(Void.class, environment, LOGGER);
+        super(Void.class, environment, LoggerFactory.getLogger(NestedInstitutionHandler.class));
         this.cristinApiClient = cristinApiClientSupplier;
     }
 
