@@ -3,7 +3,7 @@ Feature: Get single institution
   Scenario Outline: The user downloads a single institution in the default language
     Given that the user has a valid <Institution IRI>
     When they set the Accept header to "application/json"
-    And they request /institution?iri=<Institution IRI>
+    And they request GET /institution?iri=<Institution IRI>
     Then they receive a response with status code 200
     And they see that the response Content-type is "application/json"
     And they see the body of the response contains a JSON object that is the nested structure for the entire institution
@@ -17,7 +17,7 @@ Feature: Get single institution
   Scenario Outline: The user downloads a single institution in Norwegian Bokmål
     Given that the user has a valid <Institution IRI>
     When they set the Accept header to "application/json"
-    And they request /institution?iri=<Institution IRI>&language=nb
+    And they request GET /institution?iri=<Institution IRI>&language=nb
     Then they receive a response with status code 200
     And they see that the response Content-type is "application/json"
     And they see the body of the response contains a JSON object that is the nested structure for the entire institution
@@ -31,7 +31,7 @@ Feature: Get single institution
   Scenario Outline: The user downloads a single institution in Norwegian Nynorsk
     Given that the user has a valid <Institution IRI>
     When they set the Accept header to "application/json"
-    And they request /institution?iri=<Institution IRI>&language=nn
+    And they request GET /institution?iri=<Institution IRI>&language=nn
     Then they receive a response with status code 200
     And they see that the response Content-type is "application/json"
     And they see the body of the response contains a JSON object that is the nested structure for the institution
@@ -45,7 +45,7 @@ Feature: Get single institution
   Scenario Outline: The user downloads a single institution in English
     Given that the user has a valid <Institution IRI>
     When they set the Accept header to "application/json"
-    And they request /institution?iri=<Institution IRI>&language=en
+    And they request GET /institution?iri=<Institution IRI>&language=en
     Then they receive a response with status code 200
     And they see that the response Content-type is "application/json"
     And they see the body of the response contains a JSON object that is the nested structure for the institution
@@ -59,7 +59,7 @@ Feature: Get single institution
   Scenario Outline: The user requests an institution that does not exist
     Given that the user has an invalid <institution IRI>
     When they set the request Accept header to "application/json"
-    And they request /institution?iri=<Institution IRI>
+    And they request GET /institution?iri=<Institution IRI>
     Then they receive an response with status code 404
     And they see that the response Content-type is "application/problem+json"
     And they see the response body contains a problem.json object
@@ -73,7 +73,7 @@ Feature: Get single institution
   Scenario Outline: The third party service is unavailable
     Given that the third party service is unavailable
     When they set the Accept header to "application/json"
-    And they request /institution?iri=<Institution IRI>
+    And they request GET /institution?iri=<Institution IRI>
     Then they receive a response with status code 502
     And they see that the response Content-type is "application/problem+json"
     And they see the response body contains a problem.json object
@@ -89,7 +89,7 @@ Feature: Get single institution
   Scenario: User requests a badly formatted IRI
     Given that the user has a badly formatted Institution IRI
     When they set the request Accept header to "application/json"
-    And they request /institution?iri=notaniri
+    And they request GET /institution?iri=notaniri
     Then they receive an response with status code 400
     And they see that the response Content-type is "application/problem+json"
     And they see the response body is a problem.json object
@@ -99,7 +99,7 @@ Feature: Get single institution
 
   Scenario: User creates a request without the required query parameters
     When the user sets the request Accept header to "application/json"
-    And they request /institution?not_ok=https://api.cristin.no/v2/institutions/194
+    And they request GET /institution?not_ok=https://api.cristin.no/v2/institutions/194
     Then they receive an response with status code 400
     And they see that the response Content-type is "application/problem+json"
     And they see the response body is a problem.json object
@@ -109,7 +109,7 @@ Feature: Get single institution
 
   Scenario: User creates a request with unrecognized query parameters
     When the user sets the request Accept header to "application/json"
-    And they request /institution?iri=https://api.cristin.no/v2/institutions/194&lang=nn
+    And they request GET /institution?iri=https://api.cristin.no/v2/institutions/194&lang=nn
     Then they receive an response with status code 400
     And they see that the response Content-type is "application/problem+json"
     And they see the response body is a problem.json object

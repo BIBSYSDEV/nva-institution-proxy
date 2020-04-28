@@ -3,7 +3,7 @@ Feature: Get all institutions
   Scenario: User requests all institutions in the default language
     Given that the API user is looking for a list of institutions
     When they set the request Accept header to "application/json"
-    And they request /institutions
+    And they request GET /institutions
     Then they receive a response with status code 200
     And they see that the response Content-type is "application/json"
     And they see the response body contains a list of objects
@@ -15,7 +15,7 @@ Feature: Get all institutions
   Scenario Outline: User requests all institutions in a given language
     Given that the API user is looking for a list of institutions in <language>
     When they set the Accept header to application/json
-    And they request /institutions?language=<language>
+    And they request GET /institutions?language=<language>
     Then they receive a response with status code 200
     And they see that the response Content-type is "application/json"
     And they see the response body contains a list of objects
@@ -33,7 +33,7 @@ Feature: Get all institutions
   Scenario: The third party service is unavailable
     Given that the third party service is unavailable
     When they set the Accept header to application/json
-    And they request /institutions
+    And they request GET /institutions
     Then they receive a response with status code 502
     And they see the response Content-type is "application/problem+json"
     And they see the response body contains JSON object
@@ -43,7 +43,7 @@ Feature: Get all institutions
 
   Scenario: User creates a request with unrecognized query parameters
     When the user sets the request Accept header to application/json
-    And they request /institutions?lang=nn
+    And they request GET /institutions?lang=nn
     Then they receive an response with status code 400
     And they see the response Content-type is "application/problem+json"
     And they see the response body contains JSON object    And the response body has a field "title" with the value "Bad request"
