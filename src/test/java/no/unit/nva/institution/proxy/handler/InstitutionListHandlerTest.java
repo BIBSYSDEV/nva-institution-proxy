@@ -1,6 +1,6 @@
 package no.unit.nva.institution.proxy.handler;
 
-import static nva.commons.utils.JsonUtils.jsonParser;
+import static nva.commons.utils.JsonUtils.objectMapper;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
@@ -11,7 +11,6 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import com.amazonaws.services.lambda.runtime.Context;
-import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.ByteArrayOutputStream;
@@ -20,13 +19,11 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.util.Collections;
-import java.util.function.Function;
 import no.unit.nva.institution.proxy.CristinApiClient;
 import no.unit.nva.institution.proxy.exception.GatewayException;
 import no.unit.nva.institution.proxy.exception.UnknownLanguageException;
 import no.unit.nva.institution.proxy.response.InstitutionListResponse;
 import no.unit.nva.institution.proxy.utils.Language;
-import no.unit.nva.testutils.TestLogger;
 import nva.commons.handlers.GatewayResponse;
 import nva.commons.handlers.RequestInfo;
 import nva.commons.utils.Environment;
@@ -57,7 +54,7 @@ public class InstitutionListHandlerTest extends HandlerTest {
 
     private Environment environment;
     private Context context;
-    private TestLogger logger;
+
 
     /**
      * Setup.
@@ -65,16 +62,15 @@ public class InstitutionListHandlerTest extends HandlerTest {
     @BeforeEach
     public void setup() {
         environment = mock(Environment.class);
-        logger = new TestLogger();
+
         when(environment.readEnv(anyString())).thenReturn(SOME_ENV_VALUE);
         context = mock(Context.class);
-        when(context.getLogger()).thenReturn(logger);
     }
 
     @DisplayName("Check that the InstitutionListHandler exists")
     @Test
     void mainHandlerExists() {
-        new InstitutionListHandler(environment, CristinApiClient::new);
+        new InstitutionListHandler(environment, new CristinApiClient());
     }
 
     @DisplayName("processInput receives the correct input")
@@ -153,20 +149,20 @@ public class InstitutionListHandlerTest extends HandlerTest {
     private GatewayResponse<InstitutionListResponse> gatewayResponseWithSuccessfulResult(
         ByteArrayOutputStream outputStream) throws JsonProcessingException {
         String outputString = outputStream.toString(StandardCharsets.UTF_8);
-        return jsonParser.readValue(outputString, GatewayResponse.class);
+        return objectMapper.readValue(outputString, GatewayResponse.class);
     }
 
     private GatewayResponse<Problem> gatewayResponseWithProblem(ByteArrayOutputStream outputStream)
         throws IOException {
         String outputString = outputStream.toString(StandardCharsets.UTF_8);
         TypeReference<GatewayResponse<Problem>> ref = new TypeReference<>() {};
-        return jsonParser.readValue(outputString, ref);
+        return objectMapper.readValue(outputString, ref);
     }
 
     private InstitutionListHandler handlerWithNonOperativeCristinClient() {
 
         CristinApiClient cristinClient = mock(CristinApiClient.class);
-        return new InstitutionListHandler(environment, logger -> cristinClient);
+        return new InstitutionListHandler(environment, cristinClient);
     }
 
     private InstitutionListHandler handlerThatThrowsInstitutionFailureException(String exceptionMessage)
@@ -174,12 +170,12 @@ public class InstitutionListHandlerTest extends HandlerTest {
         CristinApiClient cristinClient = mock(CristinApiClient.class);
         IOException cause = new IOException(exceptionMessage);
         when(cristinClient.getInstitutions(any(Language.class))).thenThrow(new GatewayException(cause));
-        return new InstitutionListHandler(environment, logger -> cristinClient);
+        return new InstitutionListHandler(environment, cristinClient);
     }
 
     private InstitutionListHandlerWithGetRequest institutionHandlerWithAccessibleRequestObject() {
-        MockCristinApiClient cristinApiClient = new MockCristinApiClient(logger);
-        return new InstitutionListHandlerWithGetRequest(environment, logger -> cristinApiClient);
+        MockCristinApiClient cristinApiClient = new MockCristinApiClient();
+        return new InstitutionListHandlerWithGetRequest(environment, cristinApiClient);
     }
 
     private InputStream inputInvalidLanguage() {
@@ -196,8 +192,8 @@ public class InstitutionListHandlerTest extends HandlerTest {
 
     private static class MockCristinApiClient extends CristinApiClient {
 
-        protected MockCristinApiClient(LambdaLogger logger) {
-            super(logger);
+        protected MockCristinApiClient() {
+            super();
         }
 
         @Override
@@ -210,8 +206,7 @@ public class InstitutionListHandlerTest extends HandlerTest {
 
         private String languageQueryParameter;
 
-        public InstitutionListHandlerWithGetRequest(Environment environment,
-                                                    Function<LambdaLogger, CristinApiClient> cristinApiClient) {
+        public InstitutionListHandlerWithGetRequest(Environment environment, CristinApiClient cristinApiClient) {
             super(environment, cristinApiClient);
         }
 

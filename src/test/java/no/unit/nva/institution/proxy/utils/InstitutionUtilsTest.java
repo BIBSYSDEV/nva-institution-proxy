@@ -63,11 +63,11 @@ class InstitutionUtilsTest {
     }
 
     private URI[] urisFromInstitutionsList(String input) throws IOException {
-        InstitutionDto[] institutions = JsonUtils.jsonParser.readValue(input, InstitutionDto[].class);
+        InstitutionDto[] institutions = JsonUtils.objectMapper.readValue(input, InstitutionDto[].class);
         List<URI> expectedIds = Arrays.stream(institutions)
-                                      .filter(InstitutionDto::isCristinUser)
-                                      .map(InstitutionDto::getUri)
-                                      .collect(Collectors.toList());
+            .filter(InstitutionDto::isCristinUser)
+            .map(InstitutionDto::getUri)
+            .collect(Collectors.toList());
         URI[] expectedArray = new URI[expectedIds.size()];
         expectedIds.toArray(expectedArray);
         return expectedArray;

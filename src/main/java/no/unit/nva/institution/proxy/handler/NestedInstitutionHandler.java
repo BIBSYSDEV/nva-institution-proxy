@@ -4,11 +4,9 @@ import static java.util.Objects.isNull;
 import static nva.commons.utils.attempt.Try.attempt;
 
 import com.amazonaws.services.lambda.runtime.Context;
-import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import java.net.URI;
 import java.util.Optional;
 import java.util.concurrent.ExecutionException;
-import java.util.function.Function;
 import no.unit.nva.institution.proxy.CristinApiClient;
 import no.unit.nva.institution.proxy.exception.InvalidUriException;
 import no.unit.nva.institution.proxy.exception.MissingParameterException;
@@ -23,6 +21,7 @@ import nva.commons.utils.Environment;
 import nva.commons.utils.JacocoGenerated;
 import nva.commons.utils.attempt.Failure;
 import org.apache.http.HttpStatus;
+import org.slf4j.LoggerFactory;
 
 public class NestedInstitutionHandler extends ApiGatewayHandler<Void, NestedInstitutionResponse> {
 
@@ -31,20 +30,19 @@ public class NestedInstitutionHandler extends ApiGatewayHandler<Void, NestedInst
     public static final String LANGUAGE_QUERY_PARAMETER = "language";
     public static final String PARAMETER_NOT_FOUND_ERROR_MESSAGE = "Parameter not found:";
 
-    private final Function<LambdaLogger, CristinApiClient> cristinApiClientSupplier;
+    private final CristinApiClient cristinApiClient;
 
     @JacocoGenerated
     public NestedInstitutionHandler() {
-        this(new Environment(), CristinApiClient::new);
+        this(new Environment(), new CristinApiClient());
     }
 
     /**
      * In testing, it is necessary to pass the environment to the constructor.
      */
-    public NestedInstitutionHandler(Environment environment,
-                                    Function<LambdaLogger, CristinApiClient> cristinApiClientSupplier) {
-        super(Void.class, environment);
-        this.cristinApiClientSupplier = cristinApiClientSupplier;
+    public NestedInstitutionHandler(Environment environment, CristinApiClient cristinApiClientSupplier) {
+        super(Void.class, environment, LoggerFactory.getLogger(NestedInstitutionHandler.class));
+        this.cristinApiClient = cristinApiClientSupplier;
     }
 
     @Override
@@ -52,8 +50,7 @@ public class NestedInstitutionHandler extends ApiGatewayHandler<Void, NestedInst
                                                      RequestInfo requestInfo,
                                                      Context context) throws ApiGatewayException {
 
-        CristinApiClient cristinApiClient = cristinApiClientSupplier.apply(logger);
-        LanguageMapper languageMapper = new LanguageMapper(logger);
+        LanguageMapper languageMapper = new LanguageMapper();
         URI uri = getDepartmentUriFromQueryParameters(requestInfo);
         String languageCode = getLanguageCodFromQueryParameters(requestInfo);
         Language language = languageMapper.getLanguage(languageCode);
@@ -89,13 +86,13 @@ public class NestedInstitutionHandler extends ApiGatewayHandler<Void, NestedInst
 
     private ApiGatewayException handleMalformedUri(Failure<URI> failure, RequestInfo requestInfo) {
         String malformedUri = requestInfo.getQueryParameters().get(URI_QUERY_PARAMETER);
-        logger.log(String.format(LOG_URI_ERROR_TEMPLATE, malformedUri));
+        logger.warn(String.format(LOG_URI_ERROR_TEMPLATE, malformedUri));
         return new InvalidUriException(failure.getException(), malformedUri);
     }
 
     private Optional<ApiGatewayException> handleMissingUri(RequestInfo requestInfo) {
         if (isNull(requestInfo.getQueryParameters().get(URI_QUERY_PARAMETER))) {
-            logger.log(PARAMETER_NOT_FOUND_ERROR_MESSAGE + URI_QUERY_PARAMETER);
+            logger.warn(PARAMETER_NOT_FOUND_ERROR_MESSAGE + URI_QUERY_PARAMETER);
             return Optional.of(new MissingParameterException(URI_QUERY_PARAMETER));
         }
         return Optional.empty();
