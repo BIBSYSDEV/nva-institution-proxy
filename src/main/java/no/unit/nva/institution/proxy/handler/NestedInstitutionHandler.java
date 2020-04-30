@@ -60,7 +60,7 @@ public class NestedInstitutionHandler extends ApiGatewayHandler<Void, JsonNode> 
             try {
                 return cristinApiClient.getSingleUnit(uri, language);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                logger.error("Cris");
             }
         } else {
             throw new UnrecognizedUriException(uri);

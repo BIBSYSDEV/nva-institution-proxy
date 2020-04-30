@@ -22,11 +22,15 @@ import no.unit.nva.institution.proxy.utils.UriUtils;
 import nva.commons.utils.JacocoGenerated;
 import nva.commons.utils.JsonUtils;
 import org.apache.http.HttpStatus;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class SingleUnitHierarchyGenerator {
 
     private final ModelUtils modelUtils;
     private final HttpClient httpClient;
+
+    private final Logger logger = LoggerFactory.getLogger(SingleUnitHierarchyGenerator.class);
 
     @JacocoGenerated
     public SingleUnitHierarchyGenerator(URI uri, Language language)
@@ -115,7 +119,7 @@ public class SingleUnitHierarchyGenerator {
         try {
             return JsonUtils.objectMapper.readValue(json, SubSubUnitDto.class);
         } catch (JsonProcessingException e) {
-            e.printStackTrace();
+            logger.error("Error processing JSON string: " + json, e);
         }
         return null;
     }

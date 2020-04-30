@@ -8,7 +8,6 @@ import java.net.http.HttpResponse;
 import no.unit.nva.institution.proxy.exception.FailedHttpRequestException;
 import no.unit.nva.institution.proxy.exception.GatewayException;
 import no.unit.nva.institution.proxy.exception.InvalidUriException;
-import no.unit.nva.institution.proxy.exception.JsonParsingException;
 import no.unit.nva.institution.proxy.exception.NonExistingUnitError;
 import no.unit.nva.institution.proxy.response.InstitutionListResponse;
 import no.unit.nva.institution.proxy.utils.Language;
@@ -24,7 +23,7 @@ public abstract class HttpExecutor {
     public abstract InstitutionListResponse getInstitutions(Language language) throws GatewayException;
 
     public abstract JsonNode getNestedInstitution(URI uri, Language language)
-        throws GatewayException, InvalidUriException, JsonParsingException;
+        throws GatewayException, InvalidUriException;
 
     public abstract JsonNode getSingleUnit(URI uri, Language language)
         throws NonExistingUnitError, GatewayException, InterruptedException;

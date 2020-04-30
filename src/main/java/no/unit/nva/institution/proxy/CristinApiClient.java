@@ -4,9 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import java.net.URI;
 import no.unit.nva.institution.proxy.exception.GatewayException;
 import no.unit.nva.institution.proxy.exception.InvalidUriException;
-import no.unit.nva.institution.proxy.exception.JsonParsingException;
 import no.unit.nva.institution.proxy.exception.NonExistingUnitError;
-import no.unit.nva.institution.proxy.exception.UnknownLanguageException;
 import no.unit.nva.institution.proxy.response.InstitutionListResponse;
 import no.unit.nva.institution.proxy.utils.Language;
 import org.slf4j.Logger;
@@ -35,12 +33,11 @@ public class CristinApiClient {
      * @param uri      The URI of the institution's Unit
      * @param language a valid Language. See {@link Language}.
      * @return A list of all the units that are descendants of the institution unit
-     * @throws UnknownLanguageException when the language is invalid.
-     * @throws GatewayException         when an Exception occurs.
-     * @throws InvalidUriException      when the input URI is invalid.
+     * @throws GatewayException    when an Exception occurs.
+     * @throws InvalidUriException when the input URI is invalid.
      */
     public JsonNode getNestedInstitution(URI uri, Language language)
-        throws GatewayException, InvalidUriException, JsonParsingException {
+        throws GatewayException, InvalidUriException {
         return httpExecutor.getNestedInstitution(uri, language);
     }
 

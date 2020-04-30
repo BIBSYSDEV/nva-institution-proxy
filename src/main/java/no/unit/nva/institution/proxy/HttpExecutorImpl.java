@@ -18,8 +18,6 @@ import java.util.concurrent.CompletableFuture;
 import no.unit.nva.institution.proxy.dto.InstitutionBaseDto;
 import no.unit.nva.institution.proxy.dto.SubSubUnitDto;
 import no.unit.nva.institution.proxy.exception.GatewayException;
-import no.unit.nva.institution.proxy.exception.InvalidUriException;
-import no.unit.nva.institution.proxy.exception.JsonParsingException;
 import no.unit.nva.institution.proxy.exception.NonExistingUnitError;
 import no.unit.nva.institution.proxy.response.InstitutionListResponse;
 import no.unit.nva.institution.proxy.utils.InstitutionUtils;
@@ -74,8 +72,7 @@ public class HttpExecutorImpl extends HttpExecutor {
     }
 
     @Override
-    public JsonNode getNestedInstitution(URI uri, Language language)
-        throws GatewayException, InvalidUriException, JsonParsingException {
+    public JsonNode getNestedInstitution(URI uri, Language language) throws GatewayException {
         URI unitUri = getInstitutionUnitUri(uri, language);
         InstitutionBaseDto institutionUnit = getInstitutionBaseDto(unitUri, language);
 
@@ -96,10 +93,9 @@ public class HttpExecutorImpl extends HttpExecutor {
     @Override
     public JsonNode getSingleUnit(URI uri, Language language)
         throws InterruptedException, NonExistingUnitError, GatewayException {
-        SingleUnitHierarchyGenerator singleUnitHierarchyGenerator = new SingleUnitHierarchyGenerator(uri, language,
-            httpClient);
-        JsonNode json = singleUnitHierarchyGenerator.toJsonLd();
-        return json;
+        SingleUnitHierarchyGenerator singleUnitHierarchyGenerator =
+            new SingleUnitHierarchyGenerator(uri, language, httpClient);
+        return singleUnitHierarchyGenerator.toJsonLd();
     }
 
     public URI getInstitutionUnitUri(URI uri, Language language) throws GatewayException {
@@ -115,7 +111,7 @@ public class HttpExecutorImpl extends HttpExecutor {
             .orElseThrow(this::handleError);
     }
 
-    private List<URI> getUnitUris(String id, Language language) throws GatewayException, InvalidUriException {
+    private List<URI> getUnitUris(String id, Language language) throws GatewayException {
         URI uri = UriUtils.getUriWithLanguage(URI.create(String.format(PARENT_UNIT_URI_TEMPLATE, id)), language);
         return attempt(() -> sendHttpRequest(uri).get())
             .map(this::throwExceptionIfNotSuccessful)
