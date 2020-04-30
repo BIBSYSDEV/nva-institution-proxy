@@ -26,6 +26,9 @@ import no.unit.nva.institution.proxy.utils.Language;
 import nva.commons.utils.IoUtils;
 import org.apache.http.HttpStatus;
 
+/**
+ * Class mocking an HttpClient. The class returns JSON strings for some predefined URIs.
+ */
 public class HttpClientReturningInfoOfSingleUnits extends HttpClient {
 
     public static final URI ROOT_NODE_URI = URI.create("https://api.cristin.no/v2/units/185.90.0.0?lang=en");
@@ -47,6 +50,9 @@ public class HttpClientReturningInfoOfSingleUnits extends HttpClient {
         setup();
     }
 
+    /**
+     * Setup.
+     */
     public void setup() {
         requestResponseMap = new HashMap<>();
         requestResponseMap.put(ROOT_NODE_URI, readResource(UNIT_WITH_NO_PARENT));

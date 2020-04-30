@@ -1,5 +1,6 @@
 package no.unit.nva.institution.proxy;
 
+import static no.unit.nva.institution.proxy.utils.UriUtils.clearParameters;
 import static nva.commons.utils.attempt.Try.attempt;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
@@ -15,7 +16,8 @@ import static testutils.HttpClientReturningInfoOfSingleUnits.ROOT_NODE_URI;
 import static testutils.HttpClientReturningInfoOfSingleUnits.SECOND_LEVEL_CHILD_URI;
 import static testutils.HttpClientReturningInfoOfSingleUnits.TESTING_LANGUAGE;
 
-import java.io.IOException;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -29,9 +31,10 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import no.unit.nva.institution.proxy.exception.GatewayException;
 import no.unit.nva.institution.proxy.exception.InvalidUriException;
+import no.unit.nva.institution.proxy.exception.JsonParsingException;
 import no.unit.nva.institution.proxy.exception.NonExistingUnitError;
-import no.unit.nva.institution.proxy.utils.UriUtils;
 import nva.commons.utils.IoUtils;
+import nva.commons.utils.JsonUtils;
 import nva.commons.utils.attempt.Try;
 import org.apache.http.HttpStatus;
 import org.apache.jena.rdf.model.Model;
@@ -52,10 +55,11 @@ public class SingleUnitHierarchyGeneratorTest {
     @DisplayName("SingleUnitHierarchyGenerator returns model with single item when input item has no parents")
     @Test
     public void singleUnitHierarchyGeneratorReturnsModelWithSingleItemWhenInputItemHasNoParents()
-        throws InterruptedException, InvalidUriException, NonExistingUnitError, GatewayException {
+        throws InterruptedException, InvalidUriException, NonExistingUnitError, GatewayException, JsonParsingException,
+               JsonProcessingException {
         SingleUnitHierarchyGenerator generator = new SingleUnitHierarchyGenerator(ROOT_NODE_URI, TESTING_LANGUAGE,
             mockHttpClient);
-        String jsonLd = generator.toJsonLd();
+        JsonNode jsonLd = generator.toJsonLd();
 
         Model model = parseModel(jsonLd);
         assertThatThereIsOnlyExpectedNumberOfUnits(model, 1);
@@ -64,11 +68,12 @@ public class SingleUnitHierarchyGeneratorTest {
     @DisplayName("SingleUnitHierarchyGenerator returns model with two items when input item is a level one child")
     @Test
     public void singleUnitHierarchyGeneratorReturnsModelWithTwoItemsWhenInputItemIsALevelOneChild()
-        throws InterruptedException, InvalidUriException, NonExistingUnitError, GatewayException {
+        throws InterruptedException, InvalidUriException, NonExistingUnitError, GatewayException,
+               JsonProcessingException, JsonParsingException {
 
         SingleUnitHierarchyGenerator generator = new SingleUnitHierarchyGenerator(FIRST_LEVEL_CHILD_URI,
             TESTING_LANGUAGE, mockHttpClient);
-        String jsonLd = generator.toJsonLd();
+        JsonNode jsonLd = generator.toJsonLd();
         Model model = parseModel(jsonLd);
         assertThatThereIsOnlyExpectedNumberOfUnits(model, 2);
     }
@@ -76,11 +81,12 @@ public class SingleUnitHierarchyGeneratorTest {
     @DisplayName("SingleUnitHierarchyGenerator returns model with 3 items when input item is a level two child")
     @Test
     public void singleUnitHierarchyGeneratorReturnsModelWithThreeItemsWhenInputItemIsALevelTwoChild()
-        throws InterruptedException, InvalidUriException, NonExistingUnitError, GatewayException {
+        throws InterruptedException, InvalidUriException, NonExistingUnitError, GatewayException, JsonParsingException,
+               JsonProcessingException {
 
         SingleUnitHierarchyGenerator generator = new SingleUnitHierarchyGenerator(SECOND_LEVEL_CHILD_URI,
             TESTING_LANGUAGE, mockHttpClient);
-        String jsonLd = generator.toJsonLd();
+        JsonNode jsonLd = generator.toJsonLd();
         Model model = parseModel(jsonLd);
         assertThatThereIsOnlyExpectedNumberOfUnits(model, 3);
     }
@@ -89,17 +95,16 @@ public class SingleUnitHierarchyGeneratorTest {
     @Test
     public void singleUnitHierarchyGeneratorReturnsModelsWithUrisWithoutParameters() {
         URI[] input = new URI[]{ROOT_NODE_URI, FIRST_LEVEL_CHILD_URI, SECOND_LEVEL_CHILD_URI};
-        List<Try<String>> tryGetModels = getModelsForUris(input);
+        List<Try<JsonNode>> tryGetModels = getModelsForUris(input);
         assertThatNoFailureHasOccurred(tryGetModels);
-        Stream<String> models = tryGetModels.stream().map(Try::get);
+        Stream<JsonNode> models = tryGetModels.stream().map(Try::get);
         Stream<Resource> subjects = extractAllSubjectsFromAllModels(models);
         assertThatAllSubjectsHaveUrisWithoutParameters(subjects);
     }
 
     @DisplayName("SingleUnitHierarchyGenerator throws NonExistingUnitError for a valid URI but non existing Unit")
     @Test
-    public void singleUnitHierarchyGeneratorThrowsNonExistingUnitErrorForAValidURiButNonExistingUnit()
-        throws IOException, InterruptedException {
+    public void singleUnitHierarchyGeneratorThrowsNonExistingUnitErrorForAValidURiButNonExistingUnit() {
         HttpClient httpClientReturningNull = mock(HttpClient.class);
         HttpResponse<String> notFound = mock(HttpResponse.class);
         when(notFound.body()).thenReturn(EMPTY_BODY);
@@ -114,43 +119,38 @@ public class SingleUnitHierarchyGeneratorTest {
 
     private void assertThatAllSubjectsHaveUrisWithoutParameters(Stream<Resource> subjects) {
         subjects.map(Resource::getURI)
-                .map(URI::create)
-                .forEach(
-                    uri -> assertThat(uri, is(equalTo(clearParameters(uri)))));
+            .map(URI::create)
+            .forEach(
+                uri -> assertThat(uri, is(equalTo(clearParameters(uri)))));
     }
 
-    private Stream<Resource> extractAllSubjectsFromAllModels(Stream<String> models) {
-        return models.map(this::parseModel)
-                     .flatMap(model -> model.listSubjects().toList().stream());
+    private Stream<Resource> extractAllSubjectsFromAllModels(Stream<JsonNode> models) {
+        return models.map(attempt(this::parseModel))
+            .map(eff -> eff.orElseThrow(failure -> new RuntimeException(failure.getException())))
+            .flatMap(model -> model.listSubjects().toList().stream());
     }
 
-    private List<Try<String>> getModelsForUris(URI[] input) {
+    private List<Try<JsonNode>> getModelsForUris(URI[] input) {
         return Arrays.stream(input)
-                     .map(attempt(uri -> new SingleUnitHierarchyGenerator(uri, TESTING_LANGUAGE, mockHttpClient)))
-                     .map(eff -> eff.map(SingleUnitHierarchyGenerator::toJsonLd))
-                     .collect(Collectors.toList());
+            .map(attempt(uri -> new SingleUnitHierarchyGenerator(uri, TESTING_LANGUAGE, mockHttpClient)))
+            .map(eff -> eff.map(SingleUnitHierarchyGenerator::toJsonLd))
+            .collect(Collectors.toList());
     }
 
-    private void assertThatNoFailureHasOccurred(List<Try<String>> tryGetModels) {
+    private void assertThatNoFailureHasOccurred(List<Try<JsonNode>> tryGetModels) {
         tryGetModels.forEach(eff -> assertTrue(eff.isSuccess()));
     }
 
-    private URI clearParameters(URI uri) throws IllegalStateException {
-        try {
-            return UriUtils.clearParameters(uri);
-        } catch (InvalidUriException e) {
-            throw new IllegalStateException(e);
-        }
-    }
 
     private void assertThatThereIsOnlyExpectedNumberOfUnits(Model model, int expectedNumberOfUnits) {
         Set<Resource> subjects = model.listSubjects().toSet();
         assertThat(subjects.size(), is(equalTo(expectedNumberOfUnits)));
     }
 
-    private Model parseModel(String jsonLd) {
+    private Model parseModel(JsonNode jsonLd) throws JsonProcessingException {
         Model model = ModelFactory.createDefaultModel();
-        model.read(IoUtils.stringToStream(jsonLd), null, JSONLD);
+        String jsonString = JsonUtils.objectMapper.writeValueAsString(jsonLd);
+        model.read(IoUtils.stringToStream(jsonString), null, JSONLD);
         return model;
     }
 }

@@ -13,6 +13,7 @@ import static org.mockito.Mockito.when;
 
 import com.amazonaws.services.lambda.runtime.Context;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonNode;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,6 +23,7 @@ import java.nio.file.Path;
 import no.unit.nva.institution.proxy.CristinApiClient;
 import no.unit.nva.institution.proxy.exception.GatewayException;
 import no.unit.nva.institution.proxy.exception.InvalidUriException;
+import no.unit.nva.institution.proxy.exception.JsonParsingException;
 import no.unit.nva.institution.proxy.exception.MissingParameterException;
 import no.unit.nva.institution.proxy.request.NestedInstitutionRequest;
 import no.unit.nva.institution.proxy.response.InstitutionListResponse;
@@ -144,10 +146,10 @@ public class NestedInstitutionHandlerTest extends HandlerTest {
             .get(NestedInstitutionHandler.LANGUAGE_QUERY_PARAMETER);
         assertThat(actualLanguageParameter,
             is(equalTo(LANGUAGE_STRING_VALUE_IN_RESOURCE_FILE)));
-        String actualURIParameter = handler.getRequestinfo()
+        String actualUriParameter = handler.getRequestinfo()
             .getQueryParameters()
             .get(URI_QUERY_PARAMETER);
-        assertThat(actualURIParameter, is(equalTo(URI_STRING_VALUE_IN_RESOURCE_FILE)));
+        assertThat(actualUriParameter, is(equalTo(URI_STRING_VALUE_IN_RESOURCE_FILE)));
     }
 
     @DisplayName("handleRequest returns OK to the client when language parameter is missing")
@@ -179,7 +181,6 @@ public class NestedInstitutionHandlerTest extends HandlerTest {
         GatewayResponse<InstitutionListResponse> response = objectMapper.readValue(outputString, GatewayResponse.class);
         assertThat(response.getStatusCode(), is(HttpStatus.SC_OK));
     }
-
 
     @DisplayName("handleRequest returns BadRequest to the client when UnknownLanguageException occurs")
     @Test
@@ -255,7 +256,7 @@ public class NestedInstitutionHandlerTest extends HandlerTest {
     @DisplayName("handleRequest returns BadGateway to the client when GatewayException occurs")
     @Test
     public void handleRequestReturnsBadRequestWhenInstitutionFailureOccurs()
-        throws IOException, InvalidUriException, GatewayException {
+        throws IOException, InvalidUriException, GatewayException, JsonParsingException {
         NestedInstitutionHandler handler = handlerThatThrowsNestedInstitutionFailureException(SOME_EXCEPTION_MESSAGE);
         InputStream inputStream = inputInstitutionsRequest();
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
@@ -269,7 +270,7 @@ public class NestedInstitutionHandlerTest extends HandlerTest {
     }
 
     private NestedInstitutionHandler handlerThatThrowsNestedInstitutionFailureException(String message)
-        throws InvalidUriException, GatewayException {
+        throws InvalidUriException, GatewayException, JsonParsingException {
         CristinApiClient cristinClient = mock(CristinApiClient.class);
         IOException cause = new IOException(message);
         when(cristinClient.getNestedInstitution(any(URI.class), any(Language.class)))
@@ -352,7 +353,8 @@ public class NestedInstitutionHandlerTest extends HandlerTest {
 
         @Override
         public NestedInstitutionResponse getNestedInstitution(URI uri, Language language) {
-            return new NestedInstitutionResponse("true");
+            JsonNode jsonNode = objectMapper.createObjectNode();
+            return new NestedInstitutionResponse(jsonNode);
         }
     }
 }

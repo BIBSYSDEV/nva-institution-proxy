@@ -30,7 +30,7 @@ public class LanguageMapperTest {
     @Test
     public void languageMapperReturnsLanguageForValidLanguageEntry() {
         Arrays.stream(Language.values())
-              .forEach(this::assertThatLanguageCodeIsRecognized);
+            .forEach(this::assertThatLanguageCodeIsRecognized);
     }
 
     @Test
@@ -57,7 +57,7 @@ public class LanguageMapperTest {
         assertThatMapperLogsInputString(inputCode);
     }
 
-    public void assertThatMapperLogsInputString(String inputCode) {
+    private void assertThatMapperLogsInputString(String inputCode) {
         TestAppender appender = LogUtils.getTestingAppender(LanguageMapper.class);
         try {
             languageMapper.getLanguage(inputCode);

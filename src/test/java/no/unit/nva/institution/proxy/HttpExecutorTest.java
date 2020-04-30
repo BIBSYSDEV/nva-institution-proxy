@@ -10,11 +10,8 @@ import static org.mockito.Mockito.when;
 
 import java.net.URI;
 import java.net.http.HttpResponse;
-import java.util.concurrent.ExecutionException;
 import no.unit.nva.institution.proxy.exception.FailedHttpRequestException;
 import no.unit.nva.institution.proxy.exception.GatewayException;
-import no.unit.nva.institution.proxy.exception.InvalidUriException;
-import no.unit.nva.institution.proxy.exception.NonExistingUnitError;
 import no.unit.nva.institution.proxy.response.InstitutionListResponse;
 import no.unit.nva.institution.proxy.response.NestedInstitutionResponse;
 import no.unit.nva.institution.proxy.utils.Language;
@@ -39,8 +36,7 @@ public class HttpExecutorTest {
         }
 
         @Override
-        public NestedInstitutionResponse getSingleUnit(URI uri, Language language)
-            throws InterruptedException, ExecutionException, InvalidUriException, NonExistingUnitError {
+        public NestedInstitutionResponse getSingleUnit(URI uri, Language language) {
             return null;
         }
     };

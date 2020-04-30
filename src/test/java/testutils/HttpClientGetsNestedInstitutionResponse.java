@@ -63,6 +63,11 @@ public class HttpClientGetsNestedInstitutionResponse {
         initializePathResponseMap(language);
     }
 
+    /**
+     * Mock {@link HttpClient} that maps requests to responses.
+     *
+     * @return a mock {@link HttpClient}.
+     */
     public HttpClient getMockClient() {
         HttpClient client = mock(HttpClient.class);
 
@@ -82,7 +87,7 @@ public class HttpClientGetsNestedInstitutionResponse {
         return client;
     }
 
-    public HttpResponse<String> createMockHttpResponse(HttpRequest request) {
+    private HttpResponse<String> createMockHttpResponse(HttpRequest request) {
         HttpResponse<String> response = mock(HttpResponse.class);
         when(response.statusCode()).thenReturn(HttpStatus.SC_OK);
         when(response.body()).thenReturn(requestResponseMapping.get(request.uri()));

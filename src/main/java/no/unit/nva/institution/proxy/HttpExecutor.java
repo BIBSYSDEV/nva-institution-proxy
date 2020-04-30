@@ -8,6 +8,7 @@ import java.util.concurrent.ExecutionException;
 import no.unit.nva.institution.proxy.exception.FailedHttpRequestException;
 import no.unit.nva.institution.proxy.exception.GatewayException;
 import no.unit.nva.institution.proxy.exception.InvalidUriException;
+import no.unit.nva.institution.proxy.exception.JsonParsingException;
 import no.unit.nva.institution.proxy.exception.NonExistingUnitError;
 import no.unit.nva.institution.proxy.response.InstitutionListResponse;
 import no.unit.nva.institution.proxy.response.NestedInstitutionResponse;
@@ -24,10 +25,11 @@ public abstract class HttpExecutor {
     public abstract InstitutionListResponse getInstitutions(Language language) throws GatewayException;
 
     public abstract NestedInstitutionResponse getNestedInstitution(URI uri, Language language)
-        throws GatewayException, InvalidUriException;
+        throws GatewayException, InvalidUriException, JsonParsingException;
 
     public abstract NestedInstitutionResponse getSingleUnit(URI uri, Language language)
-        throws InterruptedException, ExecutionException, InvalidUriException, NonExistingUnitError, GatewayException;
+        throws InterruptedException, ExecutionException, InvalidUriException, NonExistingUnitError, GatewayException,
+               JsonParsingException;
 
     protected HttpResponse<String> throwExceptionIfNotSuccessful(HttpResponse<String> response)
         throws FailedHttpRequestException {

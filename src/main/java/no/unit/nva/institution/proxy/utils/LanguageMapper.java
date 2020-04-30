@@ -15,6 +15,13 @@ public class LanguageMapper {
     public LanguageMapper() {
     }
 
+    /**
+     * Returns a {@link Language} object for a valid language code. See valid language codes in {@link Language} class.
+     *
+     * @param languageCode a valid language code.
+     * @return a {@link Language} instance
+     * @throws UnknownLanguageException when the language code is not a valid code.
+     */
     public Language getLanguage(String languageCode) throws UnknownLanguageException {
         if (isNull(languageCode) || languageCode.isBlank()) {
             logger.warn("LanguageCode could not be found");

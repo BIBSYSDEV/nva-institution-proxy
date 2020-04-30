@@ -1,17 +1,24 @@
 package no.unit.nva.institution.proxy.utils;
 
 import static nva.commons.utils.IoUtils.stringFromResources;
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.net.URI;
 import java.nio.file.Path;
+import no.unit.nva.institution.proxy.exception.JsonParsingException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 
 class ModelUtilsTest {
 
@@ -32,40 +39,44 @@ class ModelUtilsTest {
 
     @DisplayName("Model utils can add a type for a URI to a model")
     @Test
-    void addTypeToModelWithUriCreatesInstitutionObject() throws IOException {
+    void addTypeToModelWithUriCreatesInstitutionObject() throws IOException, JsonParsingException {
         ModelUtils modelUtils = new ModelUtils();
         URI uri = URI.create(INSTITUTION_URI);
         modelUtils.addTypeToModel(uri);
-        Object resultModel = objectify(modelUtils.toJsonLd());
+        JsonNode resultModel = modelUtils.toJsonLd();
         Object expectedModel = objectify(stringFromResources(HAS_TYPE_JSON));
         assertThat(resultModel, is(equalTo(expectedModel)));
     }
 
-    private Object objectify(String json) throws com.fasterxml.jackson.core.JsonProcessingException {
-        return MAPPER.readValue(json, Object.class);
+    private JsonNode objectify(String json) throws com.fasterxml.jackson.core.JsonProcessingException {
+        return MAPPER.readValue(json, JsonNode.class);
     }
 
     @DisplayName("Model utils can add name statement for a URI to model")
     @Test
-    void addNameStatementWithUriCreatesNameStatement() throws IOException {
+    void addNameStatementWithUriCreatesNameStatement() throws IOException, JsonParsingException {
         ModelUtils modelUtils = new ModelUtils();
         URI uri = URI.create(INSTITUTION_URI);
 
         // For the frame to work, there must be a node of type Institution
         modelUtils.addNameToModel(uri, SOME_NAME);
         modelUtils.addTypeToModel(uri);
-        assertThat(objectify(modelUtils.toJsonLd()), is(equalTo(objectify(stringFromResources(HAS_NAME_JSON)))));
+        JsonNode actual = modelUtils.toJsonLd();
+        JsonNode expected = objectify(stringFromResources(HAS_NAME_JSON));
+        assertThat(actual, is(equalTo(expected)));
     }
 
     @DisplayName("Model utils can add subunit relation to an object")
     @Test
-    void addSubunitsRelationToModelWithUriCreatesSubunitRelation() throws IOException {
+    void addSubunitsRelationToModelWithUriCreatesSubunitRelation() throws IOException, JsonParsingException {
         ModelUtils modelUtils = new ModelUtils();
         URI institution = URI.create(INSTITUTION_URI);
         URI subunit = URI.create(SUBUNIT_URI);
         modelUtils.addTypeToModel(institution);
         modelUtils.addSubunitsRelationToModel(institution, subunit);
-        assertThat(objectify(modelUtils.toJsonLd()), is(equalTo(objectify(stringFromResources(HAS_SUBUNIT_JSON)))));
+        JsonNode actual = modelUtils.toJsonLd();
+        JsonNode expected = objectify(stringFromResources(HAS_SUBUNIT_JSON));
+        assertThat(actual, is(equalTo(expected)));
     }
 
     @DisplayName("toTurtle returns a non empty string when the input is a non empty model")
@@ -76,5 +87,27 @@ class ModelUtilsTest {
         modelUtils.addNameToModel(uri, SOME_NAME);
         String actual = modelUtils.toTurtle();
         assertNotNull(actual);
+    }
+
+    @DisplayName("covertToJsonNode throws JsonParsingException when an exception occurs")
+    @Test
+    public void convertToJsonNodeThrowsJsonParsingExceptionWhenAnExceptionOccurs()
+        throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        ModelUtils modelUtils = new ModelUtils();
+        Method testedMethod = accessMethod("convertToJsonNode");
+        String inputParameter = "Invalid json str";
+        Executable action = () -> testedMethod.invoke(modelUtils, inputParameter);
+        InvocationTargetException reflectionException = assertThrows(InvocationTargetException.class, action);
+
+        assertThat(reflectionException.getCause().getClass(), is(equalTo(JsonParsingException.class)));
+        JsonParsingException expectedException = (JsonParsingException) reflectionException.getCause();
+        assertThat(expectedException.getMessage(), containsString(inputParameter));
+    }
+
+    public Method accessMethod(String methodName) throws NoSuchMethodException {
+        Class<ModelUtils> classAccessor = ModelUtils.class;
+        Method testedMethod = classAccessor.getDeclaredMethod(methodName, String.class);
+        testedMethod.setAccessible(true);
+        return testedMethod;
     }
 }

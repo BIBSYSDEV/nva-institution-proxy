@@ -4,6 +4,7 @@ import java.net.URI;
 import java.util.concurrent.ExecutionException;
 import no.unit.nva.institution.proxy.exception.GatewayException;
 import no.unit.nva.institution.proxy.exception.InvalidUriException;
+import no.unit.nva.institution.proxy.exception.JsonParsingException;
 import no.unit.nva.institution.proxy.exception.NonExistingUnitError;
 import no.unit.nva.institution.proxy.exception.UnknownLanguageException;
 import no.unit.nva.institution.proxy.response.InstitutionListResponse;
@@ -37,12 +38,13 @@ public class CristinApiClient {
      * @throws InvalidUriException      when the input URI is invalid.
      */
     public NestedInstitutionResponse getNestedInstitution(URI uri, Language language)
-        throws GatewayException, InvalidUriException {
+        throws GatewayException, InvalidUriException, JsonParsingException {
         return httpExecutor.getNestedInstitution(uri, language);
     }
 
     public NestedInstitutionResponse getSingleUnit(URI uri, Language language)
-        throws InterruptedException, ExecutionException, InvalidUriException, NonExistingUnitError, GatewayException {
+        throws InterruptedException, ExecutionException, InvalidUriException, NonExistingUnitError, GatewayException,
+               JsonParsingException {
         return httpExecutor.getSingleUnit(uri, language);
     }
 }

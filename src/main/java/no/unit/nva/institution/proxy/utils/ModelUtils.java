@@ -2,12 +2,16 @@ package no.unit.nva.institution.proxy.utils;
 
 import static org.apache.jena.riot.RDFFormat.JSONLD_FRAME_PRETTY;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.github.jsonldjava.core.JsonLdOptions;
 import java.io.StringWriter;
 import java.net.URI;
 import java.nio.file.Path;
 import java.util.Collections;
+import no.unit.nva.institution.proxy.exception.JsonParsingException;
 import nva.commons.utils.IoUtils;
+import nva.commons.utils.JsonUtils;
+import nva.commons.utils.attempt.Try;
 import org.apache.jena.query.DatasetFactory;
 import org.apache.jena.rdf.model.Literal;
 import org.apache.jena.rdf.model.Model;
@@ -78,9 +82,21 @@ public class ModelUtils {
      *
      * @return a JSON-LD string.
      */
-    public String toJsonLd() {
-        StringWriter stringWriter = new StringWriter();
+    public JsonNode toJsonLd() throws JsonParsingException {
         DatasetGraph dataset = DatasetFactory.create(model).asDatasetGraph();
+        String dataModelString = outputDatasetAsJsonLdString(dataset);
+        return convertToJsonNode(dataModelString);
+    }
+
+    private JsonNode convertToJsonNode(String dataModelString) throws JsonParsingException {
+        return
+            Try.of(dataModelString)
+                .map(JsonUtils.objectMapper::readTree)
+                .orElseThrow(failure -> new JsonParsingException(failure.getException(), dataModelString));
+    }
+
+    private String outputDatasetAsJsonLdString(DatasetGraph dataset) {
+        StringWriter stringWriter = new StringWriter();
         new JsonLDWriter(JSONLD_FRAME_PRETTY).write(stringWriter, dataset, UNIT_PREFIX_MAP, null,
             getJsonLDWriteContext());
         return stringWriter.toString();
