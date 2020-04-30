@@ -4,6 +4,7 @@ import static java.util.Objects.isNull;
 import static nva.commons.utils.attempt.Try.attempt;
 
 import com.amazonaws.services.lambda.runtime.Context;
+import com.fasterxml.jackson.databind.JsonNode;
 import java.net.URI;
 import java.util.Optional;
 import java.util.concurrent.ExecutionException;
@@ -11,7 +12,6 @@ import no.unit.nva.institution.proxy.CristinApiClient;
 import no.unit.nva.institution.proxy.exception.InvalidUriException;
 import no.unit.nva.institution.proxy.exception.MissingParameterException;
 import no.unit.nva.institution.proxy.exception.UnrecognizedUriException;
-import no.unit.nva.institution.proxy.response.NestedInstitutionResponse;
 import no.unit.nva.institution.proxy.utils.Language;
 import no.unit.nva.institution.proxy.utils.LanguageMapper;
 import nva.commons.exceptions.ApiGatewayException;
@@ -23,7 +23,7 @@ import nva.commons.utils.attempt.Failure;
 import org.apache.http.HttpStatus;
 import org.slf4j.LoggerFactory;
 
-public class NestedInstitutionHandler extends ApiGatewayHandler<Void, NestedInstitutionResponse> {
+public class NestedInstitutionHandler extends ApiGatewayHandler<Void, JsonNode> {
 
     public static final String LOG_URI_ERROR_TEMPLATE = "The supplied URI <%s> was invalid";
     public static final String URI_QUERY_PARAMETER = "uri";
@@ -40,15 +40,15 @@ public class NestedInstitutionHandler extends ApiGatewayHandler<Void, NestedInst
     /**
      * In testing, it is necessary to pass the environment to the constructor.
      */
-    public NestedInstitutionHandler(Environment environment, CristinApiClient cristinApiClientSupplier) {
+    public NestedInstitutionHandler(Environment environment, CristinApiClient cristinApiClient) {
         super(Void.class, environment, LoggerFactory.getLogger(NestedInstitutionHandler.class));
-        this.cristinApiClient = cristinApiClientSupplier;
+        this.cristinApiClient = cristinApiClient;
     }
 
     @Override
-    protected NestedInstitutionResponse processInput(Void input,
-                                                     RequestInfo requestInfo,
-                                                     Context context) throws ApiGatewayException {
+    protected JsonNode processInput(Void input,
+                                    RequestInfo requestInfo,
+                                    Context context) throws ApiGatewayException {
 
         LanguageMapper languageMapper = new LanguageMapper();
         URI uri = getDepartmentUriFromQueryParameters(requestInfo);
@@ -99,7 +99,7 @@ public class NestedInstitutionHandler extends ApiGatewayHandler<Void, NestedInst
     }
 
     @Override
-    protected Integer getSuccessStatusCode(Void input, NestedInstitutionResponse output) {
+    protected Integer getSuccessStatusCode(Void input, JsonNode output) {
         return HttpStatus.SC_OK;
     }
 }

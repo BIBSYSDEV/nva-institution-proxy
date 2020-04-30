@@ -8,15 +8,12 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import java.net.URI;
 import java.net.http.HttpResponse;
-import java.util.concurrent.ExecutionException;
 import no.unit.nva.institution.proxy.exception.FailedHttpRequestException;
 import no.unit.nva.institution.proxy.exception.GatewayException;
-import no.unit.nva.institution.proxy.exception.InvalidUriException;
-import no.unit.nva.institution.proxy.exception.NonExistingUnitError;
 import no.unit.nva.institution.proxy.response.InstitutionListResponse;
-import no.unit.nva.institution.proxy.response.NestedInstitutionResponse;
 import no.unit.nva.institution.proxy.utils.Language;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.BeforeAll;
@@ -34,13 +31,12 @@ public class HttpExecutorTest {
         }
 
         @Override
-        public NestedInstitutionResponse getNestedInstitution(URI uri, Language language) throws GatewayException {
+        public JsonNode getNestedInstitution(URI uri, Language language) throws GatewayException {
             return null;
         }
 
         @Override
-        public NestedInstitutionResponse getSingleUnit(URI uri, Language language)
-            throws InterruptedException, ExecutionException, InvalidUriException, NonExistingUnitError {
+        public JsonNode getSingleUnit(URI uri, Language language) {
             return null;
         }
     };

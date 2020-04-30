@@ -2,15 +2,16 @@ package no.unit.nva.institution.proxy;
 
 import static java.util.Objects.isNull;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import java.net.URI;
 import java.net.http.HttpResponse;
 import java.util.concurrent.ExecutionException;
 import no.unit.nva.institution.proxy.exception.FailedHttpRequestException;
 import no.unit.nva.institution.proxy.exception.GatewayException;
 import no.unit.nva.institution.proxy.exception.InvalidUriException;
+import no.unit.nva.institution.proxy.exception.JsonParsingException;
 import no.unit.nva.institution.proxy.exception.NonExistingUnitError;
 import no.unit.nva.institution.proxy.response.InstitutionListResponse;
-import no.unit.nva.institution.proxy.response.NestedInstitutionResponse;
 import no.unit.nva.institution.proxy.utils.Language;
 import org.apache.http.HttpStatus;
 
@@ -23,11 +24,11 @@ public abstract class HttpExecutor {
 
     public abstract InstitutionListResponse getInstitutions(Language language) throws GatewayException;
 
-    public abstract NestedInstitutionResponse getNestedInstitution(URI uri, Language language)
-        throws GatewayException, InvalidUriException;
+    public abstract JsonNode getNestedInstitution(URI uri, Language language)
+        throws GatewayException, InvalidUriException, JsonParsingException;
 
-    public abstract NestedInstitutionResponse getSingleUnit(URI uri, Language language)
-        throws InterruptedException, ExecutionException, InvalidUriException, NonExistingUnitError, GatewayException;
+    public abstract JsonNode getSingleUnit(URI uri, Language language)
+        throws InterruptedException, ExecutionException, NonExistingUnitError, GatewayException, JsonParsingException;
 
     protected HttpResponse<String> throwExceptionIfNotSuccessful(HttpResponse<String> response)
         throws FailedHttpRequestException {

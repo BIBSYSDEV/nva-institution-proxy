@@ -13,6 +13,7 @@ import static org.mockito.Mockito.when;
 
 import com.amazonaws.services.lambda.runtime.Context;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonNode;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,10 +23,10 @@ import java.nio.file.Path;
 import no.unit.nva.institution.proxy.CristinApiClient;
 import no.unit.nva.institution.proxy.exception.GatewayException;
 import no.unit.nva.institution.proxy.exception.InvalidUriException;
+import no.unit.nva.institution.proxy.exception.JsonParsingException;
 import no.unit.nva.institution.proxy.exception.MissingParameterException;
 import no.unit.nva.institution.proxy.request.NestedInstitutionRequest;
 import no.unit.nva.institution.proxy.response.InstitutionListResponse;
-import no.unit.nva.institution.proxy.response.NestedInstitutionResponse;
 import no.unit.nva.institution.proxy.utils.Language;
 import no.unit.nva.testutils.HandlerUtils;
 import no.unit.nva.testutils.TestContext;
@@ -96,7 +97,7 @@ public class NestedInstitutionHandlerTest extends HandlerTest {
         Context context = new TestContext();
 
         nestedInstitutionHandler.handleRequest(inputStream, outputStream, context);
-        NestedInstitutionResponse response = extractResponseObjectFromOutputStream(outputStream);
+        JsonNode response = extractResponseObjectFromOutputStream(outputStream);
         assertThat(true, is(true));
     }
 
@@ -115,15 +116,15 @@ public class NestedInstitutionHandlerTest extends HandlerTest {
         InputStream input = HandlerUtils.requestObjectToApiGatewayRequestInputSteam(request, null);
 
         nestedInstitutionHandler.handleRequest(input, outputStream, context);
-        NestedInstitutionResponse response = extractResponseObjectFromOutputStream(outputStream);
+        JsonNode response = extractResponseObjectFromOutputStream(outputStream);
     }
 
-    private NestedInstitutionResponse extractResponseObjectFromOutputStream(ByteArrayOutputStream outputStream)
+    private JsonNode extractResponseObjectFromOutputStream(ByteArrayOutputStream outputStream)
         throws com.fasterxml.jackson.core.JsonProcessingException {
-        TypeReference<GatewayResponse<NestedInstitutionResponse>> tr = new TypeReference<>() {};
+        TypeReference<GatewayResponse<JsonNode>> tr = new TypeReference<>() {};
         return objectMapper
             .readValue(outputStream.toString(StandardCharsets.UTF_8), tr)
-            .getBodyObject(NestedInstitutionResponse.class);
+            .getBodyObject(JsonNode.class);
     }
 
     @DisplayName("The NestedInstitutionHandler exists")
@@ -144,10 +145,10 @@ public class NestedInstitutionHandlerTest extends HandlerTest {
             .get(NestedInstitutionHandler.LANGUAGE_QUERY_PARAMETER);
         assertThat(actualLanguageParameter,
             is(equalTo(LANGUAGE_STRING_VALUE_IN_RESOURCE_FILE)));
-        String actualURIParameter = handler.getRequestinfo()
+        String actualUriParameter = handler.getRequestinfo()
             .getQueryParameters()
             .get(URI_QUERY_PARAMETER);
-        assertThat(actualURIParameter, is(equalTo(URI_STRING_VALUE_IN_RESOURCE_FILE)));
+        assertThat(actualUriParameter, is(equalTo(URI_STRING_VALUE_IN_RESOURCE_FILE)));
     }
 
     @DisplayName("handleRequest returns OK to the client when language parameter is missing")
@@ -179,7 +180,6 @@ public class NestedInstitutionHandlerTest extends HandlerTest {
         GatewayResponse<InstitutionListResponse> response = objectMapper.readValue(outputString, GatewayResponse.class);
         assertThat(response.getStatusCode(), is(HttpStatus.SC_OK));
     }
-
 
     @DisplayName("handleRequest returns BadRequest to the client when UnknownLanguageException occurs")
     @Test
@@ -255,7 +255,7 @@ public class NestedInstitutionHandlerTest extends HandlerTest {
     @DisplayName("handleRequest returns BadGateway to the client when GatewayException occurs")
     @Test
     public void handleRequestReturnsBadRequestWhenInstitutionFailureOccurs()
-        throws IOException, InvalidUriException, GatewayException {
+        throws IOException, InvalidUriException, GatewayException, JsonParsingException {
         NestedInstitutionHandler handler = handlerThatThrowsNestedInstitutionFailureException(SOME_EXCEPTION_MESSAGE);
         InputStream inputStream = inputInstitutionsRequest();
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
@@ -269,7 +269,7 @@ public class NestedInstitutionHandlerTest extends HandlerTest {
     }
 
     private NestedInstitutionHandler handlerThatThrowsNestedInstitutionFailureException(String message)
-        throws InvalidUriException, GatewayException {
+        throws InvalidUriException, GatewayException, JsonParsingException {
         CristinApiClient cristinClient = mock(CristinApiClient.class);
         IOException cause = new IOException(message);
         when(cristinClient.getNestedInstitution(any(URI.class), any(Language.class)))
@@ -332,8 +332,8 @@ public class NestedInstitutionHandlerTest extends HandlerTest {
         }
 
         @Override
-        protected NestedInstitutionResponse processInput(Void input, RequestInfo requestInfo,
-                                                         Context context)
+        protected JsonNode processInput(Void input, RequestInfo requestInfo,
+                                        Context context)
             throws ApiGatewayException {
             this.requestInfo = requestInfo;
             return super.processInput(input, requestInfo, context);
@@ -351,8 +351,9 @@ public class NestedInstitutionHandlerTest extends HandlerTest {
         }
 
         @Override
-        public NestedInstitutionResponse getNestedInstitution(URI uri, Language language) {
-            return new NestedInstitutionResponse("true");
+        public JsonNode getNestedInstitution(URI uri, Language language) {
+            JsonNode jsonNode = objectMapper.createObjectNode();
+            return jsonNode;
         }
     }
 }

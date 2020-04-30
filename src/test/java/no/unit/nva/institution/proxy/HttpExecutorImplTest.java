@@ -13,6 +13,8 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static testutils.HttpClientGetsNestedInstitutionResponse.INSTITUTION_REQUEST_URI;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -25,12 +27,13 @@ import java.util.concurrent.CompletableFuture;
 import no.unit.nva.institution.proxy.exception.FailedHttpRequestException;
 import no.unit.nva.institution.proxy.exception.GatewayException;
 import no.unit.nva.institution.proxy.exception.InvalidUriException;
+import no.unit.nva.institution.proxy.exception.JsonParsingException;
 import no.unit.nva.institution.proxy.exception.NonExistingUnitError;
 import no.unit.nva.institution.proxy.response.InstitutionListResponse;
-import no.unit.nva.institution.proxy.response.NestedInstitutionResponse;
 import no.unit.nva.institution.proxy.utils.InstitutionUtils;
 import no.unit.nva.institution.proxy.utils.Language;
 import nva.commons.utils.IoUtils;
+import nva.commons.utils.JsonUtils;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -146,27 +149,26 @@ public class HttpExecutorImplTest {
     @DisplayName("getNestedInstitution returns nested institution when input is valid")
     @Test
     void getNestedInstitutionReturnsNestedInstitutionWhenUriAndLanguageAreValid()
-        throws InvalidUriException, GatewayException {
+        throws InvalidUriException, GatewayException, JsonParsingException, IOException {
         HttpClient client = new HttpClientGetsNestedInstitutionResponse(Language.ENGLISH).getMockClient();
         HttpExecutorImpl executor = new HttpExecutorImpl(client);
-        NestedInstitutionResponse response = executor.getNestedInstitution(URI.create(INSTITUTION_REQUEST_URI),
+        JsonNode response = executor.getNestedInstitution(URI.create(INSTITUTION_REQUEST_URI),
             Language.ENGLISH);
-        String expectedJson =
-            IoUtils.stringFromResources(EXPECTED_NESTED_INSTITUTION_FOR_VALID_REQUEST);
-        assertThat(removeWhiteSpaces(response.getJson()),
-            is(equalTo(removeWhiteSpaces(expectedJson))));
+        JsonNode expectedJson =
+            JsonUtils.objectMapper.readTree(
+                IoUtils.inputStreamFromResources(EXPECTED_NESTED_INSTITUTION_FOR_VALID_REQUEST));
+        assertThat(response, is(equalTo(expectedJson)));
     }
 
     @Test
     void getSingleUnitReturnsANestedInstitutionResponseWhenInputIsValid()
-        throws InterruptedException, InvalidUriException, GatewayException, NonExistingUnitError, IOException {
-        String mockResponse = IoUtils.stringFromResources(Path.of(CRISTIN_RESPONSES, SINGLE_UNIT_RESPONSE));
+        throws InterruptedException, GatewayException, NonExistingUnitError,
+               JsonParsingException, JsonProcessingException {
         HttpClient mockHttpClient = new HttpClientReturningInfoOfSingleUnits();
         HttpExecutorImpl executor = new HttpExecutorImpl(mockHttpClient);
-        NestedInstitutionResponse response = executor.getSingleUnit(SAMPLE_URI, Language.ENGLISH);
 
-        String expectedResponse = removeWhiteSpaces(IoUtils.stringFromResources(SINGLE_UNIT_GRAPH));
-        String actualResponse = removeWhiteSpaces(response.getJson());
+        JsonNode actualResponse = executor.getSingleUnit(SAMPLE_URI, Language.ENGLISH);
+        JsonNode expectedResponse = JsonUtils.objectMapper.readTree(IoUtils.stringFromResources(SINGLE_UNIT_GRAPH));
         assertThat(actualResponse, is(equalTo(expectedResponse)));
     }
 

@@ -5,6 +5,7 @@ import static org.apache.http.HttpHeaders.ACCEPT;
 import static org.apache.http.HttpHeaders.USER_AGENT;
 import static org.apache.http.entity.ContentType.APPLICATION_JSON;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -18,9 +19,9 @@ import no.unit.nva.institution.proxy.dto.InstitutionBaseDto;
 import no.unit.nva.institution.proxy.dto.SubSubUnitDto;
 import no.unit.nva.institution.proxy.exception.GatewayException;
 import no.unit.nva.institution.proxy.exception.InvalidUriException;
+import no.unit.nva.institution.proxy.exception.JsonParsingException;
 import no.unit.nva.institution.proxy.exception.NonExistingUnitError;
 import no.unit.nva.institution.proxy.response.InstitutionListResponse;
-import no.unit.nva.institution.proxy.response.NestedInstitutionResponse;
 import no.unit.nva.institution.proxy.utils.InstitutionUtils;
 import no.unit.nva.institution.proxy.utils.Language;
 import no.unit.nva.institution.proxy.utils.MapUtils;
@@ -73,8 +74,8 @@ public class HttpExecutorImpl extends HttpExecutor {
     }
 
     @Override
-    public NestedInstitutionResponse getNestedInstitution(URI uri, Language language)
-        throws GatewayException, InvalidUriException {
+    public JsonNode getNestedInstitution(URI uri, Language language)
+        throws GatewayException, InvalidUriException, JsonParsingException {
         URI unitUri = getInstitutionUnitUri(uri, language);
         InstitutionBaseDto institutionUnit = getInstitutionBaseDto(unitUri, language);
 
@@ -88,16 +89,17 @@ public class HttpExecutorImpl extends HttpExecutor {
                 .orElseThrow(this::handleError);
             generator.addUnitToModel(subSubUnitUri, subSubUnitDto);
         }
-        return new NestedInstitutionResponse(generator.getNestedInstitution());
+
+        return generator.getNestedInstitution();
     }
 
     @Override
-    public NestedInstitutionResponse getSingleUnit(URI uri, Language language)
-        throws InterruptedException, InvalidUriException, NonExistingUnitError, GatewayException {
+    public JsonNode getSingleUnit(URI uri, Language language)
+        throws InterruptedException, NonExistingUnitError, GatewayException, JsonParsingException {
         SingleUnitHierarchyGenerator singleUnitHierarchyGenerator = new SingleUnitHierarchyGenerator(uri, language,
             httpClient);
-        String json = singleUnitHierarchyGenerator.toJsonLd();
-        return new NestedInstitutionResponse(json);
+        JsonNode json = singleUnitHierarchyGenerator.toJsonLd();
+        return json;
     }
 
     public URI getInstitutionUnitUri(URI uri, Language language) throws GatewayException {
