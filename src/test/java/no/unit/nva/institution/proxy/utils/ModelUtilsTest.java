@@ -92,15 +92,15 @@ class ModelUtilsTest {
     @DisplayName("covertToJsonNode throws JsonParsingException when an exception occurs")
     @Test
     public void convertToJsonNodeThrowsJsonParsingExceptionWhenAnExceptionOccurs()
-        throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        throws NoSuchMethodException {
         ModelUtils modelUtils = new ModelUtils();
         Method testedMethod = accessMethod("convertToJsonNode");
         String inputParameter = "Invalid json str";
         Executable action = () -> testedMethod.invoke(modelUtils, inputParameter);
         InvocationTargetException reflectionException = assertThrows(InvocationTargetException.class, action);
 
-        assertThat(reflectionException.getCause().getClass(), is(equalTo(JsonParsingException.class)));
-        JsonParsingException expectedException = (JsonParsingException) reflectionException.getCause();
+        assertThat(reflectionException.getCause().getClass(), is(equalTo(RuntimeException.class)));
+        RuntimeException expectedException = (RuntimeException) reflectionException.getCause();
         assertThat(expectedException.getMessage(), containsString(inputParameter));
     }
 

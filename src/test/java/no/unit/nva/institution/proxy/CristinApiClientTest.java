@@ -3,6 +3,8 @@ package no.unit.nva.institution.proxy;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
+import static org.hamcrest.core.IsNot.not;
+import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
@@ -16,7 +18,6 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.net.URI;
 import java.nio.file.Path;
 import java.util.Collections;
-import java.util.concurrent.ExecutionException;
 import no.unit.nva.institution.proxy.exception.GatewayException;
 import no.unit.nva.institution.proxy.exception.InvalidUriException;
 import no.unit.nva.institution.proxy.exception.JsonParsingException;
@@ -41,6 +42,7 @@ public class CristinApiClientTest {
         "singleUnitResponseGraph.json");
     public static final String SOME_VALUE = "some_value";
     public static final String SOME_KEY = "some_key";
+    public static final String SOME_ACRONYM = "SomeAcronym";
 
     @DisplayName("getNestedInstitution returns nested institution when input is valid")
     @Test
@@ -57,10 +59,11 @@ public class CristinApiClientTest {
 
     @DisplayName("getInstitutions returns a list with Institutions when input is valid")
     @Test
-    void getInstitutionsReturnsAListWithInstitutionsWhenInputIsBalid() throws GatewayException {
+    void getInstitutionsReturnsAListWithInstitutionsWhenInputIsValid() throws GatewayException {
         InstitutionResponse mockResponseItem = new InstitutionResponse.Builder()
             .withId(VALID_URI)
             .withName(SOME_NAME)
+            .withAcronym(SOME_ACRONYM)
             .build();
         HttpExecutor mockHttpExecutor = mock(HttpExecutorImpl.class);
         when(mockHttpExecutor.getInstitutions(any(Language.class)))
@@ -70,11 +73,27 @@ public class CristinApiClientTest {
         assertNotNull(response);
     }
 
+    @DisplayName("getInstitutions returns a list with Institutions and each institution has an acronym")
     @Test
-    @DisplayName("getSingleUNit returns the graph of a unit")
+    void getInstitutionsReturnsInstitutionsWithAcronymIfInstitutionsHaveAcronyms() throws GatewayException {
+        InstitutionResponse mockResponseItem = new InstitutionResponse.Builder()
+            .withId(VALID_URI)
+            .withName(SOME_NAME)
+            .withAcronym(SOME_ACRONYM)
+            .build();
+        HttpExecutor mockHttpExecutor = mock(HttpExecutorImpl.class);
+        when(mockHttpExecutor.getInstitutions(any(Language.class)))
+            .thenReturn(new InstitutionListResponse(Collections.singletonList(mockResponseItem)));
+        CristinApiClient cristinApiClient = new CristinApiClient(mockHttpExecutor);
+        InstitutionListResponse response = cristinApiClient.getInstitutions(VALID_LANGUAGE_EN);
+        assertThat(response.size(), is(equalTo(1)));
+        assertThat(response.get(0).getAcronym(), is(not(nullValue())));
+    }
+
+    @Test
+    @DisplayName("getSingleUnit returns the graph of a unit")
     public void getSingleUnitReturnsTheGraphOfAUnit()
-        throws InterruptedException, ExecutionException, GatewayException, InvalidUriException, NonExistingUnitError,
-               JsonParsingException, JsonProcessingException {
+        throws InterruptedException, GatewayException, NonExistingUnitError, JsonProcessingException {
         HttpExecutorImpl httpExecutor = new HttpExecutorImpl(new HttpClientReturningInfoOfSingleUnits());
         CristinApiClient cristinApiClient = new CristinApiClient(httpExecutor);
 

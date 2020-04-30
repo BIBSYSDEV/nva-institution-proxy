@@ -14,7 +14,6 @@ import java.util.concurrent.ExecutionException;
 import no.unit.nva.institution.proxy.dto.InstitutionDto;
 import no.unit.nva.institution.proxy.dto.SubSubUnitDto;
 import no.unit.nva.institution.proxy.exception.GatewayException;
-import no.unit.nva.institution.proxy.exception.JsonParsingException;
 import no.unit.nva.institution.proxy.exception.NonExistingUnitError;
 import no.unit.nva.institution.proxy.utils.Language;
 import no.unit.nva.institution.proxy.utils.MapUtils;
@@ -57,7 +56,7 @@ public class SingleUnitHierarchyGenerator {
         return HttpClient.newHttpClient();
     }
 
-    public JsonNode toJsonLd() throws JsonParsingException {
+    public JsonNode toJsonLd() {
         return this.modelUtils.toJsonLd();
     }
 

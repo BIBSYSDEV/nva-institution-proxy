@@ -8,10 +8,12 @@ public class InstitutionResponse {
 
     private URI id;
     private String name;
+    private String acronym;
 
     private InstitutionResponse(Builder builder) {
         setId(builder.id);
         setName(builder.name);
+        setAcronym(builder.acronym);
     }
 
     public URI getId() {
@@ -30,30 +32,40 @@ public class InstitutionResponse {
         this.name = name;
     }
 
+    public String getAcronym() {
+        return acronym;
+    }
+
+    public void setAcronym(String acronym) {
+        this.acronym = acronym;
+    }
+
     @Override
     @JacocoGenerated
     public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof InstitutionResponse)) {
+        if (o == null || getClass() != o.getClass()) {
             return false;
         }
         InstitutionResponse that = (InstitutionResponse) o;
-        return getId().equals(that.getId())
-            && getName().equals(that.getName());
+        return Objects.equals(id, that.getId())
+            && Objects.equals(name, that.getName())
+            && Objects.equals(acronym, that.getAcronym());
     }
 
     @Override
     @JacocoGenerated
     public int hashCode() {
-        return Objects.hash(getId(), getName());
+        return Objects.hash(id, name, acronym);
     }
 
     public static final class Builder {
 
         private URI id;
         private String name;
+        private String acronym;
 
         public Builder() {
         }
@@ -65,6 +77,11 @@ public class InstitutionResponse {
 
         public Builder withName(String name) {
             this.name = name;
+            return this;
+        }
+
+        public Builder withAcronym(String acronym) {
+            this.acronym = acronym;
             return this;
         }
 

@@ -7,7 +7,6 @@ import com.amazonaws.services.lambda.runtime.Context;
 import com.fasterxml.jackson.databind.JsonNode;
 import java.net.URI;
 import java.util.Optional;
-import java.util.concurrent.ExecutionException;
 import no.unit.nva.institution.proxy.CristinApiClient;
 import no.unit.nva.institution.proxy.exception.InvalidUriException;
 import no.unit.nva.institution.proxy.exception.MissingParameterException;
@@ -60,7 +59,7 @@ public class NestedInstitutionHandler extends ApiGatewayHandler<Void, JsonNode> 
         } else if (uri.getPath().contains("units")) {
             try {
                 return cristinApiClient.getSingleUnit(uri, language);
-            } catch (InterruptedException | ExecutionException e) {
+            } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         } else {

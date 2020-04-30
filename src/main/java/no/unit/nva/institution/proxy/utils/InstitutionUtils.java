@@ -48,6 +48,7 @@ public final class InstitutionUtils {
         return new InstitutionResponse.Builder()
             .withId(institutionDto.getUri())
             .withName(InstitutionUtils.getAnyName(institutionDto))
+            .withAcronym(institutionDto.getAcronym())
             .build();
     }
 

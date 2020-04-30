@@ -95,7 +95,7 @@ public class HttpExecutorImpl extends HttpExecutor {
 
     @Override
     public JsonNode getSingleUnit(URI uri, Language language)
-        throws InterruptedException, NonExistingUnitError, GatewayException, JsonParsingException {
+        throws InterruptedException, NonExistingUnitError, GatewayException {
         SingleUnitHierarchyGenerator singleUnitHierarchyGenerator = new SingleUnitHierarchyGenerator(uri, language,
             httpClient);
         JsonNode json = singleUnitHierarchyGenerator.toJsonLd();
