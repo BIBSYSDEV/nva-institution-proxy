@@ -27,7 +27,6 @@ import no.unit.nva.institution.proxy.exception.JsonParsingException;
 import no.unit.nva.institution.proxy.exception.MissingParameterException;
 import no.unit.nva.institution.proxy.request.NestedInstitutionRequest;
 import no.unit.nva.institution.proxy.response.InstitutionListResponse;
-import no.unit.nva.institution.proxy.response.NestedInstitutionResponse;
 import no.unit.nva.institution.proxy.utils.Language;
 import no.unit.nva.testutils.HandlerUtils;
 import no.unit.nva.testutils.TestContext;
@@ -98,7 +97,7 @@ public class NestedInstitutionHandlerTest extends HandlerTest {
         Context context = new TestContext();
 
         nestedInstitutionHandler.handleRequest(inputStream, outputStream, context);
-        NestedInstitutionResponse response = extractResponseObjectFromOutputStream(outputStream);
+        JsonNode response = extractResponseObjectFromOutputStream(outputStream);
         assertThat(true, is(true));
     }
 
@@ -117,15 +116,15 @@ public class NestedInstitutionHandlerTest extends HandlerTest {
         InputStream input = HandlerUtils.requestObjectToApiGatewayRequestInputSteam(request, null);
 
         nestedInstitutionHandler.handleRequest(input, outputStream, context);
-        NestedInstitutionResponse response = extractResponseObjectFromOutputStream(outputStream);
+        JsonNode response = extractResponseObjectFromOutputStream(outputStream);
     }
 
-    private NestedInstitutionResponse extractResponseObjectFromOutputStream(ByteArrayOutputStream outputStream)
+    private JsonNode extractResponseObjectFromOutputStream(ByteArrayOutputStream outputStream)
         throws com.fasterxml.jackson.core.JsonProcessingException {
-        TypeReference<GatewayResponse<NestedInstitutionResponse>> tr = new TypeReference<>() {};
+        TypeReference<GatewayResponse<JsonNode>> tr = new TypeReference<>() {};
         return objectMapper
             .readValue(outputStream.toString(StandardCharsets.UTF_8), tr)
-            .getBodyObject(NestedInstitutionResponse.class);
+            .getBodyObject(JsonNode.class);
     }
 
     @DisplayName("The NestedInstitutionHandler exists")
@@ -333,8 +332,8 @@ public class NestedInstitutionHandlerTest extends HandlerTest {
         }
 
         @Override
-        protected NestedInstitutionResponse processInput(Void input, RequestInfo requestInfo,
-                                                         Context context)
+        protected JsonNode processInput(Void input, RequestInfo requestInfo,
+                                        Context context)
             throws ApiGatewayException {
             this.requestInfo = requestInfo;
             return super.processInput(input, requestInfo, context);
@@ -352,9 +351,9 @@ public class NestedInstitutionHandlerTest extends HandlerTest {
         }
 
         @Override
-        public NestedInstitutionResponse getNestedInstitution(URI uri, Language language) {
+        public JsonNode getNestedInstitution(URI uri, Language language) {
             JsonNode jsonNode = objectMapper.createObjectNode();
-            return new NestedInstitutionResponse(jsonNode);
+            return jsonNode;
         }
     }
 }

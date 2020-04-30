@@ -23,7 +23,6 @@ import no.unit.nva.institution.proxy.exception.JsonParsingException;
 import no.unit.nva.institution.proxy.exception.NonExistingUnitError;
 import no.unit.nva.institution.proxy.response.InstitutionListResponse;
 import no.unit.nva.institution.proxy.response.InstitutionResponse;
-import no.unit.nva.institution.proxy.response.NestedInstitutionResponse;
 import no.unit.nva.institution.proxy.utils.Language;
 import nva.commons.utils.IoUtils;
 import nva.commons.utils.JsonUtils;
@@ -50,10 +49,10 @@ public class CristinApiClientTest {
         HttpExecutor mockHttpExecutor = mock(HttpExecutorImpl.class);
         ObjectNode mockResponse = simpleJsonObject();
         when(mockHttpExecutor.getNestedInstitution(any(), any()))
-            .thenReturn(new NestedInstitutionResponse(mockResponse));
+            .thenReturn(mockResponse);
         CristinApiClient cristinApiClient = new CristinApiClient(mockHttpExecutor);
-        NestedInstitutionResponse response = cristinApiClient.getNestedInstitution(VALID_URI, VALID_LANGUAGE_EN);
-        assertThat(response.getJson(), is(equalTo(mockResponse)));
+        JsonNode response = cristinApiClient.getNestedInstitution(VALID_URI, VALID_LANGUAGE_EN);
+        assertThat(response, is(equalTo(mockResponse)));
     }
 
     @DisplayName("getInstitutions returns a list with Institutions when input is valid")
@@ -78,8 +77,8 @@ public class CristinApiClientTest {
                JsonParsingException, JsonProcessingException {
         HttpExecutorImpl httpExecutor = new HttpExecutorImpl(new HttpClientReturningInfoOfSingleUnits());
         CristinApiClient cristinApiClient = new CristinApiClient(httpExecutor);
-        NestedInstitutionResponse response = cristinApiClient.getSingleUnit(SECOND_LEVEL_CHILD_URI, TESTING_LANGUAGE);
-        JsonNode actualResponse = response.getJson();
+
+        JsonNode actualResponse = cristinApiClient.getSingleUnit(SECOND_LEVEL_CHILD_URI, TESTING_LANGUAGE);
         JsonNode expectedResponse = JsonUtils.objectMapper.readTree(IoUtils.stringFromResources(
             CristinApiClientTest.SINGLE_UNIT_RESPONSE_GRAPH));
         assertThat(actualResponse, is(equalTo(expectedResponse)));

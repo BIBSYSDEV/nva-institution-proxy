@@ -1,5 +1,6 @@
 package no.unit.nva.institution.proxy;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import java.net.URI;
 import java.util.concurrent.ExecutionException;
 import no.unit.nva.institution.proxy.exception.GatewayException;
@@ -8,12 +9,14 @@ import no.unit.nva.institution.proxy.exception.JsonParsingException;
 import no.unit.nva.institution.proxy.exception.NonExistingUnitError;
 import no.unit.nva.institution.proxy.exception.UnknownLanguageException;
 import no.unit.nva.institution.proxy.response.InstitutionListResponse;
-import no.unit.nva.institution.proxy.response.NestedInstitutionResponse;
 import no.unit.nva.institution.proxy.utils.Language;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class CristinApiClient {
 
     private final HttpExecutor httpExecutor;
+    private static final Logger logger = LoggerFactory.getLogger(CristinApiClient.class);
 
     public CristinApiClient() {
         this.httpExecutor = new HttpExecutorImpl();
@@ -37,14 +40,16 @@ public class CristinApiClient {
      * @throws GatewayException         when an Exception occurs.
      * @throws InvalidUriException      when the input URI is invalid.
      */
-    public NestedInstitutionResponse getNestedInstitution(URI uri, Language language)
+    public JsonNode getNestedInstitution(URI uri, Language language)
         throws GatewayException, InvalidUriException, JsonParsingException {
         return httpExecutor.getNestedInstitution(uri, language);
     }
 
-    public NestedInstitutionResponse getSingleUnit(URI uri, Language language)
-        throws InterruptedException, ExecutionException, InvalidUriException, NonExistingUnitError, GatewayException,
+    public JsonNode getSingleUnit(URI uri, Language language)
+        throws InterruptedException, ExecutionException, NonExistingUnitError, GatewayException,
                JsonParsingException {
-        return httpExecutor.getSingleUnit(uri, language);
+        logger.info("Fetching resutls for: " + uri.toString());
+        JsonNode result = httpExecutor.getSingleUnit(uri, language);
+        return result;
     }
 }

@@ -30,7 +30,6 @@ import no.unit.nva.institution.proxy.exception.InvalidUriException;
 import no.unit.nva.institution.proxy.exception.JsonParsingException;
 import no.unit.nva.institution.proxy.exception.NonExistingUnitError;
 import no.unit.nva.institution.proxy.response.InstitutionListResponse;
-import no.unit.nva.institution.proxy.response.NestedInstitutionResponse;
 import no.unit.nva.institution.proxy.utils.InstitutionUtils;
 import no.unit.nva.institution.proxy.utils.Language;
 import nva.commons.utils.IoUtils;
@@ -153,25 +152,23 @@ public class HttpExecutorImplTest {
         throws InvalidUriException, GatewayException, JsonParsingException, IOException {
         HttpClient client = new HttpClientGetsNestedInstitutionResponse(Language.ENGLISH).getMockClient();
         HttpExecutorImpl executor = new HttpExecutorImpl(client);
-        NestedInstitutionResponse response = executor.getNestedInstitution(URI.create(INSTITUTION_REQUEST_URI),
+        JsonNode response = executor.getNestedInstitution(URI.create(INSTITUTION_REQUEST_URI),
             Language.ENGLISH);
         JsonNode expectedJson =
             JsonUtils.objectMapper.readTree(
                 IoUtils.inputStreamFromResources(EXPECTED_NESTED_INSTITUTION_FOR_VALID_REQUEST));
-        assertThat(response.getJson(), is(equalTo(expectedJson)));
+        assertThat(response, is(equalTo(expectedJson)));
     }
 
     @Test
     void getSingleUnitReturnsANestedInstitutionResponseWhenInputIsValid()
-        throws InterruptedException, InvalidUriException, GatewayException, NonExistingUnitError,
+        throws InterruptedException, GatewayException, NonExistingUnitError,
                JsonParsingException, JsonProcessingException {
-        String mockResponse = IoUtils.stringFromResources(Path.of(CRISTIN_RESPONSES, SINGLE_UNIT_RESPONSE));
         HttpClient mockHttpClient = new HttpClientReturningInfoOfSingleUnits();
         HttpExecutorImpl executor = new HttpExecutorImpl(mockHttpClient);
-        NestedInstitutionResponse response = executor.getSingleUnit(SAMPLE_URI, Language.ENGLISH);
 
+        JsonNode actualResponse = executor.getSingleUnit(SAMPLE_URI, Language.ENGLISH);
         JsonNode expectedResponse = JsonUtils.objectMapper.readTree(IoUtils.stringFromResources(SINGLE_UNIT_GRAPH));
-        JsonNode actualResponse = response.getJson();
         assertThat(actualResponse, is(equalTo(expectedResponse)));
     }
 

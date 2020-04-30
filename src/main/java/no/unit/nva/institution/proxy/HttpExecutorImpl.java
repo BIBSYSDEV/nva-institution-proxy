@@ -22,7 +22,6 @@ import no.unit.nva.institution.proxy.exception.InvalidUriException;
 import no.unit.nva.institution.proxy.exception.JsonParsingException;
 import no.unit.nva.institution.proxy.exception.NonExistingUnitError;
 import no.unit.nva.institution.proxy.response.InstitutionListResponse;
-import no.unit.nva.institution.proxy.response.NestedInstitutionResponse;
 import no.unit.nva.institution.proxy.utils.InstitutionUtils;
 import no.unit.nva.institution.proxy.utils.Language;
 import no.unit.nva.institution.proxy.utils.MapUtils;
@@ -75,7 +74,7 @@ public class HttpExecutorImpl extends HttpExecutor {
     }
 
     @Override
-    public NestedInstitutionResponse getNestedInstitution(URI uri, Language language)
+    public JsonNode getNestedInstitution(URI uri, Language language)
         throws GatewayException, InvalidUriException, JsonParsingException {
         URI unitUri = getInstitutionUnitUri(uri, language);
         InstitutionBaseDto institutionUnit = getInstitutionBaseDto(unitUri, language);
@@ -91,16 +90,16 @@ public class HttpExecutorImpl extends HttpExecutor {
             generator.addUnitToModel(subSubUnitUri, subSubUnitDto);
         }
 
-        return new NestedInstitutionResponse(generator.getNestedInstitution());
+        return generator.getNestedInstitution();
     }
 
     @Override
-    public NestedInstitutionResponse getSingleUnit(URI uri, Language language)
-        throws InterruptedException, InvalidUriException, NonExistingUnitError, GatewayException, JsonParsingException {
+    public JsonNode getSingleUnit(URI uri, Language language)
+        throws InterruptedException, NonExistingUnitError, GatewayException, JsonParsingException {
         SingleUnitHierarchyGenerator singleUnitHierarchyGenerator = new SingleUnitHierarchyGenerator(uri, language,
             httpClient);
         JsonNode json = singleUnitHierarchyGenerator.toJsonLd();
-        return new NestedInstitutionResponse(json);
+        return json;
     }
 
     public URI getInstitutionUnitUri(URI uri, Language language) throws GatewayException {
