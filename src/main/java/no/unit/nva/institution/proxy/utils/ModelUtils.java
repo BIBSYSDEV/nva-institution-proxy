@@ -8,9 +8,9 @@ import java.io.StringWriter;
 import java.net.URI;
 import java.nio.file.Path;
 import java.util.Collections;
-import no.unit.nva.institution.proxy.exception.JsonParsingException;
 import nva.commons.utils.IoUtils;
 import nva.commons.utils.JsonUtils;
+import nva.commons.utils.attempt.Failure;
 import nva.commons.utils.attempt.Try;
 import org.apache.jena.query.DatasetFactory;
 import org.apache.jena.rdf.model.Literal;
@@ -28,6 +28,8 @@ import org.apache.jena.riot.system.PrefixMapFactory;
 import org.apache.jena.riot.writer.JsonLDWriter;
 import org.apache.jena.sparql.core.DatasetGraph;
 import org.apache.jena.vocabulary.RDF;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ModelUtils {
 
@@ -41,6 +43,8 @@ public class ModelUtils {
         .create(Collections.singletonMap("unit", "https://nva.unit.no/ontology#"));
     public static final String FRAME = IoUtils.stringFromResources(
         Path.of("frame.jsonld"));
+
+    private static final Logger logger = LoggerFactory.getLogger(ModelUtils.class);
 
     private final Model model;
 
@@ -82,17 +86,22 @@ public class ModelUtils {
      *
      * @return a JSON-LD string.
      */
-    public JsonNode toJsonLd() throws JsonParsingException {
+    public JsonNode toJsonLd() {
         DatasetGraph dataset = DatasetFactory.create(model).asDatasetGraph();
         String dataModelString = outputDatasetAsJsonLdString(dataset);
         return convertToJsonNode(dataModelString);
     }
 
-    private JsonNode convertToJsonNode(String dataModelString) throws JsonParsingException {
+    private JsonNode convertToJsonNode(String dataModelString) {
         return
             Try.of(dataModelString)
                 .map(JsonUtils.objectMapper::readTree)
-                .orElseThrow(failure -> new JsonParsingException(failure.getException(), dataModelString));
+                .orElseThrow(failure -> handleUnexpectedFailure(failure, dataModelString));
+    }
+
+    private RuntimeException handleUnexpectedFailure(Failure<JsonNode> failure, String modelString) {
+        logger.error("Exception when parsing serialized RDF model: " + modelString, failure.getException());
+        return new RuntimeException(failure.getException());
     }
 
     private String outputDatasetAsJsonLdString(DatasetGraph dataset) {

@@ -25,7 +25,9 @@ class InstitutionListResponseTest {
     void institutionListConstructorSetsInstitutionList() {
         List<InstitutionResponse> institutionList = Collections.singletonList(new InstitutionResponse.Builder()
             .withId(URI.create("https:/example.org/institution/1.0.0.0"))
-            .withName("Mortenberry").build());
+            .withName("Mortenberry")
+            .withAcronym("MRTBR")
+            .build());
         InstitutionListResponse institutionListResponse = new InstitutionListResponse(institutionList);
         assertEquals(institutionList, institutionListResponse);
     }

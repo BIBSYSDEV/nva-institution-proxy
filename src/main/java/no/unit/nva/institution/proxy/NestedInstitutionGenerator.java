@@ -5,7 +5,6 @@ import static no.unit.nva.institution.proxy.utils.MapUtils.getNameValue;
 import com.fasterxml.jackson.databind.JsonNode;
 import java.net.URI;
 import no.unit.nva.institution.proxy.dto.SubSubUnitDto;
-import no.unit.nva.institution.proxy.exception.JsonParsingException;
 import no.unit.nva.institution.proxy.utils.ModelUtils;
 
 public class NestedInstitutionGenerator {
@@ -21,7 +20,7 @@ public class NestedInstitutionGenerator {
      *
      * @return A JSON-LD string
      */
-    public JsonNode getNestedInstitution() throws JsonParsingException {
+    public JsonNode getNestedInstitution() {
         return modelUtils.toJsonLd();
     }
 
