@@ -1,0 +1,33 @@
+{
+  "cristin_unit_id": "1.0.0.0",
+  "unit_name": {
+    "en": "Norwegian University of Small Hands and Feet"
+  },
+  "institution": {
+    "cristin_institution_id": "1",
+    "url": "https://api.cristin.no/v2/institutions/1"
+  },
+  "subunits": [
+    {
+      "cristin_unit_id": "1.1.0.0",
+      "unit_name": {
+        "en": "Administration"
+      },
+      "url": "https://api.cristin.no/v2/units/1.1.0.0"
+    },
+    {
+      "cristin_unit_id": "1.3.0.0",
+      "unit_name": {
+        "en": "Cultural Studies"
+      },
+      "url": "https://api.cristin.no/v2/units/1.3.0.0"
+    },
+    {
+      "cristin_unit_id": "1.4.0.0",
+      "unit_name": {
+        "en": "Welsh language"
+      },
+      "url": "https://api.cristin.no/v2/units/1.4.0.0"
+    }
+  ]
+}

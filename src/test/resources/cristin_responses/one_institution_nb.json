@@ -1,0 +1,12 @@
+[
+  {
+    "cristin_institution_id": "1305",
+    "institution_name": {
+      "nb": "Nasjonalmuseet for kunst, arkitektur og design"
+    },
+    "acronym": "NMK",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/1305"
+  }
+]

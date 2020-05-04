@@ -1,0 +1,93 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  AWS Template for institution proxy
+
+Metadata:
+  AWS::ServerlessRepo::Application:
+    Name: NvaInstitutionProxy
+    Description: Backend for getting organizational information for Institutions and their departments
+    Author: Unit
+    SpdxLicenseId: MIT
+    LicenseUrl: LICENSE
+    Labels: ['${CODEBUILD_RESOLVED_SOURCE_VERSION}', '${GIT_REPO}', '@${BUILD_TIMESTAMP}']
+
+Globals:
+  Function:
+    Timeout: 20
+  Api:
+    Cors:
+      AllowMethods: "'GET,POST,OPTIONS'"
+      AllowHeaders: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+      AllowOrigin: "'*'"
+
+Parameters:
+  CognitoAuthorizerArn:
+    Type: String
+    Description: Reference to Cognito UserPool for the stage
+  CustomDomain:
+    Type: String
+    Description: Custom API to connect this lambda to
+  CustomDomainBasePath:
+    Type: String
+    Description: Base path mapping in CustomDomain
+
+Resources:
+  NvaInstitutionProxyFunctionApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: Prod
+      EndpointConfiguration: REGIONAL
+  ListInstitutionsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: no.unit.nva.institution.proxy.handler.InstitutionListHandler::handleRequest
+      Runtime: java11
+      MemorySize: 1400
+      Environment:
+        Variables:
+          ALLOWED_ORIGIN: '*'
+      Events:
+        ListInstitutionsEvent:
+          Type: Api
+          Properties:
+            Path: /institutions
+            Method: get
+            RestApiId: !Ref NvaInstitutionProxyFunctionApi
+            RequestParameters:
+              - method.request.querystring.language:
+                  Caching: true
+                  Required: false
+
+  NestedInstitutionFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: no.unit.nva.institution.proxy.handler.NestedInstitutionHandler::handleRequest
+      Runtime: java11
+      MemorySize: 1400
+      Timeout: 600
+      Environment:
+        Variables:
+          ALLOWED_ORIGIN: '*'
+      Events:
+        DepartmentsEvent:
+          Type: Api
+          Properties:
+            Path: /departments
+            Method: get
+            RestApiId: !Ref NvaInstitutionProxyFunctionApi
+            RequestParameters:
+              - method.request.querystring.language:
+                  Caching: true
+                  Required: false
+              - method.request.querystring.uri:
+                  Caching: true
+                  Required: false
+
+  NvaDoiTransformerFunctionBasePathMapping:
+    Type: AWS::ApiGateway::BasePathMapping
+    Properties:
+      BasePath: !Ref CustomDomainBasePath
+      DomainName: !Ref CustomDomain
+      RestApiId: !Ref NvaInstitutionProxyFunctionApi
+      Stage: !Ref NvaInstitutionProxyFunctionApi.Stage

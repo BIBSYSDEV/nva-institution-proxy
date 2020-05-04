@@ -1,0 +1,28 @@
+{
+  "@context": {
+    "id": "@id",
+    "type": "@type",
+    "Institution": "https://nva.unit.no/ontology#Institution",
+    "subunits": {
+      "@id": "https://nva.unit.no/ontology#subunits",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "name": "https://nva.unit.no/ontology#name"
+  },
+  "id": "https://api.cristin.no/v2/units/185.90.0.0",
+  "type": "Institution",
+  "name": "University of Oslo",
+  "subunits": [
+    {
+      "id": "https://api.cristin.no/v2/units/185.15.0.0",
+      "name": "Faculty of Mathematics and Natural Sciences",
+      "subunits": [
+        {
+          "id": "https://api.cristin.no/v2/units/185.15.3.0",
+          "name": "Institute of Theoretical Astrophysics"
+        }
+      ]
+    }
+  ]
+}
