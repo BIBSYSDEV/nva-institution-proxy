@@ -2,7 +2,7 @@ package no.unit.nva.institution.proxy.handler;
 
 import com.amazonaws.services.lambda.runtime.Context;
 import no.unit.nva.institution.proxy.CristinApiClient;
-import no.unit.nva.institution.proxy.exception.GatewayException;
+import no.unit.nva.institution.proxy.exception.HttpClientFailureException;
 import no.unit.nva.institution.proxy.exception.UnknownLanguageException;
 import no.unit.nva.institution.proxy.response.InstitutionListResponse;
 import no.unit.nva.institution.proxy.utils.LanguageMapper;
@@ -34,7 +34,7 @@ public class InstitutionListHandler extends ApiGatewayHandler<Void, InstitutionL
     @Override
     protected InstitutionListResponse processInput(Void input, RequestInfo requestInfo,
                                                    Context context)
-        throws UnknownLanguageException, GatewayException {
+        throws UnknownLanguageException, HttpClientFailureException {
         String languageParameter = requestInfo.getQueryParameters().get(LANGUAGE_QUERY_PARAMETER);
         LanguageMapper languageMapper = new LanguageMapper();
         return cristinApiClient.getInstitutions(languageMapper.getLanguage(languageParameter));

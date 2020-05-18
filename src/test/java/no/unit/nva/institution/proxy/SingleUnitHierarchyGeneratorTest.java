@@ -29,7 +29,7 @@ import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import no.unit.nva.institution.proxy.exception.GatewayException;
+import no.unit.nva.institution.proxy.exception.HttpClientFailureException;
 import no.unit.nva.institution.proxy.exception.InvalidUriException;
 import no.unit.nva.institution.proxy.exception.JsonParsingException;
 import no.unit.nva.institution.proxy.exception.NonExistingUnitError;
@@ -55,7 +55,8 @@ public class SingleUnitHierarchyGeneratorTest {
     @DisplayName("SingleUnitHierarchyGenerator returns model with single item when input item has no parents")
     @Test
     public void singleUnitHierarchyGeneratorReturnsModelWithSingleItemWhenInputItemHasNoParents()
-        throws InterruptedException, InvalidUriException, NonExistingUnitError, GatewayException, JsonParsingException,
+        throws InterruptedException, InvalidUriException, NonExistingUnitError, HttpClientFailureException,
+               JsonParsingException,
                JsonProcessingException {
         SingleUnitHierarchyGenerator generator = new SingleUnitHierarchyGenerator(ROOT_NODE_URI, TESTING_LANGUAGE,
             mockHttpClient);
@@ -68,7 +69,7 @@ public class SingleUnitHierarchyGeneratorTest {
     @DisplayName("SingleUnitHierarchyGenerator returns model with two items when input item is a level one child")
     @Test
     public void singleUnitHierarchyGeneratorReturnsModelWithTwoItemsWhenInputItemIsALevelOneChild()
-        throws InterruptedException, InvalidUriException, NonExistingUnitError, GatewayException,
+        throws InterruptedException, InvalidUriException, NonExistingUnitError, HttpClientFailureException,
                JsonProcessingException, JsonParsingException {
 
         SingleUnitHierarchyGenerator generator = new SingleUnitHierarchyGenerator(FIRST_LEVEL_CHILD_URI,
@@ -81,7 +82,8 @@ public class SingleUnitHierarchyGeneratorTest {
     @DisplayName("SingleUnitHierarchyGenerator returns model with 3 items when input item is a level two child")
     @Test
     public void singleUnitHierarchyGeneratorReturnsModelWithThreeItemsWhenInputItemIsALevelTwoChild()
-        throws InterruptedException, InvalidUriException, NonExistingUnitError, GatewayException, JsonParsingException,
+        throws InterruptedException, InvalidUriException, NonExistingUnitError, HttpClientFailureException,
+               JsonParsingException,
                JsonProcessingException {
 
         SingleUnitHierarchyGenerator generator = new SingleUnitHierarchyGenerator(SECOND_LEVEL_CHILD_URI,

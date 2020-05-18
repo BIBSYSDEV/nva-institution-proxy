@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import no.unit.nva.institution.proxy.dto.InstitutionBaseDto;
 import no.unit.nva.institution.proxy.dto.SubSubUnitDto;
-import no.unit.nva.institution.proxy.exception.GatewayException;
+import no.unit.nva.institution.proxy.exception.HttpClientFailureException;
 import no.unit.nva.institution.proxy.exception.NonExistingUnitError;
 import no.unit.nva.institution.proxy.response.InstitutionListResponse;
 import no.unit.nva.institution.proxy.utils.InstitutionUtils;
@@ -63,16 +63,17 @@ public class HttpExecutorImpl extends HttpExecutor {
     }
 
     @Override
-    public InstitutionListResponse getInstitutions(Language language) throws GatewayException {
+    public InstitutionListResponse getInstitutions(Language language) throws HttpClientFailureException {
         URI uri = URI.create(generateInstitutionsQueryUri(language));
-        return attempt(() -> sendHttpRequest(uri).get()).map(this::throwExceptionIfNotSuccessful)
+        return attempt(() -> sendHttpRequest(uri).get())
+            .map(this::throwExceptionIfNotSuccessful)
             .map(HttpResponse::body)
             .map(this::toInstitutionListResponse)
             .orElseThrow(this::handleError);
     }
 
     @Override
-    public JsonNode getNestedInstitution(URI uri, Language language) throws GatewayException {
+    public JsonNode getNestedInstitution(URI uri, Language language) throws HttpClientFailureException {
         URI unitUri = getInstitutionUnitUri(uri, language);
         InstitutionBaseDto institutionUnit = getInstitutionBaseDto(unitUri, language);
 
@@ -92,18 +93,18 @@ public class HttpExecutorImpl extends HttpExecutor {
 
     @Override
     public JsonNode getSingleUnit(URI uri, Language language)
-        throws InterruptedException, NonExistingUnitError, GatewayException {
+        throws InterruptedException, NonExistingUnitError, HttpClientFailureException {
         SingleUnitHierarchyGenerator singleUnitHierarchyGenerator =
             new SingleUnitHierarchyGenerator(uri, language, httpClient);
         return singleUnitHierarchyGenerator.toJsonLd();
     }
 
-    public URI getInstitutionUnitUri(URI uri, Language language) throws GatewayException {
+    public URI getInstitutionUnitUri(URI uri, Language language) throws HttpClientFailureException {
         InstitutionBaseDto institutionDto = getInstitutionBaseDto(uri, language);
         return institutionDto.getCorrespondingUnitDto().getUri();
     }
 
-    private SubSubUnitDto getSubSubUnitDto(URI subunitUri, Language language) throws GatewayException {
+    private SubSubUnitDto getSubSubUnitDto(URI subunitUri, Language language) throws HttpClientFailureException {
         return attempt(() -> sendHttpRequest(UriUtils.getUriWithLanguage(subunitUri, language)).get())
             .map(this::throwExceptionIfNotSuccessful)
             .map(HttpResponse::body)
@@ -111,7 +112,7 @@ public class HttpExecutorImpl extends HttpExecutor {
             .orElseThrow(this::handleError);
     }
 
-    private List<URI> getUnitUris(String id, Language language) throws GatewayException {
+    private List<URI> getUnitUris(String id, Language language) throws HttpClientFailureException {
         URI uri = UriUtils.getUriWithLanguage(URI.create(String.format(PARENT_UNIT_URI_TEMPLATE, id)), language);
         return attempt(() -> sendHttpRequest(uri).get())
             .map(this::throwExceptionIfNotSuccessful)
@@ -124,7 +125,7 @@ public class HttpExecutorImpl extends HttpExecutor {
         return InstitutionUtils.toUriList(json);
     }
 
-    private InstitutionBaseDto getInstitutionBaseDto(URI uri, Language language) throws GatewayException {
+    private InstitutionBaseDto getInstitutionBaseDto(URI uri, Language language) throws HttpClientFailureException {
         return attempt(() -> sendHttpRequest(UriUtils.getUriWithLanguage(uri, language)).get())
             .map(this::throwExceptionIfNotSuccessful)
             .map(HttpResponse::body)
@@ -136,8 +137,8 @@ public class HttpExecutorImpl extends HttpExecutor {
         return InstitutionUtils.toInstitutionBaseDto(json);
     }
 
-    private <T> GatewayException handleError(Failure<T> failure) {
-        return new GatewayException(failure.getException());
+    private <T> HttpClientFailureException handleError(Failure<T> failure) {
+        return new HttpClientFailureException(failure.getException());
     }
 
     private InstitutionListResponse toInstitutionListResponse(String institutionDto) throws IOException {

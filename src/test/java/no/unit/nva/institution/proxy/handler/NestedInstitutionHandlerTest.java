@@ -21,7 +21,7 @@ import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import no.unit.nva.institution.proxy.CristinApiClient;
-import no.unit.nva.institution.proxy.exception.GatewayException;
+import no.unit.nva.institution.proxy.exception.HttpClientFailureException;
 import no.unit.nva.institution.proxy.exception.InvalidUriException;
 import no.unit.nva.institution.proxy.exception.JsonParsingException;
 import no.unit.nva.institution.proxy.exception.MissingParameterException;
@@ -255,7 +255,7 @@ public class NestedInstitutionHandlerTest extends HandlerTest {
     @DisplayName("handleRequest returns BadGateway to the client when GatewayException occurs")
     @Test
     public void handleRequestReturnsBadRequestWhenInstitutionFailureOccurs()
-        throws IOException, InvalidUriException, GatewayException, JsonParsingException {
+        throws IOException, InvalidUriException, HttpClientFailureException, JsonParsingException {
         NestedInstitutionHandler handler = handlerThatThrowsNestedInstitutionFailureException(SOME_EXCEPTION_MESSAGE);
         InputStream inputStream = inputInstitutionsRequest();
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
@@ -269,11 +269,11 @@ public class NestedInstitutionHandlerTest extends HandlerTest {
     }
 
     private NestedInstitutionHandler handlerThatThrowsNestedInstitutionFailureException(String message)
-        throws InvalidUriException, GatewayException, JsonParsingException {
+        throws InvalidUriException, HttpClientFailureException, JsonParsingException {
         CristinApiClient cristinClient = mock(CristinApiClient.class);
         IOException cause = new IOException(message);
         when(cristinClient.getNestedInstitution(any(URI.class), any(Language.class)))
-            .thenThrow(new GatewayException(cause));
+            .thenThrow(new HttpClientFailureException(cause));
         return new NestedInstitutionHandler(environment, cristinClient);
     }
 

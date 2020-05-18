@@ -13,7 +13,7 @@ import java.util.Optional;
 import java.util.concurrent.ExecutionException;
 import no.unit.nva.institution.proxy.dto.InstitutionDto;
 import no.unit.nva.institution.proxy.dto.SubSubUnitDto;
-import no.unit.nva.institution.proxy.exception.GatewayException;
+import no.unit.nva.institution.proxy.exception.HttpClientFailureException;
 import no.unit.nva.institution.proxy.exception.NonExistingUnitError;
 import no.unit.nva.institution.proxy.utils.Language;
 import no.unit.nva.institution.proxy.utils.MapUtils;
@@ -34,7 +34,7 @@ public class SingleUnitHierarchyGenerator {
 
     @JacocoGenerated
     public SingleUnitHierarchyGenerator(URI uri, Language language)
-        throws InterruptedException, NonExistingUnitError, GatewayException {
+        throws InterruptedException, NonExistingUnitError, HttpClientFailureException {
         this(uri, language, newHttpClient());
     }
 
@@ -44,12 +44,12 @@ public class SingleUnitHierarchyGenerator {
      * @param uri        the URI of the Crstin Unit
      * @param language   the language we want the information in.
      * @param httpClient an {@link HttpClient}
-     * @throws InterruptedException when the client throws such exception.
-     * @throws NonExistingUnitError when the URI does not correspond to an existing unit.
-     * @throws GatewayException     when HttpClient receives an error.
+     * @throws InterruptedException       when the client throws such exception.
+     * @throws NonExistingUnitError       when the URI does not correspond to an existing unit.
+     * @throws HttpClientFailureException when HttpClient receives an error.
      */
     public SingleUnitHierarchyGenerator(URI uri, Language language, HttpClient httpClient)
-        throws InterruptedException, NonExistingUnitError, GatewayException {
+        throws InterruptedException, NonExistingUnitError, HttpClientFailureException {
         this.modelUtils = new ModelUtils();
         this.httpClient = httpClient;
         fetchHierarchy(uri, language);
@@ -65,7 +65,7 @@ public class SingleUnitHierarchyGenerator {
     }
 
     private void fetchHierarchy(URI uri, Language language)
-        throws InterruptedException, NonExistingUnitError, GatewayException {
+        throws InterruptedException, NonExistingUnitError, HttpClientFailureException {
         SubSubUnitDto current = fetchAndUpdateModel(uri, language);
         URI parent = Optional.ofNullable(current.getParentUnit())
             .map(InstitutionDto::getUri).orElse(null);
@@ -78,7 +78,7 @@ public class SingleUnitHierarchyGenerator {
     }
 
     private SubSubUnitDto fetchAndUpdateModel(URI uri, Language language)
-        throws InterruptedException, NonExistingUnitError, GatewayException {
+        throws InterruptedException, NonExistingUnitError, HttpClientFailureException {
         URI uriWithoutParameters = UriUtils.clearParameters(uri);
         SubSubUnitDto current = fetch(UriUtils.getUriWithLanguage(uri, language));
 
@@ -92,7 +92,7 @@ public class SingleUnitHierarchyGenerator {
     }
 
     private SubSubUnitDto fetch(URI uri)
-        throws InterruptedException, NonExistingUnitError, GatewayException {
+        throws InterruptedException, NonExistingUnitError, HttpClientFailureException {
 
         HttpRequest httpRequest = createHttpRequest(uri);
         HttpResponse<String> response = sendRequest(httpRequest);
@@ -103,11 +103,12 @@ public class SingleUnitHierarchyGenerator {
         }
     }
 
-    private HttpResponse<String> sendRequest(HttpRequest httpRequest) throws InterruptedException, GatewayException {
+    private HttpResponse<String> sendRequest(HttpRequest httpRequest) throws InterruptedException,
+                                                                             HttpClientFailureException {
         try {
             return httpClient.sendAsync(httpRequest, BodyHandlers.ofString()).get();
         } catch (ExecutionException e) {
-            throw new GatewayException(e);
+            throw new HttpClientFailureException(e);
         }
     }
 

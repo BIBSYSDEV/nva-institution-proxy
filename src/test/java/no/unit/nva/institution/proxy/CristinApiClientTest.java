@@ -18,7 +18,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.net.URI;
 import java.nio.file.Path;
 import java.util.Collections;
-import no.unit.nva.institution.proxy.exception.GatewayException;
+import no.unit.nva.institution.proxy.exception.HttpClientFailureException;
 import no.unit.nva.institution.proxy.exception.InvalidUriException;
 import no.unit.nva.institution.proxy.exception.JsonParsingException;
 import no.unit.nva.institution.proxy.exception.NonExistingUnitError;
@@ -47,7 +47,7 @@ public class CristinApiClientTest {
     @DisplayName("getNestedInstitution returns nested institution when input is valid")
     @Test
     void getNestedInstitutionReturnsNestedInstitutionWhenInputIsValid()
-        throws InvalidUriException, GatewayException, JsonParsingException {
+        throws InvalidUriException, HttpClientFailureException, JsonParsingException {
         HttpExecutor mockHttpExecutor = mock(HttpExecutorImpl.class);
         ObjectNode mockResponse = simpleJsonObject();
         when(mockHttpExecutor.getNestedInstitution(any(), any()))
@@ -59,7 +59,7 @@ public class CristinApiClientTest {
 
     @DisplayName("getInstitutions returns a list with Institutions when input is valid")
     @Test
-    void getInstitutionsReturnsAListWithInstitutionsWhenInputIsValid() throws GatewayException {
+    void getInstitutionsReturnsAListWithInstitutionsWhenInputIsValid() throws HttpClientFailureException {
         InstitutionResponse mockResponseItem = new InstitutionResponse.Builder()
             .withId(VALID_URI)
             .withName(SOME_NAME)
@@ -75,7 +75,7 @@ public class CristinApiClientTest {
 
     @DisplayName("getInstitutions returns a list with Institutions and each institution has an acronym")
     @Test
-    void getInstitutionsReturnsInstitutionsWithAcronymIfInstitutionsHaveAcronyms() throws GatewayException {
+    void getInstitutionsReturnsInstitutionsWithAcronymIfInstitutionsHaveAcronyms() throws HttpClientFailureException {
         InstitutionResponse mockResponseItem = new InstitutionResponse.Builder()
             .withId(VALID_URI)
             .withName(SOME_NAME)
@@ -93,7 +93,7 @@ public class CristinApiClientTest {
     @Test
     @DisplayName("getSingleUnit returns the graph of a unit")
     public void getSingleUnitReturnsTheGraphOfAUnit()
-        throws InterruptedException, GatewayException, NonExistingUnitError, JsonProcessingException {
+        throws InterruptedException, HttpClientFailureException, NonExistingUnitError, JsonProcessingException {
         HttpExecutorImpl httpExecutor = new HttpExecutorImpl(new HttpClientReturningInfoOfSingleUnits());
         CristinApiClient cristinApiClient = new CristinApiClient(httpExecutor);
 

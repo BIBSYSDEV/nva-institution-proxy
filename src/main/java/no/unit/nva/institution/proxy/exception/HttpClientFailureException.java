@@ -3,15 +3,15 @@ package no.unit.nva.institution.proxy.exception;
 import nva.commons.exceptions.ApiGatewayException;
 import org.apache.http.HttpStatus;
 
-public class GatewayException extends ApiGatewayException {
+public class HttpClientFailureException extends ApiGatewayException {
 
     public static final int ERROR_CODE = HttpStatus.SC_BAD_GATEWAY;
 
-    public GatewayException(String message) {
+    public HttpClientFailureException(String message) {
         super(message);
     }
 
-    public GatewayException(Exception cause) {
+    public HttpClientFailureException(Exception cause) {
         super(cause);
     }
 
