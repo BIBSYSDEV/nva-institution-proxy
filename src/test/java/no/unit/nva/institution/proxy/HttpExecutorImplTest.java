@@ -24,6 +24,7 @@ import java.net.http.HttpResponse.BodyHandler;
 import java.nio.file.Path;
 import java.util.Collections;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 import no.unit.nva.institution.proxy.exception.FailedHttpRequestException;
 import no.unit.nva.institution.proxy.exception.HttpClientFailureException;
 import no.unit.nva.institution.proxy.exception.InvalidUriException;
@@ -39,6 +40,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import testutils.HttpClientGetsNestedInstitutionResponse;
 import testutils.HttpClientReturningInfoOfSingleUnits;
+import testutils.HttpClientThrowsExceptionInFirstRequestButSucceedsInSecond;
 
 public class HttpExecutorImplTest {
 
@@ -154,6 +156,22 @@ public class HttpExecutorImplTest {
         HttpExecutorImpl executor = new HttpExecutorImpl(client);
         JsonNode response = executor.getNestedInstitution(URI.create(INSTITUTION_REQUEST_URI),
             Language.ENGLISH);
+        JsonNode expectedJson =
+            JsonUtils.objectMapper.readTree(
+                IoUtils.inputStreamFromResources(EXPECTED_NESTED_INSTITUTION_FOR_VALID_REQUEST));
+        assertThat(response, is(equalTo(expectedJson)));
+    }
+
+    @DisplayName("getNestedInstitutions returns success when HttpClient throws exception in first attempt succeeds"
+        + "in the second")
+    @Test
+    public void getNestedInstitutionsReturnsSuccessWhenHttpClientThrowsExceptionInFirstAttemptAndSucceedsInTheSecond()
+        throws InterruptedException, ExecutionException, InvalidUriException, HttpClientFailureException, IOException {
+        HttpClient client = new HttpClientThrowsExceptionInFirstRequestButSucceedsInSecond().getClient();
+        HttpExecutorImpl executor = new HttpExecutorImpl(client);
+        JsonNode response = executor.getNestedInstitution(URI.create(INSTITUTION_REQUEST_URI),
+            Language.ENGLISH);
+
         JsonNode expectedJson =
             JsonUtils.objectMapper.readTree(
                 IoUtils.inputStreamFromResources(EXPECTED_NESTED_INSTITUTION_FOR_VALID_REQUEST));
