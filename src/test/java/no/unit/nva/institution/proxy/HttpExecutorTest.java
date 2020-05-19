@@ -12,7 +12,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import java.net.URI;
 import java.net.http.HttpResponse;
 import no.unit.nva.institution.proxy.exception.FailedHttpRequestException;
-import no.unit.nva.institution.proxy.exception.GatewayException;
+import no.unit.nva.institution.proxy.exception.HttpClientFailureException;
 import no.unit.nva.institution.proxy.response.InstitutionListResponse;
 import no.unit.nva.institution.proxy.utils.Language;
 import org.apache.http.HttpStatus;
@@ -31,7 +31,7 @@ public class HttpExecutorTest {
         }
 
         @Override
-        public JsonNode getNestedInstitution(URI uri, Language language) throws GatewayException {
+        public JsonNode getNestedInstitution(URI uri, Language language) throws HttpClientFailureException {
             return null;
         }
 

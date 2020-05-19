@@ -2,7 +2,7 @@ package no.unit.nva.institution.proxy;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import java.net.URI;
-import no.unit.nva.institution.proxy.exception.GatewayException;
+import no.unit.nva.institution.proxy.exception.HttpClientFailureException;
 import no.unit.nva.institution.proxy.exception.InvalidUriException;
 import no.unit.nva.institution.proxy.exception.NonExistingUnitError;
 import no.unit.nva.institution.proxy.response.InstitutionListResponse;
@@ -23,7 +23,7 @@ public class CristinApiClient {
         this.httpExecutor = httpExecutor;
     }
 
-    public InstitutionListResponse getInstitutions(Language language) throws GatewayException {
+    public InstitutionListResponse getInstitutions(Language language) throws HttpClientFailureException {
         return httpExecutor.getInstitutions(language);
     }
 
@@ -33,11 +33,11 @@ public class CristinApiClient {
      * @param uri      The URI of the institution's Unit
      * @param language a valid Language. See {@link Language}.
      * @return A list of all the units that are descendants of the institution unit
-     * @throws GatewayException    when an Exception occurs.
-     * @throws InvalidUriException when the input URI is invalid.
+     * @throws HttpClientFailureException when an Exception occurs.
+     * @throws InvalidUriException        when the input URI is invalid.
      */
     public JsonNode getNestedInstitution(URI uri, Language language)
-        throws GatewayException, InvalidUriException {
+        throws HttpClientFailureException, InvalidUriException {
         return httpExecutor.getNestedInstitution(uri, language);
     }
 
@@ -47,12 +47,12 @@ public class CristinApiClient {
      * @param uri      the Cristin unit URI
      * @param language a language code for the details of each unit
      * @return an {@link JsonNode} containing the information in JSON-LD form
-     * @throws InterruptedException when the http client throws an {@link InterruptedException } exception
-     * @throws NonExistingUnitError when the URI does not correspond to an existing unit.
-     * @throws GatewayException     when Cristin server reports failure
+     * @throws InterruptedException       when the http client throws an {@link InterruptedException } exception
+     * @throws NonExistingUnitError       when the URI does not correspond to an existing unit.
+     * @throws HttpClientFailureException when Cristin server reports failure
      */
     public JsonNode getSingleUnit(URI uri, Language language)
-        throws InterruptedException, NonExistingUnitError, GatewayException {
+        throws InterruptedException, NonExistingUnitError, HttpClientFailureException {
         logger.info("Fetching resutls for: " + uri.toString());
         JsonNode result = httpExecutor.getSingleUnit(uri, language);
         return result;
