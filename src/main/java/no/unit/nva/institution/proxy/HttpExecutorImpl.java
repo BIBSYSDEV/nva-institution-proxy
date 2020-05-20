@@ -92,27 +92,25 @@ public class HttpExecutorImpl extends HttpExecutor {
     }
 
     private Try<HttpResponse<String>> sendRequestMultipleTimes(URI uri) {
-        return tryGettingResponse(uri, FIRST_EFFORT, null);
-    }
 
-    private Try<HttpResponse<String>> tryGettingResponse(URI uri, int effortCount,
-                                                         Try<HttpResponse<String>> lastEffort) {
-        if (lastEffortWasASuccessOrWeFailedTooManyTimes(effortCount, lastEffort)) {
-            return lastEffort;
-        } else {
-            if (effortCount > 0) {
+        Try<HttpResponse<String>> lastEffort = null;
+        int effortCount = 0;
+
+        while (shouldKeepTrying(effortCount, lastEffort)) {
+            if (effortCount > FIRST_EFFORT) {
                 waitBeforeRetrying();
             }
-            Try<HttpResponse<String>> newEffort = attempt(() -> sendHttpRequest(uri).get());
+            Try<HttpResponse<String>> newEffort = attempt(() -> createAndSendHttpRequest(uri).get());
             if (newEffort.isFailure()) {
                 logger.warn("Failed HttpRequest:" + newEffort.getException().getMessage(), newEffort.getException());
             }
-
-            return tryGettingResponse(uri, effortCount + 1, newEffort);
+            effortCount++;
+            lastEffort = newEffort;
         }
+        return lastEffort;
     }
 
-    private CompletableFuture<HttpResponse<String>> sendHttpRequest(URI uri) {
+    private CompletableFuture<HttpResponse<String>> createAndSendHttpRequest(URI uri) {
         HttpRequest httpRequest = HttpRequest.newBuilder()
             .GET()
             .header(ACCEPT, APPLICATION_JSON.getMimeType())
@@ -122,12 +120,13 @@ public class HttpExecutorImpl extends HttpExecutor {
         return httpClient.sendAsync(httpRequest, BodyHandlers.ofString());
     }
 
-    private boolean lastEffortWasASuccessOrWeFailedTooManyTimes(int effortCount, Try<HttpResponse<String>> lastEffort) {
-        return lastEffort != null && (lastEffort.isSuccess() || haveTriedEnoughTimes(effortCount));
+    @SuppressWarnings("PMD.UselessParentheses") // keep the parenthesis for clarity
+    private boolean shouldKeepTrying(int effortCount, Try<HttpResponse<String>> lastEffort) {
+        return lastEffort == null || (lastEffort.isFailure() && shouldTryMoreTimes(effortCount));
     }
 
-    private boolean haveTriedEnoughTimes(int effortCount) {
-        return effortCount >= MAX_EFFORTS;
+    private boolean shouldTryMoreTimes(int effortCount) {
+        return effortCount < MAX_EFFORTS;
     }
 
     private void waitBeforeRetrying() {
