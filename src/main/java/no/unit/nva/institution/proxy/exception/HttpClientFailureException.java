@@ -15,6 +15,10 @@ public class HttpClientFailureException extends ApiGatewayException {
         super(cause);
     }
 
+    public HttpClientFailureException(Exception cause, String message) {
+        super(cause, message);
+    }
+
     @Override
     protected Integer statusCode() {
         return ERROR_CODE;
