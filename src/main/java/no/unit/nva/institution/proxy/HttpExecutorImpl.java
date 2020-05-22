@@ -92,22 +92,22 @@ public class HttpExecutorImpl extends HttpExecutor {
     }
 
     private Try<HttpResponse<String>> sendRequestMultipleTimes(URI uri) {
-
         Try<HttpResponse<String>> lastEffort = null;
-        int effortCount = 0;
-
-        while (shouldKeepTrying(effortCount, lastEffort)) {
-            if (effortCount > FIRST_EFFORT) {
-                waitBeforeRetrying();
-            }
-            Try<HttpResponse<String>> newEffort = attempt(() -> createAndSendHttpRequest(uri).get());
-            if (newEffort.isFailure()) {
-                logger.warn("Failed HttpRequest:" + newEffort.getException().getMessage(), newEffort.getException());
-            }
-            effortCount++;
-            lastEffort = newEffort;
+        for (int effortCount = FIRST_EFFORT; shouldKeepTrying(effortCount, lastEffort); effortCount++) {
+            waitBeforeRetrying(effortCount);
+            lastEffort = attemptFetch(uri, effortCount);
         }
         return lastEffort;
+    }
+
+    private Try<HttpResponse<String>> attemptFetch(URI uri, int effortCount) {
+        Try<HttpResponse<String>> newEffort = attempt(() -> createAndSendHttpRequest(uri).get());
+        if (newEffort.isFailure()) {
+            logger.warn(String.format("Failed HttpRequest on attempt %d of 3: ", effortCount + 1)
+                + newEffort.getException().getMessage(), newEffort.getException()
+            );
+        }
+        return newEffort;
     }
 
     private CompletableFuture<HttpResponse<String>> createAndSendHttpRequest(URI uri) {
@@ -118,6 +118,18 @@ public class HttpExecutorImpl extends HttpExecutor {
             .uri(uri)
             .build();
         return httpClient.sendAsync(httpRequest, BodyHandlers.ofString());
+    }
+
+    private int waitBeforeRetrying(int effortCount) {
+        if (effortCount > FIRST_EFFORT) {
+            try {
+                Thread.sleep(WAITING_TIME);
+            } catch (InterruptedException e) {
+                logger.error(LOG_INTERRUPTION);
+                throw new RuntimeException(e);
+            }
+        }
+        return effortCount;
     }
 
     @SuppressWarnings("PMD.UselessParentheses") // keep the parenthesis for clarity
