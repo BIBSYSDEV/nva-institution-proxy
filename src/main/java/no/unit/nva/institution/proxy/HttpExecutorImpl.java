@@ -141,15 +141,6 @@ public class HttpExecutorImpl extends HttpExecutor {
         return effortCount < MAX_EFFORTS;
     }
 
-    private void waitBeforeRetrying() {
-        try {
-            Thread.sleep(WAITING_TIME);
-        } catch (InterruptedException e) {
-            logger.error(LOG_INTERRUPTION);
-            throw new RuntimeException(e);
-        }
-    }
-
     @Override
     public JsonNode getSingleUnit(URI uri, Language language)
         throws InterruptedException, NonExistingUnitError, HttpClientFailureException {
