@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import java.net.URI;
 import java.net.http.HttpResponse;
 import no.unit.nva.institution.proxy.exception.FailedHttpRequestException;
-import no.unit.nva.institution.proxy.exception.GatewayException;
+import no.unit.nva.institution.proxy.exception.HttpClientFailureException;
 import no.unit.nva.institution.proxy.exception.InvalidUriException;
 import no.unit.nva.institution.proxy.exception.NonExistingUnitError;
 import no.unit.nva.institution.proxy.response.InstitutionListResponse;
@@ -20,13 +20,13 @@ public abstract class HttpExecutor {
     public static int FIRST_SUCCESSFUL_CODE = HttpStatus.SC_OK;
     public static String NULL_HTTP_RESPONSE_ERROR_MESSAGE = "No HttpResponse found";
 
-    public abstract InstitutionListResponse getInstitutions(Language language) throws GatewayException;
+    public abstract InstitutionListResponse getInstitutions(Language language) throws HttpClientFailureException;
 
     public abstract JsonNode getNestedInstitution(URI uri, Language language)
-        throws GatewayException, InvalidUriException;
+        throws HttpClientFailureException, InvalidUriException;
 
     public abstract JsonNode getSingleUnit(URI uri, Language language)
-        throws NonExistingUnitError, GatewayException, InterruptedException;
+        throws NonExistingUnitError, HttpClientFailureException, InterruptedException;
 
     protected HttpResponse<String> throwExceptionIfNotSuccessful(HttpResponse<String> response)
         throws FailedHttpRequestException {

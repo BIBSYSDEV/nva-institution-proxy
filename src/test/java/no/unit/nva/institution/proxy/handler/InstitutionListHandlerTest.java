@@ -20,7 +20,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.util.Collections;
 import no.unit.nva.institution.proxy.CristinApiClient;
-import no.unit.nva.institution.proxy.exception.GatewayException;
+import no.unit.nva.institution.proxy.exception.HttpClientFailureException;
 import no.unit.nva.institution.proxy.exception.UnknownLanguageException;
 import no.unit.nva.institution.proxy.response.InstitutionListResponse;
 import no.unit.nva.institution.proxy.utils.Language;
@@ -119,7 +119,7 @@ public class InstitutionListHandlerTest extends HandlerTest {
     @DisplayName("handleRequest returns BadGateway to the client when GatewayException occurs")
     @Test
     public void handleRequestReturnsBadGatewayToTheClientWhnGatewayExceptionOccurs()
-        throws IOException, GatewayException {
+        throws IOException, HttpClientFailureException {
         InstitutionListHandler handler = handlerThatThrowsInstitutionFailureException(SOME_EXCEPTION_MESSAGE);
         InputStream inputStream = inputValidLanguageCode();
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
@@ -166,10 +166,10 @@ public class InstitutionListHandlerTest extends HandlerTest {
     }
 
     private InstitutionListHandler handlerThatThrowsInstitutionFailureException(String exceptionMessage)
-        throws GatewayException {
+        throws HttpClientFailureException {
         CristinApiClient cristinClient = mock(CristinApiClient.class);
         IOException cause = new IOException(exceptionMessage);
-        when(cristinClient.getInstitutions(any(Language.class))).thenThrow(new GatewayException(cause));
+        when(cristinClient.getInstitutions(any(Language.class))).thenThrow(new HttpClientFailureException(cause));
         return new InstitutionListHandler(environment, cristinClient);
     }
 
@@ -213,7 +213,7 @@ public class InstitutionListHandlerTest extends HandlerTest {
         @Override
         protected InstitutionListResponse processInput(Void input, RequestInfo requestInfo,
                                                        Context context)
-            throws UnknownLanguageException, GatewayException {
+            throws UnknownLanguageException, HttpClientFailureException {
             this.languageQueryParameter = requestInfo.getQueryParameters()
                 .get(InstitutionListHandler.LANGUAGE_QUERY_PARAMETER);
             return super.processInput(input, requestInfo, context);

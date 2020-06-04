@@ -24,8 +24,9 @@ import java.net.http.HttpResponse.BodyHandler;
 import java.nio.file.Path;
 import java.util.Collections;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 import no.unit.nva.institution.proxy.exception.FailedHttpRequestException;
-import no.unit.nva.institution.proxy.exception.GatewayException;
+import no.unit.nva.institution.proxy.exception.HttpClientFailureException;
 import no.unit.nva.institution.proxy.exception.InvalidUriException;
 import no.unit.nva.institution.proxy.exception.JsonParsingException;
 import no.unit.nva.institution.proxy.exception.NonExistingUnitError;
@@ -39,6 +40,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import testutils.HttpClientGetsNestedInstitutionResponse;
 import testutils.HttpClientReturningInfoOfSingleUnits;
+import testutils.HttpClientThrowsExceptionInFirstRequestButSucceedsInSecond;
 
 public class HttpExecutorImplTest {
 
@@ -122,7 +124,7 @@ public class HttpExecutorImplTest {
 
         HttpExecutorImpl executor = new HttpExecutorImpl(httpClientReturnsError());
 
-        GatewayException exception = assertThrows(GatewayException.class,
+        HttpClientFailureException exception = assertThrows(HttpClientFailureException.class,
             () -> executor.getInstitutions(Language.ENGLISH));
 
         Throwable cause = exception.getCause();
@@ -137,19 +139,19 @@ public class HttpExecutorImplTest {
 
         HttpExecutorImpl executor = new HttpExecutorImpl(httpClientWithResponseBody(INVALID_JSON_STR));
 
-        GatewayException exception = assertThrows(GatewayException.class,
+        HttpClientFailureException exception = assertThrows(HttpClientFailureException.class,
             () -> executor.getInstitutions(Language.ENGLISH));
 
         Throwable cause = exception.getCause();
         assertThat(cause.getClass(), is(equalTo(IOException.class)));
-        assertThat(exception.getStatusCode(), is(equalTo(GatewayException.ERROR_CODE)));
+        assertThat(exception.getStatusCode(), is(equalTo(HttpClientFailureException.ERROR_CODE)));
         assertThat(exception.getMessage(), containsString(INVALID_JSON_STR));
     }
 
     @DisplayName("getNestedInstitution returns nested institution when input is valid")
     @Test
     void getNestedInstitutionReturnsNestedInstitutionWhenUriAndLanguageAreValid()
-        throws InvalidUriException, GatewayException, JsonParsingException, IOException {
+        throws InvalidUriException, HttpClientFailureException, JsonParsingException, IOException {
         HttpClient client = new HttpClientGetsNestedInstitutionResponse(Language.ENGLISH).getMockClient();
         HttpExecutorImpl executor = new HttpExecutorImpl(client);
         JsonNode response = executor.getNestedInstitution(URI.create(INSTITUTION_REQUEST_URI),
@@ -160,9 +162,25 @@ public class HttpExecutorImplTest {
         assertThat(response, is(equalTo(expectedJson)));
     }
 
+    @DisplayName("getNestedInstitutions returns success when HttpClient throws exception in first attempt succeeds"
+        + "in the second")
+    @Test
+    public void getNestedInstitutionsReturnsSuccessWhenHttpClientThrowsExceptionInFirstAttemptAndSucceedsInTheSecond()
+        throws InterruptedException, ExecutionException, InvalidUriException, HttpClientFailureException, IOException {
+        HttpClient client = new HttpClientThrowsExceptionInFirstRequestButSucceedsInSecond().getClient();
+        HttpExecutorImpl executor = new HttpExecutorImpl(client);
+        JsonNode response = executor.getNestedInstitution(URI.create(INSTITUTION_REQUEST_URI),
+            Language.ENGLISH);
+
+        JsonNode expectedJson =
+            JsonUtils.objectMapper.readTree(
+                IoUtils.inputStreamFromResources(EXPECTED_NESTED_INSTITUTION_FOR_VALID_REQUEST));
+        assertThat(response, is(equalTo(expectedJson)));
+    }
+
     @Test
     void getSingleUnitReturnsANestedInstitutionResponseWhenInputIsValid()
-        throws InterruptedException, GatewayException, NonExistingUnitError,
+        throws InterruptedException, HttpClientFailureException, NonExistingUnitError,
                JsonParsingException, JsonProcessingException {
         HttpClient mockHttpClient = new HttpClientReturningInfoOfSingleUnits();
         HttpExecutorImpl executor = new HttpExecutorImpl(mockHttpClient);

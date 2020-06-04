@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import no.unit.nva.institution.proxy.dto.InstitutionBaseDto;
 import no.unit.nva.institution.proxy.dto.SubSubUnitDto;
-import no.unit.nva.institution.proxy.exception.GatewayException;
+import no.unit.nva.institution.proxy.exception.HttpClientFailureException;
 import no.unit.nva.institution.proxy.exception.NonExistingUnitError;
 import no.unit.nva.institution.proxy.response.InstitutionListResponse;
 import no.unit.nva.institution.proxy.utils.InstitutionUtils;
@@ -26,6 +26,9 @@ import no.unit.nva.institution.proxy.utils.MapUtils;
 import no.unit.nva.institution.proxy.utils.UriUtils;
 import nva.commons.utils.JacocoGenerated;
 import nva.commons.utils.attempt.Failure;
+import nva.commons.utils.attempt.Try;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class HttpExecutorImpl extends HttpExecutor {
 
@@ -34,7 +37,13 @@ public class HttpExecutorImpl extends HttpExecutor {
         "https://api.cristin.no/v2/institutions?country=NO" + "&per_page=1000000&lang=%s";
     public static final String PARENT_UNIT_URI_TEMPLATE =
         "https://api.cristin.no/v2/units?parent_unit_id=%s&per_page" + "=20000";
+    public static final int FIRST_EFFORT = 0;
+    public static final int MAX_EFFORTS = 2;
+    public static final int WAITING_TIME = 500; //500 milliseconds
+    public static final String LOG_INTERRUPTION = "InterruptedException while waiting to resend HTTP request";
     private final HttpClient httpClient;
+
+    private static final Logger logger = LoggerFactory.getLogger(HttpExecutorImpl.class);
 
     /**
      * Default constructor.
@@ -52,27 +61,19 @@ public class HttpExecutorImpl extends HttpExecutor {
         this.httpClient = client;
     }
 
-    private CompletableFuture<HttpResponse<String>> sendHttpRequest(URI uri) {
-        HttpRequest httpRequest = HttpRequest.newBuilder()
-            .GET()
-            .header(ACCEPT, APPLICATION_JSON.getMimeType())
-            .header(USER_AGENT, NVA_INSTITUTIONS_LIST_CRAWLER)
-            .uri(uri)
-            .build();
-        return httpClient.sendAsync(httpRequest, BodyHandlers.ofString());
-    }
-
     @Override
-    public InstitutionListResponse getInstitutions(Language language) throws GatewayException {
-        URI uri = URI.create(generateInstitutionsQueryUri(language));
-        return attempt(() -> sendHttpRequest(uri).get()).map(this::throwExceptionIfNotSuccessful)
+    public InstitutionListResponse getInstitutions(Language language) throws HttpClientFailureException {
+
+        return attempt(() -> URI.create(generateInstitutionsQueryUri(language)))
+            .flatMap(this::sendRequestMultipleTimes)
+            .map(this::throwExceptionIfNotSuccessful)
             .map(HttpResponse::body)
             .map(this::toInstitutionListResponse)
             .orElseThrow(this::handleError);
     }
 
     @Override
-    public JsonNode getNestedInstitution(URI uri, Language language) throws GatewayException {
+    public JsonNode getNestedInstitution(URI uri, Language language) throws HttpClientFailureException {
         URI unitUri = getInstitutionUnitUri(uri, language);
         InstitutionBaseDto institutionUnit = getInstitutionBaseDto(unitUri, language);
 
@@ -90,54 +91,110 @@ public class HttpExecutorImpl extends HttpExecutor {
         return generator.getNestedInstitution();
     }
 
+    private Try<HttpResponse<String>> sendRequestMultipleTimes(URI uri) {
+        Try<HttpResponse<String>> lastEffort = null;
+        for (int effortCount = FIRST_EFFORT; shouldKeepTrying(effortCount, lastEffort); effortCount++) {
+            waitBeforeRetrying(effortCount);
+            lastEffort = attemptFetch(uri, effortCount);
+        }
+        return lastEffort;
+    }
+
+    private Try<HttpResponse<String>> attemptFetch(URI uri, int effortCount) {
+        Try<HttpResponse<String>> newEffort = attempt(() -> createAndSendHttpRequest(uri).get());
+        if (newEffort.isFailure()) {
+            logger.warn(String.format("Failed HttpRequest on attempt %d of 3: ", effortCount + 1)
+                + newEffort.getException().getMessage(), newEffort.getException()
+            );
+        }
+        return newEffort;
+    }
+
+    private CompletableFuture<HttpResponse<String>> createAndSendHttpRequest(URI uri) {
+        HttpRequest httpRequest = HttpRequest.newBuilder()
+            .GET()
+            .header(ACCEPT, APPLICATION_JSON.getMimeType())
+            .header(USER_AGENT, NVA_INSTITUTIONS_LIST_CRAWLER)
+            .uri(uri)
+            .build();
+        return httpClient.sendAsync(httpRequest, BodyHandlers.ofString());
+    }
+
+    private int waitBeforeRetrying(int effortCount) {
+        if (effortCount > FIRST_EFFORT) {
+            try {
+                Thread.sleep(WAITING_TIME);
+            } catch (InterruptedException e) {
+                logger.error(LOG_INTERRUPTION);
+                throw new RuntimeException(e);
+            }
+        }
+        return effortCount;
+    }
+
+    @SuppressWarnings("PMD.UselessParentheses") // keep the parenthesis for clarity
+    private boolean shouldKeepTrying(int effortCount, Try<HttpResponse<String>> lastEffort) {
+        return lastEffort == null || (lastEffort.isFailure() && shouldTryMoreTimes(effortCount));
+    }
+
+    private boolean shouldTryMoreTimes(int effortCount) {
+        return effortCount < MAX_EFFORTS;
+    }
+
     @Override
     public JsonNode getSingleUnit(URI uri, Language language)
-        throws InterruptedException, NonExistingUnitError, GatewayException {
+        throws InterruptedException, NonExistingUnitError, HttpClientFailureException {
         SingleUnitHierarchyGenerator singleUnitHierarchyGenerator =
             new SingleUnitHierarchyGenerator(uri, language, httpClient);
         return singleUnitHierarchyGenerator.toJsonLd();
     }
 
-    public URI getInstitutionUnitUri(URI uri, Language language) throws GatewayException {
+    public URI getInstitutionUnitUri(URI uri, Language language) throws HttpClientFailureException {
         InstitutionBaseDto institutionDto = getInstitutionBaseDto(uri, language);
         return institutionDto.getCorrespondingUnitDto().getUri();
     }
 
-    private SubSubUnitDto getSubSubUnitDto(URI subunitUri, Language language) throws GatewayException {
-        return attempt(() -> sendHttpRequest(UriUtils.getUriWithLanguage(subunitUri, language)).get())
-            .map(this::throwExceptionIfNotSuccessful)
-            .map(HttpResponse::body)
-            .map(InstitutionUtils::toSubSubUnitDto)
-            .orElseThrow(this::handleError);
+    private SubSubUnitDto getSubSubUnitDto(URI subunitUri, Language language) throws HttpClientFailureException {
+        return
+            Try.of(UriUtils.getUriWithLanguage(subunitUri, language))
+                .flatMap(this::sendRequestMultipleTimes)
+                .map(this::throwExceptionIfNotSuccessful)
+                .map(HttpResponse::body)
+                .map(InstitutionUtils::toSubSubUnitDto)
+                .orElseThrow(this::handleError);
     }
 
-    private List<URI> getUnitUris(String id, Language language) throws GatewayException {
-        URI uri = UriUtils.getUriWithLanguage(URI.create(String.format(PARENT_UNIT_URI_TEMPLATE, id)), language);
-        return attempt(() -> sendHttpRequest(uri).get())
-            .map(this::throwExceptionIfNotSuccessful)
-            .map(HttpResponse::body)
-            .map(this::bodyToUriList)
-            .orElseThrow(this::handleError);
+    private List<URI> getUnitUris(String id, Language language) throws HttpClientFailureException {
+        return
+            attempt(
+                () -> UriUtils.getUriWithLanguage(URI.create(String.format(PARENT_UNIT_URI_TEMPLATE, id)), language))
+                .flatMap(this::sendRequestMultipleTimes)
+                .map(this::throwExceptionIfNotSuccessful)
+                .map(HttpResponse::body)
+                .map(this::bodyToUriList)
+                .orElseThrow(this::handleError);
     }
 
     private List<URI> bodyToUriList(String json) throws IOException {
         return InstitutionUtils.toUriList(json);
     }
 
-    private InstitutionBaseDto getInstitutionBaseDto(URI uri, Language language) throws GatewayException {
-        return attempt(() -> sendHttpRequest(UriUtils.getUriWithLanguage(uri, language)).get())
-            .map(this::throwExceptionIfNotSuccessful)
-            .map(HttpResponse::body)
-            .map(this::toInstitutionBaseDto)
-            .orElseThrow(this::handleError);
+    private InstitutionBaseDto getInstitutionBaseDto(URI uri, Language language) throws HttpClientFailureException {
+        return
+            attempt(() -> UriUtils.getUriWithLanguage(uri, language))
+                .flatMap(this::sendRequestMultipleTimes)
+                .map(this::throwExceptionIfNotSuccessful)
+                .map(HttpResponse::body)
+                .map(this::toInstitutionBaseDto)
+                .orElseThrow(this::handleError);
     }
 
     private InstitutionBaseDto toInstitutionBaseDto(String json) throws IOException {
         return InstitutionUtils.toInstitutionBaseDto(json);
     }
 
-    private <T> GatewayException handleError(Failure<T> failure) {
-        return new GatewayException(failure.getException());
+    private <T> HttpClientFailureException handleError(Failure<T> failure) {
+        return new HttpClientFailureException(failure.getException(), failure.getException().getMessage());
     }
 
     private InstitutionListResponse toInstitutionListResponse(String institutionDto) throws IOException {
