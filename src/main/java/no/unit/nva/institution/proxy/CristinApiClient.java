@@ -1,7 +1,6 @@
 package no.unit.nva.institution.proxy;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import java.net.URI;
 import no.unit.nva.institution.proxy.exception.HttpClientFailureException;
 import no.unit.nva.institution.proxy.exception.InvalidUriException;
 import no.unit.nva.institution.proxy.exception.NonExistingUnitError;
@@ -9,6 +8,8 @@ import no.unit.nva.institution.proxy.response.InstitutionListResponse;
 import no.unit.nva.institution.proxy.utils.Language;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.net.URI;
 
 public class CristinApiClient {
 
@@ -28,7 +29,7 @@ public class CristinApiClient {
     }
 
     /**
-     * Get all the descendants of an insitution's logical unit.
+     * Get all the descendants of an institution's logical unit.
      *
      * @param uri      The URI of the institution's Unit
      * @param language a valid Language. See {@link Language}.
@@ -54,7 +55,6 @@ public class CristinApiClient {
     public JsonNode getSingleUnit(URI uri, Language language)
         throws InterruptedException, NonExistingUnitError, HttpClientFailureException {
         logger.info("Fetching resutls for: " + uri.toString());
-        JsonNode result = httpExecutor.getSingleUnit(uri, language);
-        return result;
+        return httpExecutor.getSingleUnit(uri, language);
     }
 }

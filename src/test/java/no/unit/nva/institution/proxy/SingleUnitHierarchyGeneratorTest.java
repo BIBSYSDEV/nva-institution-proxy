@@ -1,5 +1,33 @@
 package no.unit.nva.institution.proxy;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import no.unit.nva.institution.proxy.exception.HttpClientFailureException;
+import no.unit.nva.institution.proxy.exception.NonExistingUnitError;
+import nva.commons.utils.IoUtils;
+import nva.commons.utils.JsonUtils;
+import nva.commons.utils.attempt.Try;
+import org.apache.http.HttpStatus;
+import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.ModelFactory;
+import org.apache.jena.rdf.model.Resource;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
+import testutils.HttpClientReturningInfoOfSingleUnits;
+
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.net.http.HttpResponse.BodyHandler;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import static no.unit.nva.institution.proxy.utils.UriUtils.clearParameters;
 import static nva.commons.utils.attempt.Try.attempt;
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -16,35 +44,6 @@ import static testutils.HttpClientReturningInfoOfSingleUnits.ROOT_NODE_URI;
 import static testutils.HttpClientReturningInfoOfSingleUnits.SECOND_LEVEL_CHILD_URI;
 import static testutils.HttpClientReturningInfoOfSingleUnits.TESTING_LANGUAGE;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.net.http.HttpResponse.BodyHandler;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import no.unit.nva.institution.proxy.exception.HttpClientFailureException;
-import no.unit.nva.institution.proxy.exception.InvalidUriException;
-import no.unit.nva.institution.proxy.exception.JsonParsingException;
-import no.unit.nva.institution.proxy.exception.NonExistingUnitError;
-import nva.commons.utils.IoUtils;
-import nva.commons.utils.JsonUtils;
-import nva.commons.utils.attempt.Try;
-import org.apache.http.HttpStatus;
-import org.apache.jena.rdf.model.Model;
-import org.apache.jena.rdf.model.ModelFactory;
-import org.apache.jena.rdf.model.Resource;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.function.Executable;
-import testutils.HttpClientReturningInfoOfSingleUnits;
-
 public class SingleUnitHierarchyGeneratorTest {
 
     public static final String JSONLD = "JSONLD";
@@ -55,9 +54,7 @@ public class SingleUnitHierarchyGeneratorTest {
     @DisplayName("SingleUnitHierarchyGenerator returns model with single item when input item has no parents")
     @Test
     public void singleUnitHierarchyGeneratorReturnsModelWithSingleItemWhenInputItemHasNoParents()
-        throws InterruptedException, InvalidUriException, NonExistingUnitError, HttpClientFailureException,
-               JsonParsingException,
-               JsonProcessingException {
+        throws InterruptedException, NonExistingUnitError, HttpClientFailureException, JsonProcessingException {
         SingleUnitHierarchyGenerator generator = new SingleUnitHierarchyGenerator(ROOT_NODE_URI, TESTING_LANGUAGE,
             mockHttpClient);
         JsonNode jsonLd = generator.toJsonLd();
@@ -69,8 +66,7 @@ public class SingleUnitHierarchyGeneratorTest {
     @DisplayName("SingleUnitHierarchyGenerator returns model with two items when input item is a level one child")
     @Test
     public void singleUnitHierarchyGeneratorReturnsModelWithTwoItemsWhenInputItemIsALevelOneChild()
-        throws InterruptedException, InvalidUriException, NonExistingUnitError, HttpClientFailureException,
-               JsonProcessingException, JsonParsingException {
+        throws InterruptedException, NonExistingUnitError, HttpClientFailureException, JsonProcessingException {
 
         SingleUnitHierarchyGenerator generator = new SingleUnitHierarchyGenerator(FIRST_LEVEL_CHILD_URI,
             TESTING_LANGUAGE, mockHttpClient);
@@ -82,9 +78,7 @@ public class SingleUnitHierarchyGeneratorTest {
     @DisplayName("SingleUnitHierarchyGenerator returns model with 3 items when input item is a level two child")
     @Test
     public void singleUnitHierarchyGeneratorReturnsModelWithThreeItemsWhenInputItemIsALevelTwoChild()
-        throws InterruptedException, InvalidUriException, NonExistingUnitError, HttpClientFailureException,
-               JsonParsingException,
-               JsonProcessingException {
+        throws InterruptedException, NonExistingUnitError, HttpClientFailureException, JsonProcessingException {
 
         SingleUnitHierarchyGenerator generator = new SingleUnitHierarchyGenerator(SECOND_LEVEL_CHILD_URI,
             TESTING_LANGUAGE, mockHttpClient);

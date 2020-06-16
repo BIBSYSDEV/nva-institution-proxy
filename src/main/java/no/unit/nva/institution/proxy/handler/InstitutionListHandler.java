@@ -13,10 +13,13 @@ import nva.commons.utils.JacocoGenerated;
 import org.apache.http.HttpStatus;
 import org.slf4j.LoggerFactory;
 
+import static java.util.Objects.isNull;
+
 public class InstitutionListHandler extends ApiGatewayHandler<Void, InstitutionListResponse> {
 
     public static final String LANGUAGE_QUERY_PARAMETER = "language";
     private final CristinApiClient cristinApiClient;
+    private InstitutionListResponse response;
 
     @JacocoGenerated
     public InstitutionListHandler() {
@@ -37,7 +40,10 @@ public class InstitutionListHandler extends ApiGatewayHandler<Void, InstitutionL
         throws UnknownLanguageException, HttpClientFailureException {
         String languageParameter = requestInfo.getQueryParameters().get(LANGUAGE_QUERY_PARAMETER);
         LanguageMapper languageMapper = new LanguageMapper();
-        return cristinApiClient.getInstitutions(languageMapper.getLanguage(languageParameter));
+        if (isNull(response)) {
+            response = cristinApiClient.getInstitutions(languageMapper.getLanguage(languageParameter));
+        }
+        return response;
     }
 
     @Override

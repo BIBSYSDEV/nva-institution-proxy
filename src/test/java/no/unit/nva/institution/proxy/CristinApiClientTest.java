@@ -1,5 +1,24 @@
 package no.unit.nva.institution.proxy;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import no.unit.nva.institution.proxy.exception.HttpClientFailureException;
+import no.unit.nva.institution.proxy.exception.InvalidUriException;
+import no.unit.nva.institution.proxy.exception.NonExistingUnitError;
+import no.unit.nva.institution.proxy.response.InstitutionListResponse;
+import no.unit.nva.institution.proxy.response.InstitutionResponse;
+import no.unit.nva.institution.proxy.utils.Language;
+import nva.commons.utils.IoUtils;
+import nva.commons.utils.JsonUtils;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import testutils.HttpClientReturningInfoOfSingleUnits;
+
+import java.net.URI;
+import java.nio.file.Path;
+import java.util.Collections;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
@@ -12,30 +31,10 @@ import static org.mockito.Mockito.when;
 import static testutils.HttpClientReturningInfoOfSingleUnits.SECOND_LEVEL_CHILD_URI;
 import static testutils.HttpClientReturningInfoOfSingleUnits.TESTING_LANGUAGE;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.node.ObjectNode;
-import java.net.URI;
-import java.nio.file.Path;
-import java.util.Collections;
-import no.unit.nva.institution.proxy.exception.HttpClientFailureException;
-import no.unit.nva.institution.proxy.exception.InvalidUriException;
-import no.unit.nva.institution.proxy.exception.JsonParsingException;
-import no.unit.nva.institution.proxy.exception.NonExistingUnitError;
-import no.unit.nva.institution.proxy.response.InstitutionListResponse;
-import no.unit.nva.institution.proxy.response.InstitutionResponse;
-import no.unit.nva.institution.proxy.utils.Language;
-import nva.commons.utils.IoUtils;
-import nva.commons.utils.JsonUtils;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import testutils.HttpClientReturningInfoOfSingleUnits;
-
 public class CristinApiClientTest {
 
     public static final Language VALID_LANGUAGE_EN = Language.ENGLISH;
     public static final URI VALID_URI = URI.create("https://example.org");
-    public static final String JSON_VALUE = "true";
     public static final String SOME_NAME = "SomeName";
     public static final String HTTP_CLIENT_RESPONSES = "httpClientResponses";
     public static final Path SINGLE_UNIT_RESPONSE_GRAPH = Path.of(HTTP_CLIENT_RESPONSES,
@@ -47,7 +46,7 @@ public class CristinApiClientTest {
     @DisplayName("getNestedInstitution returns nested institution when input is valid")
     @Test
     void getNestedInstitutionReturnsNestedInstitutionWhenInputIsValid()
-        throws InvalidUriException, HttpClientFailureException, JsonParsingException {
+        throws InvalidUriException, HttpClientFailureException {
         HttpExecutor mockHttpExecutor = mock(HttpExecutorImpl.class);
         ObjectNode mockResponse = simpleJsonObject();
         when(mockHttpExecutor.getNestedInstitution(any(), any()))

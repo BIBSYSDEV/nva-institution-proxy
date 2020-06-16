@@ -1,29 +1,11 @@
 package no.unit.nva.institution.proxy.handler;
 
-import static no.unit.nva.institution.proxy.handler.NestedInstitutionHandler.URI_QUERY_PARAMETER;
-import static nva.commons.utils.JsonUtils.objectMapper;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.core.Is.is;
-import static org.hamcrest.core.IsEqual.equalTo;
-import static org.hamcrest.core.StringContains.containsString;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-
 import com.amazonaws.services.lambda.runtime.Context;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URI;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Path;
 import no.unit.nva.institution.proxy.CristinApiClient;
 import no.unit.nva.institution.proxy.exception.HttpClientFailureException;
 import no.unit.nva.institution.proxy.exception.InvalidUriException;
-import no.unit.nva.institution.proxy.exception.JsonParsingException;
 import no.unit.nva.institution.proxy.exception.MissingParameterException;
 import no.unit.nva.institution.proxy.request.NestedInstitutionRequest;
 import no.unit.nva.institution.proxy.response.InstitutionListResponse;
@@ -43,12 +25,34 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.zalando.problem.Problem;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URI;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
+
+import static no.unit.nva.institution.proxy.handler.NestedInstitutionHandler.URI_QUERY_PARAMETER;
+import static nva.commons.utils.JsonUtils.objectMapper;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsEqual.equalTo;
+import static org.hamcrest.core.StringContains.containsString;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
 public class NestedInstitutionHandlerTest extends HandlerTest {
 
     private static final String SOME_ENV_VALUE = "SOME_VALUE";
     public static final String EVENTS_FOLDER = "events";
     private static final Path NESTED_INSTITUTIONS_REQUEST_WITH_VALID_QUERY_PARAMETERS =
         Path.of(EVENTS_FOLDER, "nested_institutions_request_with_valid_parameters.json");
+    private static final Path NESTED_INSTITUTIONS_REQUEST_WITH_UNIT_AND_VALID_QUERY_PARAMETERS =
+            Path.of(EVENTS_FOLDER, "nested_institutions_request_with_unit_with_valid_parameters.json");
+
     public static final Path NESTED_INSTITUTIONS_REQUEST_WITH_INVALID_URL_JSON = Path.of(
         EVENTS_FOLDER, "nested_institutions_request_with_invalid_url.json");
     public static final Path NESTED_INSTITUTIONS_REQUEST_WITH_MALFORMED_URL_JSON = Path.of(
@@ -181,11 +185,43 @@ public class NestedInstitutionHandlerTest extends HandlerTest {
         assertThat(response.getStatusCode(), is(HttpStatus.SC_OK));
     }
 
+    @DisplayName("handleRequest caches response when input is Institution Request")
+    @Test
+    public void handleRequestReturnsCachedResponseWhenInputIsInstitutionRequest() throws IOException {
+        NestedInstitutionHandlerWithGetRequest handler = nestedInstitutionHandlerWithAccessibleRequestInfo();
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        long passOneStartTime = System.nanoTime();
+        handler.handleRequest(inputInstitutionsRequest(), outputStream, context);
+        long passOneEndTime = System.nanoTime();
+        long firstPass = (passOneEndTime - passOneStartTime);
+        long passTwoStartTime = System.nanoTime();
+        handler.handleRequest(inputInstitutionsRequest(), outputStream, context);
+        long passTwoEndTime = System.nanoTime();
+        long secondPass = (passTwoEndTime - passTwoStartTime);
+        assertTrue(secondPass < firstPass);
+    }
+
+    @DisplayName("handleRequest caches response when input is Unit Request")
+    @Test
+    public void handleRequestReturnsCachedResponseWhenInputIsUnitRequest() throws IOException {
+        NestedInstitutionHandlerWithGetRequest handler = nestedInstitutionHandlerWithAccessibleRequestInfo();
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        long passOneStartTime = System.nanoTime();
+        handler.handleRequest(inputInstitutionsRequestWithUnit(), outputStream, context);
+        long passOneEndTime = System.nanoTime();
+        long firstPass = (passOneEndTime - passOneStartTime);
+        long passTwoStartTime = System.nanoTime();
+        handler.handleRequest(inputInstitutionsRequestWithUnit(), outputStream, context);
+        long passTwoEndTime = System.nanoTime();
+        long secondPass = (passTwoEndTime - passTwoStartTime);
+        assertTrue(secondPass < firstPass);
+    }
+
     @DisplayName("handleRequest returns BadRequest to the client when UnknownLanguageException occurs")
     @Test
     public void handleRequestReturnsBadRequestWhenUnknownLanguageExceptionOccurs()
         throws IOException {
-        NestedInstitutionHandler handler = handlerWithNonFunctionalCritinClient();
+        NestedInstitutionHandler handler = handlerWithNonFunctionalCristinClient();
         InputStream inputStream = invalidLanguageRequest();
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 
@@ -255,7 +291,7 @@ public class NestedInstitutionHandlerTest extends HandlerTest {
     @DisplayName("handleRequest returns BadGateway to the client when GatewayException occurs")
     @Test
     public void handleRequestReturnsBadRequestWhenInstitutionFailureOccurs()
-        throws IOException, InvalidUriException, HttpClientFailureException, JsonParsingException {
+        throws IOException, InvalidUriException, HttpClientFailureException {
         NestedInstitutionHandler handler = handlerThatThrowsNestedInstitutionFailureException(SOME_EXCEPTION_MESSAGE);
         InputStream inputStream = inputInstitutionsRequest();
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
@@ -269,7 +305,7 @@ public class NestedInstitutionHandlerTest extends HandlerTest {
     }
 
     private NestedInstitutionHandler handlerThatThrowsNestedInstitutionFailureException(String message)
-        throws InvalidUriException, HttpClientFailureException, JsonParsingException {
+        throws InvalidUriException, HttpClientFailureException {
         CristinApiClient cristinClient = mock(CristinApiClient.class);
         IOException cause = new IOException(message);
         when(cristinClient.getNestedInstitution(any(URI.class), any(Language.class)))
@@ -285,13 +321,18 @@ public class NestedInstitutionHandlerTest extends HandlerTest {
         return objectMapper.readValue(outputString, ref);
     }
 
-    private NestedInstitutionHandler handlerWithNonFunctionalCritinClient() {
+    private NestedInstitutionHandler handlerWithNonFunctionalCristinClient() {
         CristinApiClient cristinClient = mock(CristinApiClient.class);
         return new NestedInstitutionHandler(environment, cristinClient);
     }
 
     private InputStream inputInstitutionsRequest() {
         String input = IoUtils.stringFromResources(NESTED_INSTITUTIONS_REQUEST_WITH_VALID_QUERY_PARAMETERS);
+        return IoUtils.stringToStream(input);
+    }
+
+    private InputStream inputInstitutionsRequestWithUnit() {
+        String input = IoUtils.stringFromResources(NESTED_INSTITUTIONS_REQUEST_WITH_UNIT_AND_VALID_QUERY_PARAMETERS);
         return IoUtils.stringToStream(input);
     }
 
@@ -352,8 +393,12 @@ public class NestedInstitutionHandlerTest extends HandlerTest {
 
         @Override
         public JsonNode getNestedInstitution(URI uri, Language language) {
-            JsonNode jsonNode = objectMapper.createObjectNode();
-            return jsonNode;
+            return objectMapper.createObjectNode();
+        }
+
+        @Override
+        public JsonNode getSingleUnit(URI uri, Language language) {
+            return objectMapper.createObjectNode();
         }
     }
 }

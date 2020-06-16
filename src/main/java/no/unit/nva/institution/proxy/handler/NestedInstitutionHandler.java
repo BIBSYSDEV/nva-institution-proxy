@@ -1,12 +1,7 @@
 package no.unit.nva.institution.proxy.handler;
 
-import static java.util.Objects.isNull;
-import static nva.commons.utils.attempt.Try.attempt;
-
 import com.amazonaws.services.lambda.runtime.Context;
 import com.fasterxml.jackson.databind.JsonNode;
-import java.net.URI;
-import java.util.Optional;
 import no.unit.nva.institution.proxy.CristinApiClient;
 import no.unit.nva.institution.proxy.exception.InvalidUriException;
 import no.unit.nva.institution.proxy.exception.MissingParameterException;
@@ -22,6 +17,14 @@ import nva.commons.utils.attempt.Failure;
 import org.apache.http.HttpStatus;
 import org.slf4j.LoggerFactory;
 
+import java.net.URI;
+import java.util.Map;
+import java.util.Optional;
+import java.util.concurrent.ConcurrentHashMap;
+
+import static java.util.Objects.isNull;
+import static nva.commons.utils.attempt.Try.attempt;
+
 public class NestedInstitutionHandler extends ApiGatewayHandler<Void, JsonNode> {
 
     public static final String LOG_URI_ERROR_TEMPLATE = "The supplied URI <%s> was invalid";
@@ -30,6 +33,7 @@ public class NestedInstitutionHandler extends ApiGatewayHandler<Void, JsonNode> 
     public static final String PARAMETER_NOT_FOUND_ERROR_MESSAGE = "Parameter not found:";
 
     private final CristinApiClient cristinApiClient;
+    private final Map<String, JsonNode> cache = new ConcurrentHashMap<>();
 
     @JacocoGenerated
     public NestedInstitutionHandler() {
@@ -54,11 +58,20 @@ public class NestedInstitutionHandler extends ApiGatewayHandler<Void, JsonNode> 
         String languageCode = getLanguageCodFromQueryParameters(requestInfo);
         Language language = languageMapper.getLanguage(languageCode);
 
+        String key = uri.toString() + language.getCode();
+        if (cache.containsKey(key)) {
+            return cache.get(key);
+        }
+        JsonNode response;
         if (uri.getPath().contains("institutions")) {
-            return cristinApiClient.getNestedInstitution(uri, language);
+            response = cristinApiClient.getNestedInstitution(uri, language);
+            cache.put(key, response);
+            return response;
         } else if (uri.getPath().contains("units")) {
             try {
-                return cristinApiClient.getSingleUnit(uri, language);
+                response = cristinApiClient.getSingleUnit(uri, language);
+                cache.put(key, response);
+                return response;
             } catch (InterruptedException e) {
                 logger.error("Error probably in HttpClient", e);
             }
