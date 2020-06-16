@@ -22,6 +22,8 @@ public class SubUnitDto {
     private URI uri;
     private String acronym;
 
+    private URI sourceUri;
+
     /**
      * Default and JSON constructor.
      *
@@ -91,5 +93,15 @@ public class SubUnitDto {
     @JacocoGenerated
     public void setAcronym(String acronym) {
         this.acronym = acronym;
+    }
+
+    @JacocoGenerated
+    public URI getSourceUri() {
+        return sourceUri;
+    }
+
+    @JacocoGenerated
+    public void setSourceUri(URI sourceUri) {
+        this.sourceUri = sourceUri;
     }
 }

@@ -2,6 +2,7 @@ package no.unit.nva.institution.proxy.dto;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.net.URI;
 import java.util.List;
 import java.util.Map;
 import nva.commons.utils.JacocoGenerated;
@@ -14,6 +15,7 @@ public class SubSubUnitDto {
     private InstitutionDto parentUnit;
     private List<InstitutionDto> parentUnits;
     private List<SubUnitDto> subUnits;
+    private URI sourceUri;
 
     /**
      * The JSON and default creator of the class.
@@ -98,5 +100,15 @@ public class SubSubUnitDto {
     @JacocoGenerated
     public void setSubUnits(List<SubUnitDto> subUnits) {
         this.subUnits = subUnits;
+    }
+
+    @JacocoGenerated
+    public URI getSourceUri() {
+        return sourceUri;
+    }
+
+    @JacocoGenerated
+    public void setSourceUri(URI sourceUri) {
+        this.sourceUri = sourceUri;
     }
 }

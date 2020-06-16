@@ -15,6 +15,7 @@ import java.net.http.HttpResponse.BodyHandlers;
 import java.time.Duration;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.stream.Collectors;
 import no.unit.nva.institution.proxy.dto.InstitutionBaseDto;
 import no.unit.nva.institution.proxy.dto.SubSubUnitDto;
 import no.unit.nva.institution.proxy.exception.HttpClientFailureException;
@@ -81,14 +82,34 @@ public class HttpExecutorImpl extends HttpExecutor {
         NestedInstitutionGenerator generator = new NestedInstitutionGenerator();
         generator.setInstitution(unitUri, name);
         List<URI> unitUris = getUnitUris(institutionUnit.getId(), language);
+        List<Try<SubSubUnitDto>> subsubUnitDtoResponses = unitUris.stream()
+            .parallel()
+            .map(subSubUnitUri -> {
+                Try<SubSubUnitDto> subSubUnitDto = attempt(() -> getSubSubUnitDto(subSubUnitUri, language))
+                    .map(dto -> {
+                        dto.setSourceUri(subSubUnitUri);
+                        return dto;
+                    });
+                return subSubUnitDto;
+            })
+            .collect(Collectors.toList());
 
-        for (URI subSubUnitUri : unitUris) {
-            SubSubUnitDto subSubUnitDto = attempt(() -> getSubSubUnitDto(subSubUnitUri, language))
-                .orElseThrow(this::handleError);
-            generator.addUnitToModel(subSubUnitUri, subSubUnitDto);
-        }
+        checkForFailures(subsubUnitDtoResponses);
+        subsubUnitDtoResponses
+            .stream()
+            .map(Try::get)
+            .forEach(subsubUnit -> generator.addUnitToModel(subsubUnit.getSourceUri(), subsubUnit));
 
         return generator.getNestedInstitution();
+    }
+
+    public void checkForFailures(List<Try<SubSubUnitDto>> subsubUnitDtoResponses) {
+        subsubUnitDtoResponses.stream()
+            .filter(Try::isFailure)
+            .findAny().
+            ifPresent(fail -> {
+                throw new RuntimeException(fail.getException());
+            });
     }
 
     private Try<HttpResponse<String>> sendRequestMultipleTimes(URI uri) {
