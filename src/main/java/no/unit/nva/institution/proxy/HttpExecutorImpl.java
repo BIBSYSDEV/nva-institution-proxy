@@ -34,7 +34,7 @@ public class HttpExecutorImpl extends HttpExecutor {
 
     public static final String NVA_INSTITUTIONS_LIST_CRAWLER = "NVA Institutions List Crawler";
     public static final String INSTITUTIONS_URI_TEMPLATE =
-        "https://api.cristin.no/v2/institutions?country=NO" + "&per_page=1000000&lang=%s";
+        "https://api.cristin.no/v2/institutions?country=NO" + "&per_page=1000000&lang=%s&cristin_institution=true";
     public static final String PARENT_UNIT_URI_TEMPLATE =
         "https://api.cristin.no/v2/units?parent_unit_id=%s&per_page" + "=20000";
     public static final int FIRST_EFFORT = 0;
