@@ -96,15 +96,15 @@ public class HttpExecutorImpl extends HttpExecutor {
         return generator.getNestedInstitution();
     }
 
-    public void addSubSubUnitsToNestedInstitutionGenerator(NestedInstitutionGenerator generator,
-                                                           List<Try<SubSubUnitDto>> subSubUnitDtoResponses) {
+    private void addSubSubUnitsToNestedInstitutionGenerator(NestedInstitutionGenerator generator,
+                                                            List<Try<SubSubUnitDto>> subSubUnitDtoResponses) {
         subSubUnitDtoResponses
             .stream()
             .map(Try::get)
             .forEach(subsubUnit -> generator.addUnitToModel(subsubUnit.getSourceUri(), subsubUnit));
     }
 
-    public List<Try<SubSubUnitDto>> fetchSubSubUnitInformation(Language language, List<URI> unitUris) {
+    private List<Try<SubSubUnitDto>> fetchSubSubUnitInformation(Language language, List<URI> unitUris) {
         return unitUris.stream().parallel()
             .map(attempt(subSubUnitUri -> getSubSubUnitDtoWithMultipleEfforts(subSubUnitUri, language)))
             .collect(Collectors.toList());
