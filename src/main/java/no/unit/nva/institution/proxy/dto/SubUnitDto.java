@@ -1,5 +1,6 @@
 package no.unit.nva.institution.proxy.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.net.URI;
 import java.util.Map;
@@ -22,6 +23,7 @@ public class SubUnitDto {
     private URI uri;
     private String acronym;
 
+    @JsonIgnore
     private URI sourceUri;
 
     /**

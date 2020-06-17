@@ -1,6 +1,7 @@
 package no.unit.nva.institution.proxy.dto;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.net.URI;
 import java.util.List;
@@ -15,6 +16,7 @@ public class SubSubUnitDto {
     private InstitutionDto parentUnit;
     private List<InstitutionDto> parentUnits;
     private List<SubUnitDto> subUnits;
+    @JsonIgnore
     private URI sourceUri;
 
     /**

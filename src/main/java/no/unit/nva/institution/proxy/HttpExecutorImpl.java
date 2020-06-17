@@ -37,14 +37,13 @@ public class HttpExecutorImpl extends HttpExecutor {
 
     public static final String NVA_INSTITUTIONS_LIST_CRAWLER = "NVA Institutions List Crawler";
     public static final String INSTITUTIONS_URI_TEMPLATE =
-        "https://api.cristin.no/v2/institutions?country=NO" + "&per_page=1000000&lang=%s&cristin_institution=true";
+        "https://api.cristin.no/v2/institutions?country=NO" + "&per_page=1000&lang=%s&cristin_institution=true";
     public static final String PARENT_UNIT_URI_TEMPLATE =
         "https://api.cristin.no/v2/units?parent_unit_id=%s&per_page" + "=20000";
     public static final int FIRST_EFFORT = 0;
     public static final int MAX_EFFORTS = 2;
     public static final int WAITING_TIME = 500; //500 milliseconds
     public static final String LOG_INTERRUPTION = "InterruptedException while waiting to resend HTTP request";
-    public static final String ERROR_FETCHING_DATA_FOR_URI = "Failed fetching data for URI:";
     private final HttpClient httpClient;
 
     private static final Logger logger = LoggerFactory.getLogger(HttpExecutorImpl.class);
@@ -85,21 +84,30 @@ public class HttpExecutorImpl extends HttpExecutor {
         String name = MapUtils.getNameValue(institutionUnit.getName());
         NestedInstitutionGenerator generator = new NestedInstitutionGenerator();
         generator.setInstitution(unitUri, name);
+
         List<URI> unitUris = getUnitUris(institutionUnit.getId(), language);
 
-        List<Try<SubSubUnitDto>> subsubUnitDtoResponses =
-            unitUris.stream().parallel()
-                .map(attempt(subSubUnitUri -> getSubSubUnitDtoWithMultipleEfforts(subSubUnitUri, language)))
-                .collect(Collectors.toList());
+        List<Try<SubSubUnitDto>> subSubUnitDtoResponses = fetchSubSubUnitInformation(language, unitUris);
 
-        multipleRequestFailures(subsubUnitDtoResponses);
+        multipleRequestFailures(subSubUnitDtoResponses);
 
-        subsubUnitDtoResponses
+        addSubSubUnitsToNestedInstitutionGenerator(generator, subSubUnitDtoResponses);
+
+        return generator.getNestedInstitution();
+    }
+
+    public void addSubSubUnitsToNestedInstitutionGenerator(NestedInstitutionGenerator generator,
+                                                           List<Try<SubSubUnitDto>> subSubUnitDtoResponses) {
+        subSubUnitDtoResponses
             .stream()
             .map(Try::get)
             .forEach(subsubUnit -> generator.addUnitToModel(subsubUnit.getSourceUri(), subsubUnit));
+    }
 
-        return generator.getNestedInstitution();
+    public List<Try<SubSubUnitDto>> fetchSubSubUnitInformation(Language language, List<URI> unitUris) {
+        return unitUris.stream().parallel()
+            .map(attempt(subSubUnitUri -> getSubSubUnitDtoWithMultipleEfforts(subSubUnitUri, language)))
+            .collect(Collectors.toList());
     }
 
     private void multipleRequestFailures(List<Try<SubSubUnitDto>> subsubUnitDtoResponses)
