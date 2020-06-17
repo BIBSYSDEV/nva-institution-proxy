@@ -14,10 +14,12 @@ import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.time.Duration;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 import no.unit.nva.institution.proxy.dto.InstitutionBaseDto;
 import no.unit.nva.institution.proxy.dto.SubSubUnitDto;
+import no.unit.nva.institution.proxy.exception.FailedHttpRequestException;
 import no.unit.nva.institution.proxy.exception.HttpClientFailureException;
 import no.unit.nva.institution.proxy.exception.NonExistingUnitError;
 import no.unit.nva.institution.proxy.response.InstitutionListResponse;
@@ -42,6 +44,7 @@ public class HttpExecutorImpl extends HttpExecutor {
     public static final int MAX_EFFORTS = 2;
     public static final int WAITING_TIME = 500; //500 milliseconds
     public static final String LOG_INTERRUPTION = "InterruptedException while waiting to resend HTTP request";
+    public static final String ERROR_FETCHING_DATA_FOR_URI = "Failed fetching data for URI:";
     private final HttpClient httpClient;
 
     private static final Logger logger = LoggerFactory.getLogger(HttpExecutorImpl.class);
@@ -74,7 +77,8 @@ public class HttpExecutorImpl extends HttpExecutor {
     }
 
     @Override
-    public JsonNode getNestedInstitution(URI uri, Language language) throws HttpClientFailureException {
+    public JsonNode getNestedInstitution(URI uri, Language language)
+        throws HttpClientFailureException, FailedHttpRequestException {
         URI unitUri = getInstitutionUnitUri(uri, language);
         InstitutionBaseDto institutionUnit = getInstitutionBaseDto(unitUri, language);
 
@@ -82,19 +86,14 @@ public class HttpExecutorImpl extends HttpExecutor {
         NestedInstitutionGenerator generator = new NestedInstitutionGenerator();
         generator.setInstitution(unitUri, name);
         List<URI> unitUris = getUnitUris(institutionUnit.getId(), language);
-        List<Try<SubSubUnitDto>> subsubUnitDtoResponses = unitUris.stream()
-            .parallel()
-            .map(subSubUnitUri -> {
-                Try<SubSubUnitDto> subSubUnitDto = attempt(() -> getSubSubUnitDto(subSubUnitUri, language))
-                    .map(dto -> {
-                        dto.setSourceUri(subSubUnitUri);
-                        return dto;
-                    });
-                return subSubUnitDto;
-            })
-            .collect(Collectors.toList());
 
-        checkForFailures(subsubUnitDtoResponses);
+        List<Try<SubSubUnitDto>> subsubUnitDtoResponses =
+            unitUris.stream().parallel()
+                .map(attempt(subSubUnitUri -> getSubSubUnitDtoWithMultipleEfforts(subSubUnitUri, language)))
+                .collect(Collectors.toList());
+
+        multipleRequestFailures(subsubUnitDtoResponses);
+
         subsubUnitDtoResponses
             .stream()
             .map(Try::get)
@@ -103,13 +102,14 @@ public class HttpExecutorImpl extends HttpExecutor {
         return generator.getNestedInstitution();
     }
 
-    public void checkForFailures(List<Try<SubSubUnitDto>> subsubUnitDtoResponses) {
-        subsubUnitDtoResponses.stream()
+    private void multipleRequestFailures(List<Try<SubSubUnitDto>> subsubUnitDtoResponses)
+        throws FailedHttpRequestException {
+        Optional<Try<SubSubUnitDto>> failedRequest = subsubUnitDtoResponses.stream()
             .filter(Try::isFailure)
-            .findAny().
-            ifPresent(fail -> {
-                throw new RuntimeException(fail.getException());
-            });
+            .findAny();
+        if (failedRequest.isPresent()) {
+            throw new FailedHttpRequestException(failedRequest.get().getException());
+        }
     }
 
     private Try<HttpResponse<String>> sendRequestMultipleTimes(URI uri) {
@@ -175,14 +175,18 @@ public class HttpExecutorImpl extends HttpExecutor {
         return institutionDto.getCorrespondingUnitDto().getUri();
     }
 
-    private SubSubUnitDto getSubSubUnitDto(URI subunitUri, Language language) throws HttpClientFailureException {
-        return
-            Try.of(UriUtils.getUriWithLanguage(subunitUri, language))
-                .flatMap(this::sendRequestMultipleTimes)
-                .map(this::throwExceptionIfNotSuccessful)
-                .map(HttpResponse::body)
-                .map(InstitutionUtils::toSubSubUnitDto)
-                .orElseThrow(this::handleError);
+    private SubSubUnitDto getSubSubUnitDtoWithMultipleEfforts(URI subunitUri, Language language)
+        throws HttpClientFailureException {
+
+        SubSubUnitDto subsubUnitDto = Try.of(UriUtils.getUriWithLanguage(subunitUri, language))
+            .flatMap(this::sendRequestMultipleTimes)
+            .map(this::throwExceptionIfNotSuccessful)
+            .map(HttpResponse::body)
+            .map(InstitutionUtils::toSubSubUnitDto)
+            .orElseThrow(this::handleError);
+
+        subsubUnitDto.setSourceUri(subunitUri);
+        return subsubUnitDto;
     }
 
     private List<URI> getUnitUris(String id, Language language) throws HttpClientFailureException {
