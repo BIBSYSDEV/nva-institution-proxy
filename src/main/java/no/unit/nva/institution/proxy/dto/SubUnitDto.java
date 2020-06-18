@@ -1,5 +1,6 @@
 package no.unit.nva.institution.proxy.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.net.URI;
 import java.util.Map;
@@ -21,6 +22,9 @@ public class SubUnitDto {
     private Map<String, String> institution;
     private URI uri;
     private String acronym;
+
+    @JsonIgnore
+    private URI sourceUri;
 
     /**
      * Default and JSON constructor.
@@ -91,5 +95,15 @@ public class SubUnitDto {
     @JacocoGenerated
     public void setAcronym(String acronym) {
         this.acronym = acronym;
+    }
+
+    @JacocoGenerated
+    public URI getSourceUri() {
+        return sourceUri;
+    }
+
+    @JacocoGenerated
+    public void setSourceUri(URI sourceUri) {
+        this.sourceUri = sourceUri;
     }
 }

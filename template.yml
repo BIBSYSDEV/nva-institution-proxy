@@ -14,7 +14,7 @@ Metadata:
 
 Globals:
   Function:
-    Timeout: 20
+    Timeout: 60
   Api:
     Cors:
       AllowMethods: "'GET,POST,OPTIONS'"

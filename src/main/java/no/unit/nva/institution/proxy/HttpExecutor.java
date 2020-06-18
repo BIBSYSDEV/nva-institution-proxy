@@ -23,7 +23,7 @@ public abstract class HttpExecutor {
     public abstract InstitutionListResponse getInstitutions(Language language) throws HttpClientFailureException;
 
     public abstract JsonNode getNestedInstitution(URI uri, Language language)
-        throws HttpClientFailureException, InvalidUriException;
+        throws HttpClientFailureException, InvalidUriException, FailedHttpRequestException;
 
     public abstract JsonNode getSingleUnit(URI uri, Language language)
         throws NonExistingUnitError, HttpClientFailureException, InterruptedException;

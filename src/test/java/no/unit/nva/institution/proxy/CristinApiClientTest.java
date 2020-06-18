@@ -18,6 +18,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.net.URI;
 import java.nio.file.Path;
 import java.util.Collections;
+import no.unit.nva.institution.proxy.exception.FailedHttpRequestException;
 import no.unit.nva.institution.proxy.exception.HttpClientFailureException;
 import no.unit.nva.institution.proxy.exception.InvalidUriException;
 import no.unit.nva.institution.proxy.exception.JsonParsingException;
@@ -47,7 +48,7 @@ public class CristinApiClientTest {
     @DisplayName("getNestedInstitution returns nested institution when input is valid")
     @Test
     void getNestedInstitutionReturnsNestedInstitutionWhenInputIsValid()
-        throws InvalidUriException, HttpClientFailureException, JsonParsingException {
+        throws InvalidUriException, HttpClientFailureException, JsonParsingException, FailedHttpRequestException {
         HttpExecutor mockHttpExecutor = mock(HttpExecutorImpl.class);
         ObjectNode mockResponse = simpleJsonObject();
         when(mockHttpExecutor.getNestedInstitution(any(), any()))

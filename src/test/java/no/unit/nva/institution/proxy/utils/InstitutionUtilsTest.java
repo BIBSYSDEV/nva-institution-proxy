@@ -24,7 +24,7 @@ import org.junit.jupiter.api.Test;
 class InstitutionUtilsTest {
 
     public static final String CRISTIN_RESOURCES = "cristin_responses";
-    public static final Path CRISTIN_RESPONSE = Path.of(CRISTIN_RESOURCES, "all_institutions_nb.json");
+    public static final Path CRISTIN_RESPONSE = Path.of(CRISTIN_RESOURCES, "cristin_user_institutions.json");
     public static final String EMPTY_ARRAY = "[]";
     private static final String INVALID_JSON = "{noQuotes:here}";
 
@@ -65,7 +65,6 @@ class InstitutionUtilsTest {
     private URI[] urisFromInstitutionsList(String input) throws IOException {
         InstitutionDto[] institutions = JsonUtils.objectMapper.readValue(input, InstitutionDto[].class);
         List<URI> expectedIds = Arrays.stream(institutions)
-            .filter(InstitutionDto::isCristinUser)
             .map(InstitutionDto::getUri)
             .collect(Collectors.toList());
         URI[] expectedArray = new URI[expectedIds.size()];

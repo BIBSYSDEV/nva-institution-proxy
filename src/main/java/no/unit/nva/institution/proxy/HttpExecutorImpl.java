@@ -14,15 +14,17 @@ import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.time.Duration;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
+import java.util.stream.Collectors;
 import no.unit.nva.institution.proxy.dto.InstitutionBaseDto;
 import no.unit.nva.institution.proxy.dto.SubSubUnitDto;
+import no.unit.nva.institution.proxy.exception.FailedHttpRequestException;
 import no.unit.nva.institution.proxy.exception.HttpClientFailureException;
 import no.unit.nva.institution.proxy.exception.NonExistingUnitError;
 import no.unit.nva.institution.proxy.response.InstitutionListResponse;
 import no.unit.nva.institution.proxy.utils.InstitutionUtils;
 import no.unit.nva.institution.proxy.utils.Language;
-import no.unit.nva.institution.proxy.utils.MapUtils;
 import no.unit.nva.institution.proxy.utils.UriUtils;
 import nva.commons.utils.JacocoGenerated;
 import nva.commons.utils.attempt.Failure;
@@ -34,7 +36,7 @@ public class HttpExecutorImpl extends HttpExecutor {
 
     public static final String NVA_INSTITUTIONS_LIST_CRAWLER = "NVA Institutions List Crawler";
     public static final String INSTITUTIONS_URI_TEMPLATE =
-        "https://api.cristin.no/v2/institutions?country=NO" + "&per_page=1000000&lang=%s";
+        "https://api.cristin.no/v2/institutions?country=NO" + "&per_page=1000&lang=%s&cristin_institution=true";
     public static final String PARENT_UNIT_URI_TEMPLATE =
         "https://api.cristin.no/v2/units?parent_unit_id=%s&per_page" + "=20000";
     public static final int FIRST_EFFORT = 0;
@@ -73,22 +75,60 @@ public class HttpExecutorImpl extends HttpExecutor {
     }
 
     @Override
-    public JsonNode getNestedInstitution(URI uri, Language language) throws HttpClientFailureException {
+    public JsonNode getNestedInstitution(URI uri, Language language)
+        throws HttpClientFailureException, FailedHttpRequestException {
         URI unitUri = getInstitutionUnitUri(uri, language);
+
         InstitutionBaseDto institutionUnit = getInstitutionBaseDto(unitUri, language);
+        List<SubSubUnitDto> subSubUnitDtoResponses = fetchInstitutionUnits(language, institutionUnit);
 
-        String name = MapUtils.getNameValue(institutionUnit.getName());
         NestedInstitutionGenerator generator = new NestedInstitutionGenerator();
-        generator.setInstitution(unitUri, name);
-        List<URI> unitUris = getUnitUris(institutionUnit.getId(), language);
-
-        for (URI subSubUnitUri : unitUris) {
-            SubSubUnitDto subSubUnitDto = attempt(() -> getSubSubUnitDto(subSubUnitUri, language))
-                .orElseThrow(this::handleError);
-            generator.addUnitToModel(subSubUnitUri, subSubUnitDto);
-        }
+        generator.setInstitution(institutionUnit);
+        addSubSubUnitsToNestedInstitutionGenerator(generator, subSubUnitDtoResponses);
 
         return generator.getNestedInstitution();
+    }
+
+    private List<SubSubUnitDto> fetchInstitutionUnits(Language language, InstitutionBaseDto institutionUnit)
+        throws HttpClientFailureException, FailedHttpRequestException {
+        List<URI> unitUris = getUnitUris(institutionUnit.getId(), language);
+        List<Try<SubSubUnitDto>> subSubUnitDtoResponses = fetchSubSubUnitInformation(language, unitUris);
+        checkForRequestFailures(subSubUnitDtoResponses);
+        return subSubUnitDtoResponses.stream().map(Try::get).collect(Collectors.toList());
+    }
+
+    private List<URI> getUnitUris(String id, Language language) throws HttpClientFailureException {
+        return
+            attempt(
+                () -> UriUtils.getUriWithLanguage(URI.create(String.format(PARENT_UNIT_URI_TEMPLATE, id)), language))
+                .flatMap(this::sendRequestMultipleTimes)
+                .map(this::throwExceptionIfNotSuccessful)
+                .map(HttpResponse::body)
+                .map(this::bodyToUriList)
+                .orElseThrow(this::handleError);
+    }
+
+    private void addSubSubUnitsToNestedInstitutionGenerator(NestedInstitutionGenerator generator,
+                                                            List<SubSubUnitDto> subSubUnitDtoResponses) {
+        subSubUnitDtoResponses
+            .forEach(subsubUnit -> generator.addUnitToModel(subsubUnit.getSourceUri(), subsubUnit));
+    }
+
+    private List<Try<SubSubUnitDto>> fetchSubSubUnitInformation(Language language, List<URI> unitUris) {
+        return unitUris.stream().parallel()
+            .map(attempt(subSubUnitUri -> getSubSubUnitDtoWithMultipleEfforts(subSubUnitUri, language)))
+            .collect(Collectors.toList());
+    }
+
+    private void checkForRequestFailures(List<Try<SubSubUnitDto>> subsubUnitDtoResponses)
+        throws FailedHttpRequestException {
+        Optional<Try<SubSubUnitDto>> failedRequest = subsubUnitDtoResponses
+            .stream().parallel()
+            .filter(Try::isFailure)
+            .findAny();
+        if (failedRequest.isPresent()) {
+            throw new FailedHttpRequestException(failedRequest.get().getException());
+        }
     }
 
     private Try<HttpResponse<String>> sendRequestMultipleTimes(URI uri) {
@@ -154,25 +194,18 @@ public class HttpExecutorImpl extends HttpExecutor {
         return institutionDto.getCorrespondingUnitDto().getUri();
     }
 
-    private SubSubUnitDto getSubSubUnitDto(URI subunitUri, Language language) throws HttpClientFailureException {
-        return
-            Try.of(UriUtils.getUriWithLanguage(subunitUri, language))
-                .flatMap(this::sendRequestMultipleTimes)
-                .map(this::throwExceptionIfNotSuccessful)
-                .map(HttpResponse::body)
-                .map(InstitutionUtils::toSubSubUnitDto)
-                .orElseThrow(this::handleError);
-    }
+    private SubSubUnitDto getSubSubUnitDtoWithMultipleEfforts(URI subunitUri, Language language)
+        throws HttpClientFailureException {
 
-    private List<URI> getUnitUris(String id, Language language) throws HttpClientFailureException {
-        return
-            attempt(
-                () -> UriUtils.getUriWithLanguage(URI.create(String.format(PARENT_UNIT_URI_TEMPLATE, id)), language))
-                .flatMap(this::sendRequestMultipleTimes)
-                .map(this::throwExceptionIfNotSuccessful)
-                .map(HttpResponse::body)
-                .map(this::bodyToUriList)
-                .orElseThrow(this::handleError);
+        SubSubUnitDto subsubUnitDto = Try.of(UriUtils.getUriWithLanguage(subunitUri, language))
+            .flatMap(this::sendRequestMultipleTimes)
+            .map(this::throwExceptionIfNotSuccessful)
+            .map(HttpResponse::body)
+            .map(InstitutionUtils::toSubSubUnitDto)
+            .orElseThrow(this::handleError);
+
+        subsubUnitDto.setSourceUri(subunitUri);
+        return subsubUnitDto;
     }
 
     private List<URI> bodyToUriList(String json) throws IOException {
@@ -180,13 +213,14 @@ public class HttpExecutorImpl extends HttpExecutor {
     }
 
     private InstitutionBaseDto getInstitutionBaseDto(URI uri, Language language) throws HttpClientFailureException {
-        return
-            attempt(() -> UriUtils.getUriWithLanguage(uri, language))
-                .flatMap(this::sendRequestMultipleTimes)
-                .map(this::throwExceptionIfNotSuccessful)
-                .map(HttpResponse::body)
-                .map(this::toInstitutionBaseDto)
-                .orElseThrow(this::handleError);
+        InstitutionBaseDto institutionBaseDto = attempt(() -> UriUtils.getUriWithLanguage(uri, language))
+            .flatMap(this::sendRequestMultipleTimes)
+            .map(this::throwExceptionIfNotSuccessful)
+            .map(HttpResponse::body)
+            .map(this::toInstitutionBaseDto)
+            .orElseThrow(this::handleError);
+        institutionBaseDto.setSourceUri(uri);
+        return institutionBaseDto;
     }
 
     private InstitutionBaseDto toInstitutionBaseDto(String json) throws IOException {

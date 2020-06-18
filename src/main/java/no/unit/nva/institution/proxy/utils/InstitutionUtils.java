@@ -36,7 +36,6 @@ public final class InstitutionUtils {
                 JsonUtils.objectMapper.readValue(institutionsJson, InstitutionDto[].class));
             return new InstitutionListResponse(institutions
                 .stream()
-                .filter(InstitutionDto::isCristinUser)
                 .map(InstitutionUtils::toInstitutionResponse)
                 .collect(Collectors.toList()));
         } catch (IOException e) {
