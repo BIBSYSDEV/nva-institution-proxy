@@ -79,28 +79,40 @@ public class HttpExecutorImpl extends HttpExecutor {
     public JsonNode getNestedInstitution(URI uri, Language language)
         throws HttpClientFailureException, FailedHttpRequestException {
         URI unitUri = getInstitutionUnitUri(uri, language);
+
         InstitutionBaseDto institutionUnit = getInstitutionBaseDto(unitUri, language);
+        List<SubSubUnitDto> subSubUnitDtoResponses = fetchInstitutionUnits(language, institutionUnit);
 
-        String name = MapUtils.getNameValue(institutionUnit.getName());
         NestedInstitutionGenerator generator = new NestedInstitutionGenerator();
+        String name = MapUtils.getNameValue(institutionUnit.getName());
         generator.setInstitution(unitUri, name);
-
-        List<URI> unitUris = getUnitUris(institutionUnit.getId(), language);
-
-        List<Try<SubSubUnitDto>> subSubUnitDtoResponses = fetchSubSubUnitInformation(language, unitUris);
-
-        multipleRequestFailures(subSubUnitDtoResponses);
-
         addSubSubUnitsToNestedInstitutionGenerator(generator, subSubUnitDtoResponses);
 
         return generator.getNestedInstitution();
     }
 
+    private List<SubSubUnitDto> fetchInstitutionUnits(Language language, InstitutionBaseDto institutionUnit)
+        throws HttpClientFailureException, FailedHttpRequestException {
+        List<URI> unitUris = getUnitUris(institutionUnit.getId(), language);
+        List<Try<SubSubUnitDto>> subSubUnitDtoResponses = fetchSubSubUnitInformation(language, unitUris);
+        multipleRequestFailures(subSubUnitDtoResponses);
+        return subSubUnitDtoResponses.stream().map(Try::get).collect(Collectors.toList());
+    }
+
+    private List<URI> getUnitUris(String id, Language language) throws HttpClientFailureException {
+        return
+            attempt(
+                () -> UriUtils.getUriWithLanguage(URI.create(String.format(PARENT_UNIT_URI_TEMPLATE, id)), language))
+                .flatMap(this::sendRequestMultipleTimes)
+                .map(this::throwExceptionIfNotSuccessful)
+                .map(HttpResponse::body)
+                .map(this::bodyToUriList)
+                .orElseThrow(this::handleError);
+    }
+
     private void addSubSubUnitsToNestedInstitutionGenerator(NestedInstitutionGenerator generator,
-                                                            List<Try<SubSubUnitDto>> subSubUnitDtoResponses) {
+                                                            List<SubSubUnitDto> subSubUnitDtoResponses) {
         subSubUnitDtoResponses
-            .stream()
-            .map(Try::get)
             .forEach(subsubUnit -> generator.addUnitToModel(subsubUnit.getSourceUri(), subsubUnit));
     }
 
@@ -112,7 +124,8 @@ public class HttpExecutorImpl extends HttpExecutor {
 
     private void multipleRequestFailures(List<Try<SubSubUnitDto>> subsubUnitDtoResponses)
         throws FailedHttpRequestException {
-        Optional<Try<SubSubUnitDto>> failedRequest = subsubUnitDtoResponses.stream()
+        Optional<Try<SubSubUnitDto>> failedRequest = subsubUnitDtoResponses
+            .stream().parallel()
             .filter(Try::isFailure)
             .findAny();
         if (failedRequest.isPresent()) {
@@ -195,17 +208,6 @@ public class HttpExecutorImpl extends HttpExecutor {
 
         subsubUnitDto.setSourceUri(subunitUri);
         return subsubUnitDto;
-    }
-
-    private List<URI> getUnitUris(String id, Language language) throws HttpClientFailureException {
-        return
-            attempt(
-                () -> UriUtils.getUriWithLanguage(URI.create(String.format(PARENT_UNIT_URI_TEMPLATE, id)), language))
-                .flatMap(this::sendRequestMultipleTimes)
-                .map(this::throwExceptionIfNotSuccessful)
-                .map(HttpResponse::body)
-                .map(this::bodyToUriList)
-                .orElseThrow(this::handleError);
     }
 
     private List<URI> bodyToUriList(String json) throws IOException {
