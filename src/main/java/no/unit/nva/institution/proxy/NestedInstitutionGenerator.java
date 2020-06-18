@@ -4,6 +4,7 @@ import static no.unit.nva.institution.proxy.utils.MapUtils.getNameValue;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import java.net.URI;
+import no.unit.nva.institution.proxy.dto.InstitutionBaseDto;
 import no.unit.nva.institution.proxy.dto.SubSubUnitDto;
 import no.unit.nva.institution.proxy.utils.ModelUtils;
 
@@ -38,11 +39,11 @@ public class NestedInstitutionGenerator {
     /**
      * Adds a single triple for the top-level institution, using the corresponding unit URI as subject.
      *
-     * @param uri  The URI of the corresponding unit
-     * @param name The name of the unit.
+     * @param institution the institution unit.
      */
-    public void setInstitution(URI uri, String name) {
-        modelUtils.addTypeToModel(uri);
-        modelUtils.addNameToModel(uri, name);
+    public void setInstitution(InstitutionBaseDto institution) {
+        String name = getNameValue(institution.getName());
+        modelUtils.addTypeToModel(institution.getSourceUri());
+        modelUtils.addNameToModel(institution.getSourceUri(), name);
     }
 }

@@ -25,7 +25,6 @@ import no.unit.nva.institution.proxy.exception.NonExistingUnitError;
 import no.unit.nva.institution.proxy.response.InstitutionListResponse;
 import no.unit.nva.institution.proxy.utils.InstitutionUtils;
 import no.unit.nva.institution.proxy.utils.Language;
-import no.unit.nva.institution.proxy.utils.MapUtils;
 import no.unit.nva.institution.proxy.utils.UriUtils;
 import nva.commons.utils.JacocoGenerated;
 import nva.commons.utils.attempt.Failure;
@@ -84,8 +83,7 @@ public class HttpExecutorImpl extends HttpExecutor {
         List<SubSubUnitDto> subSubUnitDtoResponses = fetchInstitutionUnits(language, institutionUnit);
 
         NestedInstitutionGenerator generator = new NestedInstitutionGenerator();
-        String name = MapUtils.getNameValue(institutionUnit.getName());
-        generator.setInstitution(unitUri, name);
+        generator.setInstitution(institutionUnit);
         addSubSubUnitsToNestedInstitutionGenerator(generator, subSubUnitDtoResponses);
 
         return generator.getNestedInstitution();
@@ -215,13 +213,14 @@ public class HttpExecutorImpl extends HttpExecutor {
     }
 
     private InstitutionBaseDto getInstitutionBaseDto(URI uri, Language language) throws HttpClientFailureException {
-        return
-            attempt(() -> UriUtils.getUriWithLanguage(uri, language))
-                .flatMap(this::sendRequestMultipleTimes)
-                .map(this::throwExceptionIfNotSuccessful)
-                .map(HttpResponse::body)
-                .map(this::toInstitutionBaseDto)
-                .orElseThrow(this::handleError);
+        InstitutionBaseDto institutionBaseDto = attempt(() -> UriUtils.getUriWithLanguage(uri, language))
+            .flatMap(this::sendRequestMultipleTimes)
+            .map(this::throwExceptionIfNotSuccessful)
+            .map(HttpResponse::body)
+            .map(this::toInstitutionBaseDto)
+            .orElseThrow(this::handleError);
+        institutionBaseDto.setSourceUri(uri);
+        return institutionBaseDto;
     }
 
     private InstitutionBaseDto toInstitutionBaseDto(String json) throws IOException {
