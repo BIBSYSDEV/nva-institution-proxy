@@ -2,6 +2,7 @@ package no.unit.nva.institution.proxy;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import java.net.URI;
+import no.unit.nva.institution.proxy.exception.FailedHttpRequestException;
 import no.unit.nva.institution.proxy.exception.HttpClientFailureException;
 import no.unit.nva.institution.proxy.exception.InvalidUriException;
 import no.unit.nva.institution.proxy.exception.NonExistingUnitError;
@@ -37,7 +38,7 @@ public class CristinApiClient {
      * @throws InvalidUriException        when the input URI is invalid.
      */
     public JsonNode getNestedInstitution(URI uri, Language language)
-        throws HttpClientFailureException, InvalidUriException {
+        throws HttpClientFailureException, InvalidUriException, FailedHttpRequestException {
         return httpExecutor.getNestedInstitution(uri, language);
     }
 

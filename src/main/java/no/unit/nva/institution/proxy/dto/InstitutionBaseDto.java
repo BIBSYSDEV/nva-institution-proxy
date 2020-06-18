@@ -2,7 +2,9 @@ package no.unit.nva.institution.proxy.dto;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.net.URI;
 import java.util.List;
 import java.util.Map;
 import nva.commons.utils.JacocoGenerated;
@@ -40,6 +42,9 @@ public class InstitutionBaseDto {
     private CorrespondingUnitDto correspondingUnitDto;
     private List<SubSubUnitDto> subUnitDtoList;
     private InstitutionDto institution;
+
+    @JsonIgnore
+    private URI sourceUri;
 
     /**
      * The JSON and default constructor.
@@ -151,5 +156,15 @@ public class InstitutionBaseDto {
     @JacocoGenerated
     public void setInstitution(InstitutionDto institution) {
         this.institution = institution;
+    }
+
+    @JacocoGenerated
+    public URI getSourceUri() {
+        return sourceUri;
+    }
+
+    @JacocoGenerated
+    public void setSourceUri(URI sourceUri) {
+        this.sourceUri = sourceUri;
     }
 }

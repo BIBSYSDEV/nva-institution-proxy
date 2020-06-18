@@ -53,7 +53,7 @@ public class HttpClientGetsNestedInstitutionResponse {
     private static final String ADMINISTRATION_URI = "https://api.cristin.no/v2/units/1.1.0.0";
     private static final String ADMINISTRATION_ONE_URI = "https://api.cristin.no/v2/units/1.1.1.0";
     private static final String ADMINISTRATION_TWO_URI = "https://api.cristin.no/v2/units/1.1.2.0";
-    private static final String ADMINISTRATION_ONE_LH_URI = "https://api.cristin.no/v2/units/1.1.1.1";
+    public static final String ADMINISTRATION_ONE_LH_URI = "https://api.cristin.no/v2/units/1.1.1.1";
     private static final String CULTURAL_STUDIES_URI = "https://api.cristin.no/v2/units/1.3.0.0";
     private static final String WELSH_LANGUAGE_URI = "https://api.cristin.no/v2/units/1.4.0.0";
 

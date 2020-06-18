@@ -21,14 +21,12 @@ import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import no.unit.nva.institution.proxy.CristinApiClient;
+import no.unit.nva.institution.proxy.exception.FailedHttpRequestException;
 import no.unit.nva.institution.proxy.exception.HttpClientFailureException;
 import no.unit.nva.institution.proxy.exception.InvalidUriException;
-import no.unit.nva.institution.proxy.exception.JsonParsingException;
 import no.unit.nva.institution.proxy.exception.MissingParameterException;
-import no.unit.nva.institution.proxy.request.NestedInstitutionRequest;
 import no.unit.nva.institution.proxy.response.InstitutionListResponse;
 import no.unit.nva.institution.proxy.utils.Language;
-import no.unit.nva.testutils.HandlerUtils;
 import no.unit.nva.testutils.TestContext;
 import no.unit.nva.testutils.TestLogger;
 import nva.commons.exceptions.ApiGatewayException;
@@ -36,6 +34,8 @@ import nva.commons.handlers.GatewayResponse;
 import nva.commons.handlers.RequestInfo;
 import nva.commons.utils.Environment;
 import nva.commons.utils.IoUtils;
+import nva.commons.utils.attempt.Failure;
+import nva.commons.utils.attempt.Try;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -89,9 +89,8 @@ public class NestedInstitutionHandlerTest extends HandlerTest {
     void testAnInstitutionCanBeNestedFromLiveData() throws IOException {
         NestedInstitutionHandler nestedInstitutionHandler =
             new NestedInstitutionHandler(environment, new CristinApiClient());
-        NestedInstitutionRequest request =
-            new NestedInstitutionRequest("https://api.cristin.no/v2/institutions/185", "en");
-        InputStream inputStream = HandlerUtils.requestObjectToApiGatewayRequestInputSteam(request, null);
+        InputStream inputStream =
+            IoUtils.inputStreamFromResources(Path.of("events", "nested_institutions_request_for_uio.json"));
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 
         Context context = new TestContext();
@@ -104,16 +103,18 @@ public class NestedInstitutionHandlerTest extends HandlerTest {
     @DisplayName("Tests that a single unit can be nested from live data")
     @Test
     @Tag("online")
-    void testSingleUnitCanBeNestedFromLiveData() throws IOException {
+    void testSingleUnitCanBeNestedFromLiveData() throws Exception {
         TestContext context = new TestContext();
 
         NestedInstitutionHandler nestedInstitutionHandler =
             new NestedInstitutionHandler(environment, new CristinApiClient());
-        NestedInstitutionRequest request =
-            new NestedInstitutionRequest("https://api.cristin.no/v2/units/194.63.1.20", "en");
+
+        InputStream input = Try
+            .of(Path.of(EVENTS_FOLDER, "nested_institutions_request_for_single_unit_uio.json"))
+            .map(IoUtils::inputStreamFromResources)
+            .orElseThrow(Failure::getException);
 
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        InputStream input = HandlerUtils.requestObjectToApiGatewayRequestInputSteam(request, null);
 
         nestedInstitutionHandler.handleRequest(input, outputStream, context);
         JsonNode response = extractResponseObjectFromOutputStream(outputStream);
@@ -255,7 +256,7 @@ public class NestedInstitutionHandlerTest extends HandlerTest {
     @DisplayName("handleRequest returns BadGateway to the client when GatewayException occurs")
     @Test
     public void handleRequestReturnsBadRequestWhenInstitutionFailureOccurs()
-        throws IOException, InvalidUriException, HttpClientFailureException, JsonParsingException {
+        throws IOException, InvalidUriException, HttpClientFailureException, FailedHttpRequestException {
         NestedInstitutionHandler handler = handlerThatThrowsNestedInstitutionFailureException(SOME_EXCEPTION_MESSAGE);
         InputStream inputStream = inputInstitutionsRequest();
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
@@ -269,7 +270,7 @@ public class NestedInstitutionHandlerTest extends HandlerTest {
     }
 
     private NestedInstitutionHandler handlerThatThrowsNestedInstitutionFailureException(String message)
-        throws InvalidUriException, HttpClientFailureException, JsonParsingException {
+        throws InvalidUriException, HttpClientFailureException, FailedHttpRequestException {
         CristinApiClient cristinClient = mock(CristinApiClient.class);
         IOException cause = new IOException(message);
         when(cristinClient.getNestedInstitution(any(URI.class), any(Language.class)))

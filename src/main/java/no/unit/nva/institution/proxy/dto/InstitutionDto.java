@@ -1,6 +1,7 @@
 package no.unit.nva.institution.proxy.dto;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.net.URI;
 import java.util.Map;
@@ -32,6 +33,9 @@ public class InstitutionDto {
     private boolean cristinUser;
     @JsonProperty("url")
     private URI uri;
+
+    @JsonIgnore
+    private URI sourceUri;
 
     @JacocoGenerated
     public String getId() {
@@ -91,5 +95,15 @@ public class InstitutionDto {
     @JacocoGenerated
     public void setUri(URI uri) {
         this.uri = uri;
+    }
+
+    @JacocoGenerated
+    public URI getSourceUri() {
+        return sourceUri;
+    }
+
+    @JacocoGenerated
+    public void setSourceUri(URI sourceUri) {
+        this.sourceUri = sourceUri;
     }
 }

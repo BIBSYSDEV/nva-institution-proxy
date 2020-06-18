@@ -1,0 +1,1332 @@
+[
+  {
+    "id": "1305",
+    "name": {
+      "nb": "Nasjonalmuseet for kunst, arkitektur og design"
+    },
+    "acronym": "NMK",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/1305"
+  },
+  {
+    "id": "150",
+    "name": {
+      "nb": "Norges idrettshøgskole"
+    },
+    "acronym": "NIH",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/150"
+  },
+  {
+    "id": "1525",
+    "name": {
+      "nb": "Steinerhøyskolen"
+    },
+    "acronym": "STEINER",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/1525"
+  },
+  {
+    "id": "1526",
+    "name": {
+      "nb": "Barratt Due musikkinstitutt"
+    },
+    "acronym": "BARRATDUE",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/1526"
+  },
+  {
+    "id": "158",
+    "name": {
+      "nb": "Handelshøyskolen BI"
+    },
+    "acronym": "BI",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/158"
+  },
+  {
+    "id": "1615",
+    "name": {
+      "nb": "Høyskolen Kristiania"
+    },
+    "acronym": "HK",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/1615"
+  },
+  {
+    "id": "1620",
+    "name": {
+      "nb": "Bjørknes høyskole"
+    },
+    "acronym": "BJORKNES",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/1620"
+  },
+  {
+    "id": "1622",
+    "name": {
+      "nb": "Høgskulen for landbruk og bygdeutvikling"
+    },
+    "acronym": "HLB",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/1622"
+  },
+  {
+    "id": "1624",
+    "name": {
+      "nb": "Høyskolen for Ledelse og Teologi"
+    },
+    "acronym": "HLT",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/1624"
+  },
+  {
+    "id": "1627",
+    "name": {
+      "nb": "Forsvarets høgskole"
+    },
+    "acronym": "FHS",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/1627"
+  },
+  {
+    "id": "1661",
+    "name": {
+      "nb": "Kriminalomsorgens høgskole og utdanningssenter KRUS"
+    },
+    "acronym": "KRUS",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/1661"
+  },
+  {
+    "id": "178",
+    "name": {
+      "nb": "Norges musikkhøgskole"
+    },
+    "acronym": "NMH",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/178"
+  },
+  {
+    "id": "184",
+    "name": {
+      "nb": "Universitetet i Bergen"
+    },
+    "acronym": "UIB",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/184"
+  },
+  {
+    "id": "185",
+    "name": {
+      "nb": "Universitetet i Oslo"
+    },
+    "acronym": "UIO",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/185"
+  },
+  {
+    "id": "186",
+    "name": {
+      "nb": "UiT Norges arktiske universitet"
+    },
+    "acronym": "UIT",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/186"
+  },
+  {
+    "id": "189",
+    "name": {
+      "nb": "Arkitektur- og designhøgskolen i Oslo"
+    },
+    "acronym": "AHO",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/189"
+  },
+  {
+    "id": "190",
+    "name": {
+      "nb": "MF vitenskapelig høyskole for teologi, religion og samfunn"
+    },
+    "acronym": "MF",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/190"
+  },
+  {
+    "id": "1900",
+    "name": {
+      "nb": "Helse Nord RHF"
+    },
+    "acronym": "HELSENORD",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/1900"
+  },
+  {
+    "id": "1901",
+    "name": {
+      "nb": "Finnmarkssykehuset"
+    },
+    "acronym": "HELSEFINNM",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/1901"
+  },
+  {
+    "id": "1902",
+    "name": {
+      "nb": "Universitetssykehuset Nord-Norge HF"
+    },
+    "acronym": "UNN",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/1902"
+  },
+  {
+    "id": "1904",
+    "name": {
+      "nb": "Nordlandssykehuset HF"
+    },
+    "acronym": "HELSENSS",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/1904"
+  },
+  {
+    "id": "1905",
+    "name": {
+      "nb": "Helgelandssykehuset HF"
+    },
+    "acronym": "HELGELAND",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/1905"
+  },
+  {
+    "id": "1906",
+    "name": {
+      "nb": "Sykehusapotek Nord HF"
+    },
+    "acronym": "APOTEKNORD",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/1906"
+  },
+  {
+    "id": "191",
+    "name": {
+      "nb": "Norges Handelshøyskole"
+    },
+    "acronym": "NHH",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/191"
+  },
+  {
+    "id": "1918",
+    "name": {
+      "nb": "Helse Nord-Trøndelag HF"
+    },
+    "acronym": "HELSENTRØN",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/1918"
+  },
+  {
+    "id": "1919",
+    "name": {
+      "nb": "Sykehusapotekene i Midt-Norge HF"
+    },
+    "acronym": "APOTEKMN",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/1919"
+  },
+  {
+    "id": "192",
+    "name": {
+      "nb": "Norges miljø- og biovitenskapelige universitet"
+    },
+    "acronym": "NMBU",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/192"
+  },
+  {
+    "id": "1920",
+    "name": {
+      "nb": "St. Olavs Hospital HF"
+    },
+    "acronym": "STOLAV",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/1920"
+  },
+  {
+    "id": "1924",
+    "name": {
+      "nb": "Helse Møre og Romsdal HF"
+    },
+    "acronym": "HELSEMR",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/1924"
+  },
+  {
+    "id": "1932",
+    "name": {
+      "nb": "Helse Fonna HF"
+    },
+    "acronym": "HELSEFONNA",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/1932"
+  },
+  {
+    "id": "1933",
+    "name": {
+      "nb": "Sjukehusapoteka Vest HF"
+    },
+    "acronym": "SAV",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/1933"
+  },
+  {
+    "id": "1935",
+    "name": {
+      "nb": "Helse Førde HF"
+    },
+    "acronym": "HELSEFØRDE",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/1935"
+  },
+  {
+    "id": "1936",
+    "name": {
+      "nb": "Helse Bergen HF - Haukeland universitetssykehus"
+    },
+    "acronym": "HAUKELAND",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/1936"
+  },
+  {
+    "id": "1937",
+    "name": {
+      "nb": "Private ideelle i Helse Vest"
+    },
+    "acronym": "PIHV",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/1937"
+  },
+  {
+    "id": "1938",
+    "name": {
+      "nb": "Helse Stavanger HF - Stavanger universitetssjukehus"
+    },
+    "acronym": "SUS",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/1938"
+  },
+  {
+    "id": "194",
+    "name": {
+      "nb": "Norges teknisk-naturvitenskapelige universitet"
+    },
+    "acronym": "NTNU",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/194"
+  },
+  {
+    "id": "195",
+    "name": {
+      "nb": "Universitetssenteret på Svalbard"
+    },
+    "acronym": "UNIS",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/195"
+  },
+  {
+    "id": "1958",
+    "name": {
+      "nb": "Sykehuset i Vestfold HF"
+    },
+    "acronym": "VESTFOLD",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/1958"
+  },
+  {
+    "id": "1959",
+    "name": {
+      "nb": "Sykehuset Telemark HF"
+    },
+    "acronym": "TELEMARK",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/1959"
+  },
+  {
+    "id": "1965",
+    "name": {
+      "nb": "Sørlandet sykehus HF"
+    },
+    "acronym": "SØRLAND",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/1965"
+  },
+  {
+    "id": "1972",
+    "name": {
+      "nb": "Akershus universitetssykehus HF"
+    },
+    "acronym": "AHUS",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/1972"
+  },
+  {
+    "id": "1982",
+    "name": {
+      "nb": "Sunnaas sykehus HF"
+    },
+    "acronym": "SUNNAAS",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/1982"
+  },
+  {
+    "id": "1983",
+    "name": {
+      "nb": "Sykehuset Østfold HF"
+    },
+    "acronym": "ØSTFOLD",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/1983"
+  },
+  {
+    "id": "1986",
+    "name": {
+      "nb": "Sykehusapotekene i Sør-Øst RHF"
+    },
+    "acronym": "APOTEKØST",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/1986"
+  },
+  {
+    "id": "1990",
+    "name": {
+      "nb": "Diakonhjemmet sykehus"
+    },
+    "acronym": "DIAKONSYK",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/1990"
+  },
+  {
+    "id": "1991",
+    "name": {
+      "nb": "Sykehuset Innlandet HF"
+    },
+    "acronym": "INNLANDET",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/1991"
+  },
+  {
+    "id": "1992",
+    "name": {
+      "nb": "Lovisenberg Diakonale Sykehus"
+    },
+    "acronym": "LDS",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/1992"
+  },
+  {
+    "id": "1993",
+    "name": {
+      "nb": "Martina Hansens Hospital"
+    },
+    "acronym": "MHH",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/1993"
+  },
+  {
+    "id": "2003",
+    "name": {
+      "nb": "Revmatismesykehuset AS"
+    },
+    "acronym": "REVMA",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/2003"
+  },
+  {
+    "id": "201",
+    "name": {
+      "nb": "Universitetet i Agder"
+    },
+    "acronym": "UIA",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/201"
+  },
+  {
+    "id": "2012",
+    "name": {
+      "nb": "Oslo universitetssykehus HF"
+    },
+    "acronym": "OUS",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/2012"
+  },
+  {
+    "id": "2017",
+    "name": {
+      "nb": "Vestre Viken HF"
+    },
+    "acronym": "VV",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/2017"
+  },
+  {
+    "id": "20202",
+    "name": {
+      "nb": "Unit – Direktoratet for IKT og fellestjenester i høyere utdanning og forskning"
+    },
+    "acronym": "UNIT",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/20202"
+  },
+  {
+    "id": "2023",
+    "name": {
+      "nb": "Betanien Hospital"
+    },
+    "acronym": "BETANIENH",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/2023"
+  },
+  {
+    "id": "203",
+    "name": {
+      "nb": "Høgskulen på Vestlandet"
+    },
+    "acronym": "HVL",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/203"
+  },
+  {
+    "id": "2031",
+    "name": {
+      "nb": "LHL-klinikkene"
+    },
+    "acronym": "LHLKLIN",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/2031"
+  },
+  {
+    "id": "204",
+    "name": {
+      "nb": "Nord universitet"
+    },
+    "acronym": "NORD",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/204"
+  },
+  {
+    "id": "2052",
+    "name": {
+      "nb": "Helse Vest IKT"
+    },
+    "acronym": "HVIKT",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/2052"
+  },
+  {
+    "id": "2056",
+    "name": {
+      "nb": "Private ideelle i Helse Sør-Øst"
+    },
+    "acronym": "PIHSØ",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/2056"
+  },
+  {
+    "id": "2057",
+    "name": {
+      "nb": "NORCE Norwegian Research Centre AS"
+    },
+    "acronym": "NORCE",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/2057"
+  },
+  {
+    "id": "2060",
+    "name": {
+      "nb": "Tannhelsetjenestens kompetansesentre"
+    },
+    "acronym": "THTKS",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/2060"
+  },
+  {
+    "id": "209",
+    "name": {
+      "nb": "Høgskolen i Innlandet"
+    },
+    "acronym": "HINN",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/209"
+  },
+  {
+    "id": "211",
+    "name": {
+      "nb": "Høgskolen i Molde - Vitenskapelig høgskole i logistikk"
+    },
+    "acronym": "HIM",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/211"
+  },
+  {
+    "id": "215",
+    "name": {
+      "nb": "OsloMet - storbyuniversitetet"
+    },
+    "acronym": "OSLOMET",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/215"
+  },
+  {
+    "id": "217",
+    "name": {
+      "nb": "Universitetet i Stavanger"
+    },
+    "acronym": "UIS",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/217"
+  },
+  {
+    "id": "222",
+    "name": {
+      "nb": "Universitetet i Sørøst-Norge"
+    },
+    "acronym": "USN",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/222"
+  },
+  {
+    "id": "223",
+    "name": {
+      "nb": "Høgskulen i Volda"
+    },
+    "acronym": "HVO",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/223"
+  },
+  {
+    "id": "224",
+    "name": {
+      "nb": "Høgskolen i Østfold"
+    },
+    "acronym": "HIØ",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/224"
+  },
+  {
+    "id": "230",
+    "name": {
+      "nb": "Lovisenberg diakonale høgskole"
+    },
+    "acronym": "LDH",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/230"
+  },
+  {
+    "id": "231",
+    "name": {
+      "nb": "Sámi allaskuvla/Sámi University of Applied Sciences"
+    },
+    "acronym": "SA/SH",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/231"
+  },
+  {
+    "id": "233",
+    "name": {
+      "nb": "Politihøgskolen"
+    },
+    "acronym": "PHS",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/233"
+  },
+  {
+    "id": "251",
+    "name": {
+      "nb": "VID vitenskapelige høgskole"
+    },
+    "acronym": "VID",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/251"
+  },
+  {
+    "id": "253",
+    "name": {
+      "nb": "Dronning Mauds Minne Høgskole for barnehagelærerutdanning"
+    },
+    "acronym": "DMMH",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/253"
+  },
+  {
+    "id": "254",
+    "name": {
+      "nb": "NLA Høgskolen"
+    },
+    "acronym": "NLA",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/254"
+  },
+  {
+    "id": "255",
+    "name": {
+      "nb": "Ansgar høyskole"
+    },
+    "acronym": "ANS",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/255"
+  },
+  {
+    "id": "258",
+    "name": {
+      "nb": "Fjellhaug Internasjonale Høgskole"
+    },
+    "acronym": "FIH",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/258"
+  },
+  {
+    "id": "260",
+    "name": {
+      "nb": "Kunsthøgskolen i Oslo"
+    },
+    "acronym": "KHIO",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/260"
+  },
+  {
+    "id": "5737",
+    "name": {
+      "nb": "Kreftregisteret - Institutt for populasjonsbasert kreftforskning"
+    },
+    "acronym": "KREFTREG",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/5737"
+  },
+  {
+    "id": "5931",
+    "name": {
+      "nb": "Nasjonalbiblioteket"
+    },
+    "acronym": "NB",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/5931"
+  },
+  {
+    "id": "5932",
+    "name": {
+      "nb": "Statistisk sentralbyrå"
+    },
+    "acronym": "SSB",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/5932"
+  },
+  {
+    "id": "6070",
+    "name": {
+      "nb": "Arkivverket - Riksarkivet og statsarkivene"
+    },
+    "acronym": "RIKSARKIV",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/6070"
+  },
+  {
+    "id": "6077",
+    "name": {
+      "nb": "Nasjonalt kunnskapssenter om vold og traumatisk stress"
+    },
+    "acronym": "NKVTS",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/6077"
+  },
+  {
+    "id": "6228",
+    "name": {
+      "nb": "Norut Northern Research Institute Narvik AS"
+    },
+    "acronym": "NORUTNA",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/6228"
+  },
+  {
+    "id": "6281",
+    "name": {
+      "nb": "Valnesfjord Helsesportssenter"
+    },
+    "acronym": "VHSS",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/6281"
+  },
+  {
+    "id": "7401",
+    "name": {
+      "nb": "SINTEF AS"
+    },
+    "acronym": "SINTEF",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/7401"
+  },
+  {
+    "id": "7403",
+    "name": {
+      "nb": "NTNU Samfunnsforskning AS"
+    },
+    "acronym": "SAMFORSK",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/7403"
+  },
+  {
+    "id": "7407",
+    "name": {
+      "nb": "Østfoldforskning AS"
+    },
+    "acronym": "ØSTFORSK",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/7407"
+  },
+  {
+    "id": "7416",
+    "name": {
+      "nb": "Chr. Michelsen Institute"
+    },
+    "acronym": "CMI",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/7416"
+  },
+  {
+    "id": "7419",
+    "name": {
+      "nb": "Meteorologisk institutt"
+    },
+    "acronym": "MET",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/7419"
+  },
+  {
+    "id": "7425",
+    "name": {
+      "nb": "Forskningsstiftelsen Fafo"
+    },
+    "acronym": "FAFO",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/7425"
+  },
+  {
+    "id": "7428",
+    "name": {
+      "nb": "Forsvarets forskningsinstitutt"
+    },
+    "acronym": "FFI",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/7428"
+  },
+  {
+    "id": "7430",
+    "name": {
+      "nb": "Fridtjof Nansens institutt"
+    },
+    "acronym": "NANSEN",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/7430"
+  },
+  {
+    "id": "7431",
+    "name": {
+      "nb": "Havforskningsinstituttet"
+    },
+    "acronym": "HAVFORSK",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/7431"
+  },
+  {
+    "id": "7435",
+    "name": {
+      "nb": "PRIO - Institutt for fredsforskning"
+    },
+    "acronym": "PRIO",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/7435"
+  },
+  {
+    "id": "7437",
+    "name": {
+      "nb": "Institutt for samfunnsforskning"
+    },
+    "acronym": "ISF",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/7437"
+  },
+  {
+    "id": "7443",
+    "name": {
+      "nb": "Møreforsking"
+    },
+    "acronym": "MF",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/7443"
+  },
+  {
+    "id": "7444",
+    "name": {
+      "nb": "Nansen Senter for Miljø og Fjernmåling"
+    },
+    "acronym": "NERSC",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/7444"
+  },
+  {
+    "id": "7446",
+    "name": {
+      "nb": "Nordlandsforskning"
+    },
+    "acronym": "NORDLFORSK",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/7446"
+  },
+  {
+    "id": "7448",
+    "name": {
+      "nb": "Trøndelag Forskning og Utvikling"
+    },
+    "acronym": "TFOU",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/7448"
+  },
+  {
+    "id": "7451",
+    "name": {
+      "nb": "Norges geologiske undersøkelse"
+    },
+    "acronym": "NGU",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/7451"
+  },
+  {
+    "id": "7452",
+    "name": {
+      "nb": "Norges Geotekniske Institutt"
+    },
+    "acronym": "NGI",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/7452"
+  },
+  {
+    "id": "7453",
+    "name": {
+      "nb": "NORSAR"
+    },
+    "acronym": "NORSAR",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/7453"
+  },
+  {
+    "id": "7460",
+    "name": {
+      "nb": "NILU - Norsk institutt for luftforskning"
+    },
+    "acronym": "NILU",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/7460"
+  },
+  {
+    "id": "7463",
+    "name": {
+      "nb": "NIFU Nordisk institutt for studier av innovasjon, forskning og utdanning"
+    },
+    "acronym": "NIFU",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/7463"
+  },
+  {
+    "id": "7464",
+    "name": {
+      "nb": "Norsk institutt for vannforskning"
+    },
+    "acronym": "NIVA",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/7464"
+  },
+  {
+    "id": "7466",
+    "name": {
+      "nb": "Norsk Polarinstitutt"
+    },
+    "acronym": "NPI",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/7466"
+  },
+  {
+    "id": "7467",
+    "name": {
+      "nb": "Norsk Regnesentral"
+    },
+    "acronym": "NR",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/7467"
+  },
+  {
+    "id": "7471",
+    "name": {
+      "nb": "Norsk Utenrikspolitisk Institutt"
+    },
+    "acronym": "NUPI",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/7471"
+  },
+  {
+    "id": "7475",
+    "name": {
+      "nb": "CICERO Senter for klimaforskning"
+    },
+    "acronym": "CICERO",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/7475"
+  },
+  {
+    "id": "7476",
+    "name": {
+      "nb": "Statens arbeidsmiljøinstitutt"
+    },
+    "acronym": "STAMI",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/7476"
+  },
+  {
+    "id": "7480",
+    "name": {
+      "nb": "Telemarksforsking"
+    },
+    "acronym": "TF",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/7480"
+  },
+  {
+    "id": "7482",
+    "name": {
+      "nb": "Transportøkonomisk institutt"
+    },
+    "acronym": "TØI",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/7482"
+  },
+  {
+    "id": "7484",
+    "name": {
+      "nb": "Vestlandsforsking"
+    },
+    "acronym": "VF",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/7484"
+  },
+  {
+    "id": "7492",
+    "name": {
+      "nb": "Institutt for energiteknikk"
+    },
+    "acronym": "IFE",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/7492"
+  },
+  {
+    "id": "7495",
+    "name": {
+      "nb": "Stiftelsen Frischsenteret for samfunnsøkonomisk forskning"
+    },
+    "acronym": "FRISCH",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/7495"
+  },
+  {
+    "id": "7497",
+    "name": {
+      "nb": "Veterinærinstituttet"
+    },
+    "acronym": "VETINST",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/7497"
+  },
+  {
+    "id": "7501",
+    "name": {
+      "nb": "RURALIS – Institutt for rural- og regionalforskning"
+    },
+    "acronym": "RURALIS",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/7501"
+  },
+  {
+    "id": "7502",
+    "name": {
+      "nb": "Folkehelseinstituttet"
+    },
+    "acronym": "FHI",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/7502"
+  },
+  {
+    "id": "7511",
+    "name": {
+      "nb": "Norsk institutt for naturforskning"
+    },
+    "acronym": "NINA",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/7511"
+  },
+  {
+    "id": "7520",
+    "name": {
+      "nb": "NIOM - Nordisk Institutt for Odontologiske Materialer"
+    },
+    "acronym": "NIOM",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/7520"
+  },
+  {
+    "id": "7530",
+    "name": {
+      "nb": "Norsk institutt for kulturminneforskning"
+    },
+    "acronym": "NIKU",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/7530"
+  },
+  {
+    "id": "7539",
+    "name": {
+      "nb": "RBUP Øst og Sør"
+    },
+    "acronym": "RBUP",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/7539"
+  },
+  {
+    "id": "7543",
+    "name": {
+      "nb": "NOFIMA"
+    },
+    "acronym": "NOFIMA",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/7543"
+  },
+  {
+    "id": "7548",
+    "name": {
+      "nb": "SINTEF Energi AS"
+    },
+    "acronym": "SINTEFEN",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/7548"
+  },
+  {
+    "id": "7566",
+    "name": {
+      "nb": "SINTEF Ocean"
+    },
+    "acronym": "OCEAN",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/7566"
+  },
+  {
+    "id": "7572",
+    "name": {
+      "nb": "Samfunns- og næringslivsforskning AS"
+    },
+    "acronym": "SNF",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/7572"
+  },
+  {
+    "id": "7582",
+    "name": {
+      "nb": "Frambu Senter for sjeldne funksjonshemninger"
+    },
+    "acronym": "FRAMBU",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/7582"
+  },
+  {
+    "id": "7585",
+    "name": {
+      "nb": "Norsk senter for økologisk landbruk"
+    },
+    "acronym": "NORSØK",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/7585"
+  },
+  {
+    "id": "7600",
+    "name": {
+      "nb": "Polytec AS"
+    },
+    "acronym": "POLYTEC",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/7600"
+  },
+  {
+    "id": "7602",
+    "name": {
+      "nb": "Modum Bad"
+    },
+    "acronym": "MODUMBAD",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/7602"
+  },
+  {
+    "id": "7630",
+    "name": {
+      "nb": "SINTEF Manufacturing"
+    },
+    "acronym": "SRAUFOSS",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/7630"
+  },
+  {
+    "id": "7677",
+    "name": {
+      "nb": "Norsk institutt for bioøkonomi"
+    },
+    "acronym": "NIBIO",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/7677"
+  },
+  {
+    "id": "9200",
+    "name": {
+      "nb": "Cristin"
+    },
+    "acronym": "CRISTIN",
+    "country": "NO",
+    "cristin_user_institution": true,
+    "url": "https://api.cristin.no/v2/institutions/9200"
+  }
+]
