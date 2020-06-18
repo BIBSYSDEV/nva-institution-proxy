@@ -95,7 +95,7 @@ public class HttpExecutorImpl extends HttpExecutor {
         throws HttpClientFailureException, FailedHttpRequestException {
         List<URI> unitUris = getUnitUris(institutionUnit.getId(), language);
         List<Try<SubSubUnitDto>> subSubUnitDtoResponses = fetchSubSubUnitInformation(language, unitUris);
-        multipleRequestFailures(subSubUnitDtoResponses);
+        checkForRequestFailures(subSubUnitDtoResponses);
         return subSubUnitDtoResponses.stream().map(Try::get).collect(Collectors.toList());
     }
 
@@ -122,7 +122,7 @@ public class HttpExecutorImpl extends HttpExecutor {
             .collect(Collectors.toList());
     }
 
-    private void multipleRequestFailures(List<Try<SubSubUnitDto>> subsubUnitDtoResponses)
+    private void checkForRequestFailures(List<Try<SubSubUnitDto>> subsubUnitDtoResponses)
         throws FailedHttpRequestException {
         Optional<Try<SubSubUnitDto>> failedRequest = subsubUnitDtoResponses
             .stream().parallel()
