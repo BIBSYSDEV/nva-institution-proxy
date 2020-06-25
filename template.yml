@@ -15,16 +15,8 @@ Metadata:
 Globals:
   Function:
     Timeout: 60
-  Api:
-    Cors:
-      AllowMethods: "'GET,POST,OPTIONS'"
-      AllowHeaders: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
-      AllowOrigin: "'*'"
 
 Parameters:
-  CognitoAuthorizerArn:
-    Type: String
-    Description: Reference to Cognito UserPool for the stage
   CustomDomain:
     Type: String
     Description: Custom API to connect this lambda to
@@ -33,17 +25,26 @@ Parameters:
     Description: Base path mapping in CustomDomain
 
 Resources:
+  ApiAccessLogGroup:
+    Type: AWS::Logs::LogGroup
   NvaInstitutionProxyFunctionApi:
     Type: AWS::Serverless::Api
     Properties:
+      AccessLogSetting:
+        DestinationArn: !GetAtt ApiAccessLogGroup.Arn
+        Format: '{ "apiId": "$context.apiId", "requestId": "$context.requestId", "requestTime": "$context.requestTime", "requestTimeEpoch": "$context.requestTimeEpoch", "httpMethod": "$context.httpMethod", "path": "$context.path", "status": "$context.status",  "error.message": "$context.error.message" }'
       StageName: Prod
+      Cors:
+        AllowMethods: "'GET,POST,OPTIONS'"
+        AllowHeaders: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+        AllowOrigin: "'*'"
       EndpointConfiguration: REGIONAL
   ListInstitutionsFunction:
     Type: AWS::Serverless::Function
     Properties:
       Handler: no.unit.nva.institution.proxy.handler.InstitutionListHandler::handleRequest
       Runtime: java11
-      MemorySize: 1400
+      MemorySize: 1408
       Environment:
         Variables:
           ALLOWED_ORIGIN: '*'
@@ -64,7 +65,7 @@ Resources:
     Properties:
       Handler: no.unit.nva.institution.proxy.handler.NestedInstitutionHandler::handleRequest
       Runtime: java11
-      MemorySize: 1400
+      MemorySize: 1408
       Timeout: 600
       Environment:
         Variables:
