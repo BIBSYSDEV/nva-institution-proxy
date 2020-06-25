@@ -15,11 +15,6 @@ Metadata:
 Globals:
   Function:
     Timeout: 60
-  Api:
-    Cors:
-      AllowMethods: "'GET,POST,OPTIONS'"
-      AllowHeaders: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
-      AllowOrigin: "'*'"
 
 Parameters:
   CognitoAuthorizerArn:
@@ -37,6 +32,10 @@ Resources:
     Type: AWS::Serverless::Api
     Properties:
       StageName: Prod
+      Cors:
+        AllowMethods: "'GET,POST,OPTIONS'"
+        AllowHeaders: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+        AllowOrigin: "'*'"
       EndpointConfiguration: REGIONAL
   ListInstitutionsFunction:
     Type: AWS::Serverless::Function
