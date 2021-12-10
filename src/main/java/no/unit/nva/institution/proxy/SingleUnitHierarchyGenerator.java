@@ -1,16 +1,7 @@
 package no.unit.nva.institution.proxy;
 
-import static java.util.Objects.nonNull;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.net.http.HttpResponse.BodyHandlers;
-import java.util.Optional;
-import java.util.concurrent.ExecutionException;
 import no.unit.nva.institution.proxy.dto.InstitutionDto;
 import no.unit.nva.institution.proxy.dto.SubSubUnitDto;
 import no.unit.nva.institution.proxy.exception.HttpClientFailureException;
@@ -19,11 +10,21 @@ import no.unit.nva.institution.proxy.utils.Language;
 import no.unit.nva.institution.proxy.utils.MapUtils;
 import no.unit.nva.institution.proxy.utils.ModelUtils;
 import no.unit.nva.institution.proxy.utils.UriUtils;
-import nva.commons.utils.JacocoGenerated;
-import nva.commons.utils.JsonUtils;
+import nva.commons.core.JacocoGenerated;
+import nva.commons.core.JsonUtils;
 import org.apache.http.HttpStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.net.http.HttpResponse.BodyHandlers;
+import java.util.Optional;
+import java.util.concurrent.ExecutionException;
+
+import static java.util.Objects.nonNull;
 
 public class SingleUnitHierarchyGenerator {
 
@@ -118,7 +119,7 @@ public class SingleUnitHierarchyGenerator {
 
     private SubSubUnitDto toUnit(String json) {
         try {
-            return JsonUtils.objectMapper.readValue(json, SubSubUnitDto.class);
+            return JsonUtils.dtoObjectMapper.readValue(json, SubSubUnitDto.class);
         } catch (JsonProcessingException e) {
             logger.error("Error processing JSON string: " + json, e);
         }

@@ -1,7 +1,37 @@
 package no.unit.nva.institution.proxy;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import no.unit.nva.institution.proxy.exception.HttpClientFailureException;
+import no.unit.nva.institution.proxy.exception.InvalidUriException;
+import no.unit.nva.institution.proxy.exception.JsonParsingException;
+import no.unit.nva.institution.proxy.exception.NonExistingUnitError;
+import nva.commons.core.JsonUtils;
+import nva.commons.core.attempt.Try;
+import nva.commons.core.ioutils.IoUtils;
+import org.apache.http.HttpStatus;
+import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.ModelFactory;
+import org.apache.jena.rdf.model.Resource;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
+import testutils.HttpClientReturningInfoOfSingleUnits;
+
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.net.http.HttpResponse.BodyHandler;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import static no.unit.nva.institution.proxy.utils.UriUtils.clearParameters;
-import static nva.commons.utils.attempt.Try.attempt;
+import static nva.commons.core.attempt.Try.attempt;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -15,35 +45,6 @@ import static testutils.HttpClientReturningInfoOfSingleUnits.NON_EXISTING_URI;
 import static testutils.HttpClientReturningInfoOfSingleUnits.ROOT_NODE_URI;
 import static testutils.HttpClientReturningInfoOfSingleUnits.SECOND_LEVEL_CHILD_URI;
 import static testutils.HttpClientReturningInfoOfSingleUnits.TESTING_LANGUAGE;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.net.http.HttpResponse.BodyHandler;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import no.unit.nva.institution.proxy.exception.HttpClientFailureException;
-import no.unit.nva.institution.proxy.exception.InvalidUriException;
-import no.unit.nva.institution.proxy.exception.JsonParsingException;
-import no.unit.nva.institution.proxy.exception.NonExistingUnitError;
-import nva.commons.utils.IoUtils;
-import nva.commons.utils.JsonUtils;
-import nva.commons.utils.attempt.Try;
-import org.apache.http.HttpStatus;
-import org.apache.jena.rdf.model.Model;
-import org.apache.jena.rdf.model.ModelFactory;
-import org.apache.jena.rdf.model.Resource;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.function.Executable;
-import testutils.HttpClientReturningInfoOfSingleUnits;
 
 public class SingleUnitHierarchyGeneratorTest {
 
@@ -151,7 +152,7 @@ public class SingleUnitHierarchyGeneratorTest {
 
     private Model parseModel(JsonNode jsonLd) throws JsonProcessingException {
         Model model = ModelFactory.createDefaultModel();
-        String jsonString = JsonUtils.objectMapper.writeValueAsString(jsonLd);
+        String jsonString = JsonUtils.dtoObjectMapper.writeValueAsString(jsonLd);
         model.read(IoUtils.stringToStream(jsonString), null, JSONLD);
         return model;
     }

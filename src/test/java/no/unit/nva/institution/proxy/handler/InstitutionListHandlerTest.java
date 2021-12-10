@@ -1,6 +1,32 @@
 package no.unit.nva.institution.proxy.handler;
 
-import static nva.commons.utils.JsonUtils.objectMapper;
+import com.amazonaws.services.lambda.runtime.Context;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import no.unit.nva.institution.proxy.CristinApiClient;
+import no.unit.nva.institution.proxy.exception.HttpClientFailureException;
+import no.unit.nva.institution.proxy.exception.UnknownLanguageException;
+import no.unit.nva.institution.proxy.response.InstitutionListResponse;
+import no.unit.nva.institution.proxy.utils.Language;
+import nva.commons.apigateway.GatewayResponse;
+import nva.commons.apigateway.RequestInfo;
+import nva.commons.core.Environment;
+import nva.commons.core.JsonUtils;
+import nva.commons.core.ioutils.IoUtils;
+import org.apache.http.HttpStatus;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.zalando.problem.Problem;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
+import java.util.Collections;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
@@ -9,31 +35,6 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
-
-import com.amazonaws.services.lambda.runtime.Context;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Path;
-import java.util.Collections;
-import no.unit.nva.institution.proxy.CristinApiClient;
-import no.unit.nva.institution.proxy.exception.HttpClientFailureException;
-import no.unit.nva.institution.proxy.exception.UnknownLanguageException;
-import no.unit.nva.institution.proxy.response.InstitutionListResponse;
-import no.unit.nva.institution.proxy.utils.Language;
-import nva.commons.handlers.GatewayResponse;
-import nva.commons.handlers.RequestInfo;
-import nva.commons.utils.Environment;
-import nva.commons.utils.IoUtils;
-import org.apache.http.HttpStatus;
-import org.hamcrest.MatcherAssert;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.zalando.problem.Problem;
 
 public class InstitutionListHandlerTest extends HandlerTest {
 
@@ -51,7 +52,7 @@ public class InstitutionListHandlerTest extends HandlerTest {
     public static final String LANGUAGE_STRING_VALUE_IN_RESOURCE_FILE = "en";
 
     private static final String SOME_EXCEPTION_MESSAGE = "This is the exception message";
-
+    public static final ObjectMapper objectMapper = JsonUtils.dtoObjectMapper;
     private Environment environment;
     private Context context;
 
@@ -82,7 +83,7 @@ public class InstitutionListHandlerTest extends HandlerTest {
         InputStream inputStream = inputValidLanguageCode();
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         handler.handleRequest(inputStream, outputStream, context);
-        MatcherAssert.assertThat(handler.getLanguageQueryParameter(),
+        assertThat(handler.getLanguageQueryParameter(),
             is(equalTo(LANGUAGE_STRING_VALUE_IN_RESOURCE_FILE)));
     }
 

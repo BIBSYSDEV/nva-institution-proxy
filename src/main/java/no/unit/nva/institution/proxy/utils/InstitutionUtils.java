@@ -1,18 +1,19 @@
 package no.unit.nva.institution.proxy.utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import java.io.IOException;
-import java.net.URI;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 import no.unit.nva.institution.proxy.dto.InstitutionBaseDto;
 import no.unit.nva.institution.proxy.dto.InstitutionDto;
 import no.unit.nva.institution.proxy.dto.SubSubUnitDto;
 import no.unit.nva.institution.proxy.dto.SubUnitDto;
 import no.unit.nva.institution.proxy.response.InstitutionListResponse;
 import no.unit.nva.institution.proxy.response.InstitutionResponse;
-import nva.commons.utils.JsonUtils;
+import nva.commons.core.JsonUtils;
+
+import java.io.IOException;
+import java.net.URI;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public final class InstitutionUtils {
 
@@ -33,7 +34,7 @@ public final class InstitutionUtils {
         throws IOException {
         try {
             List<InstitutionDto> institutions = Arrays.asList(
-                JsonUtils.objectMapper.readValue(institutionsJson, InstitutionDto[].class));
+                JsonUtils.dtoObjectMapper.readValue(institutionsJson, InstitutionDto[].class));
             return new InstitutionListResponse(institutions
                 .stream()
                 .map(InstitutionUtils::toInstitutionResponse)
@@ -64,7 +65,7 @@ public final class InstitutionUtils {
      */
     public static InstitutionBaseDto toInstitutionBaseDto(String json) throws IOException {
         try {
-            return JsonUtils.objectMapper.readValue(json, InstitutionBaseDto.class);
+            return JsonUtils.dtoObjectMapper.readValue(json, InstitutionBaseDto.class);
         } catch (JsonProcessingException e) {
             throw new IOException(PARSE_ERROR + json, e);
         }
@@ -79,7 +80,7 @@ public final class InstitutionUtils {
      */
     public static List<URI> toUriList(String json) throws IOException {
         try {
-            List<SubUnitDto> subUnitDtos = Arrays.asList(JsonUtils.objectMapper.readValue(json, SubUnitDto[].class));
+            List<SubUnitDto> subUnitDtos = Arrays.asList(JsonUtils.dtoObjectMapper.readValue(json, SubUnitDto[].class));
             return subUnitDtos.stream().map(InstitutionUtils::getSubunitUri).collect(Collectors.toList());
         } catch (JsonProcessingException e) {
             throw new IOException(PARSE_ERROR + json, e);
@@ -99,7 +100,7 @@ public final class InstitutionUtils {
      */
     public static SubSubUnitDto toSubSubUnitDto(String json) throws IOException {
         try {
-            return JsonUtils.objectMapper.readValue(json, SubSubUnitDto.class);
+            return JsonUtils.dtoObjectMapper.readValue(json, SubSubUnitDto.class);
         } catch (JsonProcessingException e) {
             throw new IOException(PARSE_ERROR + json, e);
         }

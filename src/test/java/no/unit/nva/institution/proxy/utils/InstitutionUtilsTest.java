@@ -1,11 +1,12 @@
 package no.unit.nva.institution.proxy.utils;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.collection.IsEmptyCollection.empty;
-import static org.hamcrest.collection.IsIterableContainingInAnyOrder.containsInAnyOrder;
-import static org.hamcrest.core.Is.is;
-import static org.hamcrest.core.StringContains.containsString;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import no.unit.nva.institution.proxy.dto.InstitutionDto;
+import no.unit.nva.institution.proxy.response.InstitutionListResponse;
+import no.unit.nva.institution.proxy.response.InstitutionResponse;
+import nva.commons.core.JsonUtils;
+import nva.commons.core.ioutils.IoUtils;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.net.URI;
@@ -13,13 +14,13 @@ import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import no.unit.nva.institution.proxy.dto.InstitutionDto;
-import no.unit.nva.institution.proxy.response.InstitutionListResponse;
-import no.unit.nva.institution.proxy.response.InstitutionResponse;
-import nva.commons.utils.IoUtils;
-import nva.commons.utils.JsonUtils;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.collection.IsEmptyCollection.empty;
+import static org.hamcrest.collection.IsIterableContainingInAnyOrder.containsInAnyOrder;
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.StringContains.containsString;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class InstitutionUtilsTest {
 
@@ -63,7 +64,7 @@ class InstitutionUtilsTest {
     }
 
     private URI[] urisFromInstitutionsList(String input) throws IOException {
-        InstitutionDto[] institutions = JsonUtils.objectMapper.readValue(input, InstitutionDto[].class);
+        InstitutionDto[] institutions = JsonUtils.dtoObjectMapper.readValue(input, InstitutionDto[].class);
         List<URI> expectedIds = Arrays.stream(institutions)
             .map(InstitutionDto::getUri)
             .collect(Collectors.toList());
