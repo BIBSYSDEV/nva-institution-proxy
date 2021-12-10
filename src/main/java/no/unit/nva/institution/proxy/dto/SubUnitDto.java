@@ -2,9 +2,10 @@ package no.unit.nva.institution.proxy.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import nva.commons.core.JacocoGenerated;
+
 import java.net.URI;
 import java.util.Map;
-import nva.commons.utils.JacocoGenerated;
 
 public class SubUnitDto {
     /*

@@ -4,10 +4,11 @@ import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import nva.commons.core.JacocoGenerated;
+
 import java.net.URI;
 import java.util.List;
 import java.util.Map;
-import nva.commons.utils.JacocoGenerated;
 
 /**
  * Class representing a call to <pre>https://api.cristin.no/v2/institutions/</pre>. It represents an "Institution" unit.

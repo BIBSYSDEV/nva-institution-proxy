@@ -1,8 +1,11 @@
 package testutils;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import no.unit.nva.institution.proxy.utils.Language;
+import nva.commons.core.ioutils.IoUtils;
+import org.apache.http.HttpStatus;
 
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLParameters;
 import java.io.IOException;
 import java.net.Authenticator;
 import java.net.CookieHandler;
@@ -20,11 +23,9 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLParameters;
-import no.unit.nva.institution.proxy.utils.Language;
-import nva.commons.utils.IoUtils;
-import org.apache.http.HttpStatus;
+
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 /**
  * Class mocking an HttpClient. The class returns JSON strings for some predefined URIs.

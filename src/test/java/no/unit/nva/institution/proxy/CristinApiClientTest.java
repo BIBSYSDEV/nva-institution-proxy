@@ -1,5 +1,26 @@
 package no.unit.nva.institution.proxy;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import no.unit.nva.institution.proxy.exception.FailedHttpRequestException;
+import no.unit.nva.institution.proxy.exception.HttpClientFailureException;
+import no.unit.nva.institution.proxy.exception.InvalidUriException;
+import no.unit.nva.institution.proxy.exception.JsonParsingException;
+import no.unit.nva.institution.proxy.exception.NonExistingUnitError;
+import no.unit.nva.institution.proxy.response.InstitutionListResponse;
+import no.unit.nva.institution.proxy.response.InstitutionResponse;
+import no.unit.nva.institution.proxy.utils.Language;
+import nva.commons.core.JsonUtils;
+import nva.commons.core.ioutils.IoUtils;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import testutils.HttpClientReturningInfoOfSingleUnits;
+
+import java.net.URI;
+import java.nio.file.Path;
+import java.util.Collections;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
@@ -11,26 +32,6 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static testutils.HttpClientReturningInfoOfSingleUnits.SECOND_LEVEL_CHILD_URI;
 import static testutils.HttpClientReturningInfoOfSingleUnits.TESTING_LANGUAGE;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.node.ObjectNode;
-import java.net.URI;
-import java.nio.file.Path;
-import java.util.Collections;
-import no.unit.nva.institution.proxy.exception.FailedHttpRequestException;
-import no.unit.nva.institution.proxy.exception.HttpClientFailureException;
-import no.unit.nva.institution.proxy.exception.InvalidUriException;
-import no.unit.nva.institution.proxy.exception.JsonParsingException;
-import no.unit.nva.institution.proxy.exception.NonExistingUnitError;
-import no.unit.nva.institution.proxy.response.InstitutionListResponse;
-import no.unit.nva.institution.proxy.response.InstitutionResponse;
-import no.unit.nva.institution.proxy.utils.Language;
-import nva.commons.utils.IoUtils;
-import nva.commons.utils.JsonUtils;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import testutils.HttpClientReturningInfoOfSingleUnits;
 
 public class CristinApiClientTest {
 
@@ -99,13 +100,13 @@ public class CristinApiClientTest {
         CristinApiClient cristinApiClient = new CristinApiClient(httpExecutor);
 
         JsonNode actualResponse = cristinApiClient.getSingleUnit(SECOND_LEVEL_CHILD_URI, TESTING_LANGUAGE);
-        JsonNode expectedResponse = JsonUtils.objectMapper.readTree(IoUtils.stringFromResources(
+        JsonNode expectedResponse = JsonUtils.dtoObjectMapper.readTree(IoUtils.stringFromResources(
             CristinApiClientTest.SINGLE_UNIT_RESPONSE_GRAPH));
         assertThat(actualResponse, is(equalTo(expectedResponse)));
     }
 
     private ObjectNode simpleJsonObject() {
-        ObjectNode mockResponse = JsonUtils.objectMapper.createObjectNode();
+        ObjectNode mockResponse = JsonUtils.dtoObjectMapper.createObjectNode();
         mockResponse.put(SOME_KEY, SOME_VALUE);
         return mockResponse;
     }

@@ -1,8 +1,12 @@
 package testutils;
 
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import no.unit.nva.institution.proxy.exception.InvalidUriException;
+import no.unit.nva.institution.proxy.utils.Language;
+import no.unit.nva.institution.proxy.utils.UriUtils;
+import nva.commons.core.ioutils.IoUtils;
+import org.apache.http.HttpStatus;
+import org.mockito.invocation.InvocationOnMock;
+import org.mockito.stubbing.Answer;
 
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -13,13 +17,10 @@ import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
-import no.unit.nva.institution.proxy.exception.InvalidUriException;
-import no.unit.nva.institution.proxy.utils.Language;
-import no.unit.nva.institution.proxy.utils.UriUtils;
-import nva.commons.utils.IoUtils;
-import org.apache.http.HttpStatus;
-import org.mockito.invocation.InvocationOnMock;
-import org.mockito.stubbing.Answer;
+
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class HttpClientGetsNestedInstitutionResponse {
 

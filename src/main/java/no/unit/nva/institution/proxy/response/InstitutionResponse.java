@@ -1,8 +1,9 @@
 package no.unit.nva.institution.proxy.response;
 
+import nva.commons.core.JacocoGenerated;
+
 import java.net.URI;
 import java.util.Objects;
-import nva.commons.utils.JacocoGenerated;
 
 public class InstitutionResponse {
 

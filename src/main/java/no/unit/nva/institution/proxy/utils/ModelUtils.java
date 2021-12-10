@@ -1,17 +1,11 @@
 package no.unit.nva.institution.proxy.utils;
 
-import static org.apache.jena.riot.RDFFormat.JSONLD_FRAME_PRETTY;
-
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.jsonldjava.core.JsonLdOptions;
-import java.io.StringWriter;
-import java.net.URI;
-import java.nio.file.Path;
-import java.util.Collections;
-import nva.commons.utils.IoUtils;
-import nva.commons.utils.JsonUtils;
-import nva.commons.utils.attempt.Failure;
-import nva.commons.utils.attempt.Try;
+import nva.commons.core.JsonUtils;
+import nva.commons.core.attempt.Failure;
+import nva.commons.core.attempt.Try;
+import nva.commons.core.ioutils.IoUtils;
 import org.apache.jena.query.DatasetFactory;
 import org.apache.jena.rdf.model.Literal;
 import org.apache.jena.rdf.model.Model;
@@ -30,6 +24,13 @@ import org.apache.jena.sparql.core.DatasetGraph;
 import org.apache.jena.vocabulary.RDF;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.StringWriter;
+import java.net.URI;
+import java.nio.file.Path;
+import java.util.Collections;
+
+import static org.apache.jena.riot.RDFFormat.JSONLD_FRAME_PRETTY;
 
 public class ModelUtils {
 
@@ -95,7 +96,7 @@ public class ModelUtils {
     private JsonNode convertToJsonNode(String dataModelString) {
         return
             Try.of(dataModelString)
-                .map(JsonUtils.objectMapper::readTree)
+                .map(JsonUtils.dtoObjectMapper::readTree)
                 .orElseThrow(failure -> handleUnexpectedFailure(failure, dataModelString));
     }
 
