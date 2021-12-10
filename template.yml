@@ -3,15 +3,6 @@ Transform: AWS::Serverless-2016-10-31
 Description: >
   AWS Template for institution proxy
 
-Metadata:
-  AWS::ServerlessRepo::Application:
-    Name: NvaInstitutionProxy
-    Description: Backend for getting organizational information for Institutions and their departments
-    Author: Unit
-    SpdxLicenseId: MIT
-    LicenseUrl: LICENSE
-    Labels: ['${CODEBUILD_RESOLVED_SOURCE_VERSION}', '${GIT_REPO}', '@${BUILD_TIMESTAMP}']
-
 Globals:
   Function:
     Timeout: 60
