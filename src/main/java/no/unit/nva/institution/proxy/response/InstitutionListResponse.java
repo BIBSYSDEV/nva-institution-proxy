@@ -1,12 +1,13 @@
 package no.unit.nva.institution.proxy.response;
 
+import nva.commons.core.JacocoGenerated;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Objects;
-import nva.commons.utils.JacocoGenerated;
 
 public class InstitutionListResponse implements List<InstitutionResponse> {
 

@@ -1,11 +1,21 @@
 package no.unit.nva.institution.proxy;
 
-import static nva.commons.utils.attempt.Try.attempt;
-import static org.apache.http.HttpHeaders.ACCEPT;
-import static org.apache.http.HttpHeaders.USER_AGENT;
-import static org.apache.http.entity.ContentType.APPLICATION_JSON;
-
 import com.fasterxml.jackson.databind.JsonNode;
+import no.unit.nva.institution.proxy.dto.InstitutionBaseDto;
+import no.unit.nva.institution.proxy.dto.SubSubUnitDto;
+import no.unit.nva.institution.proxy.exception.FailedHttpRequestException;
+import no.unit.nva.institution.proxy.exception.HttpClientFailureException;
+import no.unit.nva.institution.proxy.exception.NonExistingUnitError;
+import no.unit.nva.institution.proxy.response.InstitutionListResponse;
+import no.unit.nva.institution.proxy.utils.InstitutionUtils;
+import no.unit.nva.institution.proxy.utils.Language;
+import no.unit.nva.institution.proxy.utils.UriUtils;
+import nva.commons.core.JacocoGenerated;
+import nva.commons.core.attempt.Failure;
+import nva.commons.core.attempt.Try;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -17,20 +27,11 @@ import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
-import no.unit.nva.institution.proxy.dto.InstitutionBaseDto;
-import no.unit.nva.institution.proxy.dto.SubSubUnitDto;
-import no.unit.nva.institution.proxy.exception.FailedHttpRequestException;
-import no.unit.nva.institution.proxy.exception.HttpClientFailureException;
-import no.unit.nva.institution.proxy.exception.NonExistingUnitError;
-import no.unit.nva.institution.proxy.response.InstitutionListResponse;
-import no.unit.nva.institution.proxy.utils.InstitutionUtils;
-import no.unit.nva.institution.proxy.utils.Language;
-import no.unit.nva.institution.proxy.utils.UriUtils;
-import nva.commons.utils.JacocoGenerated;
-import nva.commons.utils.attempt.Failure;
-import nva.commons.utils.attempt.Try;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+import static nva.commons.core.attempt.Try.attempt;
+import static org.apache.http.HttpHeaders.ACCEPT;
+import static org.apache.http.HttpHeaders.USER_AGENT;
+import static org.apache.http.entity.ContentType.APPLICATION_JSON;
 
 public class HttpExecutorImpl extends HttpExecutor {
 

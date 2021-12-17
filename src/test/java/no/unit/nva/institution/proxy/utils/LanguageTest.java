@@ -1,20 +1,21 @@
 package no.unit.nva.institution.proxy.utils;
 
-import static nva.commons.utils.attempt.Try.attempt;
+import no.unit.nva.institution.proxy.exception.UnknownLanguageException;
+import nva.commons.core.attempt.Try;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static nva.commons.core.attempt.Try.attempt;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.hamcrest.core.StringContains.containsString;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-import no.unit.nva.institution.proxy.exception.UnknownLanguageException;
-import nva.commons.utils.attempt.Try;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 
 class LanguageTest {
 

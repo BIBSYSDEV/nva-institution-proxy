@@ -1,16 +1,17 @@
 package no.unit.nva.institution.proxy.utils;
 
+import no.unit.nva.institution.proxy.exception.UnknownLanguageException;
+import nva.commons.logutils.LogUtils;
+import nva.commons.logutils.TestAppender;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
+
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.assertThat;
-
-import java.util.Arrays;
-import no.unit.nva.institution.proxy.exception.UnknownLanguageException;
-import nva.commons.utils.log.LogUtils;
-import nva.commons.utils.log.TestAppender;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 public class LanguageMapperTest {
 

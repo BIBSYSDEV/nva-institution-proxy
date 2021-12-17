@@ -1,7 +1,39 @@
 package no.unit.nva.institution.proxy.handler;
 
+import com.amazonaws.services.lambda.runtime.Context;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import no.unit.nva.institution.proxy.CristinApiClient;
+import no.unit.nva.institution.proxy.exception.FailedHttpRequestException;
+import no.unit.nva.institution.proxy.exception.HttpClientFailureException;
+import no.unit.nva.institution.proxy.exception.InvalidUriException;
+import no.unit.nva.institution.proxy.exception.MissingParameterException;
+import no.unit.nva.institution.proxy.response.InstitutionListResponse;
+import no.unit.nva.institution.proxy.utils.Language;
+import nva.commons.apigateway.GatewayResponse;
+import nva.commons.apigateway.RequestInfo;
+import nva.commons.apigateway.exceptions.ApiGatewayException;
+import nva.commons.core.Environment;
+import nva.commons.core.JsonUtils;
+import nva.commons.core.attempt.Failure;
+import nva.commons.core.attempt.Try;
+import nva.commons.core.ioutils.IoUtils;
+import org.apache.http.HttpStatus;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
+import org.zalando.problem.Problem;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URI;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
+
 import static no.unit.nva.institution.proxy.handler.NestedInstitutionHandler.URI_QUERY_PARAMETER;
-import static nva.commons.utils.JsonUtils.objectMapper;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
@@ -10,38 +42,6 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
-
-import com.amazonaws.services.lambda.runtime.Context;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonNode;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URI;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Path;
-import no.unit.nva.institution.proxy.CristinApiClient;
-import no.unit.nva.institution.proxy.exception.FailedHttpRequestException;
-import no.unit.nva.institution.proxy.exception.HttpClientFailureException;
-import no.unit.nva.institution.proxy.exception.InvalidUriException;
-import no.unit.nva.institution.proxy.exception.MissingParameterException;
-import no.unit.nva.institution.proxy.response.InstitutionListResponse;
-import no.unit.nva.institution.proxy.utils.Language;
-import no.unit.nva.testutils.TestContext;
-import no.unit.nva.testutils.TestLogger;
-import nva.commons.exceptions.ApiGatewayException;
-import nva.commons.handlers.GatewayResponse;
-import nva.commons.handlers.RequestInfo;
-import nva.commons.utils.Environment;
-import nva.commons.utils.IoUtils;
-import nva.commons.utils.attempt.Failure;
-import nva.commons.utils.attempt.Try;
-import org.apache.http.HttpStatus;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
-import org.zalando.problem.Problem;
 
 public class NestedInstitutionHandlerTest extends HandlerTest {
 
@@ -66,10 +66,11 @@ public class NestedInstitutionHandlerTest extends HandlerTest {
     public static final String URI_STRING_VALUE_IN_RESOURCE_FILE = "http://get-info.no/institutions";
 
     private static final String SOME_EXCEPTION_MESSAGE = "THIS EXCEPTION";
+    public static final ObjectMapper objectMapper = JsonUtils.dtoObjectMapper;
+    public static final Context CONTEXT = mock(Context.class);
 
     private Environment environment;
     private Context context;
-    private TestLogger logger;
 
     /**
      * Setup.
@@ -77,10 +78,8 @@ public class NestedInstitutionHandlerTest extends HandlerTest {
     @BeforeEach
     public void setup() {
         environment = mock(Environment.class);
-        logger = new TestLogger();
         when(environment.readEnv(anyString())).thenReturn(SOME_ENV_VALUE);
-        context = mock(Context.class);
-        when(context.getLogger()).thenReturn(logger);
+        context = CONTEXT;
     }
 
     @DisplayName("Tests an entire institution can be nested from live data")
@@ -93,9 +92,7 @@ public class NestedInstitutionHandlerTest extends HandlerTest {
             IoUtils.inputStreamFromResources(Path.of("events", "nested_institutions_request_for_uio.json"));
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 
-        Context context = new TestContext();
-
-        nestedInstitutionHandler.handleRequest(inputStream, outputStream, context);
+        nestedInstitutionHandler.handleRequest(inputStream, outputStream, CONTEXT);
         JsonNode response = extractResponseObjectFromOutputStream(outputStream);
         assertThat(true, is(true));
     }
@@ -104,7 +101,6 @@ public class NestedInstitutionHandlerTest extends HandlerTest {
     @Test
     @Tag("online")
     void testSingleUnitCanBeNestedFromLiveData() throws Exception {
-        TestContext context = new TestContext();
 
         NestedInstitutionHandler nestedInstitutionHandler =
             new NestedInstitutionHandler(environment, new CristinApiClient());

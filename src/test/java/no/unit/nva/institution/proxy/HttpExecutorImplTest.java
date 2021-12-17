@@ -1,20 +1,25 @@
 package no.unit.nva.institution.proxy;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.greaterThan;
-import static org.hamcrest.core.Is.is;
-import static org.hamcrest.core.IsEqual.equalTo;
-import static org.hamcrest.core.IsNot.not;
-import static org.hamcrest.core.IsNull.nullValue;
-import static org.hamcrest.core.StringContains.containsString;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-import static testutils.HttpClientGetsNestedInstitutionResponse.INSTITUTION_REQUEST_URI;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
+import no.unit.nva.institution.proxy.exception.FailedHttpRequestException;
+import no.unit.nva.institution.proxy.exception.HttpClientFailureException;
+import no.unit.nva.institution.proxy.exception.InvalidUriException;
+import no.unit.nva.institution.proxy.exception.NonExistingUnitError;
+import no.unit.nva.institution.proxy.response.InstitutionListResponse;
+import no.unit.nva.institution.proxy.utils.InstitutionUtils;
+import no.unit.nva.institution.proxy.utils.Language;
+import nva.commons.core.JsonUtils;
+import nva.commons.core.ioutils.IoUtils;
+import org.apache.http.HttpStatus;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
+import testutils.HttpClientGetsNestedInstitutionResponse;
+import testutils.HttpClientReturningInfoOfSingleUnits;
+import testutils.HttpClientThrowsExceptionInFirstRequestButSucceedsInSecond;
+import testutils.HttpClientThrowsExceptionOnNestedInstitutionQueries;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -27,23 +32,19 @@ import java.nio.file.Path;
 import java.util.Collections;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
-import no.unit.nva.institution.proxy.exception.FailedHttpRequestException;
-import no.unit.nva.institution.proxy.exception.HttpClientFailureException;
-import no.unit.nva.institution.proxy.exception.InvalidUriException;
-import no.unit.nva.institution.proxy.exception.NonExistingUnitError;
-import no.unit.nva.institution.proxy.response.InstitutionListResponse;
-import no.unit.nva.institution.proxy.utils.InstitutionUtils;
-import no.unit.nva.institution.proxy.utils.Language;
-import nva.commons.utils.IoUtils;
-import nva.commons.utils.JsonUtils;
-import org.apache.http.HttpStatus;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.function.Executable;
-import testutils.HttpClientGetsNestedInstitutionResponse;
-import testutils.HttpClientReturningInfoOfSingleUnits;
-import testutils.HttpClientThrowsExceptionInFirstRequestButSucceedsInSecond;
-import testutils.HttpClientThrowsExceptionOnNestedInstitutionQueries;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsEqual.equalTo;
+import static org.hamcrest.core.IsNot.not;
+import static org.hamcrest.core.IsNull.nullValue;
+import static org.hamcrest.core.StringContains.containsString;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+import static testutils.HttpClientGetsNestedInstitutionResponse.INSTITUTION_REQUEST_URI;
 
 public class HttpExecutorImplTest {
 
@@ -160,7 +161,7 @@ public class HttpExecutorImplTest {
         JsonNode response = executor.getNestedInstitution(URI.create(INSTITUTION_REQUEST_URI),
             Language.ENGLISH);
         JsonNode expectedJson =
-            JsonUtils.objectMapper.readTree(
+            JsonUtils.dtoObjectMapper.readTree(
                 IoUtils.inputStreamFromResources(EXPECTED_NESTED_INSTITUTION_FOR_VALID_REQUEST));
         assertThat(response, is(equalTo(expectedJson)));
     }
@@ -177,7 +178,7 @@ public class HttpExecutorImplTest {
             Language.ENGLISH);
 
         JsonNode expectedJson =
-            JsonUtils.objectMapper.readTree(
+            JsonUtils.dtoObjectMapper.readTree(
                 IoUtils.inputStreamFromResources(EXPECTED_NESTED_INSTITUTION_FOR_VALID_REQUEST));
         assertThat(response, is(equalTo(expectedJson)));
     }
@@ -206,7 +207,7 @@ public class HttpExecutorImplTest {
         HttpExecutorImpl executor = new HttpExecutorImpl(mockHttpClient);
 
         JsonNode actualResponse = executor.getSingleUnit(SAMPLE_URI, Language.ENGLISH);
-        JsonNode expectedResponse = JsonUtils.objectMapper.readTree(IoUtils.stringFromResources(SINGLE_UNIT_GRAPH));
+        JsonNode expectedResponse = JsonUtils.dtoObjectMapper.readTree(IoUtils.stringFromResources(SINGLE_UNIT_GRAPH));
         assertThat(actualResponse, is(equalTo(expectedResponse)));
     }
 
