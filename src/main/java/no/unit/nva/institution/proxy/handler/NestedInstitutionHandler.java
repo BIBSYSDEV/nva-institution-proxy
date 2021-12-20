@@ -36,6 +36,7 @@ public class NestedInstitutionHandler extends ApiGatewayHandler<Void, JsonNode> 
     private final CristinApiClient cristinApiClient;
     private static final ObjectMapper objectMapper = JsonUtils.dtoObjectMapper;
     public static final Logger logger =  LoggerFactory.getLogger(NestedInstitutionHandler.class);
+
     @JacocoGenerated
     public NestedInstitutionHandler() {
         this(new Environment(), new CristinApiClient());
