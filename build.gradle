@@ -22,7 +22,7 @@ repositories {
 }
 
 def junitVersion= "5.6.2"
-def nvaCommonsVersion = '1.16.29'
+def nvaCommonsVersion = '1.16.30'
 dependencies {
     implementation group: 'com.amazonaws', name: 'aws-lambda-java-core', version: '1.2.0'
     implementation group: 'com.amazonaws', name: 'aws-java-sdk-lambda', version: '1.11.749'
